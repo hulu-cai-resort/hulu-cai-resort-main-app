@@ -36,7 +36,7 @@ export default async function Page() {
         </div>
       </div>
 
-      <div className="container mb-8">
+      <div className=" mb-8 container ">
         <PageRange
           collection="posts"
           currentPage={posts.page}
