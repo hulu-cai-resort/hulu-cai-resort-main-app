@@ -67,6 +67,7 @@ export interface Config {
   };
   blocks: {};
   collections: {
+    accommodations: Accommodation;
     pages: Page;
     posts: Post;
     media: Media;
@@ -83,6 +84,7 @@ export interface Config {
   };
   collectionsJoins: {};
   collectionsSelect: {
+    accommodations: AccommodationsSelect<false> | AccommodationsSelect<true>;
     pages: PagesSelect<false> | PagesSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
@@ -98,15 +100,19 @@ export interface Config {
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
   };
   db: {
-    defaultIDType: string;
+    defaultIDType: number;
   };
   globals: {
     header: Header;
     footer: Footer;
+    mainPage: MainPage;
+    mapPage: MapPage;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
+    mainPage: MainPageSelect<false> | MainPageSelect<true>;
+    mapPage: MapPageSelect<false> | MapPageSelect<true>;
   };
   locale: null;
   user: User & {
@@ -143,111 +149,183 @@ export interface UserAuthOperations {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "pages".
+ * via the `definition` "accommodations".
  */
-export interface Page {
-  id: string;
+export interface Accommodation {
+  id: number;
+  /**
+   * e.g., Villa Zaitun 1, Cabin Maple, Cottage Rose
+   */
   title: string;
-  hero: {
-    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
-    richText?: {
-      root: {
-        type: string;
-        children: {
-          type: string;
-          version: number;
-          [k: string]: unknown;
-        }[];
-        direction: ('ltr' | 'rtl') | null;
-        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-        indent: number;
-        version: number;
-      };
-      [k: string]: unknown;
-    } | null;
-    links?:
-      | {
-          link: {
-            type?: ('reference' | 'custom') | null;
-            newTab?: boolean | null;
-            reference?:
-              | ({
-                  relationTo: 'pages';
-                  value: string | Page;
-                } | null)
-              | ({
-                  relationTo: 'posts';
-                  value: string | Post;
-                } | null);
-            url?: string | null;
-            label: string;
-            /**
-             * Choose how the link should be rendered.
-             */
-            appearance?: ('default' | 'outline') | null;
-          };
-          id?: string | null;
-        }[]
-      | null;
-    media?: (string | null) | Media;
-  };
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock)[];
-  meta?: {
-    title?: string | null;
-    /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-     */
-    image?: (string | null) | Media;
-    description?: string | null;
-  };
-  publishedAt?: string | null;
-  slug?: string | null;
-  slugLock?: boolean | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "posts".
- */
-export interface Post {
-  id: string;
-  title: string;
-  heroImage?: (string | null) | Media;
-  content: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  relatedPosts?: (string | Post)[] | null;
-  categories?: (string | Category)[] | null;
-  meta?: {
-    title?: string | null;
-    /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-     */
-    image?: (string | null) | Media;
-    description?: string | null;
-  };
-  publishedAt?: string | null;
-  authors?: (string | User)[] | null;
-  populatedAuthors?:
+  /**
+   * Type of accommodation
+   */
+  type: 'villa' | 'cabin' | 'cottage' | 'camping_ground';
+  status: 'available' | 'booked' | 'maintenance' | 'unavailable';
+  /**
+   * e.g., Hills Babakan
+   */
+  location: string;
+  /**
+   * Detailed description of the accommodation
+   */
+  description: string;
+  /**
+   * Photo gallery of the accommodation
+   */
+  images: {
+    image: number | Media;
+    caption?: string | null;
+    id?: string | null;
+  }[];
+  /**
+   * e.g., Super Executive, Standard, Deluxe
+   */
+  unitType?: string | null;
+  /**
+   * Size in square meters
+   */
+  size?: number | null;
+  /**
+   * Number of floors
+   */
+  floors?: number | null;
+  /**
+   * Number of bedrooms
+   */
+  bedrooms?: number | null;
+  /**
+   * Additional bedrooms (e.g., +1 extra bedroom)
+   */
+  additionalBedrooms?: number | null;
+  /**
+   * Maximum number of guests
+   */
+  maxCapacity: number;
+  /**
+   * Additional capacity with extra beds
+   */
+  additionalCapacity?: number | null;
+  /**
+   * Number of extra beds available
+   */
+  extraBeds?: number | null;
+  /**
+   * Number of camping spots available
+   */
+  campingSpots?: number | null;
+  /**
+   * Detailed bed configuration for each room
+   */
+  bedConfiguration?:
     | {
+        /**
+         * e.g., Room 1, Master Bedroom
+         */
+        roomName: string;
+        bedType: 'king' | 'queen' | 'single' | 'double' | 'bunk';
+        /**
+         * Number of beds of this type in the room
+         */
+        bedCount: number;
+        /**
+         * Optional image of the room/bed setup
+         */
+        roomImage?: (number | null) | Media;
         id?: string | null;
-        name?: string | null;
       }[]
     | null;
+  /**
+   * General facilities like WiFi, AC, Parking, etc.
+   */
+  generalFacilities?:
+    | {
+        facility: string;
+        /**
+         * Icon for the facility
+         */
+        icon?: (number | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Additional amenities and services
+   */
+  amenities?:
+    | {
+        amenity: string;
+        /**
+         * Icon for the amenity
+         */
+        icon?: (number | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Additional facilities not listed above
+   */
+  additionalFacilities?: string | null;
+  /**
+   * Starting price in IDR
+   */
+  priceStartingFrom: number;
+  priceUnit: 'per_night' | 'per_villa_night' | 'per_person_night' | 'per_spot_night';
+  /**
+   * Different pricing for different seasons
+   */
+  seasonalPricing?:
+    | {
+        /**
+         * e.g., High Season, Low Season, Holiday
+         */
+        season: string;
+        price: number;
+        startDate?: string | null;
+        endDate?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Minimum number of nights required
+   */
+  minimumStay?: number | null;
+  /**
+   * Enable online booking for this accommodation
+   */
+  bookingEnabled?: boolean | null;
+  /**
+   * Allow instant booking without confirmation
+   */
+  instantBooking?: boolean | null;
+  /**
+   * How many days in advance can guests book
+   */
+  advanceBookingDays?: number | null;
+  /**
+   * e.g., 3:00 PM
+   */
+  checkInTime?: string | null;
+  /**
+   * e.g., 11:00 AM
+   */
+  checkOutTime?: string | null;
+  /**
+   * Special instructions for guests
+   */
+  specialInstructions?: string | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  /**
+   * Feature this accommodation on the homepage
+   */
+  featured?: boolean | null;
+  publishedAt?: string | null;
   slug?: string | null;
   slugLock?: boolean | null;
   updatedAt: string;
@@ -259,7 +337,7 @@ export interface Post {
  * via the `definition` "media".
  */
 export interface Media {
-  id: string;
+  id: number;
   alt?: string | null;
   caption?: {
     root: {
@@ -348,17 +426,130 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages".
+ */
+export interface Page {
+  id: number;
+  title: string;
+  hero: {
+    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
+    richText?: {
+      root: {
+        type: string;
+        children: {
+          type: string;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    links?:
+      | {
+          link: {
+            type?: ('reference' | 'custom') | null;
+            newTab?: boolean | null;
+            reference?:
+              | ({
+                  relationTo: 'pages';
+                  value: number | Page;
+                } | null)
+              | ({
+                  relationTo: 'posts';
+                  value: number | Post;
+                } | null);
+            url?: string | null;
+            label: string;
+            /**
+             * Choose how the link should be rendered.
+             */
+            appearance?: ('default' | 'outline') | null;
+          };
+          id?: string | null;
+        }[]
+      | null;
+    media?: (number | null) | Media;
+  };
+  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock)[];
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  publishedAt?: string | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "posts".
+ */
+export interface Post {
+  id: number;
+  title: string;
+  heroImage?: (number | null) | Media;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  relatedPosts?: (number | Post)[] | null;
+  categories?: (number | Category)[] | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  publishedAt?: string | null;
+  authors?: (number | User)[] | null;
+  populatedAuthors?:
+    | {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "categories".
  */
 export interface Category {
-  id: string;
+  id: number;
   title: string;
   slug?: string | null;
   slugLock?: boolean | null;
-  parent?: (string | null) | Category;
+  parent?: (number | null) | Category;
   breadcrumbs?:
     | {
-        doc?: (string | null) | Category;
+        doc?: (number | null) | Category;
         url?: string | null;
         label?: string | null;
         id?: string | null;
@@ -372,7 +563,7 @@ export interface Category {
  * via the `definition` "users".
  */
 export interface User {
-  id: string;
+  id: number;
   name?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -413,11 +604,11 @@ export interface CallToActionBlock {
           reference?:
             | ({
                 relationTo: 'pages';
-                value: string | Page;
+                value: number | Page;
               } | null)
             | ({
                 relationTo: 'posts';
-                value: string | Post;
+                value: number | Post;
               } | null);
           url?: string | null;
           label: string;
@@ -463,11 +654,11 @@ export interface ContentBlock {
           reference?:
             | ({
                 relationTo: 'pages';
-                value: string | Page;
+                value: number | Page;
               } | null)
             | ({
                 relationTo: 'posts';
-                value: string | Post;
+                value: number | Post;
               } | null);
           url?: string | null;
           label: string;
@@ -488,7 +679,7 @@ export interface ContentBlock {
  * via the `definition` "MediaBlock".
  */
 export interface MediaBlock {
-  media: string | Media;
+  media: number | Media;
   id?: string | null;
   blockName?: string | null;
   blockType: 'mediaBlock';
@@ -515,12 +706,12 @@ export interface ArchiveBlock {
   } | null;
   populateBy?: ('collection' | 'selection') | null;
   relationTo?: 'posts' | null;
-  categories?: (string | Category)[] | null;
+  categories?: (number | Category)[] | null;
   limit?: number | null;
   selectedDocs?:
     | {
         relationTo: 'posts';
-        value: string | Post;
+        value: number | Post;
       }[]
     | null;
   id?: string | null;
@@ -532,7 +723,7 @@ export interface ArchiveBlock {
  * via the `definition` "FormBlock".
  */
 export interface FormBlock {
-  form: string | Form;
+  form: number | Form;
   enableIntro?: boolean | null;
   introContent?: {
     root: {
@@ -558,7 +749,7 @@ export interface FormBlock {
  * via the `definition` "forms".
  */
 export interface Form {
-  id: string;
+  id: number;
   title: string;
   fields?:
     | (
@@ -732,7 +923,7 @@ export interface Form {
  * via the `definition` "redirects".
  */
 export interface Redirect {
-  id: string;
+  id: number;
   /**
    * You will need to rebuild the website when changing this field.
    */
@@ -742,11 +933,11 @@ export interface Redirect {
     reference?:
       | ({
           relationTo: 'pages';
-          value: string | Page;
+          value: number | Page;
         } | null)
       | ({
           relationTo: 'posts';
-          value: string | Post;
+          value: number | Post;
         } | null);
     url?: string | null;
   };
@@ -758,8 +949,8 @@ export interface Redirect {
  * via the `definition` "form-submissions".
  */
 export interface FormSubmission {
-  id: string;
-  form: string | Form;
+  id: number;
+  form: number | Form;
   submissionData?:
     | {
         field: string;
@@ -777,18 +968,18 @@ export interface FormSubmission {
  * via the `definition` "search".
  */
 export interface Search {
-  id: string;
+  id: number;
   title?: string | null;
   priority?: number | null;
   doc: {
     relationTo: 'posts';
-    value: string | Post;
+    value: number | Post;
   };
   slug?: string | null;
   meta?: {
     title?: string | null;
     description?: string | null;
-    image?: (string | null) | Media;
+    image?: (number | null) | Media;
   };
   categories?:
     | {
@@ -806,7 +997,7 @@ export interface Search {
  * via the `definition` "payload-jobs".
  */
 export interface PayloadJob {
-  id: string;
+  id: number;
   /**
    * Input data provided to the job
    */
@@ -898,52 +1089,56 @@ export interface PayloadJob {
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
-  id: string;
+  id: number;
   document?:
     | ({
+        relationTo: 'accommodations';
+        value: number | Accommodation;
+      } | null)
+    | ({
         relationTo: 'pages';
-        value: string | Page;
+        value: number | Page;
       } | null)
     | ({
         relationTo: 'posts';
-        value: string | Post;
+        value: number | Post;
       } | null)
     | ({
         relationTo: 'media';
-        value: string | Media;
+        value: number | Media;
       } | null)
     | ({
         relationTo: 'categories';
-        value: string | Category;
+        value: number | Category;
       } | null)
     | ({
         relationTo: 'users';
-        value: string | User;
+        value: number | User;
       } | null)
     | ({
         relationTo: 'redirects';
-        value: string | Redirect;
+        value: number | Redirect;
       } | null)
     | ({
         relationTo: 'forms';
-        value: string | Form;
+        value: number | Form;
       } | null)
     | ({
         relationTo: 'form-submissions';
-        value: string | FormSubmission;
+        value: number | FormSubmission;
       } | null)
     | ({
         relationTo: 'search';
-        value: string | Search;
+        value: number | Search;
       } | null)
     | ({
         relationTo: 'payload-jobs';
-        value: string | PayloadJob;
+        value: number | PayloadJob;
       } | null);
   globalSlug?: string | null;
   user: {
     relationTo: 'users';
-    value: string | User;
+    value: number | User;
   };
   updatedAt: string;
   createdAt: string;
@@ -953,10 +1148,10 @@ export interface PayloadLockedDocument {
  * via the `definition` "payload-preferences".
  */
 export interface PayloadPreference {
-  id: string;
+  id: number;
   user: {
     relationTo: 'users';
-    value: string | User;
+    value: number | User;
   };
   key?: string | null;
   value?:
@@ -976,11 +1171,94 @@ export interface PayloadPreference {
  * via the `definition` "payload-migrations".
  */
 export interface PayloadMigration {
-  id: string;
+  id: number;
   name?: string | null;
   batch?: number | null;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "accommodations_select".
+ */
+export interface AccommodationsSelect<T extends boolean = true> {
+  title?: T;
+  type?: T;
+  status?: T;
+  location?: T;
+  description?: T;
+  images?:
+    | T
+    | {
+        image?: T;
+        caption?: T;
+        id?: T;
+      };
+  unitType?: T;
+  size?: T;
+  floors?: T;
+  bedrooms?: T;
+  additionalBedrooms?: T;
+  maxCapacity?: T;
+  additionalCapacity?: T;
+  extraBeds?: T;
+  campingSpots?: T;
+  bedConfiguration?:
+    | T
+    | {
+        roomName?: T;
+        bedType?: T;
+        bedCount?: T;
+        roomImage?: T;
+        id?: T;
+      };
+  generalFacilities?:
+    | T
+    | {
+        facility?: T;
+        icon?: T;
+        id?: T;
+      };
+  amenities?:
+    | T
+    | {
+        amenity?: T;
+        icon?: T;
+        id?: T;
+      };
+  additionalFacilities?: T;
+  priceStartingFrom?: T;
+  priceUnit?: T;
+  seasonalPricing?:
+    | T
+    | {
+        season?: T;
+        price?: T;
+        startDate?: T;
+        endDate?: T;
+        id?: T;
+      };
+  minimumStay?: T;
+  bookingEnabled?: T;
+  instantBooking?: T;
+  advanceBookingDays?: T;
+  checkInTime?: T;
+  checkOutTime?: T;
+  specialInstructions?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
+  featured?: T;
+  publishedAt?: T;
+  slug?: T;
+  slugLock?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1537,7 +1815,7 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  * via the `definition` "header".
  */
 export interface Header {
-  id: string;
+  id: number;
   navItems?:
     | {
         link: {
@@ -1546,11 +1824,11 @@ export interface Header {
           reference?:
             | ({
                 relationTo: 'pages';
-                value: string | Page;
+                value: number | Page;
               } | null)
             | ({
                 relationTo: 'posts';
-                value: string | Post;
+                value: number | Post;
               } | null);
           url?: string | null;
           label: string;
@@ -1566,8 +1844,65 @@ export interface Header {
  * via the `definition` "footer".
  */
 export interface Footer {
-  id: string;
-  navItems?:
+  id: number;
+  /**
+   * Background image for footer CTA
+   */
+  footerCtaImage?: (number | null) | Media;
+  footerCtaSubtitle?: string | null;
+  footerCtaTitle?: string | null;
+  footerCtaButton: {
+    link: {
+      type?: ('reference' | 'custom') | null;
+      newTab?: boolean | null;
+      reference?:
+        | ({
+            relationTo: 'pages';
+            value: number | Page;
+          } | null)
+        | ({
+            relationTo: 'posts';
+            value: number | Post;
+          } | null);
+      url?: string | null;
+      label: string;
+      /**
+       * Choose how the link should be rendered.
+       */
+      appearance?: 'default' | null;
+    };
+  };
+  companyName: string;
+  address?: string | null;
+  phone?: string | null;
+  email?: string | null;
+  instagramHandle?: string | null;
+  copyright?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "mainPage".
+ */
+export interface MainPage {
+  id: number;
+  /**
+   * Main title displayed on the homepage hero section
+   */
+  heroTitle: string;
+  /**
+   * Description text below the hero title
+   */
+  heroDescription: string;
+  /**
+   * Background image for the hero section
+   */
+  heroImage: number | Media;
+  /**
+   * Call-to-action buttons in the hero section
+   */
+  heroButtons?:
     | {
         link: {
           type?: ('reference' | 'custom') | null;
@@ -1575,18 +1910,205 @@ export interface Footer {
           reference?:
             | ({
                 relationTo: 'pages';
-                value: string | Page;
+                value: number | Page;
               } | null)
             | ({
                 relationTo: 'posts';
-                value: string | Post;
+                value: number | Post;
               } | null);
           url?: string | null;
           label: string;
+          /**
+           * Choose how the link should be rendered.
+           */
+          appearance?: ('default' | 'outline') | null;
         };
         id?: string | null;
       }[]
     | null;
+  /**
+   * Title for the services section
+   */
+  servicesTitle?: string | null;
+  /**
+   * Main service categories displayed as cards
+   */
+  services?:
+    | {
+        title: string;
+        subtitle?: string | null;
+        image: number | Media;
+        /**
+         * URL or anchor link for this service
+         */
+        link?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Section identifier
+   */
+  aboutSectionTitle?: string | null;
+  /**
+   * Main title for the about section
+   */
+  aboutTitle?: string | null;
+  aboutDescription?: string | null;
+  /**
+   * Main image for the about section
+   */
+  aboutImage?: (number | null) | Media;
+  /**
+   * Key features or benefits of the camp
+   */
+  features?:
+    | {
+        number: string;
+        title: string;
+        description: string;
+        id?: string | null;
+      }[]
+    | null;
+  aboutCTA: {
+    link: {
+      type?: ('reference' | 'custom') | null;
+      newTab?: boolean | null;
+      reference?:
+        | ({
+            relationTo: 'pages';
+            value: number | Page;
+          } | null)
+        | ({
+            relationTo: 'posts';
+            value: number | Post;
+          } | null);
+      url?: string | null;
+      label: string;
+      /**
+       * Choose how the link should be rendered.
+       */
+      appearance?: 'default' | null;
+    };
+  };
+  packagesSectionTitle?: string | null;
+  packagesTitle?: string | null;
+  packagesDescription?: string | null;
+  /**
+   * Available vacation packages
+   */
+  packages?:
+    | {
+        title: string;
+        image: number | Media;
+        /**
+         * URL for this package
+         */
+        link?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  activitiesTitle?: string | null;
+  activitiesDescription?: string | null;
+  /**
+   * Activities available at the camp
+   */
+  activities?:
+    | {
+        title: string;
+        icon: 'heart-handshake' | 'projector' | 'tent-tree' | 'volleyball' | 'tent';
+        /**
+         * Highlight this activity
+         */
+        featured?: boolean | null;
+        id?: string | null;
+      }[]
+    | null;
+  locationSectionTitle?: string | null;
+  locationTitle?: string | null;
+  locationDescription?: string | null;
+  /**
+   * Map or location image
+   */
+  locationImage?: (number | null) | Media;
+  locationInfo?: {
+    placeName?: string | null;
+    areaName?: string | null;
+    address?: string | null;
+  };
+  reviewsSectionTitle?: string | null;
+  reviewsTitle?: string | null;
+  reviewsDescription?: string | null;
+  /**
+   * Customer testimonials and reviews
+   */
+  reviews?:
+    | {
+        customerName: string;
+        customerImage?: (number | null) | Media;
+        review: string;
+        /**
+         * Feature this review prominently
+         */
+        featured?: boolean | null;
+        id?: string | null;
+      }[]
+    | null;
+  reviewsCTA: {
+    link: {
+      type?: ('reference' | 'custom') | null;
+      newTab?: boolean | null;
+      reference?:
+        | ({
+            relationTo: 'pages';
+            value: number | Page;
+          } | null)
+        | ({
+            relationTo: 'posts';
+            value: number | Post;
+          } | null);
+      url?: string | null;
+      label: string;
+      /**
+       * Choose how the link should be rendered.
+       */
+      appearance?: 'default' | null;
+    };
+  };
+  socialSectionTitle?: string | null;
+  socialTitle?: string | null;
+  socialDescription?: string | null;
+  /**
+   * Background image for social media section
+   */
+  socialBackgroundImage?: (number | null) | Media;
+  /**
+   * Social media accounts
+   */
+  socialLinks?:
+    | {
+        platform: 'instagram' | 'youtube' | 'facebook' | 'tiktok';
+        username: string;
+        url: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "mapPage".
+ */
+export interface MapPage {
+  id: number;
+  /**
+   * Title of the map page
+   */
+  title: string;
+  /**
+   * Description of the map page
+   */
+  description: string;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1618,7 +2140,10 @@ export interface HeaderSelect<T extends boolean = true> {
  * via the `definition` "footer_select".
  */
 export interface FooterSelect<T extends boolean = true> {
-  navItems?:
+  footerCtaImage?: T;
+  footerCtaSubtitle?: T;
+  footerCtaTitle?: T;
+  footerCtaButton?:
     | T
     | {
         link?:
@@ -1629,9 +2154,159 @@ export interface FooterSelect<T extends boolean = true> {
               reference?: T;
               url?: T;
               label?: T;
+              appearance?: T;
+            };
+      };
+  companyName?: T;
+  address?: T;
+  phone?: T;
+  email?: T;
+  instagramHandle?: T;
+  copyright?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "mainPage_select".
+ */
+export interface MainPageSelect<T extends boolean = true> {
+  heroTitle?: T;
+  heroDescription?: T;
+  heroImage?: T;
+  heroButtons?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+              appearance?: T;
             };
         id?: T;
       };
+  servicesTitle?: T;
+  services?:
+    | T
+    | {
+        title?: T;
+        subtitle?: T;
+        image?: T;
+        link?: T;
+        id?: T;
+      };
+  aboutSectionTitle?: T;
+  aboutTitle?: T;
+  aboutDescription?: T;
+  aboutImage?: T;
+  features?:
+    | T
+    | {
+        number?: T;
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  aboutCTA?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+              appearance?: T;
+            };
+      };
+  packagesSectionTitle?: T;
+  packagesTitle?: T;
+  packagesDescription?: T;
+  packages?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        link?: T;
+        id?: T;
+      };
+  activitiesTitle?: T;
+  activitiesDescription?: T;
+  activities?:
+    | T
+    | {
+        title?: T;
+        icon?: T;
+        featured?: T;
+        id?: T;
+      };
+  locationSectionTitle?: T;
+  locationTitle?: T;
+  locationDescription?: T;
+  locationImage?: T;
+  locationInfo?:
+    | T
+    | {
+        placeName?: T;
+        areaName?: T;
+        address?: T;
+      };
+  reviewsSectionTitle?: T;
+  reviewsTitle?: T;
+  reviewsDescription?: T;
+  reviews?:
+    | T
+    | {
+        customerName?: T;
+        customerImage?: T;
+        review?: T;
+        featured?: T;
+        id?: T;
+      };
+  reviewsCTA?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+              appearance?: T;
+            };
+      };
+  socialSectionTitle?: T;
+  socialTitle?: T;
+  socialDescription?: T;
+  socialBackgroundImage?: T;
+  socialLinks?:
+    | T
+    | {
+        platform?: T;
+        username?: T;
+        url?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "mapPage_select".
+ */
+export interface MapPageSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -1647,14 +2322,14 @@ export interface TaskSchedulePublish {
     doc?:
       | ({
           relationTo: 'pages';
-          value: string | Page;
+          value: number | Page;
         } | null)
       | ({
           relationTo: 'posts';
-          value: string | Post;
+          value: number | Post;
         } | null);
     global?: string | null;
-    user?: (string | null) | User;
+    user?: (number | null) | User;
   };
   output?: unknown;
 }
