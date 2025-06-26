@@ -7,6 +7,9 @@ import { buildConfig, PayloadRequest } from 'payload'
 import { fileURLToPath } from 'url'
 
 import { Accommodations } from './collections/Accommodations'
+import { Activities } from './collections/Activities'
+import { Attractions } from './collections/Attractions'
+import { Amenities } from './collections/Amenities'
 import { Categories } from './collections/Categories'
 import { Media } from './collections/Media'
 import { Pages } from './collections/Pages'
@@ -24,6 +27,11 @@ import { MapPage } from './globals/MapPage/config'
 import { CottagePage } from './globals/CottagePage/config'
 import { CabinPage } from './globals/CabinPage/config'
 import { CampingGroundPage } from './globals/CampingGroundPage/config'
+import { AttractionAmenitiesPage } from './globals/AttractionAmenitiesPage/config'
+import { ActivitiesPage } from './globals/ActivitiesPage/config'
+import { DiningPage } from './globals/DiningPage/config'
+import { EventsPage } from './globals/EventsPage/config'
+import { DiningArea } from './collections/DiningArea'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -72,7 +80,18 @@ export default buildConfig({
       connectionString: process.env.DATABASE_URI || '',
     },
   }),
-  collections: [Accommodations, Pages, Posts, Media, Categories, Users],
+  collections: [
+    Accommodations,
+    Activities,
+    Attractions,
+    Amenities,
+    DiningArea,
+    Pages,
+    Posts,
+    Media,
+    Categories,
+    Users,
+  ],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [
     Header,
@@ -84,6 +103,10 @@ export default buildConfig({
     CottagePage,
     CabinPage,
     CampingGroundPage,
+    AttractionAmenitiesPage,
+    ActivitiesPage,
+    DiningPage,
+    EventsPage,
   ],
   plugins: [
     ...plugins,
