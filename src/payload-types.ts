@@ -108,6 +108,10 @@ export interface Config {
     'main-page': MainPage;
     'map-page': MapPage;
     'accommodations-page': AccommodationsPage;
+    'villa-page': VillaPage;
+    'cottage-page': CottagePage;
+    'cabin-page': CabinPage;
+    'camping-ground-page': CampingGroundPage;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
@@ -115,6 +119,10 @@ export interface Config {
     'main-page': MainPageSelect<false> | MainPageSelect<true>;
     'map-page': MapPageSelect<false> | MapPageSelect<true>;
     'accommodations-page': AccommodationsPageSelect<false> | AccommodationsPageSelect<true>;
+    'villa-page': VillaPageSelect<false> | VillaPageSelect<true>;
+    'cottage-page': CottagePageSelect<false> | CottagePageSelect<true>;
+    'cabin-page': CabinPageSelect<false> | CabinPageSelect<true>;
+    'camping-ground-page': CampingGroundPageSelect<false> | CampingGroundPageSelect<true>;
   };
   locale: null;
   user: User & {
@@ -2141,6 +2149,106 @@ export interface AccommodationsPage {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "villa-page".
+ */
+export interface VillaPage {
+  id: number;
+  /**
+   * Main title displayed on the villa page hero section
+   */
+  heroTitle: string;
+  /**
+   * Description text in the hero section
+   */
+  heroDescription: string;
+  /**
+   * Background image for the villa page hero section
+   */
+  heroBackgroundImage: number | Media;
+  /**
+   * Show the scroll down indicator in the hero section
+   */
+  showScrollIndicator?: boolean | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cottage-page".
+ */
+export interface CottagePage {
+  id: number;
+  /**
+   * Main title displayed on the villa page hero section
+   */
+  heroTitle: string;
+  /**
+   * Description text in the hero section
+   */
+  heroDescription: string;
+  /**
+   * Background image for the villa page hero section
+   */
+  heroBackgroundImage: number | Media;
+  /**
+   * Show the scroll down indicator in the hero section
+   */
+  showScrollIndicator?: boolean | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cabin-page".
+ */
+export interface CabinPage {
+  id: number;
+  /**
+   * Main title displayed on the villa page hero section
+   */
+  heroTitle: string;
+  /**
+   * Description text in the hero section
+   */
+  heroDescription: string;
+  /**
+   * Background image for the villa page hero section
+   */
+  heroBackgroundImage: number | Media;
+  /**
+   * Show the scroll down indicator in the hero section
+   */
+  showScrollIndicator?: boolean | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "camping-ground-page".
+ */
+export interface CampingGroundPage {
+  id: number;
+  /**
+   * Main title displayed on the villa page hero section
+   */
+  heroTitle: string;
+  /**
+   * Description text in the hero section
+   */
+  heroDescription: string;
+  /**
+   * Background image for the villa page hero section
+   */
+  heroBackgroundImage: number | Media;
+  /**
+   * Show the scroll down indicator in the hero section
+   */
+  showScrollIndicator?: boolean | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
@@ -2347,6 +2455,58 @@ export interface AccommodationsPageSelect<T extends boolean = true> {
   heroDescription?: T;
   heroImage?: T;
   accommodationsTitle?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "villa-page_select".
+ */
+export interface VillaPageSelect<T extends boolean = true> {
+  heroTitle?: T;
+  heroDescription?: T;
+  heroBackgroundImage?: T;
+  showScrollIndicator?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cottage-page_select".
+ */
+export interface CottagePageSelect<T extends boolean = true> {
+  heroTitle?: T;
+  heroDescription?: T;
+  heroBackgroundImage?: T;
+  showScrollIndicator?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cabin-page_select".
+ */
+export interface CabinPageSelect<T extends boolean = true> {
+  heroTitle?: T;
+  heroDescription?: T;
+  heroBackgroundImage?: T;
+  showScrollIndicator?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "camping-ground-page_select".
+ */
+export interface CampingGroundPageSelect<T extends boolean = true> {
+  heroTitle?: T;
+  heroDescription?: T;
+  heroBackgroundImage?: T;
+  showScrollIndicator?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

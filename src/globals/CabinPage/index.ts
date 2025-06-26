@@ -1,0 +1,1 @@
+export { CabinPage } from './config'

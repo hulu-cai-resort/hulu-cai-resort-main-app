@@ -16,10 +16,14 @@ import { Footer } from './globals/Footer/config'
 import { Header } from './globals/Header/config'
 import { MainPage } from './globals/MainPage/config'
 import { AccommodationsPage } from './globals/AccommodationsPage/config'
+import { VillaPage } from './globals/VillaPage/config'
 import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
 import { MapPage } from './globals/MapPage/config'
+import { CottagePage } from './globals/CottagePage/config'
+import { CabinPage } from './globals/CabinPage/config'
+import { CampingGroundPage } from './globals/CampingGroundPage/config'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -70,7 +74,17 @@ export default buildConfig({
   }),
   collections: [Accommodations, Pages, Posts, Media, Categories, Users],
   cors: [getServerSideURL()].filter(Boolean),
-  globals: [Header, Footer, MainPage, MapPage, AccommodationsPage],
+  globals: [
+    Header,
+    Footer,
+    MainPage,
+    MapPage,
+    AccommodationsPage,
+    VillaPage,
+    CottagePage,
+    CabinPage,
+    CampingGroundPage,
+  ],
   plugins: [
     ...plugins,
     // storage-adapter-placeholder
