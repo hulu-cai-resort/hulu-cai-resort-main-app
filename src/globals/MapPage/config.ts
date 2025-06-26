@@ -1,7 +1,7 @@
 import { GlobalConfig } from 'payload'
 
 export const MapPage: GlobalConfig = {
-  slug: 'mapPage',
+  slug: 'map-page',
   fields: [
     {
       type: 'tabs',

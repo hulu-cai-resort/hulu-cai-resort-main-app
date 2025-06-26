@@ -105,14 +105,16 @@ export interface Config {
   globals: {
     header: Header;
     footer: Footer;
-    mainPage: MainPage;
-    mapPage: MapPage;
+    'main-page': MainPage;
+    'map-page': MapPage;
+    'accommodations-page': AccommodationsPage;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
-    mainPage: MainPageSelect<false> | MainPageSelect<true>;
-    mapPage: MapPageSelect<false> | MapPageSelect<true>;
+    'main-page': MainPageSelect<false> | MainPageSelect<true>;
+    'map-page': MapPageSelect<false> | MapPageSelect<true>;
+    'accommodations-page': AccommodationsPageSelect<false> | AccommodationsPageSelect<true>;
   };
   locale: null;
   user: User & {
@@ -1883,7 +1885,7 @@ export interface Footer {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "mainPage".
+ * via the `definition` "main-page".
  */
 export interface MainPage {
   id: number;
@@ -2097,7 +2099,7 @@ export interface MainPage {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "mapPage".
+ * via the `definition` "map-page".
  */
 export interface MapPage {
   id: number;
@@ -2109,6 +2111,31 @@ export interface MapPage {
    * Description of the map page
    */
   description: string;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "accommodations-page".
+ */
+export interface AccommodationsPage {
+  id: number;
+  /**
+   * Main title displayed on the accommodations page hero section
+   */
+  heroTitle: string;
+  /**
+   * Description text in the hero section
+   */
+  heroDescription: string;
+  /**
+   * Background image for the accommodations page hero section
+   */
+  heroImage: number | Media;
+  /**
+   * Title text for the accommodations section
+   */
+  accommodationsTitle: string;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -2169,7 +2196,7 @@ export interface FooterSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "mainPage_select".
+ * via the `definition` "main-page_select".
  */
 export interface MainPageSelect<T extends boolean = true> {
   heroTitle?: T;
@@ -2302,11 +2329,24 @@ export interface MainPageSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "mapPage_select".
+ * via the `definition` "map-page_select".
  */
 export interface MapPageSelect<T extends boolean = true> {
   title?: T;
   description?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "accommodations-page_select".
+ */
+export interface AccommodationsPageSelect<T extends boolean = true> {
+  heroTitle?: T;
+  heroDescription?: T;
+  heroImage?: T;
+  accommodationsTitle?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

@@ -15,6 +15,7 @@ import { Users } from './collections/Users'
 import { Footer } from './globals/Footer/config'
 import { Header } from './globals/Header/config'
 import { MainPage } from './globals/MainPage/config'
+import { AccommodationsPage } from './globals/AccommodationsPage/config'
 import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
@@ -69,7 +70,7 @@ export default buildConfig({
   }),
   collections: [Accommodations, Pages, Posts, Media, Categories, Users],
   cors: [getServerSideURL()].filter(Boolean),
-  globals: [Header, Footer, MainPage, MapPage],
+  globals: [Header, Footer, MainPage, MapPage, AccommodationsPage],
   plugins: [
     ...plugins,
     // storage-adapter-placeholder

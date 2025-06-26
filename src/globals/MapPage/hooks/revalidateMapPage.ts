@@ -5,7 +5,7 @@ import type { GlobalAfterChangeHook } from 'payload'
 export const revalidateMapPage: GlobalAfterChangeHook = ({ doc, req: { payload } }) => {
   payload.logger.info(`Revalidating map page`)
 
-  revalidateTag('global_mapPage')
+  revalidateTag('global_map-page')
 
   return doc
 }

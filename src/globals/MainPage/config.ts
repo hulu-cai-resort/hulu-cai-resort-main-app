@@ -4,7 +4,7 @@ import { link } from '@/fields/link'
 import { revalidateMainPage } from './hooks/revalidateMainPage'
 
 export const MainPage: GlobalConfig = {
-  slug: 'mainPage',
+  slug: 'main-page',
   access: {
     read: () => true,
   },
