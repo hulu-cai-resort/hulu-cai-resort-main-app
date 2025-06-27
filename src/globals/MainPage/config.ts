@@ -441,6 +441,190 @@ export const MainPage: GlobalConfig = {
             },
           ],
         },
+        {
+          label: 'SEO',
+          fields: [
+            {
+              name: 'seo',
+              type: 'group',
+              fields: [
+                {
+                  name: 'title',
+                  type: 'text',
+                  defaultValue: 'Camp Hulu Cai - Mountain Resort & Camping Experience',
+                  admin: {
+                    description: 'Page title for search engines',
+                  },
+                },
+                {
+                  name: 'description',
+                  type: 'textarea',
+                  defaultValue:
+                    'Experience the ultimate mountain getaway at Camp Hulu Cai. Located at the foot of Mount Pangrango, enjoy fresh air, beautiful scenery, and unforgettable camping adventures.',
+                  admin: {
+                    description: 'Meta description for search engines (150-160 characters)',
+                  },
+                },
+                {
+                  name: 'keywords',
+                  type: 'text',
+                  defaultValue:
+                    'camp hulu cai, mountain camping, gunung pangrango, camping resort, outdoor adventure, nature retreat, mountain resort, camping indonesia',
+                  admin: {
+                    description: 'SEO keywords separated by commas',
+                  },
+                },
+                {
+                  name: 'ogImage',
+                  type: 'upload',
+                  relationTo: 'media',
+                  admin: {
+                    description:
+                      'Open Graph image for social media sharing (recommended: 1200x630px)',
+                  },
+                },
+                {
+                  name: 'ogTitle',
+                  type: 'text',
+                  admin: {
+                    description: 'Open Graph title (optional, uses page title if empty)',
+                  },
+                },
+                {
+                  name: 'ogDescription',
+                  type: 'textarea',
+                  admin: {
+                    description:
+                      'Open Graph description (optional, uses meta description if empty)',
+                  },
+                },
+                {
+                  name: 'canonicalUrl',
+                  type: 'text',
+                  admin: {
+                    description: 'Canonical URL for this page (optional)',
+                  },
+                },
+                {
+                  name: 'noIndex',
+                  type: 'checkbox',
+                  defaultValue: false,
+                  admin: {
+                    description: 'Prevent search engines from indexing this page',
+                  },
+                },
+                {
+                  name: 'noFollow',
+                  type: 'checkbox',
+                  defaultValue: false,
+                  admin: {
+                    description: 'Prevent search engines from following links on this page',
+                  },
+                },
+                {
+                  name: 'structuredData',
+                  type: 'group',
+                  fields: [
+                    {
+                      name: 'organizationName',
+                      type: 'text',
+                      defaultValue: 'Camp Hulu Cai',
+                      admin: {
+                        description: 'Organization name for structured data',
+                      },
+                    },
+                    {
+                      name: 'organizationType',
+                      type: 'select',
+                      defaultValue: 'TouristAttraction',
+                      options: [
+                        { label: 'Tourist Attraction', value: 'TouristAttraction' },
+                        { label: 'Campground', value: 'Campground' },
+                        { label: 'Resort', value: 'Resort' },
+                        { label: 'Organization', value: 'Organization' },
+                      ],
+                      admin: {
+                        description: 'Schema.org type for the organization',
+                      },
+                    },
+                    {
+                      name: 'address',
+                      type: 'group',
+                      fields: [
+                        {
+                          name: 'streetAddress',
+                          type: 'text',
+                          admin: {
+                            description: 'Street address',
+                          },
+                        },
+                        {
+                          name: 'addressLocality',
+                          type: 'text',
+                          admin: {
+                            description: 'City or locality',
+                          },
+                        },
+                        {
+                          name: 'addressRegion',
+                          type: 'text',
+                          admin: {
+                            description: 'State or region',
+                          },
+                        },
+                        {
+                          name: 'postalCode',
+                          type: 'text',
+                          admin: {
+                            description: 'Postal code',
+                          },
+                        },
+                        {
+                          name: 'addressCountry',
+                          type: 'text',
+                          defaultValue: 'ID',
+                          admin: {
+                            description: 'Country code (e.g., ID for Indonesia)',
+                          },
+                        },
+                      ],
+                      admin: {
+                        description: 'Address information for structured data',
+                      },
+                    },
+                    {
+                      name: 'telephone',
+                      type: 'text',
+                      admin: {
+                        description: 'Contact telephone number',
+                      },
+                    },
+                    {
+                      name: 'email',
+                      type: 'text',
+                      admin: {
+                        description: 'Contact email address',
+                      },
+                    },
+                    {
+                      name: 'priceRange',
+                      type: 'text',
+                      admin: {
+                        description: 'Price range (e.g., "$$" or "IDR 100,000 - 500,000")',
+                      },
+                    },
+                  ],
+                  admin: {
+                    description: 'Structured data for rich search results',
+                  },
+                },
+              ],
+              admin: {
+                description: 'SEO settings for the main page',
+              },
+            },
+          ],
+        },
       ],
     },
   ],

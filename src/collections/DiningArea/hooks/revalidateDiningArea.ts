@@ -17,8 +17,8 @@ export const revalidateDiningArea: CollectionAfterChangeHook = ({
 
   // If the slug changed, revalidate the old path
   if (previousDoc?.slug && doc.slug !== previousDoc.slug) {
-    const oldPath = `/dining/${previousDoc.slug}`
-    payload.logger.info(`Revalidating old dining path: ${oldPath}`)
+    const oldPath = `/dining-area/${previousDoc.slug}`
+    payload.logger.info(`Revalidating old dining area path: ${oldPath}`)
     revalidatePath(oldPath)
   }
 

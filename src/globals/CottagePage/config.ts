@@ -52,6 +52,154 @@ export const CottagePage: GlobalConfig = {
             },
           ],
         },
+        {
+          label: 'SEO',
+          fields: [
+            {
+              name: 'seo',
+              type: 'group',
+              fields: [
+                {
+                  name: 'title',
+                  type: 'text',
+                  defaultValue: 'Cottage Accommodations - Camp Hulu Cai Mountain Resort',
+                  admin: {
+                    description: 'Page title for search engines',
+                  },
+                },
+                {
+                  name: 'description',
+                  type: 'textarea',
+                  defaultValue:
+                    'Stay in charming cottage accommodations at Camp Hulu Cai. Cozy, quaint cottages offering peaceful retreat surrounded by mountain nature and fresh air.',
+                  admin: {
+                    description: 'Meta description for search engines (150-160 characters)',
+                  },
+                },
+                {
+                  name: 'keywords',
+                  type: 'text',
+                  defaultValue:
+                    'camp hulu cai cottage, mountain cottage, cozy accommodation, quaint cottage, nature retreat, gunung pangrango cottage, peaceful stay',
+                  admin: {
+                    description: 'SEO keywords separated by commas',
+                  },
+                },
+                {
+                  name: 'ogImage',
+                  type: 'upload',
+                  relationTo: 'media',
+                  admin: {
+                    description:
+                      'Open Graph image for social media sharing (recommended: 1200x630px)',
+                  },
+                },
+                {
+                  name: 'ogTitle',
+                  type: 'text',
+                  admin: {
+                    description: 'Open Graph title (optional, uses page title if empty)',
+                  },
+                },
+                {
+                  name: 'ogDescription',
+                  type: 'textarea',
+                  admin: {
+                    description:
+                      'Open Graph description (optional, uses meta description if empty)',
+                  },
+                },
+                {
+                  name: 'canonicalUrl',
+                  type: 'text',
+                  admin: {
+                    description: 'Canonical URL for this page (optional)',
+                  },
+                },
+                {
+                  name: 'noIndex',
+                  type: 'checkbox',
+                  defaultValue: false,
+                  admin: {
+                    description: 'Prevent search engines from indexing this page',
+                  },
+                },
+                {
+                  name: 'noFollow',
+                  type: 'checkbox',
+                  defaultValue: false,
+                  admin: {
+                    description: 'Prevent search engines from following links on this page',
+                  },
+                },
+                {
+                  name: 'structuredData',
+                  type: 'group',
+                  fields: [
+                    {
+                      name: 'accommodationType',
+                      type: 'select',
+                      defaultValue: 'LodgingBusiness',
+                      options: [
+                        { label: 'Lodging Business', value: 'LodgingBusiness' },
+                        { label: 'Resort', value: 'Resort' },
+                        { label: 'BedAndBreakfast', value: 'BedAndBreakfast' },
+                      ],
+                      admin: {
+                        description: 'Schema.org type for cottage accommodation',
+                      },
+                    },
+                    {
+                      name: 'maxOccupancy',
+                      type: 'number',
+                      min: 1,
+                      admin: {
+                        description: 'Maximum number of guests per cottage',
+                      },
+                    },
+                    {
+                      name: 'numberOfRooms',
+                      type: 'number',
+                      min: 1,
+                      admin: {
+                        description: 'Number of rooms in cottage',
+                      },
+                    },
+                    {
+                      name: 'amenities',
+                      type: 'array',
+                      fields: [
+                        {
+                          name: 'amenity',
+                          type: 'text',
+                          required: true,
+                        },
+                      ],
+                      admin: {
+                        description: 'List of cottage amenities (for structured data)',
+                      },
+                    },
+                    {
+                      name: 'starRating',
+                      type: 'number',
+                      min: 1,
+                      max: 5,
+                      admin: {
+                        description: 'Star rating (1-5)',
+                      },
+                    },
+                  ],
+                  admin: {
+                    description: 'Structured data for cottage accommodation',
+                  },
+                },
+              ],
+              admin: {
+                description: 'SEO settings for the cottage page',
+              },
+            },
+          ],
+        },
       ],
     },
   ],

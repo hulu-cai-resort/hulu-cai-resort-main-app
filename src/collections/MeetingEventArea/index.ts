@@ -1,13 +1,13 @@
 import type { CollectionConfig } from 'payload'
 import { slugField } from '@/fields/slug'
 import { populatePublishedAt } from '@/hooks/populatePublishedAt'
-import { revalidateDiningArea } from './hooks/revalidateDiningArea'
+import { revalidateMeetingEventArea } from './hooks/revalidateMeetingEventArea'
 
-export const DiningArea: CollectionConfig = {
-  slug: 'dining-area',
+export const MeetingEventArea: CollectionConfig = {
+  slug: 'meeting-event-area',
   labels: {
-    singular: 'Dining Area',
-    plural: 'Dining Areas',
+    singular: 'Meeting Event Area',
+    plural: 'Meeting Event Areas',
   },
   admin: {
     useAsTitle: 'title',
@@ -18,7 +18,7 @@ export const DiningArea: CollectionConfig = {
   },
   hooks: {
     beforeChange: [populatePublishedAt],
-    afterChange: [revalidateDiningArea],
+    afterChange: [revalidateMeetingEventArea],
   },
   fields: [
     {
@@ -32,7 +32,7 @@ export const DiningArea: CollectionConfig = {
               type: 'text',
               required: true,
               admin: {
-                description: 'Name of the dining area (e.g., "Team Building", "Paint Ball")',
+                description: 'Name of the meeting event area (e.g., "Team Building", "Paint Ball")',
               },
             },
             ...slugField(),
@@ -40,14 +40,14 @@ export const DiningArea: CollectionConfig = {
               name: 'shortDescription',
               type: 'textarea',
               admin: {
-                description: 'Brief description displayed on dining area cards',
+                description: 'Brief description displayed on meeting event area cards',
               },
             },
             {
               name: 'detailedDescription',
               type: 'richText',
               admin: {
-                description: 'Detailed description for the dining area detail page',
+                description: 'Detailed description for the meeting event area detail page',
               },
             },
             {
@@ -56,18 +56,18 @@ export const DiningArea: CollectionConfig = {
               relationTo: 'media',
               required: true,
               admin: {
-                description: 'Main image for the dining area',
+                description: 'Main image for the meeting event area',
               },
             },
           ],
         },
         {
-          label: 'Dining Area Details',
+          label: 'Meeting Event Area Details',
           fields: [
             {
               name: 'features',
               type: 'array',
-              label: 'Dining Features',
+              label: 'Meeting Event Features',
               fields: [
                 {
                   name: 'feature',

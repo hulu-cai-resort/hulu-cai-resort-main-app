@@ -72,6 +72,8 @@ export interface Config {
     attractions: Attraction;
     amenities: Amenity;
     'dining-area': DiningArea;
+    'meeting-event-area': MeetingEventArea;
+    'meeting-package': MeetingPackage;
     pages: Page;
     posts: Post;
     media: Media;
@@ -93,6 +95,8 @@ export interface Config {
     attractions: AttractionsSelect<false> | AttractionsSelect<true>;
     amenities: AmenitiesSelect<false> | AmenitiesSelect<true>;
     'dining-area': DiningAreaSelect<false> | DiningAreaSelect<true>;
+    'meeting-event-area': MeetingEventAreaSelect<false> | MeetingEventAreaSelect<true>;
+    'meeting-package': MeetingPackageSelect<false> | MeetingPackageSelect<true>;
     pages: PagesSelect<false> | PagesSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
@@ -124,6 +128,7 @@ export interface Config {
     'activities-page': ActivitiesPage;
     'dining-page': DiningPage;
     'events-page': EventsPage;
+    'reservation-faq-page': ReservationFaqPage;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
@@ -139,6 +144,7 @@ export interface Config {
     'activities-page': ActivitiesPageSelect<false> | ActivitiesPageSelect<true>;
     'dining-page': DiningPageSelect<false> | DiningPageSelect<true>;
     'events-page': EventsPageSelect<false> | EventsPageSelect<true>;
+    'reservation-faq-page': ReservationFaqPageSelect<false> | ReservationFaqPageSelect<true>;
   };
   locale: null;
   user: User & {
@@ -782,14 +788,6 @@ export interface DiningArea {
    */
   image: number | Media;
   /**
-   * Price in IDR
-   */
-  price: number;
-  /**
-   * Price unit (e.g., "per orang", "per group")
-   */
-  priceUnit?: string | null;
-  /**
    * List of features or highlights for this activity
    */
   features?:
@@ -801,10 +799,6 @@ export interface DiningArea {
         id?: string | null;
       }[]
     | null;
-  /**
-   * Dining duration (e.g., "2 hours", "Half day")
-   */
-  duration?: string | null;
   /**
    * Group size requirements
    */
@@ -818,6 +812,181 @@ export interface DiningArea {
      */
     maximum?: number | null;
   };
+  publishedAt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "meeting-event-area".
+ */
+export interface MeetingEventArea {
+  id: number;
+  /**
+   * Name of the meeting event area (e.g., "Team Building", "Paint Ball")
+   */
+  title: string;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  /**
+   * Brief description displayed on meeting event area cards
+   */
+  shortDescription?: string | null;
+  /**
+   * Detailed description for the meeting event area detail page
+   */
+  detailedDescription?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Main image for the meeting event area
+   */
+  image: number | Media;
+  /**
+   * List of features or highlights for this activity
+   */
+  features?:
+    | {
+        /**
+         * Individual feature or highlight (e.g., "Lorem ipsum")
+         */
+        feature: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Group size requirements
+   */
+  groupSize?: {
+    /**
+     * Minimum number of participants
+     */
+    minimum?: number | null;
+    /**
+     * Maximum number of participants
+     */
+    maximum?: number | null;
+  };
+  publishedAt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "meeting-package".
+ */
+export interface MeetingPackage {
+  id: number;
+  /**
+   * Package title (e.g., "Package Title")
+   */
+  title: string;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  /**
+   * Brief description of the package (e.g., "Ideal for individuals and small businesses")
+   */
+  description?: string | null;
+  /**
+   * Detailed description for the package detail page
+   */
+  detailedDescription?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Mark as featured package (will be highlighted with green background)
+   */
+  featured?: boolean | null;
+  /**
+   * Package price in IDR (e.g., 10000000 for IDR 10.000.000)
+   */
+  price: number;
+  /**
+   * Currency for the price
+   */
+  currency?: ('IDR' | 'USD') | null;
+  /**
+   * Pricing period (e.g., "Per month", "Per event", "Per day")
+   */
+  pricePeriod?: string | null;
+  /**
+   * Optional discount information
+   */
+  discount?: {
+    hasDiscount?: boolean | null;
+    originalPrice?: number | null;
+    /**
+     * Discount percentage (e.g., 20 for 20% off)
+     */
+    discountPercentage?: number | null;
+  };
+  /**
+   * List of features included in this package
+   */
+  features: {
+    /**
+     * Individual feature (e.g., "Lorem Ipsum Dolor Fit Details")
+     */
+    feature: string;
+    /**
+     * Whether this feature is included (check mark) or not
+     */
+    included?: boolean | null;
+    id?: string | null;
+  }[];
+  /**
+   * Type/tier of the package
+   */
+  packageType?: ('basic' | 'standard' | 'premium' | 'corporate' | 'custom') | null;
+  /**
+   * Recommended group size for this package
+   */
+  groupSize?: {
+    /**
+     * Minimum number of participants
+     */
+    minimum?: number | null;
+    /**
+     * Maximum number of participants
+     */
+    maximum?: number | null;
+  };
+  /**
+   * Package duration (e.g., "Half Day", "Full Day", "2 Days")
+   */
+  duration?: string | null;
+  /**
+   * Current availability status
+   */
+  availability?: ('available' | 'limited' | 'seasonal' | 'unavailable') | null;
+  /**
+   * Special booking requirements or notes
+   */
+  bookingNotes?: string | null;
   publishedAt?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -1510,6 +1679,14 @@ export interface PayloadLockedDocument {
         value: number | DiningArea;
       } | null)
     | ({
+        relationTo: 'meeting-event-area';
+        value: number | MeetingEventArea;
+      } | null)
+    | ({
+        relationTo: 'meeting-package';
+        value: number | MeetingPackage;
+      } | null)
+    | ({
         relationTo: 'pages';
         value: number | Page;
       } | null)
@@ -1806,21 +1983,87 @@ export interface DiningAreaSelect<T extends boolean = true> {
   shortDescription?: T;
   detailedDescription?: T;
   image?: T;
-  price?: T;
-  priceUnit?: T;
   features?:
     | T
     | {
         feature?: T;
         id?: T;
       };
-  duration?: T;
   groupSize?:
     | T
     | {
         minimum?: T;
         maximum?: T;
       };
+  publishedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "meeting-event-area_select".
+ */
+export interface MeetingEventAreaSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  slugLock?: T;
+  shortDescription?: T;
+  detailedDescription?: T;
+  image?: T;
+  features?:
+    | T
+    | {
+        feature?: T;
+        id?: T;
+      };
+  groupSize?:
+    | T
+    | {
+        minimum?: T;
+        maximum?: T;
+      };
+  publishedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "meeting-package_select".
+ */
+export interface MeetingPackageSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  slugLock?: T;
+  description?: T;
+  detailedDescription?: T;
+  featured?: T;
+  price?: T;
+  currency?: T;
+  pricePeriod?: T;
+  discount?:
+    | T
+    | {
+        hasDiscount?: T;
+        originalPrice?: T;
+        discountPercentage?: T;
+      };
+  features?:
+    | T
+    | {
+        feature?: T;
+        included?: T;
+        id?: T;
+      };
+  packageType?: T;
+  groupSize?:
+    | T
+    | {
+        minimum?: T;
+        maximum?: T;
+      };
+  duration?: T;
+  availability?: T;
+  bookingNotes?: T;
   publishedAt?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -2657,6 +2900,97 @@ export interface MainPage {
         id?: string | null;
       }[]
     | null;
+  /**
+   * SEO settings for the main page
+   */
+  seo?: {
+    /**
+     * Page title for search engines
+     */
+    title?: string | null;
+    /**
+     * Meta description for search engines (150-160 characters)
+     */
+    description?: string | null;
+    /**
+     * SEO keywords separated by commas
+     */
+    keywords?: string | null;
+    /**
+     * Open Graph image for social media sharing (recommended: 1200x630px)
+     */
+    ogImage?: (number | null) | Media;
+    /**
+     * Open Graph title (optional, uses page title if empty)
+     */
+    ogTitle?: string | null;
+    /**
+     * Open Graph description (optional, uses meta description if empty)
+     */
+    ogDescription?: string | null;
+    /**
+     * Canonical URL for this page (optional)
+     */
+    canonicalUrl?: string | null;
+    /**
+     * Prevent search engines from indexing this page
+     */
+    noIndex?: boolean | null;
+    /**
+     * Prevent search engines from following links on this page
+     */
+    noFollow?: boolean | null;
+    /**
+     * Structured data for rich search results
+     */
+    structuredData?: {
+      /**
+       * Organization name for structured data
+       */
+      organizationName?: string | null;
+      /**
+       * Schema.org type for the organization
+       */
+      organizationType?: ('TouristAttraction' | 'Campground' | 'Resort' | 'Organization') | null;
+      /**
+       * Address information for structured data
+       */
+      address?: {
+        /**
+         * Street address
+         */
+        streetAddress?: string | null;
+        /**
+         * City or locality
+         */
+        addressLocality?: string | null;
+        /**
+         * State or region
+         */
+        addressRegion?: string | null;
+        /**
+         * Postal code
+         */
+        postalCode?: string | null;
+        /**
+         * Country code (e.g., ID for Indonesia)
+         */
+        addressCountry?: string | null;
+      };
+      /**
+       * Contact telephone number
+       */
+      telephone?: string | null;
+      /**
+       * Contact email address
+       */
+      email?: string | null;
+      /**
+       * Price range (e.g., "$$" or "IDR 100,000 - 500,000")
+       */
+      priceRange?: string | null;
+    };
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -2674,6 +3008,47 @@ export interface MapPage {
    * Description of the map page
    */
   description: string;
+  /**
+   * SEO settings for the map page
+   */
+  seo?: {
+    /**
+     * Page title for search engines
+     */
+    title?: string | null;
+    /**
+     * Meta description for search engines (150-160 characters)
+     */
+    description?: string | null;
+    /**
+     * SEO keywords separated by commas
+     */
+    keywords?: string | null;
+    /**
+     * Open Graph image for social media sharing (recommended: 1200x630px)
+     */
+    ogImage?: (number | null) | Media;
+    /**
+     * Open Graph title (optional, uses page title if empty)
+     */
+    ogTitle?: string | null;
+    /**
+     * Open Graph description (optional, uses meta description if empty)
+     */
+    ogDescription?: string | null;
+    /**
+     * Canonical URL for this page (optional)
+     */
+    canonicalUrl?: string | null;
+    /**
+     * Prevent search engines from indexing this page
+     */
+    noIndex?: boolean | null;
+    /**
+     * Prevent search engines from following links on this page
+     */
+    noFollow?: boolean | null;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -2699,6 +3074,77 @@ export interface AccommodationsPage {
    * Title text for the accommodations section
    */
   accommodationsTitle: string;
+  /**
+   * SEO settings for the accommodations page
+   */
+  seo?: {
+    /**
+     * Page title for search engines
+     */
+    title?: string | null;
+    /**
+     * Meta description for search engines (150-160 characters)
+     */
+    description?: string | null;
+    /**
+     * SEO keywords separated by commas
+     */
+    keywords?: string | null;
+    /**
+     * Open Graph image for social media sharing (recommended: 1200x630px)
+     */
+    ogImage?: (number | null) | Media;
+    /**
+     * Open Graph title (optional, uses page title if empty)
+     */
+    ogTitle?: string | null;
+    /**
+     * Open Graph description (optional, uses meta description if empty)
+     */
+    ogDescription?: string | null;
+    /**
+     * Canonical URL for this page (optional)
+     */
+    canonicalUrl?: string | null;
+    /**
+     * Prevent search engines from indexing this page
+     */
+    noIndex?: boolean | null;
+    /**
+     * Prevent search engines from following links on this page
+     */
+    noFollow?: boolean | null;
+    /**
+     * Structured data for accommodation business
+     */
+    structuredData?: {
+      /**
+       * Schema.org type for accommodation business
+       */
+      accommodationType?: ('LodgingBusiness' | 'Campground' | 'Resort' | 'Hotel') | null;
+      /**
+       * List of amenities offered (for structured data)
+       */
+      amenities?:
+        | {
+            amenity: string;
+            id?: string | null;
+          }[]
+        | null;
+      /**
+       * Check-in time (e.g., "14:00")
+       */
+      checkInTime?: string | null;
+      /**
+       * Check-out time (e.g., "11:00")
+       */
+      checkOutTime?: string | null;
+      /**
+       * Star rating (1-5)
+       */
+      starRating?: number | null;
+    };
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -2724,6 +3170,77 @@ export interface VillaPage {
    * Show the scroll down indicator in the hero section
    */
   showScrollIndicator?: boolean | null;
+  /**
+   * SEO settings for the villa page
+   */
+  seo?: {
+    /**
+     * Page title for search engines
+     */
+    title?: string | null;
+    /**
+     * Meta description for search engines (150-160 characters)
+     */
+    description?: string | null;
+    /**
+     * SEO keywords separated by commas
+     */
+    keywords?: string | null;
+    /**
+     * Open Graph image for social media sharing (recommended: 1200x630px)
+     */
+    ogImage?: (number | null) | Media;
+    /**
+     * Open Graph title (optional, uses page title if empty)
+     */
+    ogTitle?: string | null;
+    /**
+     * Open Graph description (optional, uses meta description if empty)
+     */
+    ogDescription?: string | null;
+    /**
+     * Canonical URL for this page (optional)
+     */
+    canonicalUrl?: string | null;
+    /**
+     * Prevent search engines from indexing this page
+     */
+    noIndex?: boolean | null;
+    /**
+     * Prevent search engines from following links on this page
+     */
+    noFollow?: boolean | null;
+    /**
+     * Structured data for villa accommodation
+     */
+    structuredData?: {
+      /**
+       * Schema.org type for villa accommodation
+       */
+      accommodationType?: ('Resort' | 'LodgingBusiness' | 'Hotel') | null;
+      /**
+       * Maximum number of guests per villa
+       */
+      maxOccupancy?: number | null;
+      /**
+       * Number of rooms in villa
+       */
+      numberOfRooms?: number | null;
+      /**
+       * List of villa amenities (for structured data)
+       */
+      amenities?:
+        | {
+            amenity: string;
+            id?: string | null;
+          }[]
+        | null;
+      /**
+       * Star rating (1-5)
+       */
+      starRating?: number | null;
+    };
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -2749,6 +3266,77 @@ export interface CottagePage {
    * Show the scroll down indicator in the hero section
    */
   showScrollIndicator?: boolean | null;
+  /**
+   * SEO settings for the cottage page
+   */
+  seo?: {
+    /**
+     * Page title for search engines
+     */
+    title?: string | null;
+    /**
+     * Meta description for search engines (150-160 characters)
+     */
+    description?: string | null;
+    /**
+     * SEO keywords separated by commas
+     */
+    keywords?: string | null;
+    /**
+     * Open Graph image for social media sharing (recommended: 1200x630px)
+     */
+    ogImage?: (number | null) | Media;
+    /**
+     * Open Graph title (optional, uses page title if empty)
+     */
+    ogTitle?: string | null;
+    /**
+     * Open Graph description (optional, uses meta description if empty)
+     */
+    ogDescription?: string | null;
+    /**
+     * Canonical URL for this page (optional)
+     */
+    canonicalUrl?: string | null;
+    /**
+     * Prevent search engines from indexing this page
+     */
+    noIndex?: boolean | null;
+    /**
+     * Prevent search engines from following links on this page
+     */
+    noFollow?: boolean | null;
+    /**
+     * Structured data for cottage accommodation
+     */
+    structuredData?: {
+      /**
+       * Schema.org type for cottage accommodation
+       */
+      accommodationType?: ('LodgingBusiness' | 'Resort' | 'BedAndBreakfast') | null;
+      /**
+       * Maximum number of guests per cottage
+       */
+      maxOccupancy?: number | null;
+      /**
+       * Number of rooms in cottage
+       */
+      numberOfRooms?: number | null;
+      /**
+       * List of cottage amenities (for structured data)
+       */
+      amenities?:
+        | {
+            amenity: string;
+            id?: string | null;
+          }[]
+        | null;
+      /**
+       * Star rating (1-5)
+       */
+      starRating?: number | null;
+    };
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -2774,6 +3362,77 @@ export interface CabinPage {
    * Show the scroll down indicator in the hero section
    */
   showScrollIndicator?: boolean | null;
+  /**
+   * SEO settings for the cabin page
+   */
+  seo?: {
+    /**
+     * Page title for search engines
+     */
+    title?: string | null;
+    /**
+     * Meta description for search engines (150-160 characters)
+     */
+    description?: string | null;
+    /**
+     * SEO keywords separated by commas
+     */
+    keywords?: string | null;
+    /**
+     * Open Graph image for social media sharing (recommended: 1200x630px)
+     */
+    ogImage?: (number | null) | Media;
+    /**
+     * Open Graph title (optional, uses page title if empty)
+     */
+    ogTitle?: string | null;
+    /**
+     * Open Graph description (optional, uses meta description if empty)
+     */
+    ogDescription?: string | null;
+    /**
+     * Canonical URL for this page (optional)
+     */
+    canonicalUrl?: string | null;
+    /**
+     * Prevent search engines from indexing this page
+     */
+    noIndex?: boolean | null;
+    /**
+     * Prevent search engines from following links on this page
+     */
+    noFollow?: boolean | null;
+    /**
+     * Structured data for cabin accommodation
+     */
+    structuredData?: {
+      /**
+       * Schema.org type for cabin accommodation
+       */
+      accommodationType?: ('LodgingBusiness' | 'Campground' | 'Resort') | null;
+      /**
+       * Maximum number of guests per cabin
+       */
+      maxOccupancy?: number | null;
+      /**
+       * Number of rooms in cabin
+       */
+      numberOfRooms?: number | null;
+      /**
+       * List of cabin amenities (for structured data)
+       */
+      amenities?:
+        | {
+            amenity: string;
+            id?: string | null;
+          }[]
+        | null;
+      /**
+       * Star rating (1-5)
+       */
+      starRating?: number | null;
+    };
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -2799,6 +3458,81 @@ export interface CampingGroundPage {
    * Show the scroll down indicator in the hero section
    */
   showScrollIndicator?: boolean | null;
+  /**
+   * SEO settings for the camping ground page
+   */
+  seo?: {
+    /**
+     * Page title for search engines
+     */
+    title?: string | null;
+    /**
+     * Meta description for search engines (150-160 characters)
+     */
+    description?: string | null;
+    /**
+     * SEO keywords separated by commas
+     */
+    keywords?: string | null;
+    /**
+     * Open Graph image for social media sharing (recommended: 1200x630px)
+     */
+    ogImage?: (number | null) | Media;
+    /**
+     * Open Graph title (optional, uses page title if empty)
+     */
+    ogTitle?: string | null;
+    /**
+     * Open Graph description (optional, uses meta description if empty)
+     */
+    ogDescription?: string | null;
+    /**
+     * Canonical URL for this page (optional)
+     */
+    canonicalUrl?: string | null;
+    /**
+     * Prevent search engines from indexing this page
+     */
+    noIndex?: boolean | null;
+    /**
+     * Prevent search engines from following links on this page
+     */
+    noFollow?: boolean | null;
+    /**
+     * Structured data for camping ground
+     */
+    structuredData?: {
+      /**
+       * Schema.org type for camping ground
+       */
+      accommodationType?: ('Campground' | 'RVPark' | 'LodgingBusiness') | null;
+      /**
+       * Maximum number of campers per site
+       */
+      maxOccupancy?: number | null;
+      /**
+       * Total number of camping sites available
+       */
+      numberOfSites?: number | null;
+      /**
+       * List of camping ground amenities (for structured data)
+       */
+      amenities?:
+        | {
+            amenity: string;
+            id?: string | null;
+          }[]
+        | null;
+      /**
+       * Star rating (1-5)
+       */
+      starRating?: number | null;
+      /**
+       * Whether pets are allowed in the camping ground
+       */
+      petsAllowed?: boolean | null;
+    };
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -2836,6 +3570,118 @@ export interface AttractionAmenitiesPage {
    * Description text for the amenities section
    */
   amenitiesDescription: string;
+  /**
+   * SEO settings for the attractions & amenities page
+   */
+  seo?: {
+    /**
+     * Page title for search engines
+     */
+    title?: string | null;
+    /**
+     * Meta description for search engines (150-160 characters)
+     */
+    description?: string | null;
+    /**
+     * SEO keywords separated by commas
+     */
+    keywords?: string | null;
+    /**
+     * Open Graph image for social media sharing (recommended: 1200x630px)
+     */
+    ogImage?: (number | null) | Media;
+    /**
+     * Open Graph title (optional, uses page title if empty)
+     */
+    ogTitle?: string | null;
+    /**
+     * Open Graph description (optional, uses meta description if empty)
+     */
+    ogDescription?: string | null;
+    /**
+     * Canonical URL for this page (optional)
+     */
+    canonicalUrl?: string | null;
+    /**
+     * Prevent search engines from indexing this page
+     */
+    noIndex?: boolean | null;
+    /**
+     * Prevent search engines from following links on this page
+     */
+    noFollow?: boolean | null;
+    /**
+     * Structured data schema
+     */
+    schema?: {
+      /**
+       * Schema.org type for attractions and amenities
+       */
+      type?: ('TouristAttraction' | 'AmusementPark' | 'Resort' | 'RecreationCenter') | null;
+      /**
+       * Categories of attractions offered
+       */
+      categories?:
+        | {
+            item:
+              | 'adventure-sports'
+              | 'nature-activities'
+              | 'family-entertainment'
+              | 'outdoor-recreation'
+              | 'water-activities'
+              | 'hiking-trekking';
+            id?: string | null;
+          }[]
+        | null;
+      /**
+       * Types of amenities available
+       */
+      amenities?:
+        | {
+            item:
+              | 'restaurant'
+              | 'swimming-pool'
+              | 'spa-wellness'
+              | 'conference-facilities'
+              | 'recreation-center'
+              | 'parking'
+              | 'wifi'
+              | 'gift-shop';
+            id?: string | null;
+          }[]
+        | null;
+      /**
+       * Operating hours
+       */
+      hours?: {
+        /**
+         * Opening time (e.g., "08:00")
+         */
+        open?: string | null;
+        /**
+         * Closing time (e.g., "18:00")
+         */
+        close?: string | null;
+        /**
+         * Days of the week when open
+         */
+        days?:
+          | {
+              day: 'Monday' | 'Tuesday' | 'Wednesday' | 'Thursday' | 'Friday' | 'Saturday' | 'Sunday';
+              id?: string | null;
+            }[]
+          | null;
+      };
+      /**
+       * Price range
+       */
+      price?: ('$' | '$$' | '$$$' | '$$$$') | null;
+      /**
+       * Star rating (1-5)
+       */
+      rating?: number | null;
+    };
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -3017,6 +3863,264 @@ export interface EventsPage {
    * Check to prevent search engines from indexing this page
    */
   noindex?: boolean | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "reservation-faq-page".
+ */
+export interface ReservationFaqPage {
+  id: number;
+  /**
+   * Must You Know section content
+   */
+  mustKnowSection: {
+    /**
+     * Section title (e.g., "Must You Know")
+     */
+    title: string;
+    /**
+     * Section subtitle/question
+     */
+    subtitle?: string | null;
+    /**
+     * Brief description about preparation information
+     */
+    description?: string | null;
+    /**
+     * Information cards about preparation requirements
+     */
+    infoCards?:
+      | {
+          /**
+           * Icon type for the information card
+           */
+          icon: 'users' | 'clock' | 'bath' | 'salad';
+          /**
+           * Card title (e.g., "Jumlah Pengunjung")
+           */
+          title: string;
+          /**
+           * Card description explaining the requirement
+           */
+          description: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  /**
+   * FAQ section content
+   */
+  faqSection: {
+    /**
+     * FAQ section title
+     */
+    title: string;
+    /**
+     * List of frequently asked questions
+     */
+    faqs?:
+      | {
+          /**
+           * FAQ question (e.g., "Bagaimana Cara Booking Camp HuluCai?")
+           */
+          question: string;
+          /**
+           * FAQ answer with rich text formatting
+           */
+          answer: {
+            root: {
+              type: string;
+              children: {
+                type: string;
+                version: number;
+                [k: string]: unknown;
+              }[];
+              direction: ('ltr' | 'rtl') | null;
+              format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+              indent: number;
+              version: number;
+            };
+            [k: string]: unknown;
+          };
+          /**
+           * Whether this FAQ should be expanded by default
+           */
+          isExpanded?: boolean | null;
+          id?: string | null;
+        }[]
+      | null;
+    /**
+     * Question submission form configuration
+     */
+    questionForm?: {
+      /**
+       * Question form title
+       */
+      title?: string | null;
+      /**
+       * Question form description
+       */
+      description?: string | null;
+      /**
+       * Input placeholder text
+       */
+      placeholder?: string | null;
+      /**
+       * Submit button text
+       */
+      submitButtonText?: string | null;
+    };
+  };
+  /**
+   * Contact section content
+   */
+  contactSection: {
+    /**
+     * Contact section title
+     */
+    title: string;
+    /**
+     * Contact section subtitle
+     */
+    subtitle?: string | null;
+    /**
+     * Contact section description
+     */
+    description?: string | null;
+    /**
+     * Contact information list
+     */
+    contacts?:
+      | {
+          /**
+           * Type of contact
+           */
+          type: 'whatsapp' | 'phone' | 'email';
+          /**
+           * Contact label (e.g., "WA Admin1")
+           */
+          label: string;
+          /**
+           * Contact value (phone number, email, etc.)
+           */
+          value: string;
+          /**
+           * Optional link (WhatsApp URL, tel:, mailto:)
+           */
+          link?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  /**
+   * Terms and conditions section content
+   */
+  termsSection: {
+    /**
+     * Terms section title
+     */
+    title: string;
+    /**
+     * Terms section subtitle
+     */
+    subtitle?: string | null;
+    /**
+     * Brief description about camp rules
+     */
+    description?: string | null;
+    /**
+     * List of camp rules and regulations
+     */
+    rules?:
+      | {
+          /**
+           * Rule icon/image (e.g., no smoking icon)
+           */
+          icon?: (number | null) | Media;
+          /**
+           * Rule title (e.g., "Dilarang Merokok")
+           */
+          title: string;
+          /**
+           * Optional rule description
+           */
+          description?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  /**
+   * Reservation call-to-action section
+   */
+  reservationCTA: {
+    /**
+     * Background image for the reservation CTA section
+     */
+    backgroundImage?: (number | null) | Media;
+    /**
+     * Icon for the CTA (e.g., earth/globe icon)
+     */
+    icon?: (number | null) | Media;
+    /**
+     * CTA title
+     */
+    title: string;
+    /**
+     * CTA subtitle
+     */
+    subtitle?: string | null;
+    /**
+     * Button text
+     */
+    buttonText: string;
+    /**
+     * Button link URL
+     */
+    buttonLink?: string | null;
+  };
+  /**
+   * SEO settings for the Reservation FAQ page
+   */
+  seo?: {
+    /**
+     * Page title for search engines
+     */
+    title?: string | null;
+    /**
+     * Meta description for search engines (150-160 characters)
+     */
+    description?: string | null;
+    /**
+     * SEO keywords separated by commas
+     */
+    keywords?: string | null;
+    /**
+     * Open Graph image for social media sharing
+     */
+    ogImage?: (number | null) | Media;
+    /**
+     * Open Graph title (optional, uses page title if empty)
+     */
+    ogTitle?: string | null;
+    /**
+     * Open Graph description (optional, uses meta description if empty)
+     */
+    ogDescription?: string | null;
+    /**
+     * Canonical URL for this page
+     */
+    canonicalUrl?: string | null;
+    /**
+     * Prevent search engines from indexing this page
+     */
+    noIndex?: boolean | null;
+    /**
+     * Prevent search engines from following links on this page
+     */
+    noFollow?: boolean | null;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -3204,6 +4308,37 @@ export interface MainPageSelect<T extends boolean = true> {
         url?: T;
         id?: T;
       };
+  seo?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        keywords?: T;
+        ogImage?: T;
+        ogTitle?: T;
+        ogDescription?: T;
+        canonicalUrl?: T;
+        noIndex?: T;
+        noFollow?: T;
+        structuredData?:
+          | T
+          | {
+              organizationName?: T;
+              organizationType?: T;
+              address?:
+                | T
+                | {
+                    streetAddress?: T;
+                    addressLocality?: T;
+                    addressRegion?: T;
+                    postalCode?: T;
+                    addressCountry?: T;
+                  };
+              telephone?: T;
+              email?: T;
+              priceRange?: T;
+            };
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -3215,6 +4350,19 @@ export interface MainPageSelect<T extends boolean = true> {
 export interface MapPageSelect<T extends boolean = true> {
   title?: T;
   description?: T;
+  seo?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        keywords?: T;
+        ogImage?: T;
+        ogTitle?: T;
+        ogDescription?: T;
+        canonicalUrl?: T;
+        noIndex?: T;
+        noFollow?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -3228,6 +4376,33 @@ export interface AccommodationsPageSelect<T extends boolean = true> {
   heroDescription?: T;
   heroImage?: T;
   accommodationsTitle?: T;
+  seo?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        keywords?: T;
+        ogImage?: T;
+        ogTitle?: T;
+        ogDescription?: T;
+        canonicalUrl?: T;
+        noIndex?: T;
+        noFollow?: T;
+        structuredData?:
+          | T
+          | {
+              accommodationType?: T;
+              amenities?:
+                | T
+                | {
+                    amenity?: T;
+                    id?: T;
+                  };
+              checkInTime?: T;
+              checkOutTime?: T;
+              starRating?: T;
+            };
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -3241,6 +4416,33 @@ export interface VillaPageSelect<T extends boolean = true> {
   heroDescription?: T;
   heroBackgroundImage?: T;
   showScrollIndicator?: T;
+  seo?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        keywords?: T;
+        ogImage?: T;
+        ogTitle?: T;
+        ogDescription?: T;
+        canonicalUrl?: T;
+        noIndex?: T;
+        noFollow?: T;
+        structuredData?:
+          | T
+          | {
+              accommodationType?: T;
+              maxOccupancy?: T;
+              numberOfRooms?: T;
+              amenities?:
+                | T
+                | {
+                    amenity?: T;
+                    id?: T;
+                  };
+              starRating?: T;
+            };
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -3254,6 +4456,33 @@ export interface CottagePageSelect<T extends boolean = true> {
   heroDescription?: T;
   heroBackgroundImage?: T;
   showScrollIndicator?: T;
+  seo?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        keywords?: T;
+        ogImage?: T;
+        ogTitle?: T;
+        ogDescription?: T;
+        canonicalUrl?: T;
+        noIndex?: T;
+        noFollow?: T;
+        structuredData?:
+          | T
+          | {
+              accommodationType?: T;
+              maxOccupancy?: T;
+              numberOfRooms?: T;
+              amenities?:
+                | T
+                | {
+                    amenity?: T;
+                    id?: T;
+                  };
+              starRating?: T;
+            };
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -3267,6 +4496,33 @@ export interface CabinPageSelect<T extends boolean = true> {
   heroDescription?: T;
   heroBackgroundImage?: T;
   showScrollIndicator?: T;
+  seo?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        keywords?: T;
+        ogImage?: T;
+        ogTitle?: T;
+        ogDescription?: T;
+        canonicalUrl?: T;
+        noIndex?: T;
+        noFollow?: T;
+        structuredData?:
+          | T
+          | {
+              accommodationType?: T;
+              maxOccupancy?: T;
+              numberOfRooms?: T;
+              amenities?:
+                | T
+                | {
+                    amenity?: T;
+                    id?: T;
+                  };
+              starRating?: T;
+            };
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -3280,6 +4536,34 @@ export interface CampingGroundPageSelect<T extends boolean = true> {
   heroDescription?: T;
   heroBackgroundImage?: T;
   showScrollIndicator?: T;
+  seo?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        keywords?: T;
+        ogImage?: T;
+        ogTitle?: T;
+        ogDescription?: T;
+        canonicalUrl?: T;
+        noIndex?: T;
+        noFollow?: T;
+        structuredData?:
+          | T
+          | {
+              accommodationType?: T;
+              maxOccupancy?: T;
+              numberOfSites?: T;
+              amenities?:
+                | T
+                | {
+                    amenity?: T;
+                    id?: T;
+                  };
+              starRating?: T;
+              petsAllowed?: T;
+            };
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -3296,6 +4580,50 @@ export interface AttractionAmenitiesPageSelect<T extends boolean = true> {
   diningDescription?: T;
   amenitiesTitle?: T;
   amenitiesDescription?: T;
+  seo?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        keywords?: T;
+        ogImage?: T;
+        ogTitle?: T;
+        ogDescription?: T;
+        canonicalUrl?: T;
+        noIndex?: T;
+        noFollow?: T;
+        schema?:
+          | T
+          | {
+              type?: T;
+              categories?:
+                | T
+                | {
+                    item?: T;
+                    id?: T;
+                  };
+              amenities?:
+                | T
+                | {
+                    item?: T;
+                    id?: T;
+                  };
+              hours?:
+                | T
+                | {
+                    open?: T;
+                    close?: T;
+                    days?:
+                      | T
+                      | {
+                          day?: T;
+                          id?: T;
+                        };
+                  };
+              price?: T;
+              rating?: T;
+            };
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -3372,6 +4700,105 @@ export interface EventsPageSelect<T extends boolean = true> {
       };
   canonicalUrl?: T;
   noindex?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "reservation-faq-page_select".
+ */
+export interface ReservationFaqPageSelect<T extends boolean = true> {
+  mustKnowSection?:
+    | T
+    | {
+        title?: T;
+        subtitle?: T;
+        description?: T;
+        infoCards?:
+          | T
+          | {
+              icon?: T;
+              title?: T;
+              description?: T;
+              id?: T;
+            };
+      };
+  faqSection?:
+    | T
+    | {
+        title?: T;
+        faqs?:
+          | T
+          | {
+              question?: T;
+              answer?: T;
+              isExpanded?: T;
+              id?: T;
+            };
+        questionForm?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              placeholder?: T;
+              submitButtonText?: T;
+            };
+      };
+  contactSection?:
+    | T
+    | {
+        title?: T;
+        subtitle?: T;
+        description?: T;
+        contacts?:
+          | T
+          | {
+              type?: T;
+              label?: T;
+              value?: T;
+              link?: T;
+              id?: T;
+            };
+      };
+  termsSection?:
+    | T
+    | {
+        title?: T;
+        subtitle?: T;
+        description?: T;
+        rules?:
+          | T
+          | {
+              icon?: T;
+              title?: T;
+              description?: T;
+              id?: T;
+            };
+      };
+  reservationCTA?:
+    | T
+    | {
+        backgroundImage?: T;
+        icon?: T;
+        title?: T;
+        subtitle?: T;
+        buttonText?: T;
+        buttonLink?: T;
+      };
+  seo?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        keywords?: T;
+        ogImage?: T;
+        ogTitle?: T;
+        ogDescription?: T;
+        canonicalUrl?: T;
+        noIndex?: T;
+        noFollow?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

@@ -31,7 +31,10 @@ import { AttractionAmenitiesPage } from './globals/AttractionAmenitiesPage/confi
 import { ActivitiesPage } from './globals/ActivitiesPage/config'
 import { DiningPage } from './globals/DiningPage/config'
 import { EventsPage } from './globals/EventsPage/config'
+import { ReservationFAQPage } from './globals/ReservationFAQPage/config'
 import { DiningArea } from './collections/DiningArea'
+import { MeetingEventArea } from './collections/MeetingEventArea'
+import { MeetingPackage } from './collections/MeetingPackage'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -86,6 +89,8 @@ export default buildConfig({
     Attractions,
     Amenities,
     DiningArea,
+    MeetingEventArea,
+    MeetingPackage,
     Pages,
     Posts,
     Media,
@@ -107,6 +112,7 @@ export default buildConfig({
     ActivitiesPage,
     DiningPage,
     EventsPage,
+    ReservationFAQPage,
   ],
   plugins: [
     ...plugins,
