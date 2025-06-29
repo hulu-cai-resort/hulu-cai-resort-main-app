@@ -109,10 +109,26 @@ export const Accommodations: CollectionConfig<'accommodations'> = {
           fields: [
             {
               name: 'location',
-              type: 'text',
+              type: 'select',
               required: true,
+              defaultValue: 'valley-cibedug',
+              options: [
+                {
+                  label: 'Valley - Cibedug',
+                  value: 'valley-cibedug',
+                },
+                {
+                  label: 'Hills - Babakan',
+                  value: 'hills-babakan',
+                },
+              ],
+              enumName: 'accommodations_location',
+            },
+            {
+              name: 'mapsPointer',
+              type: 'text',
               admin: {
-                description: 'e.g., Hills Babakan',
+                description: 'Google Maps link for this accommodation location',
               },
             },
             {
@@ -152,9 +168,31 @@ export const Accommodations: CollectionConfig<'accommodations'> = {
           fields: [
             {
               name: 'unitType',
-              type: 'text',
+              type: 'select',
+              options: [
+                {
+                  label: 'Super Executive',
+                  value: 'super-executive',
+                },
+                {
+                  label: 'Executive',
+                  value: 'executive',
+                },
+                {
+                  label: 'Deluxe',
+                  value: 'deluxe',
+                },
+                {
+                  label: 'Superior',
+                  value: 'superior',
+                },
+                {
+                  label: 'Standard',
+                  value: 'standard',
+                },
+              ],
               admin: {
-                description: 'e.g., Super Executive, Standard, Deluxe',
+                description: 'Unit type classification',
                 condition: (data) => ['villa', 'cabin', 'cottage'].includes(data.type),
               },
             },
@@ -171,7 +209,15 @@ export const Accommodations: CollectionConfig<'accommodations'> = {
               type: 'number',
               admin: {
                 description: 'Number of floors',
-                condition: (data) => ['villa', 'cabin', 'cottage'].includes(data.type),
+                condition: (data) => ['villa'].includes(data.type),
+              },
+            },
+            {
+              name: 'floorLocation',
+              type: 'number',
+              admin: {
+                description: 'Floor location (e.g., Lantai 1, Lantai 2)',
+                condition: (data) => ['cottage'].includes(data.type),
               },
             },
             {
@@ -179,16 +225,26 @@ export const Accommodations: CollectionConfig<'accommodations'> = {
               type: 'number',
               admin: {
                 description: 'Number of bedrooms',
-                condition: (data) => ['villa', 'cabin', 'cottage'].includes(data.type),
+                condition: (data) => ['villa'].includes(data.type),
               },
             },
             {
-              name: 'additionalBedrooms',
+              name: 'tentCapacity',
               type: 'number',
               admin: {
-                description: 'Additional bedrooms (e.g., +1 extra bedroom)',
-                condition: (data) => ['villa', 'cabin', 'cottage'].includes(data.type),
+                description: 'Number of tents available for specific spots',
+                condition: (data) => ['camping_ground'].includes(data.type),
               },
+            },
+            {
+              name: 'minCapacity',
+              type: 'number',
+              admin: {
+                description: 'Standard guest capacity',
+                condition: (data) =>
+                  ['villa', 'cabin', 'cottage', 'camping_ground'].includes(data.type),
+              },
+              label: 'Standard Capacity',
             },
             {
               name: 'maxCapacity',
@@ -196,13 +252,16 @@ export const Accommodations: CollectionConfig<'accommodations'> = {
               required: true,
               admin: {
                 description: 'Maximum number of guests',
+                condition: (data) =>
+                  ['villa', 'cabin', 'cottage', 'camping_ground'].includes(data.type),
               },
             },
             {
-              name: 'additionalCapacity',
+              name: 'beds',
               type: 'number',
               admin: {
-                description: 'Additional capacity with extra beds',
+                description: 'Number of beds',
+                condition: (data) => ['cabin'].includes(data.type),
               },
             },
             {
@@ -214,11 +273,27 @@ export const Accommodations: CollectionConfig<'accommodations'> = {
               },
             },
             {
-              name: 'campingSpots',
+              name: 'bathrooms',
               type: 'number',
               admin: {
-                description: 'Number of camping spots available',
-                condition: (data) => data.type === 'camping_ground',
+                description: 'Number of bathrooms',
+                condition: (data) => ['villa', 'cabin'].includes(data.type),
+              },
+            },
+            {
+              name: 'bathroomsInBedroom',
+              type: 'number',
+              admin: {
+                description: 'Number of bathrooms inside bedrooms',
+                condition: (data) => ['villa', 'cabin'].includes(data.type),
+              },
+            },
+            {
+              name: 'bathroomsOutside',
+              type: 'number',
+              admin: {
+                description: 'Number of bathrooms outside bedrooms',
+                condition: (data) => ['villa', 'cabin'].includes(data.type),
               },
             },
           ],
@@ -244,24 +319,36 @@ export const Accommodations: CollectionConfig<'accommodations'> = {
                   required: true,
                   options: [
                     {
-                      label: 'King Bed',
+                      label: 'Super King',
+                      value: 'super-king',
+                    },
+                    {
+                      label: 'King',
                       value: 'king',
                     },
                     {
-                      label: 'Queen Bed',
+                      label: 'Queen',
                       value: 'queen',
                     },
                     {
-                      label: 'Single Bed',
+                      label: 'Full Double',
+                      value: 'full-double',
+                    },
+                    {
+                      label: 'Twin',
+                      value: 'twin',
+                    },
+                    {
+                      label: 'Single',
                       value: 'single',
                     },
                     {
-                      label: 'Double Bed',
-                      value: 'double',
+                      label: 'Super Single',
+                      value: 'super-single',
                     },
                     {
                       label: 'Bunk Bed',
-                      value: 'bunk',
+                      value: 'bunk-bed',
                     },
                   ],
                   enumName: 'accommodations_bed_type',
@@ -289,35 +376,281 @@ export const Accommodations: CollectionConfig<'accommodations'> = {
                 condition: (data) => ['villa', 'cabin', 'cottage'].includes(data.type),
               },
             },
+            {
+              name: 'tentConfiguration',
+              type: 'array',
+              fields: [
+                {
+                  name: 'tentName',
+                  type: 'text',
+                  required: true,
+                  admin: {
+                    description: 'e.g., Tent A, Tent B, Premium Tent',
+                  },
+                },
+                {
+                  name: 'capacity',
+                  type: 'number',
+                  required: true,
+                  admin: {
+                    description: 'Number of people this tent can accommodate',
+                  },
+                },
+                {
+                  name: 'bedType',
+                  type: 'select',
+                  required: true,
+                  options: [
+                    {
+                      label: 'Sleeping Bag',
+                      value: 'sleeping-bag',
+                    },
+                  ],
+                  enumName: 'accommodations_tent_bed_type',
+                },
+                {
+                  name: 'tentImage',
+                  type: 'upload',
+                  relationTo: 'media',
+                  admin: {
+                    description: 'Image of the tent',
+                  },
+                },
+              ],
+              admin: {
+                description: 'Tents configuration',
+                condition: (data) => data.type === 'camping_ground',
+              },
+            },
           ],
         },
         {
           label: 'Facilities & Amenities',
           fields: [
             {
-              name: 'generalFacilities',
-              type: 'array',
+              type: 'collapsible',
+              label: 'Facilities',
               fields: [
                 {
-                  name: 'facility',
-                  type: 'text',
-                  required: true,
+                  name: 'rooftop',
+                  type: 'checkbox',
+                  label: 'Rooftop',
                 },
                 {
-                  name: 'icon',
-                  type: 'upload',
-                  relationTo: 'media',
-                  admin: {
-                    description: 'Icon for the facility',
-                  },
+                  name: 'balcony',
+                  type: 'checkbox',
+                  label: 'Balcony',
+                },
+                {
+                  name: 'terrace',
+                  type: 'checkbox',
+                  label: 'Terrace',
+                },
+                {
+                  name: 'privatePool',
+                  type: 'checkbox',
+                  label: 'Private Pool',
+                },
+                {
+                  name: 'jacuzzi',
+                  type: 'checkbox',
+                  label: 'Jacuzzi',
+                },
+                {
+                  name: 'commonSpace',
+                  type: 'checkbox',
+                  label: 'Common Space',
+                },
+                {
+                  name: 'kitchen',
+                  type: 'checkbox',
+                  label: 'Kitchen',
+                },
+                {
+                  name: 'dedicatedWorkspace',
+                  type: 'checkbox',
+                  label: 'Dedicated Workspace',
                 },
               ],
-              admin: {
-                description: 'General facilities like WiFi, AC, Parking, etc.',
-              },
             },
             {
-              name: 'amenities',
+              type: 'collapsible',
+              label: 'Cooling',
+              fields: [
+                {
+                  name: 'airConditioning',
+                  type: 'checkbox',
+                  label: 'Air Conditioning',
+                },
+                {
+                  name: 'fan',
+                  type: 'checkbox',
+                  label: 'Fan',
+                },
+              ],
+            },
+            {
+              type: 'collapsible',
+              label: 'Entertainment',
+              fields: [
+                {
+                  name: 'tv',
+                  type: 'checkbox',
+                  label: 'TV',
+                },
+                {
+                  name: 'smartTv',
+                  type: 'checkbox',
+                  label: 'Smart TV',
+                },
+                {
+                  name: 'wifi',
+                  type: 'checkbox',
+                  label: 'WiFi',
+                },
+              ],
+            },
+            {
+              type: 'collapsible',
+              label: 'Bathroom',
+              fields: [
+                {
+                  name: 'bathtub',
+                  type: 'checkbox',
+                  label: 'Bathtub',
+                },
+                {
+                  name: 'shower',
+                  type: 'checkbox',
+                  label: 'Shower',
+                },
+                {
+                  name: 'hotWater',
+                  type: 'checkbox',
+                  label: 'Hot Water',
+                },
+                {
+                  name: 'bodySoap',
+                  type: 'checkbox',
+                  label: 'Body Soap',
+                },
+                {
+                  name: 'shampoo',
+                  type: 'checkbox',
+                  label: 'Shampoo',
+                },
+                {
+                  name: 'conditioner',
+                  type: 'checkbox',
+                  label: 'Conditioner',
+                },
+              ],
+            },
+            {
+              type: 'collapsible',
+              label: 'Bedroom & Laundry',
+              fields: [
+                {
+                  name: 'towels',
+                  type: 'checkbox',
+                  label: 'Towels',
+                },
+                {
+                  name: 'safe',
+                  type: 'checkbox',
+                  label: 'Safe',
+                },
+                {
+                  name: 'clothingStorage',
+                  type: 'checkbox',
+                  label: 'Clothing Storage',
+                },
+              ],
+            },
+            {
+              type: 'collapsible',
+              label: 'Common Space',
+              fields: [
+                {
+                  name: 'diningTable',
+                  type: 'checkbox',
+                  label: 'Dining Table',
+                },
+                {
+                  name: 'sofaLounger',
+                  type: 'checkbox',
+                  label: 'Sofa Lounger',
+                },
+              ],
+            },
+            {
+              type: 'collapsible',
+              label: 'Kitchen',
+              fields: [
+                {
+                  name: 'stove',
+                  type: 'checkbox',
+                  label: 'Stove',
+                },
+                {
+                  name: 'minibar',
+                  type: 'checkbox',
+                  label: 'Minibar',
+                },
+                {
+                  name: 'refrigerator',
+                  type: 'checkbox',
+                  label: 'Refrigerator',
+                },
+                {
+                  name: 'microwave',
+                  type: 'checkbox',
+                  label: 'Microwave',
+                },
+                {
+                  name: 'riceCooker',
+                  type: 'checkbox',
+                  label: 'Rice Cooker',
+                },
+                {
+                  name: 'toaster',
+                  type: 'checkbox',
+                  label: 'Toaster',
+                },
+                {
+                  name: 'cookingUtensils',
+                  type: 'checkbox',
+                  label: 'Cooking Utensils',
+                },
+                {
+                  name: 'dishesSilverware',
+                  type: 'checkbox',
+                  label: 'Dishes & Silverware',
+                },
+                {
+                  name: 'hotWaterKettle',
+                  type: 'checkbox',
+                  label: 'Hot Water Kettle',
+                },
+                {
+                  name: 'coffeeMaker',
+                  type: 'checkbox',
+                  label: 'Coffee Maker',
+                },
+                {
+                  name: 'waterDispenser',
+                  type: 'checkbox',
+                  label: 'Water Dispenser',
+                },
+                {
+                  name: 'coffeeTeaSugar',
+                  type: 'checkbox',
+                  label: 'Coffee, Tea & Sugar',
+                },
+              ],
+            },
+            {
+              name: 'other',
               type: 'array',
               fields: [
                 {
@@ -325,24 +658,9 @@ export const Accommodations: CollectionConfig<'accommodations'> = {
                   type: 'text',
                   required: true,
                 },
-                {
-                  name: 'icon',
-                  type: 'upload',
-                  relationTo: 'media',
-                  admin: {
-                    description: 'Icon for the amenity',
-                  },
-                },
               ],
               admin: {
-                description: 'Additional amenities and services',
-              },
-            },
-            {
-              name: 'additionalFacilities',
-              type: 'textarea',
-              admin: {
-                description: 'Additional facilities not listed above',
+                description: 'Other amenities not listed above',
               },
             },
           ],

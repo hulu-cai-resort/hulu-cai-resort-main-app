@@ -194,10 +194,11 @@ export interface Accommodation {
    */
   type: 'villa' | 'cabin' | 'cottage' | 'camping_ground';
   status: 'available' | 'booked' | 'maintenance' | 'unavailable';
+  location: 'valley-cibedug' | 'hills-babakan';
   /**
-   * e.g., Hills Babakan
+   * Google Maps link for this accommodation location
    */
-  location: string;
+  mapsPointer?: string | null;
   /**
    * Detailed description of the accommodation
    */
@@ -211,9 +212,9 @@ export interface Accommodation {
     id?: string | null;
   }[];
   /**
-   * e.g., Super Executive, Standard, Deluxe
+   * Unit type classification
    */
-  unitType?: string | null;
+  unitType?: ('super-executive' | 'executive' | 'deluxe' | 'superior' | 'standard') | null;
   /**
    * Size in square meters
    */
@@ -223,29 +224,45 @@ export interface Accommodation {
    */
   floors?: number | null;
   /**
+   * Floor location (e.g., Lantai 1, Lantai 2)
+   */
+  floorLocation?: number | null;
+  /**
    * Number of bedrooms
    */
   bedrooms?: number | null;
   /**
-   * Additional bedrooms (e.g., +1 extra bedroom)
+   * Number of tents available for specific spots
    */
-  additionalBedrooms?: number | null;
+  tentCapacity?: number | null;
+  /**
+   * Standard guest capacity
+   */
+  minCapacity?: number | null;
   /**
    * Maximum number of guests
    */
-  maxCapacity: number;
+  maxCapacity?: number | null;
   /**
-   * Additional capacity with extra beds
+   * Number of beds
    */
-  additionalCapacity?: number | null;
+  beds?: number | null;
   /**
    * Number of extra beds available
    */
   extraBeds?: number | null;
   /**
-   * Number of camping spots available
+   * Number of bathrooms
    */
-  campingSpots?: number | null;
+  bathrooms?: number | null;
+  /**
+   * Number of bathrooms inside bedrooms
+   */
+  bathroomsInBedroom?: number | null;
+  /**
+   * Number of bathrooms outside bedrooms
+   */
+  bathroomsOutside?: number | null;
   /**
    * Detailed bed configuration for each room
    */
@@ -255,7 +272,7 @@ export interface Accommodation {
          * e.g., Room 1, Master Bedroom
          */
         roomName: string;
-        bedType: 'king' | 'queen' | 'single' | 'double' | 'bunk';
+        bedType: 'super-king' | 'king' | 'queen' | 'full-double' | 'twin' | 'single' | 'super-single' | 'bunk-bed';
         /**
          * Number of beds of this type in the room
          */
@@ -268,35 +285,71 @@ export interface Accommodation {
       }[]
     | null;
   /**
-   * General facilities like WiFi, AC, Parking, etc.
+   * Tents configuration
    */
-  generalFacilities?:
+  tentConfiguration?:
     | {
-        facility: string;
         /**
-         * Icon for the facility
+         * e.g., Tent A, Tent B, Premium Tent
          */
-        icon?: (number | null) | Media;
+        tentName: string;
+        /**
+         * Number of people this tent can accommodate
+         */
+        capacity: number;
+        bedType: 'sleeping-bag';
+        /**
+         * Image of the tent
+         */
+        tentImage?: (number | null) | Media;
         id?: string | null;
       }[]
     | null;
+  rooftop?: boolean | null;
+  balcony?: boolean | null;
+  terrace?: boolean | null;
+  privatePool?: boolean | null;
+  jacuzzi?: boolean | null;
+  commonSpace?: boolean | null;
+  kitchen?: boolean | null;
+  dedicatedWorkspace?: boolean | null;
+  airConditioning?: boolean | null;
+  fan?: boolean | null;
+  tv?: boolean | null;
+  smartTv?: boolean | null;
+  wifi?: boolean | null;
+  bathtub?: boolean | null;
+  shower?: boolean | null;
+  hotWater?: boolean | null;
+  bodySoap?: boolean | null;
+  shampoo?: boolean | null;
+  conditioner?: boolean | null;
+  towels?: boolean | null;
+  safe?: boolean | null;
+  clothingStorage?: boolean | null;
+  diningTable?: boolean | null;
+  sofaLounger?: boolean | null;
+  stove?: boolean | null;
+  minibar?: boolean | null;
+  refrigerator?: boolean | null;
+  microwave?: boolean | null;
+  riceCooker?: boolean | null;
+  toaster?: boolean | null;
+  cookingUtensils?: boolean | null;
+  dishesSilverware?: boolean | null;
+  hotWaterKettle?: boolean | null;
+  coffeeMaker?: boolean | null;
+  waterDispenser?: boolean | null;
+  coffeeTeaSugar?: boolean | null;
   /**
-   * Additional amenities and services
+   * Other amenities not listed above
    */
-  amenities?:
+  other?:
     | {
         amenity: string;
-        /**
-         * Icon for the amenity
-         */
-        icon?: (number | null) | Media;
         id?: string | null;
       }[]
     | null;
-  /**
-   * Additional facilities not listed above
-   */
-  additionalFacilities?: string | null;
   /**
    * Starting price in IDR
    */
@@ -1777,6 +1830,7 @@ export interface AccommodationsSelect<T extends boolean = true> {
   type?: T;
   status?: T;
   location?: T;
+  mapsPointer?: T;
   description?: T;
   images?:
     | T
@@ -1788,12 +1842,16 @@ export interface AccommodationsSelect<T extends boolean = true> {
   unitType?: T;
   size?: T;
   floors?: T;
+  floorLocation?: T;
   bedrooms?: T;
-  additionalBedrooms?: T;
+  tentCapacity?: T;
+  minCapacity?: T;
   maxCapacity?: T;
-  additionalCapacity?: T;
+  beds?: T;
   extraBeds?: T;
-  campingSpots?: T;
+  bathrooms?: T;
+  bathroomsInBedroom?: T;
+  bathroomsOutside?: T;
   bedConfiguration?:
     | T
     | {
@@ -1803,21 +1861,57 @@ export interface AccommodationsSelect<T extends boolean = true> {
         roomImage?: T;
         id?: T;
       };
-  generalFacilities?:
+  tentConfiguration?:
     | T
     | {
-        facility?: T;
-        icon?: T;
+        tentName?: T;
+        capacity?: T;
+        bedType?: T;
+        tentImage?: T;
         id?: T;
       };
-  amenities?:
+  rooftop?: T;
+  balcony?: T;
+  terrace?: T;
+  privatePool?: T;
+  jacuzzi?: T;
+  commonSpace?: T;
+  kitchen?: T;
+  dedicatedWorkspace?: T;
+  airConditioning?: T;
+  fan?: T;
+  tv?: T;
+  smartTv?: T;
+  wifi?: T;
+  bathtub?: T;
+  shower?: T;
+  hotWater?: T;
+  bodySoap?: T;
+  shampoo?: T;
+  conditioner?: T;
+  towels?: T;
+  safe?: T;
+  clothingStorage?: T;
+  diningTable?: T;
+  sofaLounger?: T;
+  stove?: T;
+  minibar?: T;
+  refrigerator?: T;
+  microwave?: T;
+  riceCooker?: T;
+  toaster?: T;
+  cookingUtensils?: T;
+  dishesSilverware?: T;
+  hotWaterKettle?: T;
+  coffeeMaker?: T;
+  waterDispenser?: T;
+  coffeeTeaSugar?: T;
+  other?:
     | T
     | {
         amenity?: T;
-        icon?: T;
         id?: T;
       };
-  additionalFacilities?: T;
   priceStartingFrom?: T;
   priceUnit?: T;
   seasonalPricing?:
