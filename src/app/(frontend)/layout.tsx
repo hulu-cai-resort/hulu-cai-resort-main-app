@@ -15,6 +15,7 @@ import { draftMode } from 'next/headers'
 
 import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
+import { Navbar } from '@/components/Navbar'
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { isEnabled } = await draftMode()
@@ -34,8 +35,12 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             }}
           />
 
-          <Header />
-          {children}
+          <Navbar />
+          <div className="min-h-screen">
+            <main className="mx-auto max-w-7xl px-5 md:px-20 lg:px-20 xl:px-[80px] 2xl:px-[80px]">
+              {children}
+            </main>
+          </div>
           <Footer />
         </Providers>
       </body>
