@@ -36,11 +36,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           />
 
           <Navbar />
-          <div className="min-h-screen">
-            <main className="mx-auto max-w-7xl px-5 md:px-20 lg:px-20 xl:px-[80px] 2xl:px-[80px]">
-              {children}
-            </main>
-          </div>
+          <main className="min-h-screen">{children}</main>
           <Footer />
         </Providers>
       </body>

@@ -1,0 +1,4200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document id="1FBz_kplmbwws2r1JCYy6tAkCZ38oLhho">
+	<name>Camp Hulu Cai Map</name>
+	<Schema name="__managed_schema" id="__managed_schema">
+		<SimpleField type="string" name="COL55BE7FCF94E2A77D">
+			<displayName>com_exlyo_mapmarker_piniconcode</displayName>
+		</SimpleField>
+		<SimpleField type="string" name="COL55BE7FCF9410EBBF">
+			<displayName>com_exlyo_mapmarker_customfields</displayName>
+		</SimpleField>
+	</Schema>
+	<gx:CascadingStyle kml:id="__managed_style_27B7BBF73938ECF94CC8">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=26a69a&amp;id=2138&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff4ac38b</color>
+				<width>2.18182</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>ff4ac38b</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_0B7A6ABC9138ECF94CC8">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_164D1BAD0038ECF94CC8</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_27B7BBF73938ECF94CC8</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_05C907B86638ECF94CCF">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=26a69a&amp;id=2138&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>2.18182</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_24FF3DF71A38ECF94CCE">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=26a69a&amp;id=2138&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>1.45455</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_14F46254D638ECF94CA6">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=26a69a&amp;id=2192&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>1.45455</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_0BD36F905538ECF94CA6">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_14F46254D638ECF94CA6</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_213DE0270538ECF94CA6</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_16CA3FCFC338ECF94CA5">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=26a69a&amp;id=2343&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>1.45455</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_164D1BAD0038ECF94CC8">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=26a69a&amp;id=2138&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff4ac38b</color>
+				<width>1.45455</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>ff4ac38b</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_016333B1B438ECF94CA5">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_16CA3FCFC338ECF94CA5</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_2E9FCA87C538ECF94CA5</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_04F6B188C938ECF94CCD">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=26a69a&amp;id=2118&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>2.18182</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_0C36EAE00C38ECF94CC4">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=42a5f5&amp;id=2387&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff889600</color>
+				<width>2.18182</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>ff889600</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_3BDDC16D6538ECF94CA3">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=26a69a&amp;id=2168&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>2.18182</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_260EBF97A938ECF94CA3">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=26a69a&amp;id=2168&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>1.45455</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_2CB58B7B5F38ECF94CA2">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=26a69a&amp;id=2395&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>2.18182</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_00A2D6266638ECF94CA2">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_14123BD31A38ECF94CA2</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_2CB58B7B5F38ECF94CA2</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_188A4ABBEF38ECF94CC7">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=00796b&amp;id=2067&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff631ee9</color>
+				<width>1.45455</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>ff631ee9</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_0119C2038438ECF94CC5">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=66bb6a&amp;id=2285&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ffb73a67</color>
+				<width>2.18182</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>ffb73a67</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_0D29749D4B38ECF94CD0">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=26a69a&amp;id=2090&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>2.18182</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_2D18D85E9D38ECF94CD0">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=26a69a&amp;id=2126&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>1.45455</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_2EBCEB276438ECF94CA0">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=26a69a&amp;id=2082&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>2.18182</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_0ABA20224F38ECF94CA0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_1E4343783038ECF94CA0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_2EBCEB276438ECF94CA0</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_2AB39785B438ECF94C9F">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=26a69a&amp;id=2385&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>1.45455</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_1E65FF641438ECF94CCF">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_275BF00C3C38ECF94CCF</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_0D29749D4B38ECF94CD0</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="__managed_style_1866F349E538ECF94C9F">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_2AB39785B438ECF94C9F</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_39362501DA38ECF94C9F</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_2A673B8EF438ECF94CCC">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=26a69a&amp;id=2118&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>1.45455</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_0AF8C82F5F38ECF94CD1">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=26a69a&amp;id=2126&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>2.18182</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_39362501DA38ECF94C9F">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=26a69a&amp;id=2385&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>2.18182</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_022CF7D70C38ECF94C80">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=d32f2f&amp;id=2174&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>2.18182</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_212C236C7038ECF94C8F">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=00796b&amp;id=2067&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>2.18182</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_1A5E02EFEC38ECF94CD0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_2D18D85E9D38ECF94CD0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_0AF8C82F5F38ECF94CD1</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_2A25EB508738ECF94CD1">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=26a69a&amp;id=2018&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>1.45455</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_272F4FD59B38ECF94CCD">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=303f9f&amp;id=2077&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>1.45455</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_1F039B4D3238ECF94CCD">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_272F4FD59B38ECF94CCD</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_03C017531F38ECF94CCE</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_188667BB0038ECF94CC6">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=5d4037&amp;id=2244&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff485579</color>
+				<width>1.45455</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>ff485579</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_25F1A3C3D738ECF94C9A">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=5d4037&amp;id=2244&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>2.18182</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_2A61A7763F38ECF94CC6">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=5d4037&amp;id=2244&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff485579</color>
+				<width>2.18182</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>ff485579</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_1211C1556638ECF94C9A">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=5d4037&amp;id=2244&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>1.45455</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_2BF67272FC38ECF94C8D">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=00796b&amp;id=2061&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>1.45455</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_449291A07338ECF94CA2">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=26a69a&amp;id=2148&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>1.45455</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_2D9EBC2CEE38ECF94CC4">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=66bb6a&amp;id=2285&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ffb73a67</color>
+				<width>1.45455</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>ffb73a67</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_2B7CD5452C38ECF94C98">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=66bb6a&amp;id=2285&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>1.45455</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_1430BE5AFC38ECF94CC4">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_2D9EBC2CEE38ECF94CC4</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_0119C2038438ECF94CC5</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="__managed_style_04C43D590F38ECF94C8F">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_1F90CCF7AE38ECF94C8F</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_212C236C7038ECF94C8F</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_380D04E78038ECF94C98">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=66bb6a&amp;id=2285&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>2.18182</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_3DB09F109D38ECF94CA2">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_449291A07338ECF94CA2</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_01840B926638ECF94CA3</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="__managed_style_1176EA21EE38ECF94C98">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_2B7CD5452C38ECF94C98</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_380D04E78038ECF94C98</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_01840B926638ECF94CA3">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=26a69a&amp;id=2148&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>2.18182</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_1E4EDC29C338ECF94CC3">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_2D7839F56138ECF94CC3</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_0C36EAE00C38ECF94CC4</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_1683A404C738ECF94CBE">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=9e9e9e&amp;id=2174&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff9e9e9e</color>
+				<width>1.45455</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>ff9e9e9e</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_295B12EFF638ECF94C96">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=42a5f5&amp;id=2387&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>2.18182</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_07C77D22B038ECF94CD2">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=26a69a&amp;id=2018&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>2.18182</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_06A890A42C38ECF94C91">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_167D3E723D38ECF94C91</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_258D9DDA6E38ECF94C91</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="__managed_style_0A0A283E8638ECF94CC7">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_188A4ABBEF38ECF94CC7</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_29052EB7D238ECF94CC7</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_07B413461F38ECF94C94">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2130&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>2.18182</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_28CAF453C538ECF94C93">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2130&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>1.45455</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_2C8F069DAB38ECF94CC2">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=2196f3&amp;id=2130&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>fff39621</color>
+				<width>1.45455</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>fff39621</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_1395ACFB2E38ECF94C93">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_28CAF453C538ECF94C93</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_07B413461F38ECF94C94</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_10855E86BB38ECF94CBF">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=f57c00&amp;id=2174&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff3643f4</color>
+				<width>1.45455</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>ff3643f4</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_1CFDA373EE38ECF94C7F">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=d32f2f&amp;id=2174&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>1.45455</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_1E68EC596438ECF94CD1">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_2A25EB508738ECF94CD1</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_07C77D22B038ECF94CD2</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_19DF785E7A38ECF94CC1">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=7b1fa2&amp;id=2054&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff00b371</color>
+				<width>1.45455</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>ff00b371</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_1F90CCF7AE38ECF94C8F">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=00796b&amp;id=2067&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>1.45455</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_0B0753F2F338ECF94CCB">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_1C3CE8E7DD38ECF94CCB</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_098EB63D3038ECF94CCC</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="__managed_style_07B49DD22138ECF94C88">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_11306A1ACC38ECF94C88</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_299D86C1CD38ECF94C88</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_29052EB7D238ECF94CC7">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=00796b&amp;id=2067&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff631ee9</color>
+				<width>2.18182</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>ff631ee9</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_149BF8B78C38ECF94C78">
+		<styleUrl>https://earth.google.com/balloon_components/base/1.1.0.0/none_template.kml#main</styleUrl>
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>1.45455</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<displayMode>hide</displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_18D4C010A938ECF94C8A">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>1.45455</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_0CD8AA8D5738ECF94CC6">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_188667BB0038ECF94CC6</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_2A61A7763F38ECF94CC6</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_1F6181B70338ECF94C96">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=42a5f5&amp;id=2387&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>1.45455</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_03C017531F38ECF94CCE">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=303f9f&amp;id=2077&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>2.18182</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_213DE0270538ECF94CA6">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=26a69a&amp;id=2192&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>2.18182</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_167D3E723D38ECF94C91">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=7b1fa2&amp;id=2054&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>1.45455</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_0C0025F71338ECF94CC0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_19FF27797538ECF94CC0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_2D176BBF0238ECF94CC0</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="__managed_style_136706B74D38ECF94CCC">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_2A673B8EF438ECF94CCC</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_04F6B188C938ECF94CCD</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="__managed_style_04AB6EEB7D38ECF94C8A">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_18D4C010A938ECF94C8A</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_2F4A080CCB38ECF94C8A</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_14123BD31A38ECF94CA2">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=26a69a&amp;id=2395&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>1.45455</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_02F3651E2A38ECF94C8E">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=00796b&amp;id=2061&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>2.18182</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_2F4A080CCB38ECF94C8A">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>2.18182</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_2D176BBF0238ECF94CC0">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=fbc02d&amp;id=2174&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff3bebff</color>
+				<width>2.18182</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>ff3bebff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_1C28EC92CB38ECF94CC2">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_2C8F069DAB38ECF94CC2</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_0DB1839DEA38ECF94CC3</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_0CDE8A53DD38ECF94CC2">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=7b1fa2&amp;id=2054&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff00b371</color>
+				<width>2.18182</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>ff00b371</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_11306A1ACC38ECF94C88">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=f57c00&amp;id=2174&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>1.45455</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_0E0F36D4AA38ECF94C78">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_149BF8B78C38ECF94C78</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_0F9E43BF4038ECF94C79</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="__managed_style_16D381689438ECF94C8D">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_2BF67272FC38ECF94C8D</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_02F3651E2A38ECF94C8E</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_19FF27797538ECF94CC0">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=fbc02d&amp;id=2174&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff3bebff</color>
+				<width>1.45455</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>ff3bebff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_2982E228F638ECF94C8B">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=fbc02d&amp;id=2174&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>2.18182</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_08A26A32B138ECF94C9A">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_1211C1556638ECF94C9A</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_25F1A3C3D738ECF94C9A</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_2C040E088F38ECF94CBF">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=f57c00&amp;id=2174&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff3643f4</color>
+				<width>2.18182</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>ff3643f4</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_0C2C1225DC38ECF94C8B">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_173CA75AC138ECF94C8B</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_2982E228F638ECF94C8B</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_275BF00C3C38ECF94CCF">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=26a69a&amp;id=2090&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>1.45455</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_01D010046138ECF94CC1">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_19DF785E7A38ECF94CC1</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_0CDE8A53DD38ECF94CC2</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_2E9FCA87C538ECF94CA5">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=26a69a&amp;id=2343&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>2.18182</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_1ADCEA7F4338ECF94CA3">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_260EBF97A938ECF94CA3</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_3BDDC16D6538ECF94CA3</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_258D9DDA6E38ECF94C91">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=7b1fa2&amp;id=2054&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>2.18182</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_1D2A463C7C38ECF94CCE">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_24FF3DF71A38ECF94CCE</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_05C907B86638ECF94CCF</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_173CA75AC138ECF94C8B">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=fbc02d&amp;id=2174&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>1.45455</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_299D86C1CD38ECF94C88">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=f57c00&amp;id=2174&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>2.18182</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_0DB1839DEA38ECF94CC3">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=2196f3&amp;id=2130&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>fff39621</color>
+				<width>2.18182</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>fff39621</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_1E4343783038ECF94CA0">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=26a69a&amp;id=2082&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>1.45455</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_2D7839F56138ECF94CC3">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=42a5f5&amp;id=2387&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff889600</color>
+				<width>1.45455</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>ff889600</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_0316A6442338ECF94C96">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_1F6181B70338ECF94C96</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_295B12EFF638ECF94C96</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="__managed_style_00B433AB5C38ECF94CBF">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_10855E86BB38ECF94CBF</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_2C040E088F38ECF94CBF</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="__managed_style_04376FFE5738ECF94CBE">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_1683A404C738ECF94CBE</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_296EEE317F38ECF94CBE</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_296EEE317F38ECF94CBE">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=9e9e9e&amp;id=2174&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff9e9e9e</color>
+				<width>2.18182</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>ff9e9e9e</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_098EB63D3038ECF94CCC">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=26a69a&amp;id=2312&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>2.18182</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_1C3CE8E7DD38ECF94CCB">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=26a69a&amp;id=2312&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>1.45455</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_0D4C0D7FAA38ECF94C7F">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_1CFDA373EE38ECF94C7F</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_022CF7D70C38ECF94C80</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_0F9E43BF4038ECF94C79">
+		<styleUrl>https://earth.google.com/balloon_components/base/1.1.0.0/none_template.kml#main</styleUrl>
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>2.18182</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<displayMode>hide</displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<Folder id="55BE7FCB8C000001">
+		<name>01 Villa</name>
+		<styleUrl>#__managed_style_0E0F36D4AA38ECF94C78</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#__managed_schema">
+				<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+				<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Placemark id="55BE7FCB8D000002">
+			<name>06 Villa Jati </name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0D4C0D7FAA38ECF94C7F</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8883389607072,-6.702603252238269,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8D000003">
+			<name>07 Villa Zaitun</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0D4C0D7FAA38ECF94C7F</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8893830105662,-6.70121570330631,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8D000004">
+			<name>04 Villa Begonia</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0D4C0D7FAA38ECF94C7F</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8879067897797,-6.70132592152039,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8D000005">
+			<name>03 Villa Randu</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0D4C0D7FAA38ECF94C7F</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8867534399033,-6.700837764528113,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8D000006">
+			<name>02 Villa Haur</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0D4C0D7FAA38ECF94C7F</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.886528134346,-6.701724172019778,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8D000007">
+			<name>05 Villa Bambu</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0D4C0D7FAA38ECF94C7F</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8882745876908,-6.702355511609817,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8D000008">
+			<name>01 Villa Mangga</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_04376FFE5738ECF94CBE</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8866518512368,-6.702309226720381,0</coordinates>
+			</Point>
+		</Placemark>
+	</Folder>
+	<Folder id="55BE7FCB8D000009">
+		<name>02 Room</name>
+		<styleUrl>#__managed_style_0E0F36D4AA38ECF94C78</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#__managed_schema">
+				<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+				<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Placemark id="55BE7FCB8D00000A">
+			<name>10 Gandaria 1 - 4</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_07B49DD22138ECF94C88</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8860624358058,-6.701942610282667,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8D00000B">
+			<name>03 Room Pakis 1 - 3</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_07B49DD22138ECF94C88</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8865938484669,-6.700527088643522,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8D00000C">
+			<name>16 Room Rambutan</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_07B49DD22138ECF94C88</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8865792813149,-6.702082734213587,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8D00000D">
+			<name>02 Room Palem 1 - 5</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_07B49DD22138ECF94C88</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8866971135139,-6.700260033759248,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8D00000E">
+			<name>12 Room Pala</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_07B49DD22138ECF94C88</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8864667788148,-6.701783443387368,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8D00000F">
+			<name>01 Room Sawo 1 - 6</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_07B49DD22138ECF94C88</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8870763108134,-6.699953686330376,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8D000010">
+			<name>11 Room Cemara</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_07B49DD22138ECF94C88</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8862384557724,-6.701883671919548,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8D000011">
+			<name>06 Room Lengkeng 1 - 21</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_07B49DD22138ECF94C88</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8885012343526,-6.702022526695856,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8D000012">
+			<name>07 Room Jati 1 - 5</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_07B49DD22138ECF94C88</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8883087858558,-6.702617903561815,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8D000013">
+			<name>13 Room Kaliandra</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_07B49DD22138ECF94C88</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8865780904889,-6.701746482029778,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8E000014">
+			<name>08 Room Cempaka 2, 4, 5</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_07B49DD22138ECF94C88</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8895379908715,-6.703056641931726,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8E000015">
+			<name>15 Room Papyrus</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_07B49DD22138ECF94C88</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8866070052849,-6.701823609457812,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8E000016">
+			<name>05 Room Mahoni</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_07B49DD22138ECF94C88</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8879681453109,-6.70144046852009,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8E000017">
+			<name>09 Room Duren 1-5</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_07B49DD22138ECF94C88</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8860621005297,-6.701718511270822,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8E000018">
+			<name>14 Room Jambu 1 - 4</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_07B49DD22138ECF94C88</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8866528570652,-6.701666232586075,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8E000019">
+			<name>04 Room Randu 1 - 9</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_00B433AB5C38ECF94CBF</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8866816908121,-6.700649960480058,0</coordinates>
+			</Point>
+		</Placemark>
+	</Folder>
+	<Folder id="55BE7FCB8E00001A">
+		<name>03 Cabin</name>
+		<styleUrl>#__managed_style_04AB6EEB7D38ECF94C8A</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#__managed_schema">
+				<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+				<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Placemark id="55BE7FCB8E00001B">
+			<name>05 Cabin Jati 6 7</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0C2C1225DC38ECF94C8B</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8883825466037,-6.702703480601918,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8E00001C">
+			<name>01 Cabin Palem</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0C2C1225DC38ECF94C8B</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8866240233183,-6.700270356332301,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8E00001D">
+			<name>02 Cabin Pakis</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0C2C1225DC38ECF94C8B</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8866025596198,-6.700485813892734,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8E00001E">
+			<name>06 Cabin Cempaka 1</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0C2C1225DC38ECF94C8B</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8896342014882,-6.703033170993113,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8E00001F">
+			<name>03 Cabin Randu 6</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0C2C1225DC38ECF94C8B</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8867293000221,-6.700709564964136,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8E000020">
+			<name>04 Cabin Cherry 1 - 6</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0C0025F71338ECF94CC0</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8877170234919,-6.7001378277971,0</coordinates>
+			</Point>
+		</Placemark>
+	</Folder>
+	<Folder id="55BE7FCB9000007C">
+		<name>04 Camping/Games Ground</name>
+		<styleUrl>#__managed_style_04AB6EEB7D38ECF94C8A</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#__managed_schema">
+				<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+				<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Placemark id="55BE7FCB9000007D">
+			<name>17 Hanjuang</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_16D381689438ECF94C8D</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8875081464648,-6.703982139645432,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB9000007E">
+			<name>15 Ground Mahoni</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_16D381689438ECF94C8D</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8874430779575,-6.701817639618061,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB9000007F">
+			<name>16 Kirey</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_04C43D590F38ECF94C8F</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8873991817236,-6.701877012217052,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB90000080">
+			<name>18 Ground Maja</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_04C43D590F38ECF94C8F</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8871276080608,-6.702047833557295,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB90000081">
+			<name>02 Ground Palem</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_04C43D590F38ECF94C8F</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8866092711687,-6.700171126427423,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB98000082">
+			<name>01 Ground Sawo</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_04C43D590F38ECF94C8F</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8869921565056,-6.699836808075822,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB98000083">
+			<name>03 Ground Negla</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_04C43D590F38ECF94C8F</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.886847987771,-6.700438181360371,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB98000084">
+			<name>05 Ground Caringin</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_04C43D590F38ECF94C8F</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.887363307178,-6.700768836455041,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB98000085">
+			<name>06 Kuliner</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_16D381689438ECF94C8D</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.887889600208,-6.700510100014574,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB98000086">
+			<name>07 Ground Lega</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_16D381689438ECF94C8D</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8883085011236,-6.700408482360108,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB98000087">
+			<name>08 Ground Panjang</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_04C43D590F38ECF94C8F</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8887748196721,-6.700768836455041,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB98000088">
+			<name>09 Kolecer</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_16D381689438ECF94C8D</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8890182813634,-6.70095474864118,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB98000089">
+			<name>11 Ground Jeruk</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_16D381689438ECF94C8D</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8893947452307,-6.70257095272798,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB9800008A">
+			<name>12 Ground Kalapa</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_16D381689438ECF94C8D</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.889110095799,-6.702963874460332,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB9800008B">
+			<name>10 Ground Jambu</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_16D381689438ECF94C8D</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.888893507421,-6.702617903561815,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB9800008C">
+			<name>13 Ground Kaung</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_04C43D590F38ECF94C8F</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8884455785155,-6.702912594862377,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB9900008E">
+			<name>14 Ground Jati</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0A0A283E8638ECF94CC7</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8883922696114,-6.70283434351745,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="0AC7E9768738E1056E98">
+			<name>04 Ground Colobium</name>
+			<LookAt>
+				<longitude>106.8876824211132</longitude>
+				<latitude>-6.700633272078901</latitude>
+				<altitude>692.877347247718</altitude>
+				<heading>0</heading>
+				<tilt>0</tilt>
+				<gx:fovy>30.00000056652889</gx:fovy>
+				<range>463.0241405475681</range>
+				<altitudeMode>absolute</altitudeMode>
+			</LookAt>
+			<styleUrl>#__managed_style_04C43D590F38ECF94C8F</styleUrl>
+			<Point>
+				<coordinates>106.8875145369337,-6.700169306546695,687.7405844571874</coordinates>
+			</Point>
+		</Placemark>
+	</Folder>
+	<Folder id="55BE7FCB8E000021">
+		<name>05 Meeting Room</name>
+		<styleUrl>#__managed_style_04AB6EEB7D38ECF94C8A</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#__managed_schema">
+				<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+				<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Placemark id="55BE7FCB8E000022">
+			<name>08 Bale Rancage </name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_06A890A42C38ECF94C91</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8866407871246,-6.701971246998897,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8E000023">
+			<name>09 Amphy Pinus</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_06A890A42C38ECF94C91</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8868888914585,-6.701888000726121,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8E000024">
+			<name>03 Bale Negla</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_06A890A42C38ECF94C91</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8870062381029,-6.700557390373016,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8E000025">
+			<name>01 Bale Sawo</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_06A890A42C38ECF94C91</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8870669230819,-6.69998165719055,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8E000026">
+			<name>02 Bale Pakis</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_06A890A42C38ECF94C91</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8864932656288,-6.700295330298466,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8E000027">
+			<name>06 Amphy Arunaya</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_06A890A42C38ECF94C91</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8880211189389,-6.702023858635963,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8E000028">
+			<name>07 Bale Jati</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_06A890A42C38ECF94C91</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.888372823596,-6.702716134015131,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8E000029">
+			<name>05 Mahabbah 1 2 3 </name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_01D010046138ECF94CC1</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8885666131973,-6.701794764883743,0</coordinates>
+			</Point>
+		</Placemark>
+	</Folder>
+	<Folder id="55BE7FCB8E00002A">
+		<name>06 Dining Area</name>
+		<styleUrl>#__managed_style_04AB6EEB7D38ECF94C8A</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#__managed_schema">
+				<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+				<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Placemark id="55BE7FCB8E00002B">
+			<name>20 Cafe Halimun</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_1395ACFB2E38ECF94C93</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8863236159086,-6.701806752350179,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8E00002C">
+			<name>21 Saung Munggaran</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_1395ACFB2E38ECF94C93</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.886726282537,-6.702055159227472,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8E00002D">
+			<name>22 Saung Paniisan</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_1395ACFB2E38ECF94C93</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8869039788842,-6.702030851321479,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8E00002E">
+			<name>19 Saung Rineh</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_1395ACFB2E38ECF94C93</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8875275924802,-6.701999883713448,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8E00002F">
+			<name>23 Saung Salam (Hanjuang)</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_1395ACFB2E38ECF94C93</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8875990062952,-6.70392519943125,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8E000030">
+			<name>05 Saung Negla</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_1395ACFB2E38ECF94C93</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8870091717963,-6.700569600994013,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8E000031">
+			<name>04 Teras Bale Negla</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_1395ACFB2E38ECF94C93</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8868791684508,-6.70056704696774,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8E000032">
+			<name>01 Saung Sawo</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_1395ACFB2E38ECF94C93</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8872114270926,-6.699835809116252,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8E000033">
+			<name>02 Teras Bale Sawo</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_1395ACFB2E38ECF94C93</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8869891390204,-6.700010294021942,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8E000034">
+			<name>07 Saung Flamboyan</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_1395ACFB2E38ECF94C93</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8882162496448,-6.700239721598718,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8E000035">
+			<name>09 Saung Panjang</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_1395ACFB2E38ECF94C93</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8887661024928,-6.700539742113211,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8E000036">
+			<name>13 Teras Mahabbah</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_1395ACFB2E38ECF94C93</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.888166338264,-6.701097317327233,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8E000037">
+			<name>03 Saung Pakis</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_1395ACFB2E38ECF94C93</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.886641792953,-6.700423862957456,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8E000038">
+			<name>06 Beranda Cherry</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_1395ACFB2E38ECF94C93</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8877193704247,-6.700281677863789,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8E000039">
+			<name>15 Ruang Tamu Jati</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_1395ACFB2E38ECF94C93</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8882936984301,-6.702592596729954,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8E00003A">
+			<name>18 Beranda Cempaka</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_1395ACFB2E38ECF94C93</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8895073980093,-6.703049118455368,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8E00003B">
+			<name>17 Saung kalapa Dining</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_1395ACFB2E38ECF94C93</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.88917882807,-6.703084020697662,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8E00003C">
+			<name>16 Saung Jambu (Tenda Pelana)</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_1395ACFB2E38ECF94C93</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8888569623232,-6.7028003791,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8E00003D">
+			<name>14 Beranda Lengkeng</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_1395ACFB2E38ECF94C93</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8884861469269,-6.70212741696828,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8E00003E">
+			<name>11 Saung Kolecer</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_1395ACFB2E38ECF94C93</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.889017559588,-6.700899699889806,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8E00003F">
+			<name>12 Saung Jepang</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_1395ACFB2E38ECF94C93</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8889505043626,-6.701165422481352,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8E000040">
+			<name>10 Cafe Bambu</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_1395ACFB2E38ECF94C93</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8882343545556,-6.70134257079526,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8E000041">
+			<name>08 Saung Kuliner</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_1C28EC92CB38ECF94CC2</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8879376351833,-6.70056305113546,0</coordinates>
+			</Point>
+		</Placemark>
+	</Folder>
+	<Folder id="55BE7FCB8E000042">
+		<name>07 Public Toilet &amp; Shower</name>
+		<styleUrl>#__managed_style_04AB6EEB7D38ECF94C8A</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#__managed_schema">
+				<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+				<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Placemark id="55BE7FCB8E000043">
+			<name>26</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0316A6442338ECF94C96</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8859389511777,-6.701737646255332,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8E000044">
+			<name>24</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0316A6442338ECF94C96</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8861945345998,-6.702126085028466,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F000045">
+			<name>25</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0316A6442338ECF94C96</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.886292770505,-6.701774452787131,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F000046">
+			<name>22</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0316A6442338ECF94C96</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8868748098612,-6.701891996547538,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F000047">
+			<name>21</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0316A6442338ECF94C96</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8870347365737,-6.702026189531147,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F000048">
+			<name>19</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0316A6442338ECF94C96</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8875250432199,-6.701989224444797,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F000049">
+			<name>18</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0316A6442338ECF94C96</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.887165158987,-6.701613620910424,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F00004A">
+			<name>27</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0316A6442338ECF94C96</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8850274384022,-6.701685878716676,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F00004B">
+			<name>20</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0316A6442338ECF94C96</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8876644345575,-6.703838022807979,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F00004C">
+			<name>01</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0316A6442338ECF94C96</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8869656696916,-6.700078223243152,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F00004D">
+			<name>05</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0316A6442338ECF94C96</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8870642408729,-6.700514102187443,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F00004E">
+			<name>02</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0316A6442338ECF94C96</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8866458162665,-6.70045283274898,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F00004F">
+			<name>04</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0316A6442338ECF94C96</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8865801021457,-6.700529086559809,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F000050">
+			<name>03</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0316A6442338ECF94C96</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8865455687046,-6.700493124065352,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F000051">
+			<name>09</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0316A6442338ECF94C96</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8880989030004,-6.700286672657012,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F000052">
+			<name>29</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0316A6442338ECF94C96</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8888841196895,-6.70055106363844,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F000053">
+			<name>17</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0316A6442338ECF94C96</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8890903145075,-6.703096402227442,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F000054">
+			<name>16</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0316A6442338ECF94C96</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8891043961048,-6.702718131922449,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F000055">
+			<name>15</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0316A6442338ECF94C96</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8883852288127,-6.702749432469378,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F000056">
+			<name>14</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0316A6442338ECF94C96</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8879141658545,-6.702079467132257,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F000057">
+			<name>11</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0316A6442338ECF94C96</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.88800804317,-6.701370541575792,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F000058">
+			<name>07</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0316A6442338ECF94C96</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8877743557096,-6.700241719516189,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F000059">
+			<name>06</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0316A6442338ECF94C96</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8873488903046,-6.700265361538912,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F00005A">
+			<name>12</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0316A6442338ECF94C96</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8881334364414,-6.701432476869816,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F00005B">
+			<name>10</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0316A6442338ECF94C96</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8874243274331,-6.701167420395031,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F00005C">
+			<name>13</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0316A6442338ECF94C96</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8883929401636,-6.701920633266744,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F00005D">
+			<name>08</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0316A6442338ECF94C96</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8880834802985,-6.700254372993281,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F00005F">
+			<name>23</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_1E4EDC29C338ECF94CC3</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8866273760796,-6.702115096524752,0</coordinates>
+			</Point>
+		</Placemark>
+	</Folder>
+	<Folder id="55BE7FCB8F000060">
+		<name>08 Masjid/Musholla</name>
+		<styleUrl>#__managed_style_04AB6EEB7D38ECF94C8A</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#__managed_schema">
+				<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+				<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Placemark id="55BE7FCB8F000061">
+			<name>07 Masjid Bani Hasan</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_1176EA21EE38ECF94C98</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8861589889019,-6.702148199704108,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F000062">
+			<name>01 Musholla Palem</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_1176EA21EE38ECF94C98</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.88645940274,-6.700242718474917,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F000063">
+			<name>02 Musholla Nanas</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_1176EA21EE38ECF94C98</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8870205739139,-6.7010099666514,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F000064">
+			<name>03 Musholla Begonia</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_1176EA21EE38ECF94C98</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8880006670952,-6.701386191892775,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F000065">
+			<name>04 Musholla Mahabbah</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_1176EA21EE38ECF94C98</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8883929401636,-6.701920633266744,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F000066">
+			<name>05 Musholla Cempaka</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_1176EA21EE38ECF94C98</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8896327912807,-6.703016485990277,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F000067">
+			<name>06 Musholla Danau Affan</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_1430BE5AFC38ECF94CC4</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8871806,-6.701625699999998,0</coordinates>
+			</Point>
+		</Placemark>
+	</Folder>
+	<Folder id="55BE7FCB8F000068">
+		<name>09 Parking Area</name>
+		<visibility>0</visibility>
+		<styleUrl>#__managed_style_04AB6EEB7D38ECF94C8A</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#__managed_schema">
+				<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+				<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Placemark id="55BE7FCB8F000069">
+			<name>16</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_08A26A32B138ECF94C9A</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8866515159607,-6.702356843549008,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F00006A">
+			<name>17</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_08A26A32B138ECF94C9A</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8864691257477,-6.70195093490965,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F00006B">
+			<name>15</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_08A26A32B138ECF94C9A</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8868050724268,-6.702038176991909,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F00006C">
+			<name>18</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_08A26A32B138ECF94C9A</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8861827999353,-6.701845711614107,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F00006D">
+			<name>14</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_08A26A32B138ECF94C9A</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8865539506078,-6.701629271219593,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F00006E">
+			<name>13</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_08A26A32B138ECF94C9A</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.887693554163,-6.704045406542271,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F00006F">
+			<name>12</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_08A26A32B138ECF94C9A</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8875195458531,-6.701914972520065,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F000070">
+			<name>01</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_08A26A32B138ECF94C9A</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8869599699974,-6.69994969049307,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F000071">
+			<name>03</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_08A26A32B138ECF94C9A</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8870166316628,-6.700740865640006,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F000072">
+			<name>02</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_08A26A32B138ECF94C9A</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8867406994104,-6.700626318475973,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F000073">
+			<name>06</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_08A26A32B138ECF94C9A</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.887901080944,-6.701012011510159,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F000074">
+			<name>04</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_08A26A32B138ECF94C9A</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8875832483172,-6.700371584133924,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F000075">
+			<name>07</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_08A26A32B138ECF94C9A</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8879313878224,-6.701195021653257,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F000076">
+			<name>05</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_08A26A32B138ECF94C9A</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8880455940962,-6.70063564208335,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB8F000077">
+			<name>10</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_08A26A32B138ECF94C9A</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8883168324828,-6.702533991430094,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB90000078">
+			<name>11</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_08A26A32B138ECF94C9A</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8894534185529,-6.7030261425363,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB90000079">
+			<name>09</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_08A26A32B138ECF94C9A</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8883788585663,-6.702015201025198,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB9000007A">
+			<name>19</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_08A26A32B138ECF94C9A</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8849294356276,-6.70155154785362,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB9000007B">
+			<name>08</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0CD8AA8D5738ECF94CC6</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8891922384501,-6.701139116617216,0</coordinates>
+			</Point>
+		</Placemark>
+	</Folder>
+	<Folder id="55BE7FCB9900008F">
+		<name>10 Atraksi &amp; Fasilitas</name>
+		<styleUrl>#__managed_style_04AB6EEB7D38ECF94C8A</styleUrl>
+		<ExtendedData>
+			<SchemaData schemaUrl="#__managed_schema">
+				<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+				<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+			</SchemaData>
+		</ExtendedData>
+		<Placemark id="55BE7FCB99000090">
+			<name>00 Front Office</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_1F039B4D3238ECF94CCD</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8880751985274,-6.701201551752592,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB99000091">
+			<name>Archery</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_1E68EC596438ECF94CD1</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8874072283506,-6.701873349380642,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB99000092">
+			<name>Balebat Minimart</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0B0753F2F338ECF94CCB</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8878092244267,-6.700735537865532,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB99000093">
+			<name>Balong</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_1A5E02EFEC38ECF94CD0</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8879326304414,-6.703118296362962,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB99000094">
+			<name>Cafe Cai</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_1866F349E538ECF94C9F</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8868208882528,-6.701591384252558,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB99000095">
+			<name>Cargo Net</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0ABA20224F38ECF94CA0</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8875044584274,-6.701826065489959,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB99000096">
+			<name>Danau Affan</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_1866F349E538ECF94C9F</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8870863279388,-6.701693185393387,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB99000097">
+			<name>Elvis Walk</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_1E65FF641438ECF94CCF</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8879704922438,-6.704446651670541,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB99000098">
+			<name>Flying Fox</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_00A2D6266638ECF94CA2</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8875336274505,-6.702006210429221,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB99000099">
+			<name>Flying Fox Kids</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_00A2D6266638ECF94CA2</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8879449705825,-6.700827520574538,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB9900009A">
+			<name>Green House</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_3DB09F109D38ECF94CA2</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8892049789429,-6.701488418418949,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB9900009B">
+			<name>Kandang Kuda</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_1ADCEA7F4338ECF94CA3</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8895372375846,-6.702844666036014,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB9900009C">
+			<name>Kandang Kuda</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_1ADCEA7F4338ECF94CA3</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8893632292747,-6.703096402227442,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB9900009D">
+			<name>Kebun Buah &amp; Sayur</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_3DB09F109D38ECF94CA2</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8891660869122,-6.702108769810392,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB9900009E">
+			<name>Kids Zone</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_136706B74D38ECF94CCC</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.88767604819,-6.700925059279537,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB9900009F">
+			<name>Kolam Renang</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_016333B1B438ECF94CA5</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8872060626745,-6.700202094151582,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB990000A0">
+			<name>Kolam Renang Infinity</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_016333B1B438ECF94CA5</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8870481476188,-6.702057823107508,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB990000A1">
+			<name>Mini Rafting</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0BD36F905538ECF94CA6</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8878058481261,-6.702955972857812,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB990000A2">
+			<name>Nursery Center</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_3DB09F109D38ECF94CA2</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8893659114838,-6.701431810898955,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB990000A3">
+			<name>Rakit Race</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0BD36F905538ECF94CA6</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8869823557744,-6.701650951450763,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB990000A4">
+			<name>Rock Climbing</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0ABA20224F38ECF94CA0</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8875132600432,-6.701829657277377,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB990000A5">
+			<name>Taman Layla</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_1D2A463C7C38ECF94CCE</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8886631727219,-6.701218700176516,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="55BE7FCB990000A6">
+			<name>Taman Victoria</name>
+			<description><![CDATA[<pre id="com.exlyo.mapmarker.description_p_tag"></pre>]]></description>
+			<styleUrl>#__managed_style_0B7A6ABC9138ECF94CC8</styleUrl>
+			<ExtendedData>
+				<SchemaData schemaUrl="#__managed_schema">
+					<SimpleData name="COL55BE7FCF94E2A77D">-1</SimpleData>
+					<SimpleData name="COL55BE7FCF9410EBBF">[]</SimpleData>
+				</SchemaData>
+			</ExtendedData>
+			<Point>
+				<coordinates>106.8883929401636,-6.701537700254543,0</coordinates>
+			</Point>
+		</Placemark>
+	</Folder>
+</Document>
+</kml>
