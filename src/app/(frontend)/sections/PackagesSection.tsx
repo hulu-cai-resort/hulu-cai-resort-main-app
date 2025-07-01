@@ -6,6 +6,14 @@ import { getMediaUrl } from '@/utilities/getMediaUrl'
 import type { MainPage } from '@/payload-types'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination } from 'swiper/modules'
+import { motion } from 'framer-motion'
+import {
+  headerTextVariants,
+  packageCardVariants,
+  packageGridVariants,
+  packageHoverVariants,
+  swiperContainerVariants,
+} from '@/utilities/variants'
 import 'swiper/css'
 import 'swiper/css/pagination'
 
@@ -46,26 +54,50 @@ export function PackagesSection({ mainPage }: PackagesSectionProps) {
   const packages = dummyPackages
 
   return (
-    <section className="bg-white py-10 lg:py-[64px]">
+    <motion.section
+      className="bg-white py-10 lg:py-[64px]"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      variants={headerTextVariants}
+    >
       <div className="flex justify-center px-8 lg:px-0">
         <div className="w-full max-w-[347px] md:max-w-[914px] lg:max-w-[1279px]">
           {/* Header Section */}
-          <div className="mb-6 space-y-3 text-center md:mb-6 lg:mb-[24px] lg:space-y-4">
-            <p className="font-raleway text-lg font-semibold leading-[1.33] text-[#D16E2B] md:text-[20px] md:font-bold md:leading-[1.2] lg:text-[20px] lg:font-semibold lg:leading-[1.2]">
+          <motion.div
+            className="mb-6 space-y-3 text-center md:mb-6 lg:mb-[24px] lg:space-y-4"
+            variants={headerTextVariants}
+          >
+            <motion.p
+              className="font-raleway text-lg font-semibold leading-[1.33] text-[#D16E2B] md:text-[20px] md:font-bold md:leading-[1.2] lg:text-[20px] lg:font-semibold lg:leading-[1.2]"
+              variants={headerTextVariants}
+            >
               Package Vacation
-            </p>
-            <h2 className="font-raleway text-[28px] font-semibold leading-[1.07] text-[#1D1D1D] md:text-[36px] md:font-semibold md:leading-[1.28] lg:mx-auto lg:w-[596px] lg:text-[36px] lg:font-semibold lg:leading-[1.28]">
+            </motion.p>
+            <motion.h2
+              className="font-raleway text-[28px] font-semibold leading-[1.07] text-[#1D1D1D] md:text-[36px] md:font-semibold md:leading-[1.28] lg:mx-auto lg:w-[596px] lg:text-[36px] lg:font-semibold lg:leading-[1.28]"
+              variants={headerTextVariants}
+            >
               Find the Perfect Package for You
-            </h2>
-            <p className="font-raleway text-sm leading-[1.43] text-[#1D1D1D] md:text-[16px] md:leading-[1.75] lg:mx-auto lg:w-[947px] lg:text-[16px] lg:leading-[1.75]">
+            </motion.h2>
+            <motion.p
+              className="font-raleway text-sm leading-[1.43] text-[#1D1D1D] md:text-[16px] md:leading-[1.75] lg:mx-auto lg:w-[947px] lg:text-[16px] lg:leading-[1.75]"
+              variants={headerTextVariants}
+            >
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
               incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,Lorem ipsum dolor
               sit amet, consectetur adipiscing elit, sed do eiusmod
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
           {/* Mobile Layout - Swiper */}
-          <div className="md:hidden">
+          <motion.div
+            className="md:hidden"
+            variants={swiperContainerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+          >
             <Swiper
               modules={[Pagination]}
               spaceBetween={12}
@@ -81,7 +113,13 @@ export function PackagesSection({ mainPage }: PackagesSectionProps) {
             >
               {packages.map((pkg, index) => (
                 <SwiperSlide key={pkg.id}>
-                  <div className="relative h-[323px] w-full overflow-hidden rounded-[19px] bg-gray-200">
+                  <motion.div
+                    className="relative h-[323px] w-full overflow-hidden rounded-[19px] bg-gray-200"
+                    variants={packageHoverVariants}
+                    initial="rest"
+                    whileHover="hover"
+                    whileTap="tap"
+                  >
                     <div className="absolute inset-0">
                       <div className="h-full w-full rounded-[19px] bg-gray-300" />
                     </div>
@@ -92,20 +130,38 @@ export function PackagesSection({ mainPage }: PackagesSectionProps) {
                         </h3>
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 </SwiperSlide>
               ))}
             </Swiper>
-          </div>
+          </motion.div>
 
           {/* Tablet Layout - 2x2 Grid */}
           <div className="hidden sm:block xl:hidden">
             <div className="flex justify-center sm:px-10 xl:px-0">
-              <div className="mx-auto grid w-full grid-cols-2 gap-[53px]">
+              <motion.div
+                className="mx-auto grid w-full grid-cols-2 gap-[53px]"
+                variants={packageGridVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+              >
                 {packages.map((pkg, index) => (
-                  <div
+                  <motion.div
                     key={pkg.id}
                     className="relative h-[327px] w-full overflow-hidden rounded-[20px] bg-gray-200"
+                    variants={packageCardVariants}
+                    whileHover={{
+                      scale: 1.03,
+                      y: -8,
+                      transition: { duration: 0.3 },
+                    }}
+                    whileTap={{
+                      scale: 0.98,
+                      y: 0,
+                      transition: { duration: 0.1 },
+                    }}
+                    style={{ cursor: 'pointer' }}
                   >
                     <div className="absolute inset-0">
                       <div className="h-full w-full rounded-[20px] bg-gray-300" />
@@ -117,19 +173,37 @@ export function PackagesSection({ mainPage }: PackagesSectionProps) {
                         </h3>
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </div>
           </div>
 
           {/* Desktop Layout - Single Row */}
           <div className="hidden xl:block">
-            <div className="flex justify-center gap-[53px]">
+            <motion.div
+              className="flex justify-center gap-[53px]"
+              variants={packageGridVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+            >
               {packages.map((pkg, index) => (
-                <div
+                <motion.div
                   key={pkg.id}
                   className="relative h-[327px] w-[280px] overflow-hidden rounded-[20px] bg-gray-200"
+                  variants={packageCardVariants}
+                  whileHover={{
+                    scale: 1.03,
+                    y: -8,
+                    transition: { duration: 0.3 },
+                  }}
+                  whileTap={{
+                    scale: 0.98,
+                    y: 0,
+                    transition: { duration: 0.1 },
+                  }}
+                  style={{ cursor: 'pointer' }}
                 >
                   <div className="absolute inset-0">
                     <div className="h-full w-full rounded-[20px] bg-gray-300" />
@@ -141,12 +215,12 @@ export function PackagesSection({ mainPage }: PackagesSectionProps) {
                       </h3>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   )
 }

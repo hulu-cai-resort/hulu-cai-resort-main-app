@@ -6,6 +6,15 @@ import { getMediaUrl } from '@/utilities/getMediaUrl'
 import type { MainPage } from '@/payload-types'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination } from 'swiper/modules'
+import { motion } from 'framer-motion'
+import {
+  sectionContainerVariants,
+  mobileContainerVariants,
+  featuredCardVariants,
+  gridContainerVariants,
+  gridCardVariants,
+  cardContentVariants,
+} from '@/utilities/variants'
 import 'swiper/css'
 import 'swiper/css/pagination'
 
@@ -62,11 +71,24 @@ export function ActivitiesSection({ mainPage }: ActivitiesSectionProps) {
   }
 
   return (
-    <section className="bg-white py-8 lg:py-16" id="activities">
+    <motion.section
+      className="bg-white py-8 lg:py-16"
+      id="activities"
+      variants={sectionContainerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+    >
       <div className="flex justify-center px-8 lg:px-0">
         <div className="w-full max-w-[922px] lg:max-w-[1439px]">
           {/* Mobile Layout - Swiper */}
-          <div className="md:hidden">
+          <motion.div
+            className="md:hidden"
+            variants={mobileContainerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+          >
             <Swiper
               modules={[Pagination]}
               spaceBetween={32}
@@ -86,7 +108,13 @@ export function ActivitiesSection({ mainPage }: ActivitiesSectionProps) {
                     <div className="absolute inset-0">
                       <div className="h-full w-full rounded-[19px] bg-gray-300" />
                     </div>
-                    <div className="absolute bottom-0 left-0 right-0 h-[115px] rounded-b-[19px] bg-gradient-to-t from-black to-transparent px-3 py-3">
+                    <motion.div
+                      className="absolute bottom-0 left-0 right-0 h-[115px] rounded-b-[19px] bg-gradient-to-t from-black to-transparent px-3 py-3"
+                      variants={cardContentVariants}
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true }}
+                    >
                       <div className="flex h-full items-center justify-between">
                         <div className="flex flex-1 flex-col justify-center">
                           <h3 className="font-raleway text-[28px] font-semibold leading-[1.07] text-white">
@@ -96,7 +124,11 @@ export function ActivitiesSection({ mainPage }: ActivitiesSectionProps) {
                             {activity.subtitle}
                           </p>
                         </div>
-                        <div className="flex h-[39px] w-[40px] items-center justify-center rounded-full border-2 border-white">
+                        <motion.div
+                          className="flex h-[39px] w-[40px] items-center justify-center rounded-full border-2 border-white"
+                          whileHover={{ scale: 1.1, rotate: 5 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
                           <svg
                             className="h-[18px] w-[18px] text-white"
                             fill="none"
@@ -110,24 +142,38 @@ export function ActivitiesSection({ mainPage }: ActivitiesSectionProps) {
                               d="M5 15l7-7 7 7"
                             />
                           </svg>
-                        </div>
+                        </motion.div>
                       </div>
-                    </div>
+                    </motion.div>
                   </div>
                 </SwiperSlide>
               ))}
             </Swiper>
-          </div>
+          </motion.div>
 
           {/* Tablet Layout - Featured card on top, 2x2 grid below */}
           <div className="hidden md:block xl:hidden">
-            <div className="flex flex-col items-center gap-10 sm:px-10 xl:px-0">
+            <motion.div
+              className="flex flex-col items-center gap-10 sm:px-10 xl:px-0"
+              variants={sectionContainerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+            >
               {/* Featured card */}
-              <div className="relative h-[625px] w-full overflow-hidden rounded-[20px] bg-gray-200">
+              <motion.div
+                className="relative h-[625px] w-full overflow-hidden rounded-[20px] bg-gray-200"
+                variants={featuredCardVariants}
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+              >
                 <div className="absolute inset-0">
                   <div className="h-full w-full rounded-[20px] bg-gray-300" />
                 </div>
-                <div className="absolute bottom-0 left-0 right-0 h-[120px] rounded-b-[20px] bg-gradient-to-t from-black to-transparent px-5 py-5">
+                <motion.div
+                  className="absolute bottom-0 left-0 right-0 h-[120px] rounded-b-[20px] bg-gradient-to-t from-black to-transparent px-5 py-5"
+                  variants={cardContentVariants}
+                >
                   <div className="flex h-full items-center justify-between">
                     <div className="flex w-[329px] flex-col justify-center">
                       <h3 className="font-raleway text-[36px] font-semibold leading-[1.28] text-white">
@@ -137,7 +183,11 @@ export function ActivitiesSection({ mainPage }: ActivitiesSectionProps) {
                         {featuredActivity.subtitle}
                       </p>
                     </div>
-                    <div className="flex h-[42px] w-[42px] items-center justify-center rounded-full border-2 border-white">
+                    <motion.div
+                      className="flex h-[42px] w-[42px] items-center justify-center rounded-full border-2 border-white"
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
                       <svg
                         className="h-[18px] w-[18px] text-white"
                         fill="none"
@@ -151,22 +201,31 @@ export function ActivitiesSection({ mainPage }: ActivitiesSectionProps) {
                           d="M5 15l7-7 7 7"
                         />
                       </svg>
-                    </div>
+                    </motion.div>
                   </div>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
 
               {/* 2x2 Grid of smaller cards */}
-              <div className="grid w-full grid-cols-2 gap-10">
+              <motion.div
+                className="grid w-full grid-cols-2 gap-10"
+                variants={gridContainerVariants}
+              >
                 {activities.slice(1, 5).map((activity, index) => (
-                  <div
+                  <motion.div
                     key={activity.id}
                     className="relative h-[387px] w-full overflow-hidden rounded-[20px] bg-gray-200"
+                    variants={gridCardVariants}
+                    whileHover={{ scale: 1.03, y: -5 }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                   >
                     <div className="absolute inset-0">
                       <div className="h-full w-full rounded-[20px] bg-gray-300" />
                     </div>
-                    <div className="via-black/76 absolute bottom-0 left-0 right-0 h-[120px] rounded-b-[20px] bg-gradient-to-t from-black to-black/10 px-5 py-5">
+                    <motion.div
+                      className="via-black/76 absolute bottom-0 left-0 right-0 h-[120px] rounded-b-[20px] bg-gradient-to-t from-black to-black/10 px-5 py-5"
+                      variants={cardContentVariants}
+                    >
                       <div className="flex h-full items-center justify-between">
                         <div className="flex w-[198px] flex-col justify-center">
                           <h3 className="font-raleway text-[24px] font-semibold leading-[1.42] text-white">
@@ -176,7 +235,11 @@ export function ActivitiesSection({ mainPage }: ActivitiesSectionProps) {
                             {activity.subtitle}
                           </p>
                         </div>
-                        <div className="flex h-[42px] w-[42px] items-center justify-center rounded-full border-2 border-white">
+                        <motion.div
+                          className="flex h-[42px] w-[42px] items-center justify-center rounded-full border-2 border-white"
+                          whileHover={{ scale: 1.1, rotate: 5 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
                           <svg
                             className="h-[18px] w-[18px] text-white"
                             fill="none"
@@ -190,24 +253,38 @@ export function ActivitiesSection({ mainPage }: ActivitiesSectionProps) {
                               d="M5 15l7-7 7 7"
                             />
                           </svg>
-                        </div>
+                        </motion.div>
                       </div>
-                    </div>
-                  </div>
+                    </motion.div>
+                  </motion.div>
                 ))}
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
 
           {/* Desktop Layout - Featured card left + 2x2 grid right */}
           <div className="hidden xl:block">
-            <div className="flex justify-center gap-10 sm:px-10 xl:px-0">
+            <motion.div
+              className="flex justify-center gap-10 sm:px-10 xl:px-0"
+              variants={sectionContainerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+            >
               {/* Featured card */}
-              <div className="relative h-[625px] w-full overflow-hidden rounded-[20px] bg-gray-200">
+              <motion.div
+                className="relative h-[625px] w-full overflow-hidden rounded-[20px] bg-gray-200"
+                variants={featuredCardVariants}
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+              >
                 <div className="absolute inset-0">
                   <div className="h-full w-full rounded-[20px] bg-gray-300" />
                 </div>
-                <div className="absolute bottom-0 left-0 right-0 h-[120px] rounded-b-[20px] bg-gradient-to-t from-black to-transparent px-5 py-5">
+                <motion.div
+                  className="absolute bottom-0 left-0 right-0 h-[120px] rounded-b-[20px] bg-gradient-to-t from-black to-transparent px-5 py-5"
+                  variants={cardContentVariants}
+                >
                   <div className="flex h-full items-center justify-between">
                     <div className="flex w-full flex-col justify-center">
                       <h3 className="font-raleway text-[36px] font-semibold leading-[1.28] text-white">
@@ -217,7 +294,11 @@ export function ActivitiesSection({ mainPage }: ActivitiesSectionProps) {
                         {featuredActivity.subtitle}
                       </p>
                     </div>
-                    <div className="flex h-[42px] w-[42px] items-center justify-center rounded-full border-2 border-white">
+                    <motion.div
+                      className="flex h-[42px] w-[42px] items-center justify-center rounded-full border-2 border-white"
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
                       <svg
                         className="h-[18px] w-[18px] text-white"
                         fill="none"
@@ -231,22 +312,31 @@ export function ActivitiesSection({ mainPage }: ActivitiesSectionProps) {
                           d="M5 15l7-7 7 7"
                         />
                       </svg>
-                    </div>
+                    </motion.div>
                   </div>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
 
               {/* 2x2 Grid of smaller cards */}
-              <div className="grid w-full grid-cols-2 gap-10">
+              <motion.div
+                className="grid w-full grid-cols-2 gap-10"
+                variants={gridContainerVariants}
+              >
                 {activities.slice(1, 5).map((activity, index) => (
-                  <div
+                  <motion.div
                     key={activity.id}
                     className="relative h-[291px] w-[315px] overflow-hidden rounded-[20px] bg-gray-200"
+                    variants={gridCardVariants}
+                    whileHover={{ scale: 1.03, y: -5 }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                   >
                     <div className="absolute inset-0">
                       <div className="h-full w-full rounded-[20px] bg-gray-300" />
                     </div>
-                    <div className="via-black/76 absolute bottom-0 left-0 right-0 h-[120px] rounded-b-[20px] bg-gradient-to-t from-black to-black/10 px-5 py-5">
+                    <motion.div
+                      className="via-black/76 absolute bottom-0 left-0 right-0 h-[120px] rounded-b-[20px] bg-gradient-to-t from-black to-black/10 px-5 py-5"
+                      variants={cardContentVariants}
+                    >
                       <div className="flex h-full items-center justify-between">
                         <div className="flex w-[198px] flex-col justify-center">
                           <h3 className="font-raleway text-[24px] font-semibold leading-[1.42] text-white">
@@ -256,7 +346,11 @@ export function ActivitiesSection({ mainPage }: ActivitiesSectionProps) {
                             {activity.subtitle}
                           </p>
                         </div>
-                        <div className="flex h-[42px] w-[42px] items-center justify-center rounded-full border-2 border-white">
+                        <motion.div
+                          className="flex h-[42px] w-[42px] items-center justify-center rounded-full border-2 border-white"
+                          whileHover={{ scale: 1.1, rotate: 5 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
                           <svg
                             className="h-[18px] w-[18px] text-white"
                             fill="none"
@@ -270,16 +364,16 @@ export function ActivitiesSection({ mainPage }: ActivitiesSectionProps) {
                               d="M5 15l7-7 7 7"
                             />
                           </svg>
-                        </div>
+                        </motion.div>
                       </div>
-                    </div>
-                  </div>
+                    </motion.div>
+                  </motion.div>
                 ))}
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   )
 }
