@@ -30,10 +30,10 @@ const buttonVariants = cva(
 
         // Fluid state - Glass effect with blur
         fluid:
-          'bg-white/10 border border-white/60 text-white backdrop-blur-[20px] hover:bg-white/20 disabled:bg-[#A8B4AE] disabled:text-white disabled:border-[#A8B4AE]',
+          'bg-white border border-primary/60 text-primary backdrop-blur-[20px] hover:bg-white/80 disabled:bg-[#A8B4AE] disabled:text-white disabled:border-[#A8B4AE]',
 
         // Legacy variants for compatibility
-        destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90',
+        destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90 ',
         ghost: 'hover:bg-card hover:text-accent-foreground',
         link: 'text-primary items-start justify-start underline-offset-4 hover:underline',
         secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',

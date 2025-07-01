@@ -60,12 +60,16 @@ export function Navbar() {
         transition={{
           duration: 0.5,
         }}
-        className="fixed left-0 right-0 top-0 z-50 pt-10"
+        className="fixed left-0 right-0 top-0 z-40 pt-10"
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 md:justify-center md:px-16 lg:px-40">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 md:px-16 lg:px-40 xl:justify-center xl:px-0">
           {/* Logo Section */}
           <div className="mr-4 md:mr-9">
-            <div className="flex h-[72px] w-[72px] items-center justify-center rounded-lg border border-white/50 bg-white/5 saturate-[1.2] backdrop-blur-[2px]">
+            <div
+              className={`flex h-[72px] w-[72px] items-center justify-center rounded-lg border border-white/50 saturate-[1.2] backdrop-blur-[2px] ${
+                isAtTop ? 'bg-white/5' : 'bg-primary/80'
+              }`}
+            >
               <Link href="/" className="flex h-full w-full items-center justify-center">
                 <Image src="/assets/logo.png" alt="Hulu Cai Camp" width={52} height={52} />
               </Link>
@@ -73,7 +77,11 @@ export function Navbar() {
           </div>
 
           {/* Navigation Menu - Desktop */}
-          <nav className="hidden items-center gap-3 rounded-full border border-white/50 bg-white/5 p-2 saturate-[1.2] backdrop-blur-[2px] lg:flex">
+          <nav
+            className={`hidden items-center gap-3 rounded-full border border-white/50 p-2 saturate-[1.2] backdrop-blur-[2px] xl:flex ${
+              isAtTop ? 'bg-white/5' : 'bg-primary/80'
+            }`}
+          >
             {navItems.map((item) => {
               const isActive = pathname === item.href
               return (
@@ -94,7 +102,9 @@ export function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
-            className="flex h-[72px] w-[72px] items-center justify-center rounded-lg border border-white/50 bg-white/5 text-white saturate-[1.2] backdrop-blur-[2px] lg:hidden"
+            className={`flex h-[72px] w-[72px] items-center justify-center rounded-lg border border-white/50 text-white saturate-[1.2] backdrop-blur-[2px] xl:hidden ${
+              isAtTop ? 'bg-white/5' : 'bg-primary/80'
+            }`}
             onClick={() => setShowMobileMenu(!showMobileMenu)}
           >
             <div className="relative h-6 w-6">
@@ -156,9 +166,13 @@ export function Navbar() {
           transition={{
             duration: 0.5,
           }}
-          className="fixed left-0 right-0 top-[102px] z-30 mx-auto max-w-7xl px-6 md:px-16 lg:hidden lg:px-40"
+          className="fixed left-0 right-0 top-[102px] z-30 mx-auto max-w-7xl px-6 md:px-16 lg:px-40 xl:hidden"
         >
-          <div className="rounded-2xl border border-white/50 bg-white/5 p-4 shadow-2xl saturate-[1.2] backdrop-blur-[2px]">
+          <div
+            className={`rounded-2xl border border-white/50 p-4 shadow-2xl saturate-[1.2] backdrop-blur-[2px] ${
+              isAtTop ? 'bg-white/5' : 'bg-primary/80'
+            }`}
+          >
             <nav className="flex flex-col gap-2">
               {navItems.map((item) => {
                 const isActive = pathname === item.href
