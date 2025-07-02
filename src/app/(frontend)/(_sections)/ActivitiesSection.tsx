@@ -80,7 +80,7 @@ export function ActivitiesSection({ mainPage }: ActivitiesSectionProps) {
       viewport={{ once: true, amount: 0.2 }}
     >
       <div className="flex justify-center px-8 lg:px-0">
-        <div className="w-full max-w-[922px] lg:max-w-[1439px]">
+        <div className="w-full max-w-[922px] lg:max-w-7xl">
           {/* Mobile Layout - Swiper */}
           <motion.div
             className="md:hidden"

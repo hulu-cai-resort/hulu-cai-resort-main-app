@@ -1,20 +1,22 @@
 import React from 'react'
 import { getCachedGlobal } from '@/utilities/getGlobals'
 import type { MainPage } from '@/payload-types'
-import { Button } from '@/components/ui/button'
-import Image from 'next/image'
-import { getMediaUrl } from '@/utilities/getMediaUrl'
-import Wrapper from '@/components/Wrapper'
-import { ChevronsDown } from 'lucide-react'
-import { ActivitiesSection } from './sections/ActivitiesSection'
-import PlaceToGoSection from './sections/PlaceToGoSection'
-import { PackagesSection } from './sections/PackagesSection'
-import { ActivitiesHubSection } from './sections/ActivitiesHubSection'
-import LocationAndFacilitySection from './sections/LocationAndFacilitySection'
-import { ReviewsSection } from './sections/ReviewsSection'
-import { SocialMediaSection } from './sections/SocialMediaSection'
-import { HeroSection } from './sections/HeroSection'
+import { ActivitiesSection } from './(_sections)/ActivitiesSection'
+import PlaceToGoSection from './(_sections)/PlaceToGoSection'
+import { PackagesSection } from './(_sections)/PackagesSection'
+import { ActivitiesHubSection } from './(_sections)/ActivitiesHubSection'
+import LocationAndFacilitySection from './(_sections)/LocationAndFacilitySection'
+import { ReviewsSection } from './(_sections)/ReviewsSection'
+import { SocialMediaSection } from './(_sections)/SocialMediaSection'
+import { HeroSection } from './(_sections)/HeroSection'
 import ScrollIndicator from '@/components/ScrollIndicator'
+import { Metadata } from 'next'
+
+export function generateMetadata(): Metadata {
+  return {
+    title: `Home`,
+  }
+}
 
 export default async function Page() {
   const mainPage = (await getCachedGlobal('main-page', 1)()) as MainPage
