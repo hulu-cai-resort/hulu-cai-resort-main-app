@@ -14,6 +14,7 @@ import LocationAndFacilitySection from './sections/LocationAndFacilitySection'
 import { ReviewsSection } from './sections/ReviewsSection'
 import { SocialMediaSection } from './sections/SocialMediaSection'
 import { HeroSection } from './sections/HeroSection'
+import ScrollIndicator from '@/components/ScrollIndicator'
 
 export default async function Page() {
   const mainPage = (await getCachedGlobal('main-page', 1)()) as MainPage
@@ -24,11 +25,7 @@ export default async function Page() {
       <HeroSection mainPage={mainPage} />
 
       {/* Scroll Indicator */}
-      <div className="relative z-20 -mt-12 flex justify-center lg:-mt-[48px] lg:justify-center">
-        <div className="flex h-12 w-12 items-center justify-center rounded-full border border-white/50 bg-white/50 backdrop-blur-sm lg:h-[48px] lg:w-[48px] lg:border-white lg:bg-white/50">
-          <ChevronsDown className="h-6 w-6 text-white lg:h-[24px] lg:w-[24px]" />
-        </div>
-      </div>
+      <ScrollIndicator />
 
       {/* Activities Section */}
       <ActivitiesSection mainPage={mainPage} />

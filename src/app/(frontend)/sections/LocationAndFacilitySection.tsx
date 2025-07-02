@@ -50,22 +50,6 @@ export default function LocationAndFacilitySection({ mainPage }: { mainPage: Mai
                     </div>
                   </div>
                 </div>
-
-                {/* Location Info */}
-                <div className="space-y-3">
-                  <h3 className="font-raleway text-lg font-semibold leading-[1.33] text-[#D16E2B]">
-                    Place 1
-                  </h3>
-                  <h4 className="font-raleway text-lg font-semibold leading-[1.33] text-[#1D1D1D]">
-                    Area Camping
-                  </h4>
-                  <p className="font-raleway text-base leading-[1.75] text-[#1D1D1D]">
-                    Alamat : JL. Kalpataru No. Malang{'\n\n'}
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,Lorem ipsum
-                    dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                  </p>
-                </div>
               </div>
             </div>
           </div>
@@ -85,47 +69,6 @@ export default function LocationAndFacilitySection({ mainPage }: { mainPage: Mai
                   />
                 )}
               </div>
-
-              {/* Location Info Card with Triangle */}
-              <div className="relative flex justify-center">
-                <div className="w-full rounded-[20px] bg-white p-2.5 shadow-[4px_4px_20px_0px_rgba(245,247,253,1)]">
-                  <div className="flex items-center gap-8">
-                    {/* Small Image with Pagination */}
-                    <div className="h-[142px] w-[241px] overflow-hidden rounded-[10px] bg-gray-200 p-6">
-                      <div className="flex h-full items-end justify-end">
-                        <div className="flex gap-2">
-                          <div className="h-2 w-[18px] rounded-full bg-[#A8B4AE]" />
-                          <div className="h-2 w-[55px] rounded-full bg-[#06763F]" />
-                          <div className="h-2 w-[18px] rounded-full bg-[#A8B4AE]" />
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Location Info */}
-                    <div className="flex-1 space-y-3">
-                      <h3 className="font-raleway text-xl font-semibold leading-[1.2] text-[#D16E2B]">
-                        Place 1
-                      </h3>
-                      <h4 className="font-raleway text-xl font-semibold leading-[1.2] text-[#1D1D1D]">
-                        Area Camping
-                      </h4>
-                      <p className="font-raleway text-base leading-[1.75] text-[#1D1D1D]">
-                        Alamat : JL. Kalpataru No. Malang{'\n\n'}
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                        veniam,Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                        eiusmod
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Triangle Pointer */}
-                <div
-                  className="absolute left-[7px] top-0 h-[31px] w-[29px] rotate-180 transform bg-white"
-                  style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}
-                />
-              </div>
             </div>
           </div>
 
@@ -143,43 +86,6 @@ export default function LocationAndFacilitySection({ mainPage }: { mainPage: Mai
                     className="h-full w-full object-cover"
                   />
                 )}
-              </div>
-
-              {/* Location Info Card with Triangle */}
-              <div className="relative flex justify-center">
-                <div className="w-full rounded-[20px] bg-white p-2.5 shadow-[4px_4px_20px_0px_rgba(245,247,253,1)]">
-                  <div className="flex items-center gap-8">
-                    {/* Small Image with Pagination */}
-                    <div className="h-[136px] w-[241px] overflow-hidden rounded-[10px] bg-gray-200 p-6">
-                      <div className="flex h-full items-end justify-end">
-                        <div className="flex gap-2">
-                          <div className="h-2 w-[18px] rounded-full bg-[#A8B4AE]" />
-                          <div className="h-2 w-[55px] rounded-full bg-[#06763F]" />
-                          <div className="h-2 w-[18px] rounded-full bg-[#A8B4AE]" />
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Location Info */}
-                    <div className="w-full space-y-2">
-                      <h3 className="font-raleway text-xl font-semibold leading-[1.2] text-[#D16E2B]">
-                        Place 1
-                      </h3>
-                      <h4 className="font-raleway text-xl font-semibold leading-[1.2] text-[#1D1D1D]">
-                        Camping Ground Kuliner
-                      </h4>
-                      <p className="font-raleway text-base font-bold leading-[1.88] text-[#1D1D1D]">
-                        Alamat : JL. Kalpataru No. Malang No 200 Lowokwaru, Kota Malang, Jawa Timur
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Triangle Pointer */}
-                <div
-                  className="absolute left-[43px] top-0 h-[31px] w-[43px] rotate-180 transform bg-white"
-                  style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}
-                />
               </div>
             </div>
           </div>

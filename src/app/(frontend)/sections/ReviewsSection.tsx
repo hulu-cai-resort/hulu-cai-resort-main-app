@@ -1,6 +1,17 @@
+'use client'
+
 import React from 'react'
+import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import type { MainPage } from '@/payload-types'
+import {
+  sectionContainerVariants,
+  headerTextVariants,
+  gridContainerVariants,
+  gridCardVariants,
+  buttonVariants,
+  slideUpVariants,
+} from '@/utilities/variants'
 
 interface ReviewsSectionProps {
   mainPage: MainPage
@@ -34,54 +45,113 @@ const dummyReviews = [
   },
 ]
 
+// Custom variants for photo grid animations
+const photoGridVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.3,
+    },
+  },
+}
+
+const photoVariants = {
+  hidden: {
+    opacity: 0,
+    scale: 0.8,
+    y: 20,
+  },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+    },
+  },
+}
+
 export function ReviewsSection({ mainPage }: ReviewsSectionProps) {
   // TODO: Use mainPage.reviews when database is populated
   const reviews = dummyReviews
 
   return (
-    <section className="bg-white py-10 lg:py-[64px]">
+    <motion.section
+      className="bg-white py-10 lg:py-[64px]"
+      variants={sectionContainerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+    >
       <div className="mx-auto flex w-full max-w-7xl justify-center px-8 lg:px-0">
         <div className="w-full max-w-[344px] md:max-w-[928px] lg:max-w-7xl">
           {/* Header Section */}
-          <div className="mb-6 space-y-2 text-center md:mb-6 lg:mb-[24px] lg:space-y-4">
-            <p className="font-raleway text-lg font-semibold leading-[1.33] text-[#D16E2B] md:text-[20px] md:font-semibold md:leading-[1.2] lg:text-[20px] lg:font-semibold lg:leading-[1.2]">
+          <motion.div
+            className="mb-6 space-y-2 text-center md:mb-6 lg:mb-[24px] lg:space-y-4"
+            variants={headerTextVariants}
+          >
+            <motion.p
+              className="font-raleway text-lg font-semibold leading-[1.33] text-[#D16E2B] md:text-[20px] md:font-semibold md:leading-[1.2] lg:text-[20px] lg:font-semibold lg:leading-[1.2]"
+              variants={slideUpVariants}
+            >
               Review Customer
-            </p>
-            <h2 className="font-raleway text-[28px] font-semibold leading-[1.07] text-[#1D1D1D] md:text-[36px] md:font-semibold md:leading-[1.28] lg:text-[36px] lg:leading-[1.28]">
+            </motion.p>
+            <motion.h2
+              className="font-raleway text-[28px] font-semibold leading-[1.07] text-[#1D1D1D] md:text-[36px] md:font-semibold md:leading-[1.28] lg:text-[36px] lg:leading-[1.28]"
+              variants={slideUpVariants}
+            >
               What Our Customer Says
-            </h2>
-            <p className="font-raleway text-sm leading-[1.43] text-[#1D1D1D] md:text-[16px] md:leading-[1.75] lg:mx-auto lg:w-[947px] lg:text-[16px] lg:leading-[1.75]">
+            </motion.h2>
+            <motion.p
+              className="font-raleway text-sm leading-[1.43] text-[#1D1D1D] md:text-[16px] md:leading-[1.75] lg:mx-auto lg:w-[947px] lg:text-[16px] lg:leading-[1.75]"
+              variants={slideUpVariants}
+            >
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
               incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,Lorem ipsum dolor
               sit amet, consectetur adipiscing elit, sed do eiusmod
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
           {/* Mobile Layout */}
           <div className="md:hidden">
             <div className="flex flex-col items-center gap-8">
               {/* Customer Photos Grid */}
-              <div className="relative h-[274px] w-full">
+              <motion.div className="relative h-[274px] w-full" variants={photoGridVariants}>
                 {/* Top left image */}
-                <div className="absolute left-0 top-0 h-[93px] w-[140px] overflow-hidden rounded-br-[20px] rounded-tl-[20px] bg-gray-200" />
+                <motion.div
+                  className="absolute left-0 top-0 h-[93px] w-[140px] overflow-hidden rounded-br-[20px] rounded-tl-[20px] bg-gray-200"
+                  variants={photoVariants}
+                />
                 {/* Top right image */}
-                <div className="absolute right-0 top-[14px] h-[128px] w-[160px] overflow-hidden rounded-bl-[30px] rounded-tr-[30px] bg-gray-200" />
+                <motion.div
+                  className="absolute right-0 top-[14px] h-[128px] w-[160px] overflow-hidden rounded-bl-[30px] rounded-tr-[30px] bg-gray-200"
+                  variants={photoVariants}
+                />
                 {/* Bottom left image */}
-                <div className="absolute bottom-0 left-0 h-[171px] w-[140px] overflow-hidden rounded-br-[30px] rounded-tl-[30px] bg-gray-200" />
+                <motion.div
+                  className="absolute bottom-0 left-0 h-[171px] w-[140px] overflow-hidden rounded-br-[30px] rounded-tl-[30px] bg-gray-200"
+                  variants={photoVariants}
+                />
                 {/* Bottom right image */}
-                <div className="absolute bottom-[5px] right-[0px] h-[114px] w-[160px] overflow-hidden rounded-br-[20px] rounded-tl-[20px] bg-gray-200" />
-              </div>
+                <motion.div
+                  className="absolute bottom-[5px] right-[0px] h-[114px] w-[160px] overflow-hidden rounded-br-[20px] rounded-tl-[20px] bg-gray-200"
+                  variants={photoVariants}
+                />
+              </motion.div>
 
               {/* Review Cards */}
-              <div className="w-full space-y-3">
+              <motion.div className="w-full space-y-3" variants={gridContainerVariants}>
                 {reviews.map((review, index) => (
-                  <div
+                  <motion.div
                     key={review.id}
                     className={`rounded-lg p-2.5 ${
                       review.featured
                         ? 'border-l-[5px] border-[#D16E2B]'
                         : 'border-l-[5px] border-[#CACCCF]'
                     }`}
+                    variants={gridCardVariants}
                   >
                     <div className="flex items-start gap-3">
                       <div className="h-[69px] w-[69px] flex-shrink-0 overflow-hidden rounded-full bg-gray-200" />
@@ -99,16 +169,16 @@ export function ReviewsSection({ mainPage }: ReviewsSectionProps) {
                         </svg>
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
 
               {/* Button */}
-              <div className="w-full">
+              <motion.div className="w-full" variants={buttonVariants}>
                 <Button className="font-raleway h-[40px] w-full rounded-[8px] bg-[#06763F] text-xs font-semibold leading-[1.33] text-white">
                   Lihat Selengkapnya
                 </Button>
-              </div>
+              </motion.div>
             </div>
           </div>
 
@@ -116,27 +186,46 @@ export function ReviewsSection({ mainPage }: ReviewsSectionProps) {
           <div className="hidden md:block xl:hidden">
             <div className="flex w-full flex-col items-start justify-center gap-8">
               {/* Customer Photos Grid */}
-              <div className="relative mx-auto h-[446px] w-[561px] flex-shrink-0">
+              <motion.div
+                className="relative mx-auto h-[446px] w-[561px] flex-shrink-0"
+                variants={photoGridVariants}
+              >
                 {/* Top left image */}
-                <div className="absolute left-0 top-0 h-[151px] w-[227px] overflow-hidden rounded-br-[20px] rounded-tl-[20px] bg-gray-200" />
+                <motion.div
+                  className="absolute left-0 top-0 h-[151px] w-[227px] overflow-hidden rounded-br-[20px] rounded-tl-[20px] bg-gray-200"
+                  variants={photoVariants}
+                />
                 {/* Top right image */}
-                <div className="absolute right-0 top-[24px] h-[209px] w-[313px] overflow-hidden rounded-bl-[30px] rounded-tr-[30px] bg-gray-200" />
+                <motion.div
+                  className="absolute right-0 top-[24px] h-[209px] w-[313px] overflow-hidden rounded-bl-[30px] rounded-tr-[30px] bg-gray-200"
+                  variants={photoVariants}
+                />
                 {/* Bottom left image */}
-                <div className="absolute bottom-0 left-0 h-[278px] w-[227px] overflow-hidden rounded-br-[30px] rounded-tl-[30px] bg-gray-200" />
+                <motion.div
+                  className="absolute bottom-0 left-0 h-[278px] w-[227px] overflow-hidden rounded-br-[30px] rounded-tl-[30px] bg-gray-200"
+                  variants={photoVariants}
+                />
                 {/* Bottom right image */}
-                <div className="absolute bottom-[13px] right-[0px] h-[185px] w-[315px] overflow-hidden rounded-br-[20px] rounded-tl-[20px] bg-gray-200" />
-              </div>
+                <motion.div
+                  className="absolute bottom-[13px] right-[0px] h-[185px] w-[315px] overflow-hidden rounded-br-[20px] rounded-tl-[20px] bg-gray-200"
+                  variants={photoVariants}
+                />
+              </motion.div>
 
               {/* Review Cards */}
-              <div className="mx-auto w-full max-w-[579px] space-y-3">
+              <motion.div
+                className="mx-auto w-full max-w-[579px] space-y-3"
+                variants={gridContainerVariants}
+              >
                 {reviews.map((review, index) => (
-                  <div
+                  <motion.div
                     key={review.id}
                     className={`rounded-lg p-2.5 ${
                       review.featured
                         ? 'border-l-[5px] border-[#D16E2B]'
                         : 'border-l-[5px] border-[#CACCCF]'
                     } ${index === 0 ? 'ml-20' : index === 1 ? 'w-[500px]' : 'ml-28'}`}
+                    variants={gridCardVariants}
                   >
                     <div className="flex items-start gap-[13px]">
                       <div className="h-[69px] w-[69px] flex-shrink-0 overflow-hidden rounded-full bg-gray-200" />
@@ -158,16 +247,16 @@ export function ReviewsSection({ mainPage }: ReviewsSectionProps) {
                         </svg>
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
 
                 {/* Button */}
-                <div className="pt-6">
+                <motion.div className="pt-6" variants={buttonVariants}>
                   <Button className="font-raleway h-[48px] w-full rounded-[8px] bg-[#06763F] text-base font-semibold leading-[1.75] text-white">
                     Lihat Selengkapnya
                   </Button>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             </div>
           </div>
 
@@ -175,28 +264,44 @@ export function ReviewsSection({ mainPage }: ReviewsSectionProps) {
           <div className="hidden xl:block">
             <div className="flex items-start justify-center gap-8">
               {/* Customer Photos Grid */}
-              <div className="relative h-[446px] w-[561px] flex-shrink-0">
+              <motion.div
+                className="relative h-[446px] w-[561px] flex-shrink-0"
+                variants={photoGridVariants}
+              >
                 {/* Top left image */}
-                <div className="absolute left-0 top-0 h-[151px] w-[227px] overflow-hidden rounded-br-[20px] rounded-tl-[20px] bg-gray-200" />
+                <motion.div
+                  className="absolute left-0 top-0 h-[151px] w-[227px] overflow-hidden rounded-br-[20px] rounded-tl-[20px] bg-gray-200"
+                  variants={photoVariants}
+                />
                 {/* Top right image */}
-                <div className="absolute right-0 top-[24px] h-[209px] w-[313px] overflow-hidden rounded-bl-[30px] rounded-tr-[30px] bg-gray-200" />
+                <motion.div
+                  className="absolute right-0 top-[24px] h-[209px] w-[313px] overflow-hidden rounded-bl-[30px] rounded-tr-[30px] bg-gray-200"
+                  variants={photoVariants}
+                />
                 {/* Bottom left image */}
-                <div className="absolute bottom-0 left-0 h-[278px] w-[227px] overflow-hidden rounded-br-[30px] rounded-tl-[30px] bg-gray-200" />
+                <motion.div
+                  className="absolute bottom-0 left-0 h-[278px] w-[227px] overflow-hidden rounded-br-[30px] rounded-tl-[30px] bg-gray-200"
+                  variants={photoVariants}
+                />
                 {/* Bottom right image */}
-                <div className="absolute bottom-[13px] right-[0px] h-[185px] w-[315px] overflow-hidden rounded-br-[20px] rounded-tl-[20px] bg-gray-200" />
-              </div>
+                <motion.div
+                  className="absolute bottom-[13px] right-[0px] h-[185px] w-[315px] overflow-hidden rounded-br-[20px] rounded-tl-[20px] bg-gray-200"
+                  variants={photoVariants}
+                />
+              </motion.div>
 
               {/* Review Cards */}
               <div className="flex flex-col items-center gap-3">
-                <div className="space-y-6">
+                <motion.div className="space-y-6" variants={gridContainerVariants}>
                   {reviews.map((review, index) => (
-                    <div
+                    <motion.div
                       key={review.id}
                       className={`rounded-lg p-2.5 ${
                         review.featured
                           ? 'border-l-[5px] border-[#D16E2B]'
                           : 'border-l-[5px] border-[#CACCCF]'
                       } ${index === 0 ? 'w-[477px]' : index === 1 ? 'ml-20 w-[500px]' : 'w-[527px]'}`}
+                      variants={gridCardVariants}
                     >
                       <div className="flex items-start gap-[13px]">
                         <div className="h-[69px] w-[69px] flex-shrink-0 overflow-hidden rounded-full bg-gray-200" />
@@ -218,21 +323,21 @@ export function ReviewsSection({ mainPage }: ReviewsSectionProps) {
                           </svg>
                         </div>
                       </div>
-                    </div>
+                    </motion.div>
                   ))}
-                </div>
+                </motion.div>
 
                 {/* Button */}
-                <div className="w-full max-w-[527px] pt-6">
+                <motion.div className="w-full max-w-[527px] pt-6" variants={buttonVariants}>
                   <Button className="font-raleway h-[48px] w-full rounded-[8px] bg-[#06763F] text-base font-semibold leading-[1.75] text-white">
                     Lihat Selengkapnya
                   </Button>
-                </div>
+                </motion.div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   )
 }
