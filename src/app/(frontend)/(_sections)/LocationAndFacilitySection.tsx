@@ -1,32 +1,62 @@
+'use client'
+
 import { MainPage } from '@/payload-types'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 import Image from 'next/image'
+import { motion } from 'framer-motion'
+import {
+  sectionContainerVariants,
+  headerTextVariants,
+  mainImageVariants,
+  cardContentVariants,
+} from '@/utilities/variants'
 
 export default function LocationAndFacilitySection({ mainPage }: { mainPage: MainPage }) {
   return (
-    <section className="bg-[#F5F7FA] py-10 lg:py-[64px]">
+    <motion.section
+      className="bg-[#F5F7FA] py-10 lg:py-[64px]"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.1 }}
+      variants={sectionContainerVariants}
+    >
       <div className="flex justify-center px-8 md:px-[80px]">
         <div className="w-full max-w-[328px] md:max-w-full lg:max-w-7xl">
           {/* Header Section */}
-          <div className="mb-6 space-y-3 text-center md:mb-6 lg:mb-[24px] lg:space-y-4">
-            <p className="font-raleway text-lg font-semibold leading-[1.33] text-[#D16E2B] md:text-[20px] md:font-bold md:leading-[1.2] lg:text-[20px] lg:font-semibold lg:leading-[1.2]">
+          <motion.div
+            className="mb-6 space-y-3 text-center md:mb-6 lg:mb-[24px] lg:space-y-4"
+            variants={headerTextVariants}
+          >
+            <motion.p
+              className="font-raleway text-lg font-semibold leading-[1.33] text-[#D16E2B] md:text-[20px] md:font-bold md:leading-[1.2] lg:text-[20px] lg:font-semibold lg:leading-[1.2]"
+              variants={headerTextVariants}
+            >
               Our Location and Facility
-            </p>
-            <h2 className="font-raleway text-[28px] font-semibold leading-[1.07] text-[#1D1D1D] md:text-[36px] md:font-semibold md:leading-[1.28] lg:mx-auto lg:w-[745px] lg:text-[36px] lg:leading-[1.28]">
+            </motion.p>
+            <motion.h2
+              className="font-raleway text-[28px] font-semibold leading-[1.07] text-[#1D1D1D] md:text-[36px] md:font-semibold md:leading-[1.28] lg:mx-auto lg:w-[745px] lg:text-[36px] lg:leading-[1.28]"
+              variants={headerTextVariants}
+            >
               Escape the noise. Find your peace together
-            </h2>
-            <p className="font-raleway text-sm leading-[1.43] text-[#1D1D1D] md:text-[16px] md:leading-[1.75] lg:mx-auto lg:w-full lg:text-[16px] lg:leading-[1.75]">
+            </motion.h2>
+            <motion.p
+              className="font-raleway text-sm leading-[1.43] text-[#1D1D1D] md:text-[16px] md:leading-[1.75] lg:mx-auto lg:w-full lg:text-[16px] lg:leading-[1.75]"
+              variants={headerTextVariants}
+            >
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
               incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,Lorem ipsum dolor
               sit amet, consectetur adipiscing elit, sed do eiusmod
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
           {/* Mobile Layout */}
           <div className="md:hidden">
             <div className="flex flex-col items-center gap-6">
               {/* Main Location Image */}
-              <div className="h-[225px] w-full overflow-hidden rounded-[8px] bg-gray-200">
+              <motion.div
+                className="h-[225px] w-full overflow-hidden rounded-[8px] bg-gray-200"
+                variants={mainImageVariants}
+              >
                 {mainPage.locationImage && typeof mainPage.locationImage === 'object' && (
                   <Image
                     src={getMediaUrl(mainPage.locationImage.url)}
@@ -36,10 +66,13 @@ export default function LocationAndFacilitySection({ mainPage }: { mainPage: Mai
                     className="h-full w-full object-cover"
                   />
                 )}
-              </div>
+              </motion.div>
 
               {/* Location Info Card */}
-              <div className="w-[348px] rounded-[12px] bg-white p-6 pb-4">
+              <motion.div
+                className="w-[348px] rounded-[12px] bg-white p-6 pb-4"
+                variants={cardContentVariants}
+              >
                 {/* Small Image with Pagination */}
                 <div className="mb-3 h-[186px] w-full overflow-hidden rounded-[12px] bg-gray-200 p-6">
                   <div className="flex h-full items-end justify-end">
@@ -50,7 +83,7 @@ export default function LocationAndFacilitySection({ mainPage }: { mainPage: Mai
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
 
@@ -58,7 +91,10 @@ export default function LocationAndFacilitySection({ mainPage }: { mainPage: Mai
           <div className="hidden md:block lg:hidden">
             <div className="flex flex-col items-center gap-6">
               {/* Main Location Image */}
-              <div className="h-[305px] w-full overflow-hidden rounded-[20px] bg-gray-200">
+              <motion.div
+                className="h-[305px] w-full overflow-hidden rounded-[20px] bg-gray-200"
+                variants={mainImageVariants}
+              >
                 {mainPage.locationImage && typeof mainPage.locationImage === 'object' && (
                   <Image
                     src={getMediaUrl(mainPage.locationImage.url)}
@@ -68,7 +104,7 @@ export default function LocationAndFacilitySection({ mainPage }: { mainPage: Mai
                     className="h-full w-full object-cover"
                   />
                 )}
-              </div>
+              </motion.div>
             </div>
           </div>
 
@@ -76,7 +112,10 @@ export default function LocationAndFacilitySection({ mainPage }: { mainPage: Mai
           <div className="hidden lg:block">
             <div className="mx-auto flex max-w-7xl flex-col items-center gap-6 sm:px-10 xl:px-0">
               {/* Main Location Image */}
-              <div className="h-[452px] w-full overflow-hidden rounded-[20px] bg-gray-200">
+              <motion.div
+                className="h-[452px] w-full overflow-hidden rounded-[20px] bg-gray-200"
+                variants={mainImageVariants}
+              >
                 {mainPage.locationImage && typeof mainPage.locationImage === 'object' && (
                   <Image
                     src={getMediaUrl(mainPage.locationImage.url)}
@@ -86,11 +125,11 @@ export default function LocationAndFacilitySection({ mainPage }: { mainPage: Mai
                     className="h-full w-full object-cover"
                   />
                 )}
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   )
 }
