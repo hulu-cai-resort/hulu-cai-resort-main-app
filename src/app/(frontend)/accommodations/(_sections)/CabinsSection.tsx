@@ -17,6 +17,7 @@ import {
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
+import { useRouter } from 'next/navigation'
 
 // Dummy cabin data
 const dummyCabins = [
@@ -77,6 +78,8 @@ const dummyCabins = [
 ]
 
 export default function CabinsSection() {
+  const router = useRouter()
+
   return (
     <motion.section
       className=""
@@ -105,6 +108,7 @@ export default function CabinsSection() {
               className="flex items-center justify-center gap-2.5 rounded-[33.64px] bg-[#092B1A] px-9 py-1.5 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
+              onClick={() => router.push('/accommodations/cabin')}
             >
               <span className="font-raleway text-base font-semibold leading-[1.75] text-white">
                 More Cabin

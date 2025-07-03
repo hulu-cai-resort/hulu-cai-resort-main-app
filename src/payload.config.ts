@@ -35,6 +35,8 @@ import { ReservationFAQPage } from './globals/ReservationFAQPage/config'
 import { DiningArea } from './collections/DiningArea'
 import { MeetingEventArea } from './collections/MeetingEventArea'
 import { MeetingPackage } from './collections/MeetingPackage'
+import { GamesGround } from './collections/GamesGround'
+import { AdditionalRent } from './collections/AdditionalRent'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -91,6 +93,8 @@ export default buildConfig({
     DiningArea,
     MeetingEventArea,
     MeetingPackage,
+    GamesGround,
+    AdditionalRent,
     Pages,
     Posts,
     Media,

@@ -74,6 +74,8 @@ export interface Config {
     'dining-area': DiningArea;
     'meeting-event-area': MeetingEventArea;
     'meeting-package': MeetingPackage;
+    'games-ground': GamesGround;
+    'additional-rent': AdditionalRent;
     pages: Page;
     posts: Post;
     media: Media;
@@ -97,6 +99,8 @@ export interface Config {
     'dining-area': DiningAreaSelect<false> | DiningAreaSelect<true>;
     'meeting-event-area': MeetingEventAreaSelect<false> | MeetingEventAreaSelect<true>;
     'meeting-package': MeetingPackageSelect<false> | MeetingPackageSelect<true>;
+    'games-ground': GamesGroundSelect<false> | GamesGroundSelect<true>;
+    'additional-rent': AdditionalRentSelect<false> | AdditionalRentSelect<true>;
     pages: PagesSelect<false> | PagesSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
@@ -193,12 +197,11 @@ export interface Accommodation {
    * Type of accommodation
    */
   type: 'villa' | 'cabin' | 'cottage' | 'camping_ground';
-  status: 'available' | 'booked' | 'maintenance' | 'unavailable';
-  location: 'valley-cibedug' | 'hills-babakan';
   /**
-   * Google Maps link for this accommodation location
+   * Maps code for this accommodation location (eg. 1, 2, 3, etc.)
    */
-  mapsPointer?: string | null;
+  mapsCode?: string | null;
+  location: 'valley-cibedug' | 'hills-babakan';
   /**
    * Detailed description of the accommodation
    */
@@ -208,7 +211,6 @@ export interface Accommodation {
    */
   images: {
     image: number | Media;
-    caption?: string | null;
     id?: string | null;
   }[];
   /**
@@ -216,13 +218,21 @@ export interface Accommodation {
    */
   unitType?: ('super-executive' | 'executive' | 'deluxe' | 'superior' | 'standard') | null;
   /**
-   * Size in square meters
+   * Cabin type classification
+   */
+  cabinType?: ('mini' | 'junior' | 'medium' | 'large' | 'jumbo') | null;
+  /**
+   * Size in square meters (eg. 125sqm, 100sqm, etc.)
    */
   size?: number | null;
   /**
    * Number of floors
    */
   floors?: number | null;
+  /**
+   * Floor number (e.g., 1, 2, 3)
+   */
+  floorNumber?: number | null;
   /**
    * Floor location (e.g., Lantai 1, Lantai 2)
    */
@@ -232,9 +242,9 @@ export interface Accommodation {
    */
   bedrooms?: number | null;
   /**
-   * Number of tents available for specific spots
+   * Number of tents available for specific grounds (eg. 10 tents)
    */
-  tentCapacity?: number | null;
+  groundCapacity?: number | null;
   /**
    * Standard guest capacity
    */
@@ -252,9 +262,9 @@ export interface Accommodation {
    */
   extraBeds?: number | null;
   /**
-   * Number of bathrooms
+   * Number of bathrooms (eg. 1, 2, 3, Sharing, etc.)
    */
-  bathrooms?: number | null;
+  bathrooms?: string | null;
   /**
    * Number of bathrooms inside bedrooms
    */
@@ -272,36 +282,37 @@ export interface Accommodation {
          * e.g., Room 1, Master Bedroom
          */
         roomName: string;
-        bedType: 'super-king' | 'king' | 'queen' | 'full-double' | 'twin' | 'single' | 'super-single' | 'bunk-bed';
+        bedType:
+          | 'super-king'
+          | 'king'
+          | 'queen'
+          | 'full-double'
+          | 'twin'
+          | 'single'
+          | 'super-single'
+          | 'bunk-bed'
+          | 'sleeping-bag';
         /**
          * Number of beds of this type in the room
          */
         bedCount: number;
-        /**
-         * Optional image of the room/bed setup
-         */
-        roomImage?: (number | null) | Media;
         id?: string | null;
       }[]
     | null;
-  /**
-   * Tents configuration
-   */
   tentConfiguration?:
     | {
         /**
-         * e.g., Tent A, Tent B, Premium Tent
+         * Tent type classification (eg. Tenda Sedang, Tenda Mini, etc.)
          */
-        tentName: string;
+        tentType?: string | null;
         /**
-         * Number of people this tent can accommodate
+         * Tent capacity (eg. 5 pax, 10 pax, etc.)
          */
-        capacity: number;
-        bedType: 'sleeping-bag';
+        tentCapacity?: string | null;
         /**
-         * Image of the tent
+         * Number of tents available for specific grounds (eg. 10, 20, etc.)
          */
-        tentImage?: (number | null) | Media;
+        numberOfTents?: number | null;
         id?: string | null;
       }[]
     | null;
@@ -354,62 +365,10 @@ export interface Accommodation {
    * Starting price in IDR
    */
   priceStartingFrom: number;
-  priceUnit: 'per_night' | 'per_villa_night' | 'per_person_night' | 'per_spot_night';
   /**
-   * Different pricing for different seasons
+   * Price unit (eg. per night, per villa/night, per person/night, per spot/night)
    */
-  seasonalPricing?:
-    | {
-        /**
-         * e.g., High Season, Low Season, Holiday
-         */
-        season: string;
-        price: number;
-        startDate?: string | null;
-        endDate?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Minimum number of nights required
-   */
-  minimumStay?: number | null;
-  /**
-   * Enable online booking for this accommodation
-   */
-  bookingEnabled?: boolean | null;
-  /**
-   * Allow instant booking without confirmation
-   */
-  instantBooking?: boolean | null;
-  /**
-   * How many days in advance can guests book
-   */
-  advanceBookingDays?: number | null;
-  /**
-   * e.g., 3:00 PM
-   */
-  checkInTime?: string | null;
-  /**
-   * e.g., 11:00 AM
-   */
-  checkOutTime?: string | null;
-  /**
-   * Special instructions for guests
-   */
-  specialInstructions?: string | null;
-  meta?: {
-    title?: string | null;
-    /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-     */
-    image?: (number | null) | Media;
-    description?: string | null;
-  };
-  /**
-   * Feature this accommodation on the homepage
-   */
-  featured?: boolean | null;
+  priceUnit?: string | null;
   publishedAt?: string | null;
   slug?: string | null;
   slugLock?: boolean | null;
@@ -516,112 +475,35 @@ export interface Media {
 export interface Activity {
   id: number;
   /**
-   * Name of the activity (e.g., "Team Building", "Paint Ball")
+   * Name of the attraction (e.g., "Mini Rafting", "Giant Flower")
    */
   title: string;
-  slug?: string | null;
-  slugLock?: boolean | null;
+  location: 'valley-cibedug' | 'hills-babakan';
   /**
-   * Brief description displayed on activity cards
+   * Points of the attraction
    */
-  shortDescription?: string | null;
+  points?:
+    | {
+        point?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   /**
-   * Detailed description for the activity detail page
+   * Age range of the attraction
    */
-  detailedDescription?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
+  ageRange?: ('kids-friendly' | 'pre-teen-friendly' | 'adults-only') | null;
   /**
-   * Main image for the activity
+   * Main image for the attraction
    */
   image: number | Media;
   /**
-   * Price in IDR
+   * Price in IDR (e.g., 200000 for IDR 200.000)
    */
   price: number;
   /**
    * Price unit (e.g., "per orang", "per group")
    */
   priceUnit?: string | null;
-  /**
-   * List of features or highlights for this activity
-   */
-  features?:
-    | {
-        /**
-         * Individual feature or highlight (e.g., "Lorem ipsum")
-         */
-        feature: string;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Activity duration (e.g., "2 hours", "Half day")
-   */
-  duration?: string | null;
-  /**
-   * Group size requirements
-   */
-  groupSize?: {
-    /**
-     * Minimum number of participants
-     */
-    minimum?: number | null;
-    /**
-     * Maximum number of participants
-     */
-    maximum?: number | null;
-  };
-  /**
-   * Difficulty level of the activity
-   */
-  difficulty?: ('easy' | 'medium' | 'hard') | null;
-  /**
-   * Age restrictions if any (e.g., "12+ years", "All ages")
-   */
-  ageRestriction?: string | null;
-  /**
-   * Where the activity takes place
-   */
-  location?: string | null;
-  /**
-   * Equipment or materials provided for the activity
-   */
-  equipment?:
-    | {
-        item: string;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * What participants need to bring or prepare
-   */
-  requirements?:
-    | {
-        requirement: string;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Check if activity is weather dependent
-   */
-  weatherDependent?: boolean | null;
-  /**
-   * Any special notes or instructions for participants
-   */
-  specialNotes?: string | null;
   publishedAt?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -636,30 +518,20 @@ export interface Attraction {
    * Name of the attraction (e.g., "Mini Rafting", "Giant Flower")
    */
   title: string;
-  slug?: string | null;
-  slugLock?: boolean | null;
+  location: 'valley-cibedug' | 'hills-babakan';
   /**
-   * Brief description displayed on the card view
+   * Points of the attraction
    */
-  shortDescription: string;
+  points?:
+    | {
+        point?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   /**
-   * Detailed description shown in the modal popup
+   * Age range of the attraction
    */
-  detailedDescription: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
+  ageRange?: ('kids-friendly' | 'pre-teen-friendly' | 'adults-only') | null;
   /**
    * Main image for the attraction
    */
@@ -672,45 +544,6 @@ export interface Attraction {
    * Price unit (e.g., "per orang", "per group")
    */
   priceUnit?: string | null;
-  /**
-   * Location description (e.g., "Near the east river zone")
-   */
-  location?: string | null;
-  /**
-   * Available times/schedule (e.g., "8 AM – 4 PM (Last trip at 3 PM)")
-   */
-  availability?: string | null;
-  /**
-   * Capacity information (e.g., "Up to 150 people")
-   */
-  capacity?: string | null;
-  /**
-   * List of items included (e.g., "Safety Gear (Helmet) + life vest", "Raft Guide")
-   */
-  includes?:
-    | {
-        item: string;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Available facilities
-   */
-  facilities?:
-    | {
-        facility: string;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Important notes or restrictions
-   */
-  notes?:
-    | {
-        note: string;
-        id?: string | null;
-      }[]
-    | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -721,84 +554,20 @@ export interface Attraction {
 export interface Amenity {
   id: number;
   /**
-   * Name of the amenity (e.g., "Amphy", "Function Room")
+   * Name of the amenity
    */
   title: string;
-  slug?: string | null;
-  slugLock?: boolean | null;
+  location: 'valley-cibedug' | 'hills-babakan';
+  points?:
+    | {
+        point?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   /**
-   * Brief description displayed on the card view
-   */
-  shortDescription: string;
-  /**
-   * Detailed description shown in the modal popup
-   */
-  detailedDescription: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  /**
-   * Main image for the amenity
+   * Main image for the attraction
    */
   image: number | Media;
-  /**
-   * Price in IDR (e.g., 200000 for IDR 200.000)
-   */
-  price: number;
-  /**
-   * Price unit (e.g., "per orang", "per group")
-   */
-  priceUnit?: string | null;
-  /**
-   * Location description (e.g., "Central camp zone, near the main hall")
-   */
-  location?: string | null;
-  /**
-   * Available times/schedule (e.g., "Available until 9 PM")
-   */
-  availability?: string | null;
-  /**
-   * Capacity information (e.g., "Up to 150 people")
-   */
-  capacity?: string | null;
-  /**
-   * List of items included with the amenity
-   */
-  includes?:
-    | {
-        item: string;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Available facilities (e.g., "Built-in stage", "Sound system & lighting")
-   */
-  facilities?:
-    | {
-        facility: string;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Important notes or restrictions (e.g., "Reservation required for private use")
-   */
-  notes?:
-    | {
-        note: string;
-        id?: string | null;
-      }[]
-    | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -809,55 +578,37 @@ export interface Amenity {
 export interface DiningArea {
   id: number;
   /**
-   * Name of the dining area (e.g., "Team Building", "Paint Ball")
+   * Name of the attraction (e.g., "Mini Rafting", "Giant Flower")
    */
   title: string;
-  slug?: string | null;
-  slugLock?: boolean | null;
   /**
-   * Brief description displayed on dining area cards
+   * Map code for the dining area (eg. 1, 2, 3, etc.)
    */
-  shortDescription?: string | null;
+  mapCode?: string | null;
+  location: 'valley-cibedug' | 'hills-babakan';
   /**
-   * Detailed description for the dining area detail page
+   * Points of the attraction
    */
-  detailedDescription?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  /**
-   * Main image for the dining area
-   */
-  image: number | Media;
-  /**
-   * List of features or highlights for this activity
-   */
-  features?:
+  points?:
     | {
-        /**
-         * Individual feature or highlight (e.g., "Lorem ipsum")
-         */
-        feature: string;
+        point?: string | null;
         id?: string | null;
       }[]
     | null;
+  /**
+   * Main image for the attraction
+   */
+  image: number | Media;
+  /**
+   * Link to the menu (eg. https://www.google.com)
+   */
+  menuLink?: string | null;
   /**
    * Group size requirements
    */
   groupSize?: {
     /**
-     * Minimum number of participants
+     * Standard number of participants
      */
     minimum?: number | null;
     /**
@@ -876,49 +627,47 @@ export interface DiningArea {
 export interface MeetingEventArea {
   id: number;
   /**
-   * Name of the meeting event area (e.g., "Team Building", "Paint Ball")
+   * e.g., Bale Sawo, Amphy Arunaya, etc.
    */
   title: string;
-  slug?: string | null;
-  slugLock?: boolean | null;
+  /**
+   * Maps code for this accommodation location (eg. 1, 2, 3, etc.)
+   */
+  mapsCode?: string | null;
+  location?: ('valley-cibedug' | 'hills-babakan') | null;
+  /**
+   * Type of building
+   */
+  buildingType?: ('bale' | 'ballroom' | 'amphitheater') | null;
+  areaType?: ('indoor' | 'outdoor') | null;
   /**
    * Brief description displayed on meeting event area cards
    */
-  shortDescription?: string | null;
+  description?: string | null;
   /**
-   * Detailed description for the meeting event area detail page
+   * Size in square meters (eg. 125sqm, 100sqm, etc.)
    */
-  detailedDescription?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
+  size?: number | null;
   /**
-   * Main image for the meeting event area
+   * Photo gallery of the accommodation
    */
-  image: number | Media;
+  images: {
+    image: number | Media;
+    id?: string | null;
+  }[];
   /**
-   * List of features or highlights for this activity
+   * Dimensions of the meeting event area
    */
-  features?:
-    | {
-        /**
-         * Individual feature or highlight (e.g., "Lorem ipsum")
-         */
-        feature: string;
-        id?: string | null;
-      }[]
-    | null;
+  dimensions?: {
+    /**
+     * Width in meters (lebar) (10, 15, 20, etc.)
+     */
+    width?: number | null;
+    /**
+     * Length in meters (panjang) (10, 15, 20, etc.)
+     */
+    length?: number | null;
+  };
   /**
    * Group size requirements
    */
@@ -932,6 +681,14 @@ export interface MeetingEventArea {
      */
     maximum?: number | null;
   };
+  /**
+   * Starting price in IDR
+   */
+  priceStartingFrom: number;
+  /**
+   * Price unit (eg. per 8 hours)
+   */
+  priceUnit?: string | null;
   publishedAt?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -943,60 +700,9 @@ export interface MeetingEventArea {
 export interface MeetingPackage {
   id: number;
   /**
-   * Package title (e.g., "Package Title")
+   * e.g., "Package Title"
    */
   title: string;
-  slug?: string | null;
-  slugLock?: boolean | null;
-  /**
-   * Brief description of the package (e.g., "Ideal for individuals and small businesses")
-   */
-  description?: string | null;
-  /**
-   * Detailed description for the package detail page
-   */
-  detailedDescription?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  /**
-   * Mark as featured package (will be highlighted with green background)
-   */
-  featured?: boolean | null;
-  /**
-   * Package price in IDR (e.g., 10000000 for IDR 10.000.000)
-   */
-  price: number;
-  /**
-   * Currency for the price
-   */
-  currency?: ('IDR' | 'USD') | null;
-  /**
-   * Pricing period (e.g., "Per month", "Per event", "Per day")
-   */
-  pricePeriod?: string | null;
-  /**
-   * Optional discount information
-   */
-  discount?: {
-    hasDiscount?: boolean | null;
-    originalPrice?: number | null;
-    /**
-     * Discount percentage (e.g., 20 for 20% off)
-     */
-    discountPercentage?: number | null;
-  };
   /**
    * List of features included in this package
    */
@@ -1005,41 +711,103 @@ export interface MeetingPackage {
      * Individual feature (e.g., "Lorem Ipsum Dolor Fit Details")
      */
     feature: string;
-    /**
-     * Whether this feature is included (check mark) or not
-     */
-    included?: boolean | null;
     id?: string | null;
   }[];
   /**
-   * Type/tier of the package
+   * List of features included in this package
    */
-  packageType?: ('basic' | 'standard' | 'premium' | 'corporate' | 'custom') | null;
+  packageFeatures: {
+    /**
+     * Feature title (e.g., "2D1N Stay, Welcome Drink, etc.")
+     */
+    featureTitle: string;
+    id?: string | null;
+  }[];
   /**
-   * Recommended group size for this package
+   * Package price in IDR (e.g., 10000000 for IDR 10.000.000)
+   */
+  price: number;
+  /**
+   * Pricing period (e.g., "Per pax", "Per group")
+   */
+  pricePeriod?: string | null;
+  publishedAt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "games-ground".
+ */
+export interface GamesGround {
+  id: number;
+  /**
+   * Name of the games ground (e.g., Sawo, Palem, Negla)
+   */
+  title: string;
+  /**
+   * Map code for the games ground (eg. 1, 2, 3, etc.)
+   */
+  mapCode?: string | null;
+  location: 'valley-cibedug' | 'hills-babakan';
+  /**
+   * Points of the games ground
+   */
+  points?:
+    | {
+        point?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Main image for the games ground
+   */
+  image: number | Media;
+  /**
+   * Group size requirements for ice breaking and games
    */
   groupSize?: {
     /**
-     * Minimum number of participants
+     * Ice breaking capacity
      */
-    minimum?: number | null;
+    iceBrakingCapacity?: number | null;
     /**
-     * Maximum number of participants
+     * Games capacity
      */
-    maximum?: number | null;
+    gamesCapacity?: number | null;
   };
+  publishedAt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "additional-rent".
+ */
+export interface AdditionalRent {
+  id: number;
   /**
-   * Package duration (e.g., "Half Day", "Full Day", "2 Days")
+   * e.g., "Additional Rent Title"
    */
-  duration?: string | null;
+  title: string;
   /**
-   * Current availability status
+   * List of features included in this additional rent
    */
-  availability?: ('available' | 'limited' | 'seasonal' | 'unavailable') | null;
-  /**
-   * Special booking requirements or notes
-   */
-  bookingNotes?: string | null;
+  packageFeatures: {
+    /**
+     * Feature title (e.g., "Portable screen, Proyektor, etc.")
+     */
+    featureTitle: string;
+    /**
+     * Additional rent price in IDR (e.g., 10000000 for IDR 10.000.000)
+     */
+    price: number;
+    /**
+     * Pricing period (e.g., "Per day", "Per event")
+     */
+    pricePeriod?: string | null;
+    id?: string | null;
+  }[];
   publishedAt?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -1740,6 +1508,14 @@ export interface PayloadLockedDocument {
         value: number | MeetingPackage;
       } | null)
     | ({
+        relationTo: 'games-ground';
+        value: number | GamesGround;
+      } | null)
+    | ({
+        relationTo: 'additional-rent';
+        value: number | AdditionalRent;
+      } | null)
+    | ({
         relationTo: 'pages';
         value: number | Page;
       } | null)
@@ -1828,23 +1604,23 @@ export interface PayloadMigration {
 export interface AccommodationsSelect<T extends boolean = true> {
   title?: T;
   type?: T;
-  status?: T;
+  mapsCode?: T;
   location?: T;
-  mapsPointer?: T;
   description?: T;
   images?:
     | T
     | {
         image?: T;
-        caption?: T;
         id?: T;
       };
   unitType?: T;
+  cabinType?: T;
   size?: T;
   floors?: T;
+  floorNumber?: T;
   floorLocation?: T;
   bedrooms?: T;
-  tentCapacity?: T;
+  groundCapacity?: T;
   minCapacity?: T;
   maxCapacity?: T;
   beds?: T;
@@ -1858,16 +1634,14 @@ export interface AccommodationsSelect<T extends boolean = true> {
         roomName?: T;
         bedType?: T;
         bedCount?: T;
-        roomImage?: T;
         id?: T;
       };
   tentConfiguration?:
     | T
     | {
-        tentName?: T;
-        capacity?: T;
-        bedType?: T;
-        tentImage?: T;
+        tentType?: T;
+        tentCapacity?: T;
+        numberOfTents?: T;
         id?: T;
       };
   rooftop?: T;
@@ -1914,30 +1688,6 @@ export interface AccommodationsSelect<T extends boolean = true> {
       };
   priceStartingFrom?: T;
   priceUnit?: T;
-  seasonalPricing?:
-    | T
-    | {
-        season?: T;
-        price?: T;
-        startDate?: T;
-        endDate?: T;
-        id?: T;
-      };
-  minimumStay?: T;
-  bookingEnabled?: T;
-  instantBooking?: T;
-  advanceBookingDays?: T;
-  checkInTime?: T;
-  checkOutTime?: T;
-  specialInstructions?: T;
-  meta?:
-    | T
-    | {
-        title?: T;
-        image?: T;
-        description?: T;
-      };
-  featured?: T;
   publishedAt?: T;
   slug?: T;
   slugLock?: T;
@@ -1951,43 +1701,17 @@ export interface AccommodationsSelect<T extends boolean = true> {
  */
 export interface ActivitiesSelect<T extends boolean = true> {
   title?: T;
-  slug?: T;
-  slugLock?: T;
-  shortDescription?: T;
-  detailedDescription?: T;
+  location?: T;
+  points?:
+    | T
+    | {
+        point?: T;
+        id?: T;
+      };
+  ageRange?: T;
   image?: T;
   price?: T;
   priceUnit?: T;
-  features?:
-    | T
-    | {
-        feature?: T;
-        id?: T;
-      };
-  duration?: T;
-  groupSize?:
-    | T
-    | {
-        minimum?: T;
-        maximum?: T;
-      };
-  difficulty?: T;
-  ageRestriction?: T;
-  location?: T;
-  equipment?:
-    | T
-    | {
-        item?: T;
-        id?: T;
-      };
-  requirements?:
-    | T
-    | {
-        requirement?: T;
-        id?: T;
-      };
-  weatherDependent?: T;
-  specialNotes?: T;
   publishedAt?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -1998,34 +1722,17 @@ export interface ActivitiesSelect<T extends boolean = true> {
  */
 export interface AttractionsSelect<T extends boolean = true> {
   title?: T;
-  slug?: T;
-  slugLock?: T;
-  shortDescription?: T;
-  detailedDescription?: T;
+  location?: T;
+  points?:
+    | T
+    | {
+        point?: T;
+        id?: T;
+      };
+  ageRange?: T;
   image?: T;
   price?: T;
   priceUnit?: T;
-  location?: T;
-  availability?: T;
-  capacity?: T;
-  includes?:
-    | T
-    | {
-        item?: T;
-        id?: T;
-      };
-  facilities?:
-    | T
-    | {
-        facility?: T;
-        id?: T;
-      };
-  notes?:
-    | T
-    | {
-        note?: T;
-        id?: T;
-      };
   updatedAt?: T;
   createdAt?: T;
 }
@@ -2035,34 +1742,14 @@ export interface AttractionsSelect<T extends boolean = true> {
  */
 export interface AmenitiesSelect<T extends boolean = true> {
   title?: T;
-  slug?: T;
-  slugLock?: T;
-  shortDescription?: T;
-  detailedDescription?: T;
-  image?: T;
-  price?: T;
-  priceUnit?: T;
   location?: T;
-  availability?: T;
-  capacity?: T;
-  includes?:
+  points?:
     | T
     | {
-        item?: T;
+        point?: T;
         id?: T;
       };
-  facilities?:
-    | T
-    | {
-        facility?: T;
-        id?: T;
-      };
-  notes?:
-    | T
-    | {
-        note?: T;
-        id?: T;
-      };
+  image?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -2072,17 +1759,16 @@ export interface AmenitiesSelect<T extends boolean = true> {
  */
 export interface DiningAreaSelect<T extends boolean = true> {
   title?: T;
-  slug?: T;
-  slugLock?: T;
-  shortDescription?: T;
-  detailedDescription?: T;
-  image?: T;
-  features?:
+  mapCode?: T;
+  location?: T;
+  points?:
     | T
     | {
-        feature?: T;
+        point?: T;
         id?: T;
       };
+  image?: T;
+  menuLink?: T;
   groupSize?:
     | T
     | {
@@ -2099,16 +1785,23 @@ export interface DiningAreaSelect<T extends boolean = true> {
  */
 export interface MeetingEventAreaSelect<T extends boolean = true> {
   title?: T;
-  slug?: T;
-  slugLock?: T;
-  shortDescription?: T;
-  detailedDescription?: T;
-  image?: T;
-  features?:
+  mapsCode?: T;
+  location?: T;
+  buildingType?: T;
+  areaType?: T;
+  description?: T;
+  size?: T;
+  images?:
     | T
     | {
-        feature?: T;
+        image?: T;
         id?: T;
+      };
+  dimensions?:
+    | T
+    | {
+        width?: T;
+        length?: T;
       };
   groupSize?:
     | T
@@ -2116,6 +1809,8 @@ export interface MeetingEventAreaSelect<T extends boolean = true> {
         minimum?: T;
         maximum?: T;
       };
+  priceStartingFrom?: T;
+  priceUnit?: T;
   publishedAt?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -2126,38 +1821,63 @@ export interface MeetingEventAreaSelect<T extends boolean = true> {
  */
 export interface MeetingPackageSelect<T extends boolean = true> {
   title?: T;
-  slug?: T;
-  slugLock?: T;
-  description?: T;
-  detailedDescription?: T;
-  featured?: T;
-  price?: T;
-  currency?: T;
-  pricePeriod?: T;
-  discount?:
-    | T
-    | {
-        hasDiscount?: T;
-        originalPrice?: T;
-        discountPercentage?: T;
-      };
   features?:
     | T
     | {
         feature?: T;
-        included?: T;
         id?: T;
       };
-  packageType?: T;
+  packageFeatures?:
+    | T
+    | {
+        featureTitle?: T;
+        id?: T;
+      };
+  price?: T;
+  pricePeriod?: T;
+  publishedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "games-ground_select".
+ */
+export interface GamesGroundSelect<T extends boolean = true> {
+  title?: T;
+  mapCode?: T;
+  location?: T;
+  points?:
+    | T
+    | {
+        point?: T;
+        id?: T;
+      };
+  image?: T;
   groupSize?:
     | T
     | {
-        minimum?: T;
-        maximum?: T;
+        iceBrakingCapacity?: T;
+        gamesCapacity?: T;
       };
-  duration?: T;
-  availability?: T;
-  bookingNotes?: T;
+  publishedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "additional-rent_select".
+ */
+export interface AdditionalRentSelect<T extends boolean = true> {
+  title?: T;
+  packageFeatures?:
+    | T
+    | {
+        featureTitle?: T;
+        price?: T;
+        pricePeriod?: T;
+        id?: T;
+      };
   publishedAt?: T;
   updatedAt?: T;
   createdAt?: T;

@@ -32,22 +32,58 @@ export const Activities: CollectionConfig = {
               type: 'text',
               required: true,
               admin: {
-                description: 'Name of the activity (e.g., "Team Building", "Paint Ball")',
-              },
-            },
-            ...slugField(),
-            {
-              name: 'shortDescription',
-              type: 'textarea',
-              admin: {
-                description: 'Brief description displayed on activity cards',
+                description: 'Name of the attraction (e.g., "Mini Rafting", "Giant Flower")',
               },
             },
             {
-              name: 'detailedDescription',
-              type: 'richText',
+              name: 'location',
+              type: 'select',
+              required: true,
+              defaultValue: 'valley-cibedug',
+              options: [
+                {
+                  label: 'Valley - Cibedug',
+                  value: 'valley-cibedug',
+                },
+                {
+                  label: 'Hills - Babakan',
+                  value: 'hills-babakan',
+                },
+              ],
+              enumName: 'accommodations_location',
+            },
+            {
+              name: 'points',
+              type: 'array',
+              fields: [
+                {
+                  name: 'point',
+                  type: 'text',
+                },
+              ],
               admin: {
-                description: 'Detailed description for the activity detail page',
+                description: 'Points of the attraction',
+              },
+            },
+            {
+              name: 'ageRange',
+              type: 'select',
+              options: [
+                {
+                  label: 'Kids Friendly',
+                  value: 'kids-friendly',
+                },
+                {
+                  label: 'Pre Teen Friendly',
+                  value: 'pre-teen-friendly',
+                },
+                {
+                  label: 'Adults Only',
+                  value: 'adults-only',
+                },
+              ],
+              admin: {
+                description: 'Age range of the attraction',
               },
             },
             {
@@ -56,7 +92,7 @@ export const Activities: CollectionConfig = {
               relationTo: 'media',
               required: true,
               admin: {
-                description: 'Main image for the activity',
+                description: 'Main image for the attraction',
               },
             },
             {
@@ -64,8 +100,7 @@ export const Activities: CollectionConfig = {
               type: 'number',
               required: true,
               admin: {
-                description: 'Price in IDR',
-                step: 1000,
+                description: 'Price in IDR (e.g., 200000 for IDR 200.000)',
               },
             },
             {
@@ -74,135 +109,6 @@ export const Activities: CollectionConfig = {
               defaultValue: 'per orang',
               admin: {
                 description: 'Price unit (e.g., "per orang", "per group")',
-              },
-            },
-          ],
-        },
-        {
-          label: 'Activity Details',
-          fields: [
-            {
-              name: 'features',
-              type: 'array',
-              label: 'Activity Features',
-              fields: [
-                {
-                  name: 'feature',
-                  type: 'text',
-                  required: true,
-                  admin: {
-                    description: 'Individual feature or highlight (e.g., "Lorem ipsum")',
-                  },
-                },
-              ],
-              admin: {
-                description: 'List of features or highlights for this activity',
-              },
-            },
-            {
-              name: 'duration',
-              type: 'text',
-              admin: {
-                description: 'Activity duration (e.g., "2 hours", "Half day")',
-              },
-            },
-            {
-              name: 'groupSize',
-              type: 'group',
-              fields: [
-                {
-                  name: 'minimum',
-                  type: 'number',
-                  admin: {
-                    description: 'Minimum number of participants',
-                  },
-                },
-                {
-                  name: 'maximum',
-                  type: 'number',
-                  admin: {
-                    description: 'Maximum number of participants',
-                  },
-                },
-              ],
-              admin: {
-                description: 'Group size requirements',
-              },
-            },
-            {
-              name: 'difficulty',
-              type: 'select',
-              options: [
-                { label: 'Easy', value: 'easy' },
-                { label: 'Medium', value: 'medium' },
-                { label: 'Hard', value: 'hard' },
-              ],
-              admin: {
-                description: 'Difficulty level of the activity',
-              },
-            },
-            {
-              name: 'ageRestriction',
-              type: 'text',
-              admin: {
-                description: 'Age restrictions if any (e.g., "12+ years", "All ages")',
-              },
-            },
-          ],
-        },
-        {
-          label: 'Logistics',
-          fields: [
-            {
-              name: 'location',
-              type: 'text',
-              admin: {
-                description: 'Where the activity takes place',
-              },
-            },
-            {
-              name: 'equipment',
-              type: 'array',
-              label: 'Equipment Provided',
-              fields: [
-                {
-                  name: 'item',
-                  type: 'text',
-                  required: true,
-                },
-              ],
-              admin: {
-                description: 'Equipment or materials provided for the activity',
-              },
-            },
-            {
-              name: 'requirements',
-              type: 'array',
-              label: 'Requirements',
-              fields: [
-                {
-                  name: 'requirement',
-                  type: 'text',
-                  required: true,
-                },
-              ],
-              admin: {
-                description: 'What participants need to bring or prepare',
-              },
-            },
-            {
-              name: 'weatherDependent',
-              type: 'checkbox',
-              defaultValue: false,
-              admin: {
-                description: 'Check if activity is weather dependent',
-              },
-            },
-            {
-              name: 'specialNotes',
-              type: 'textarea',
-              admin: {
-                description: 'Any special notes or instructions for participants',
               },
             },
           ],

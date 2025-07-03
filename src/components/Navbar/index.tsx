@@ -83,7 +83,7 @@ export function Navbar() {
             }`}
           >
             {navItems.map((item) => {
-              const isActive = pathname === item.href
+              const isActive = pathname.includes(item.href)
               return (
                 <Link
                   key={item.label}

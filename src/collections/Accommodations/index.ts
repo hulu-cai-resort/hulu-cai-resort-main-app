@@ -6,14 +6,6 @@ import { slugField } from '@/fields/slug'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
 import { revalidateAccommodation, revalidateDelete } from './hooks/revalidateAccommodation'
 
-import {
-  MetaDescriptionField,
-  MetaImageField,
-  MetaTitleField,
-  OverviewField,
-  PreviewField,
-} from '@payloadcms/plugin-seo/fields'
-
 export const Accommodations: CollectionConfig<'accommodations'> = {
   slug: 'accommodations',
   labels: {
@@ -74,31 +66,10 @@ export const Accommodations: CollectionConfig<'accommodations'> = {
       },
     },
     {
-      name: 'status',
-      type: 'select',
-      required: true,
-      defaultValue: 'available',
-      options: [
-        {
-          label: 'Available',
-          value: 'available',
-        },
-        {
-          label: 'Booked',
-          value: 'booked',
-        },
-        {
-          label: 'Maintenance',
-          value: 'maintenance',
-        },
-        {
-          label: 'Unavailable',
-          value: 'unavailable',
-        },
-      ],
-      enumName: 'accommodations_status',
+      name: 'mapsCode',
+      type: 'text',
       admin: {
-        position: 'sidebar',
+        description: 'Maps code for this accommodation location (eg. 1, 2, 3, etc.)',
       },
     },
     {
@@ -125,13 +96,6 @@ export const Accommodations: CollectionConfig<'accommodations'> = {
               enumName: 'accommodations_location',
             },
             {
-              name: 'mapsPointer',
-              type: 'text',
-              admin: {
-                description: 'Google Maps link for this accommodation location',
-              },
-            },
-            {
               name: 'description',
               type: 'textarea',
               required: true,
@@ -144,17 +108,12 @@ export const Accommodations: CollectionConfig<'accommodations'> = {
               type: 'array',
               required: true,
               minRows: 1,
-              maxRows: 10,
               fields: [
                 {
                   name: 'image',
                   type: 'upload',
                   relationTo: 'media',
                   required: true,
-                },
-                {
-                  name: 'caption',
-                  type: 'text',
                 },
               ],
               admin: {
@@ -193,14 +152,45 @@ export const Accommodations: CollectionConfig<'accommodations'> = {
               ],
               admin: {
                 description: 'Unit type classification',
-                condition: (data) => ['villa', 'cabin', 'cottage'].includes(data.type),
+                condition: (data) => ['villa', 'cottage'].includes(data.type),
               },
             },
+            {
+              name: 'cabinType',
+              type: 'select',
+              options: [
+                {
+                  label: 'Mini',
+                  value: 'mini',
+                },
+                {
+                  label: 'Junior',
+                  value: 'junior',
+                },
+                {
+                  label: 'Medium',
+                  value: 'medium',
+                },
+                {
+                  label: 'Large',
+                  value: 'large',
+                },
+                {
+                  label: 'Jumbo',
+                  value: 'jumbo',
+                },
+              ],
+              admin: {
+                description: 'Cabin type classification',
+                condition: (data) => ['cabin'].includes(data.type),
+              },
+            },
+
             {
               name: 'size',
               type: 'number',
               admin: {
-                description: 'Size in square meters',
+                description: 'Size in square meters (eg. 125sqm, 100sqm, etc.)',
                 condition: (data) => ['villa', 'cabin', 'cottage'].includes(data.type),
               },
             },
@@ -210,6 +200,14 @@ export const Accommodations: CollectionConfig<'accommodations'> = {
               admin: {
                 description: 'Number of floors',
                 condition: (data) => ['villa'].includes(data.type),
+              },
+            },
+            {
+              name: 'floorNumber',
+              type: 'number',
+              admin: {
+                description: 'Floor number (e.g., 1, 2, 3)',
+                condition: (data) => ['cottage'].includes(data.type),
               },
             },
             {
@@ -229,10 +227,10 @@ export const Accommodations: CollectionConfig<'accommodations'> = {
               },
             },
             {
-              name: 'tentCapacity',
+              name: 'groundCapacity',
               type: 'number',
               admin: {
-                description: 'Number of tents available for specific spots',
+                description: 'Number of tents available for specific grounds (eg. 10 tents)',
                 condition: (data) => ['camping_ground'].includes(data.type),
               },
             },
@@ -274,10 +272,11 @@ export const Accommodations: CollectionConfig<'accommodations'> = {
             },
             {
               name: 'bathrooms',
-              type: 'number',
+              type: 'text',
               admin: {
-                description: 'Number of bathrooms',
-                condition: (data) => ['villa', 'cabin'].includes(data.type),
+                description: 'Number of bathrooms (eg. 1, 2, 3, Sharing, etc.)',
+                condition: (data) =>
+                  ['villa', 'cottage', 'cabin', 'camping_ground'].includes(data.type),
               },
             },
             {
@@ -285,7 +284,7 @@ export const Accommodations: CollectionConfig<'accommodations'> = {
               type: 'number',
               admin: {
                 description: 'Number of bathrooms inside bedrooms',
-                condition: (data) => ['villa', 'cabin'].includes(data.type),
+                condition: (data) => ['villa', 'cottage', 'cabin'].includes(data.type),
               },
             },
             {
@@ -293,7 +292,7 @@ export const Accommodations: CollectionConfig<'accommodations'> = {
               type: 'number',
               admin: {
                 description: 'Number of bathrooms outside bedrooms',
-                condition: (data) => ['villa', 'cabin'].includes(data.type),
+                condition: (data) => ['villa', 'cottage', 'c`abin'].includes(data.type),
               },
             },
           ],
@@ -350,6 +349,10 @@ export const Accommodations: CollectionConfig<'accommodations'> = {
                       label: 'Bunk Bed',
                       value: 'bunk-bed',
                     },
+                    {
+                      label: 'Sleeping Bag',
+                      value: 'sleeping-bag',
+                    },
                   ],
                   enumName: 'accommodations_bed_type',
                 },
@@ -362,67 +365,57 @@ export const Accommodations: CollectionConfig<'accommodations'> = {
                     description: 'Number of beds of this type in the room',
                   },
                 },
-                {
-                  name: 'roomImage',
-                  type: 'upload',
-                  relationTo: 'media',
-                  admin: {
-                    description: 'Optional image of the room/bed setup',
-                  },
-                },
               ],
               admin: {
                 description: 'Detailed bed configuration for each room',
                 condition: (data) => ['villa', 'cabin', 'cottage'].includes(data.type),
               },
             },
+          ],
+          admin: {
+            description: 'Detailed bed configuration for each room',
+            condition: (data) => ['villa', 'cabin', 'cottage'].includes(data.type),
+          },
+        },
+        {
+          label: 'Tent Configuration',
+          fields: [
             {
               name: 'tentConfiguration',
               type: 'array',
               fields: [
                 {
-                  name: 'tentName',
+                  name: 'tentType',
                   type: 'text',
-                  required: true,
                   admin: {
-                    description: 'e.g., Tent A, Tent B, Premium Tent',
+                    description: 'Tent type classification (eg. Tenda Sedang, Tenda Mini, etc.)',
+                    condition: (data) => ['camping_ground'].includes(data.type),
                   },
                 },
                 {
-                  name: 'capacity',
+                  name: 'tentCapacity',
+                  type: 'text',
+                  admin: {
+                    description: 'Tent capacity (eg. 5 pax, 10 pax, etc.)',
+                    condition: (data) => ['camping_ground'].includes(data.type),
+                  },
+                },
+                {
+                  name: 'numberOfTents',
                   type: 'number',
-                  required: true,
                   admin: {
-                    description: 'Number of people this tent can accommodate',
-                  },
-                },
-                {
-                  name: 'bedType',
-                  type: 'select',
-                  required: true,
-                  options: [
-                    {
-                      label: 'Sleeping Bag',
-                      value: 'sleeping-bag',
-                    },
-                  ],
-                  enumName: 'accommodations_tent_bed_type',
-                },
-                {
-                  name: 'tentImage',
-                  type: 'upload',
-                  relationTo: 'media',
-                  admin: {
-                    description: 'Image of the tent',
+                    description:
+                      'Number of tents available for specific grounds (eg. 10, 20, etc.)',
+                    condition: (data) => ['camping_ground'].includes(data.type),
                   },
                 },
               ],
-              admin: {
-                description: 'Tents configuration',
-                condition: (data) => data.type === 'camping_ground',
-              },
             },
           ],
+          admin: {
+            description: 'Detailed tent configuration for each ground',
+            condition: (data) => ['camping_ground'].includes(data.type),
+          },
         },
         {
           label: 'Facilities & Amenities',
@@ -678,150 +671,17 @@ export const Accommodations: CollectionConfig<'accommodations'> = {
             },
             {
               name: 'priceUnit',
-              type: 'select',
-              required: true,
-              defaultValue: 'per_night',
-              options: [
-                {
-                  label: 'Per Night',
-                  value: 'per_night',
-                },
-                {
-                  label: 'Per Villa/Night',
-                  value: 'per_villa_night',
-                },
-                {
-                  label: 'Per Person/Night',
-                  value: 'per_person_night',
-                },
-                {
-                  label: 'Per Spot/Night',
-                  value: 'per_spot_night',
-                },
-              ],
-              enumName: 'accommodations_price_unit',
-            },
-            {
-              name: 'seasonalPricing',
-              type: 'array',
-              fields: [
-                {
-                  name: 'season',
-                  type: 'text',
-                  required: true,
-                  admin: {
-                    description: 'e.g., High Season, Low Season, Holiday',
-                  },
-                },
-                {
-                  name: 'price',
-                  type: 'number',
-                  required: true,
-                },
-                {
-                  name: 'startDate',
-                  type: 'date',
-                },
-                {
-                  name: 'endDate',
-                  type: 'date',
-                },
-              ],
-              admin: {
-                description: 'Different pricing for different seasons',
-              },
-            },
-            {
-              name: 'minimumStay',
-              type: 'number',
-              admin: {
-                description: 'Minimum number of nights required',
-              },
-            },
-          ],
-        },
-        {
-          label: 'Booking Settings',
-          fields: [
-            {
-              name: 'bookingEnabled',
-              type: 'checkbox',
-              defaultValue: true,
-              admin: {
-                description: 'Enable online booking for this accommodation',
-              },
-            },
-            {
-              name: 'instantBooking',
-              type: 'checkbox',
-              defaultValue: false,
-              admin: {
-                description: 'Allow instant booking without confirmation',
-              },
-            },
-            {
-              name: 'advanceBookingDays',
-              type: 'number',
-              admin: {
-                description: 'How many days in advance can guests book',
-              },
-            },
-            {
-              name: 'checkInTime',
               type: 'text',
               admin: {
-                description: 'e.g., 3:00 PM',
+                description:
+                  'Price unit (eg. per night, per villa/night, per person/night, per spot/night)',
+                condition: (data) =>
+                  ['villa', 'cabin', 'cottage', 'camping_ground'].includes(data.type),
               },
             },
-            {
-              name: 'checkOutTime',
-              type: 'text',
-              admin: {
-                description: 'e.g., 11:00 AM',
-              },
-            },
-            {
-              name: 'specialInstructions',
-              type: 'textarea',
-              admin: {
-                description: 'Special instructions for guests',
-              },
-            },
-          ],
-        },
-        {
-          name: 'meta',
-          label: 'SEO',
-          fields: [
-            OverviewField({
-              titlePath: 'meta.title',
-              descriptionPath: 'meta.description',
-              imagePath: 'meta.image',
-            }),
-            MetaTitleField({
-              hasGenerateFn: true,
-            }),
-            MetaImageField({
-              relationTo: 'media',
-            }),
-            MetaDescriptionField({}),
-            PreviewField({
-              hasGenerateFn: true,
-              titlePath: 'meta.title',
-              descriptionPath: 'meta.description',
-            }),
           ],
         },
       ],
-    },
-    {
-      name: 'featured',
-      type: 'checkbox',
-      defaultValue: false,
-      admin: {
-        position: 'sidebar',
-        description: 'Feature this accommodation on the homepage',
-      },
     },
     {
       name: 'publishedAt',

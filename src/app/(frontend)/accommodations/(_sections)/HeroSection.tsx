@@ -67,46 +67,10 @@ export function HeroSection({ accommodationsPage }: HeroSectionProps) {
                 {accommodationsPage.heroTitle}
               </motion.h1>
 
-              <motion.div
-                className="border-l border-white pl-2.5 lg:pl-[10px]"
-                variants={itemVariants}
-              >
+              <motion.div variants={itemVariants}>
                 <p className="font-raleway text-wrap text-base font-semibold leading-[1.2] text-white/90 sm:text-xl lg:text-[20px] lg:leading-[1.2]">
                   {accommodationsPage.heroDescription}
                 </p>
-              </motion.div>
-
-              <motion.div
-                className="flex gap-3 pt-2 sm:gap-6 lg:gap-[24px] lg:pt-4"
-                variants={buttonContainerVariants}
-              >
-                <motion.div
-                  variants={buttonVariants}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <Button
-                    variant="fluid"
-                    size="default"
-                    className="px-5 py-3 lg:h-[48px] lg:w-[164px] lg:px-[20px] lg:py-[12px] lg:text-[16px]"
-                  >
-                    Get Started
-                    <ChevronRight className="ml-3 h-4 w-4 lg:h-[16px] lg:w-[16px]" />
-                  </Button>
-                </motion.div>
-
-                <motion.div
-                  variants={buttonVariants}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <Button
-                    size="default"
-                    className="font-raleway border border-white bg-white/10 px-5 py-3 text-base font-semibold text-white backdrop-blur-[20px] hover:bg-white/20 lg:h-[48px] lg:w-[164px] lg:px-[20px] lg:py-[12px] lg:text-[16px]"
-                  >
-                    Explore
-                  </Button>
-                </motion.div>
               </motion.div>
             </div>
           </motion.div>

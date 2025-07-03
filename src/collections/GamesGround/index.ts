@@ -1,13 +1,13 @@
 import type { CollectionConfig } from 'payload'
 import { slugField } from '@/fields/slug'
 import { populatePublishedAt } from '@/hooks/populatePublishedAt'
-import { revalidateDiningArea } from './hooks/revalidateDiningArea'
+import { revalidateGamesGround } from './hooks/revalidateGamesGround'
 
-export const DiningArea: CollectionConfig = {
-  slug: 'dining-area',
+export const GamesGround: CollectionConfig = {
+  slug: 'games-ground',
   labels: {
-    singular: 'Dining Area',
-    plural: 'Dining Areas',
+    singular: 'Games Ground',
+    plural: 'Games Grounds',
   },
   admin: {
     useAsTitle: 'title',
@@ -18,7 +18,7 @@ export const DiningArea: CollectionConfig = {
   },
   hooks: {
     beforeChange: [populatePublishedAt],
-    afterChange: [revalidateDiningArea],
+    afterChange: [revalidateGamesGround],
   },
   fields: [
     {
@@ -32,14 +32,14 @@ export const DiningArea: CollectionConfig = {
               type: 'text',
               required: true,
               admin: {
-                description: 'Name of the attraction (e.g., "Mini Rafting", "Giant Flower")',
+                description: 'Name of the games ground (e.g., Sawo, Palem, Negla)',
               },
             },
             {
               name: 'mapCode',
               type: 'text',
               admin: {
-                description: 'Map code for the dining area (eg. 1, 2, 3, etc.)',
+                description: 'Map code for the games ground (eg. 1, 2, 3, etc.)',
               },
             },
             {
@@ -69,7 +69,7 @@ export const DiningArea: CollectionConfig = {
                 },
               ],
               admin: {
-                description: 'Points of the attraction',
+                description: 'Points of the games ground',
               },
             },
             {
@@ -78,42 +78,35 @@ export const DiningArea: CollectionConfig = {
               relationTo: 'media',
               required: true,
               admin: {
-                description: 'Main image for the attraction',
+                description: 'Main image for the games ground',
               },
             },
           ],
         },
         {
-          label: 'Dining Area Details',
+          label: 'Games Ground Details',
           fields: [
-            {
-              name: 'menuLink',
-              type: 'text',
-              admin: {
-                description: 'Link to the menu (eg. https://www.google.com)',
-              },
-            },
             {
               name: 'groupSize',
               type: 'group',
               fields: [
                 {
-                  name: 'minimum',
+                  name: 'iceBrakingCapacity',
                   type: 'number',
                   admin: {
-                    description: 'Standard number of participants',
+                    description: 'Ice breaking capacity',
                   },
                 },
                 {
-                  name: 'maximum',
+                  name: 'gamesCapacity',
                   type: 'number',
                   admin: {
-                    description: 'Maximum number of participants',
+                    description: 'Games capacity',
                   },
                 },
               ],
               admin: {
-                description: 'Group size requirements',
+                description: 'Group size requirements for ice breaking and games',
               },
             },
           ],

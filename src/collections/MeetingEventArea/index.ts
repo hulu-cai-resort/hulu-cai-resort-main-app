@@ -22,41 +22,108 @@ export const MeetingEventArea: CollectionConfig = {
   },
   fields: [
     {
+      name: 'title',
+      type: 'text',
+      required: true,
+      admin: {
+        description: 'e.g., Bale Sawo, Amphy Arunaya, etc.',
+      },
+    },
+    {
+      name: 'mapsCode',
+      type: 'text',
+      admin: {
+        description: 'Maps code for this accommodation location (eg. 1, 2, 3, etc.)',
+      },
+    },
+    {
+      name: 'location',
+      type: 'select',
+      options: [
+        {
+          label: 'Valley - Cibedug',
+          value: 'valley-cibedug',
+        },
+        {
+          label: 'Hills - Babakan',
+          value: 'hills-babakan',
+        },
+      ],
+      enumName: 'meeting_event_area_location',
+    },
+    {
+      name: 'buildingType',
+      type: 'select',
+
+      options: [
+        {
+          label: 'Bale',
+          value: 'bale',
+        },
+        {
+          label: 'Ballroom',
+          value: 'ballroom',
+        },
+        {
+          label: 'Amphitheater',
+          value: 'amphitheater',
+        },
+      ],
+      enumName: 'meeting_event_area_building_type',
+      admin: {
+        description: 'Type of building',
+      },
+    },
+    {
+      name: 'areaType',
+      type: 'select',
+      options: [
+        {
+          label: 'Indoor',
+          value: 'indoor',
+        },
+        {
+          label: 'Outdoor',
+          value: 'outdoor',
+        },
+      ],
+      enumName: 'meeting_event_area_area_type',
+    },
+    {
       type: 'tabs',
       tabs: [
         {
           label: 'General Information',
           fields: [
             {
-              name: 'title',
-              type: 'text',
-              required: true,
-              admin: {
-                description: 'Name of the meeting event area (e.g., "Team Building", "Paint Ball")',
-              },
-            },
-            ...slugField(),
-            {
-              name: 'shortDescription',
+              name: 'description',
               type: 'textarea',
               admin: {
                 description: 'Brief description displayed on meeting event area cards',
               },
             },
             {
-              name: 'detailedDescription',
-              type: 'richText',
+              name: 'size',
+              type: 'number',
               admin: {
-                description: 'Detailed description for the meeting event area detail page',
+                description: 'Size in square meters (eg. 125sqm, 100sqm, etc.)',
               },
             },
             {
-              name: 'image',
-              type: 'upload',
-              relationTo: 'media',
+              name: 'images',
+              type: 'array',
               required: true,
+              minRows: 1,
+              fields: [
+                {
+                  name: 'image',
+                  type: 'upload',
+                  relationTo: 'media',
+                  required: true,
+                },
+              ],
               admin: {
-                description: 'Main image for the meeting event area',
+                description: 'Photo gallery of the accommodation',
               },
             },
           ],
@@ -65,21 +132,26 @@ export const MeetingEventArea: CollectionConfig = {
           label: 'Meeting Event Area Details',
           fields: [
             {
-              name: 'features',
-              type: 'array',
-              label: 'Meeting Event Features',
+              name: 'dimensions',
+              type: 'group',
               fields: [
                 {
-                  name: 'feature',
-                  type: 'text',
-                  required: true,
+                  name: 'width',
+                  type: 'number',
                   admin: {
-                    description: 'Individual feature or highlight (e.g., "Lorem ipsum")',
+                    description: 'Width in meters (lebar) (10, 15, 20, etc.)',
+                  },
+                },
+                {
+                  name: 'length',
+                  type: 'number',
+                  admin: {
+                    description: 'Length in meters (panjang) (10, 15, 20, etc.)',
                   },
                 },
               ],
               admin: {
-                description: 'List of features or highlights for this activity',
+                description: 'Dimensions of the meeting event area',
               },
             },
             {
@@ -103,6 +175,26 @@ export const MeetingEventArea: CollectionConfig = {
               ],
               admin: {
                 description: 'Group size requirements',
+              },
+            },
+          ],
+        },
+        {
+          label: 'Pricing & Availability',
+          fields: [
+            {
+              name: 'priceStartingFrom',
+              type: 'number',
+              required: true,
+              admin: {
+                description: 'Starting price in IDR',
+              },
+            },
+            {
+              name: 'priceUnit',
+              type: 'text',
+              admin: {
+                description: 'Price unit (eg. per 8 hours)',
               },
             },
           ],

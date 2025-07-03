@@ -12,6 +12,7 @@ import {
   slideUpVariants,
   gridContainerVariants,
 } from '@/utilities/variants'
+import { useRouter } from 'next/navigation'
 
 // Import Swiper styles
 import 'swiper/css'
@@ -77,6 +78,8 @@ const dummyCottages = [
 ]
 
 export default function CottagesSection() {
+  const router = useRouter()
+
   return (
     <motion.section
       className=""
@@ -105,6 +108,7 @@ export default function CottagesSection() {
               className="flex items-center justify-center gap-2.5 rounded-[33.64px] bg-[#092B1A] px-9 py-1.5 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
+              onClick={() => router.push('/accommodations/cottage')}
             >
               <span className="font-raleway text-base font-semibold leading-[1.75] text-white">
                 More Cottage

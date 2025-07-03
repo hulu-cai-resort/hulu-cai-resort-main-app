@@ -1,7 +1,7 @@
 import { VillaPage } from '@/payload-types'
 import { getCachedGlobal } from '@/utilities/getGlobals'
 import ScrollIndicator from '@/components/ScrollIndicator'
-import { HeroSection } from './(_sections)/HeroSection'
+import { AccommodationHeroSection } from '@/components/AccommodationHeroSection'
 import AccommodationsDetail from './(_sections)/AccommodationsDetail'
 
 // Dummy data for accommodations
@@ -111,7 +111,7 @@ export default async function Accommodations() {
 
   return (
     <>
-      <HeroSection villaPage={villaPage} />
+      <AccommodationHeroSection accommodationPage={villaPage} showButtons={false} />
       <ScrollIndicator />
       <AccommodationsDetail accommodations={accommodationsData} />
     </>
