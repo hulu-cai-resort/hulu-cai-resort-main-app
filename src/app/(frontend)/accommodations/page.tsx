@@ -16,8 +16,11 @@ export default async function Accommodations() {
   return (
     <>
       <HeroSection accommodationsPage={accommodationsPage} />
-      <ScrollIndicator />
-      <div className="mx-auto flex w-full max-w-7xl flex-col space-y-6 px-5 py-10 sm:px-8">
+      <ScrollIndicator href="#accommodations" />
+      <div
+        id="accommodations"
+        className="mx-auto flex w-full max-w-7xl flex-col space-y-6 px-5 py-10 sm:px-8"
+      >
         <div className="flex w-full flex-col items-stretch gap-3">
           <h1 className="font-raleway text-4xl font-bold leading-[1.278] text-[#1D1D1D]">
             Our Accomodation

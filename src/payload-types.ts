@@ -132,6 +132,8 @@ export interface Config {
     'activities-page': ActivitiesPage;
     'dining-page': DiningPage;
     'events-page': EventsPage;
+    'events-indoor-page': EventsIndoorPage;
+    'events-outdoor-page': EventsOutdoorPage;
     'reservation-faq-page': ReservationFaqPage;
   };
   globalsSelect: {
@@ -148,6 +150,8 @@ export interface Config {
     'activities-page': ActivitiesPageSelect<false> | ActivitiesPageSelect<true>;
     'dining-page': DiningPageSelect<false> | DiningPageSelect<true>;
     'events-page': EventsPageSelect<false> | EventsPageSelect<true>;
+    'events-indoor-page': EventsIndoorPageSelect<false> | EventsIndoorPageSelect<true>;
+    'events-outdoor-page': EventsOutdoorPageSelect<false> | EventsOutdoorPageSelect<true>;
     'reservation-faq-page': ReservationFaqPageSelect<false> | ReservationFaqPageSelect<true>;
   };
   locale: null;
@@ -3682,6 +3686,116 @@ export interface EventsPage {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "events-indoor-page".
+ */
+export interface EventsIndoorPage {
+  id: number;
+  /**
+   * Main title displayed in the hero section
+   */
+  heroTitle: string;
+  /**
+   * Description text displayed below the hero title
+   */
+  heroDescription: string;
+  /**
+   * Background image for the hero section
+   */
+  heroImage?: (number | null) | Media;
+  /**
+   * Title for the events section
+   */
+  eventsTitle: string;
+  /**
+   * Description text for the events section
+   */
+  eventsDescription: string;
+  meta?: {
+    /**
+     * SEO title for the events indoor page (appears in browser tab and search results)
+     */
+    title?: string | null;
+    /**
+     * SEO meta description for search results (150-160 characters recommended)
+     */
+    description?: string | null;
+    /**
+     * SEO keywords separated by commas (e.g., "events, team building, outbound, nature adventures")
+     */
+    keywords?: string | null;
+    /**
+     * Open Graph image for social media sharing
+     */
+    image?: (number | null) | Media;
+  };
+  /**
+   * Canonical URL for this page (leave blank to use default)
+   */
+  canonicalUrl?: string | null;
+  /**
+   * Check to prevent search engines from indexing this page
+   */
+  noindex?: boolean | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "events-outdoor-page".
+ */
+export interface EventsOutdoorPage {
+  id: number;
+  /**
+   * Main title displayed in the hero section
+   */
+  heroTitle: string;
+  /**
+   * Description text displayed below the hero title
+   */
+  heroDescription: string;
+  /**
+   * Background image for the hero section
+   */
+  heroImage?: (number | null) | Media;
+  /**
+   * Title for the events section
+   */
+  eventsTitle: string;
+  /**
+   * Description text for the events section
+   */
+  eventsDescription: string;
+  meta?: {
+    /**
+     * SEO title for the events outdoor page (appears in browser tab and search results)
+     */
+    title?: string | null;
+    /**
+     * SEO meta description for search results (150-160 characters recommended)
+     */
+    description?: string | null;
+    /**
+     * SEO keywords separated by commas (e.g., "events, team building, outbound, nature adventures")
+     */
+    keywords?: string | null;
+    /**
+     * Open Graph image for social media sharing
+     */
+    image?: (number | null) | Media;
+  };
+  /**
+   * Canonical URL for this page (leave blank to use default)
+   */
+  canonicalUrl?: string | null;
+  /**
+   * Check to prevent search engines from indexing this page
+   */
+  noindex?: boolean | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "reservation-faq-page".
  */
 export interface ReservationFaqPage {
@@ -4504,6 +4618,54 @@ export interface EventsPageSelect<T extends boolean = true> {
   meetingAndEventAreaDescription?: T;
   meetingPackageTitle?: T;
   meetingPackageDescription?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        keywords?: T;
+        image?: T;
+      };
+  canonicalUrl?: T;
+  noindex?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "events-indoor-page_select".
+ */
+export interface EventsIndoorPageSelect<T extends boolean = true> {
+  heroTitle?: T;
+  heroDescription?: T;
+  heroImage?: T;
+  eventsTitle?: T;
+  eventsDescription?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        keywords?: T;
+        image?: T;
+      };
+  canonicalUrl?: T;
+  noindex?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "events-outdoor-page_select".
+ */
+export interface EventsOutdoorPageSelect<T extends boolean = true> {
+  heroTitle?: T;
+  heroDescription?: T;
+  heroImage?: T;
+  eventsTitle?: T;
+  eventsDescription?: T;
   meta?:
     | T
     | {

@@ -27,7 +27,7 @@ export default async function Page() {
       <HeroSection mainPage={mainPage} />
 
       {/* Scroll Indicator */}
-      <ScrollIndicator />
+      <ScrollIndicator href="#activities" />
 
       {/* Activities Section */}
       <ActivitiesSection mainPage={mainPage} />

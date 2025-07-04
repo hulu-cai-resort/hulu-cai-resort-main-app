@@ -37,6 +37,8 @@ import { MeetingEventArea } from './collections/MeetingEventArea'
 import { MeetingPackage } from './collections/MeetingPackage'
 import { GamesGround } from './collections/GamesGround'
 import { AdditionalRent } from './collections/AdditionalRent'
+import { EventsIndoorPage } from './globals/EventsIndoorPage/config'
+import { EventsOutdoorPage } from './globals/EventsOutdoorPage/config'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -116,6 +118,8 @@ export default buildConfig({
     ActivitiesPage,
     DiningPage,
     EventsPage,
+    EventsIndoorPage,
+    EventsOutdoorPage,
     ReservationFAQPage,
   ],
   plugins: [

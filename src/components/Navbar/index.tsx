@@ -66,12 +66,18 @@ export function Navbar() {
           {/* Logo Section */}
           <div className="mr-4 md:mr-9">
             <div
-              className={`flex h-[72px] w-[72px] items-center justify-center rounded-lg border border-white/50 saturate-[1.2] backdrop-blur-[2px] ${
+              className={`flex h-[56px] w-[56px] items-center justify-center rounded-lg border border-white/50 saturate-[1.2] backdrop-blur-[2px] xl:h-[72px] xl:w-[72px] ${
                 isAtTop ? 'bg-white/5' : 'bg-primary/80'
               }`}
             >
               <Link href="/" className="flex h-full w-full items-center justify-center">
-                <Image src="/assets/logo.png" alt="Hulu Cai Camp" width={52} height={52} />
+                <Image
+                  src="/assets/logo.png"
+                  alt="Hulu Cai Camp"
+                  width={50}
+                  height={50}
+                  className="h-[48px] w-[48px] xl:h-[52px] xl:w-[52px]"
+                />
               </Link>
             </div>
           </div>
@@ -102,7 +108,7 @@ export function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
-            className={`flex h-[72px] w-[72px] items-center justify-center rounded-lg border border-white/50 text-white saturate-[1.2] backdrop-blur-[2px] xl:hidden ${
+            className={`flex h-[56px] w-[56px] items-center justify-center rounded-lg border border-white/50 text-white saturate-[1.2] backdrop-blur-[2px] xl:hidden ${
               isAtTop ? 'bg-white/5' : 'bg-primary/80'
             }`}
             onClick={() => setShowMobileMenu(!showMobileMenu)}

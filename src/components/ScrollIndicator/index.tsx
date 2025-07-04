@@ -1,10 +1,10 @@
 import { ChevronsDown } from 'lucide-react'
 import Link from 'next/link'
 
-export default function ScrollIndicator() {
+export default function ScrollIndicator({ href }: { href: string }) {
   return (
     <Link
-      href="#activities"
+      href={href}
       className="relative z-20 -mt-12 flex cursor-pointer justify-center lg:-mt-[48px] lg:justify-center"
     >
       <div className="bg-camp-green-medium flex h-12 w-12 items-center justify-center rounded-full border border-white/50 bg-white/50 backdrop-blur-sm lg:h-[48px] lg:w-[48px] lg:border-white lg:bg-white/50">
