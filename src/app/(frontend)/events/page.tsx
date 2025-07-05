@@ -11,7 +11,7 @@ export default async function Activities() {
   return (
     <>
       <HeroSection eventsPage={eventsPage} />
-      <ScrollIndicator href="#dining" />
+      <ScrollIndicator href="#events" />
 
       <EventSection />
       <MeetingPackageSection />

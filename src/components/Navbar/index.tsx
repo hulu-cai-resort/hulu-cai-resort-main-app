@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion'
+import { cn } from '@/utilities/ui'
 
 interface NavItem {
   label: string
@@ -66,9 +67,12 @@ export function Navbar() {
           {/* Logo Section */}
           <div className="mr-4 md:mr-9">
             <div
-              className={`flex h-[56px] w-[56px] items-center justify-center rounded-lg border border-white/50 saturate-[1.2] backdrop-blur-[2px] xl:h-[72px] xl:w-[72px] ${
-                isAtTop ? 'bg-white/5' : 'bg-primary/80'
-              }`}
+              className={cn(
+                'flex h-[56px] w-[56px] items-center justify-center rounded-lg border border-white/50 saturate-[1.2] backdrop-blur-[2px] xl:h-[72px] xl:w-[72px]',
+                isAtTop ? 'bg-white/5' : 'bg-primary/80',
+                (pathname.includes('/reservation') || pathname.includes('/form')) &&
+                  'bg-primary/80',
+              )}
             >
               <Link href="/" className="flex h-full w-full items-center justify-center">
                 <Image
@@ -84,9 +88,11 @@ export function Navbar() {
 
           {/* Navigation Menu - Desktop */}
           <nav
-            className={`hidden items-center gap-3 rounded-full border border-white/50 p-2 saturate-[1.2] backdrop-blur-[2px] xl:flex ${
-              isAtTop ? 'bg-white/5' : 'bg-primary/80'
-            }`}
+            className={cn(
+              'hidden items-center gap-3 rounded-full border border-white/50 p-2 saturate-[1.2] backdrop-blur-[2px] xl:flex',
+              isAtTop ? 'bg-white/5' : 'bg-primary/80',
+              (pathname.includes('/reservation') || pathname.includes('/form')) && 'bg-primary/80',
+            )}
           >
             {navItems.map((item) => {
               const isActive = pathname.includes(item.href)
@@ -108,9 +114,11 @@ export function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
-            className={`flex h-[56px] w-[56px] items-center justify-center rounded-lg border border-white/50 text-white saturate-[1.2] backdrop-blur-[2px] xl:hidden ${
-              isAtTop ? 'bg-white/5' : 'bg-primary/80'
-            }`}
+            className={cn(
+              'flex h-[56px] w-[56px] items-center justify-center rounded-lg border border-white/50 text-white saturate-[1.2] backdrop-blur-[2px] xl:hidden',
+              isAtTop ? 'bg-white/5' : 'bg-primary/80',
+              (pathname.includes('/reservation') || pathname.includes('/form')) && 'bg-primary/80',
+            )}
             onClick={() => setShowMobileMenu(!showMobileMenu)}
           >
             <div className="relative h-6 w-6">
@@ -175,9 +183,11 @@ export function Navbar() {
           className="fixed left-0 right-0 top-[102px] z-30 mx-auto max-w-7xl px-6 md:px-16 lg:px-40 xl:hidden"
         >
           <div
-            className={`rounded-2xl border border-white/50 p-4 shadow-2xl saturate-[1.2] backdrop-blur-[2px] ${
-              isAtTop ? 'bg-white/5' : 'bg-primary/80'
-            }`}
+            className={cn(
+              'rounded-2xl border border-white/50 bg-white/5 p-4 shadow-2xl saturate-[1.2]',
+              isAtTop ? 'bg-white/5' : 'bg-primary/80',
+              (pathname.includes('/reservation') || pathname.includes('/form')) && 'bg-primary/80',
+            )}
           >
             <nav className="flex flex-col gap-2">
               {navItems.map((item) => {
@@ -190,7 +200,7 @@ export function Navbar() {
                     className={`font-raleway flex items-center justify-center whitespace-nowrap rounded-full px-6 py-4 text-base font-semibold leading-[1.75em] transition-all duration-200 ${
                       isActive
                         ? 'border border-white/50 bg-white/20 font-semibold text-white'
-                        : 'text-white/80 hover:bg-white/10 hover:text-white'
+                        : 'text-base text-white hover:bg-white/10 hover:text-white'
                     }`}
                   >
                     {item.label}

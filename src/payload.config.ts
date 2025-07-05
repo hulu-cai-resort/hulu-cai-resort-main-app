@@ -39,6 +39,7 @@ import { GamesGround } from './collections/GamesGround'
 import { AdditionalRent } from './collections/AdditionalRent'
 import { EventsIndoorPage } from './globals/EventsIndoorPage/config'
 import { EventsOutdoorPage } from './globals/EventsOutdoorPage/config'
+import { ReservationFormPage } from './globals/ReservationFormPage/config'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -121,6 +122,7 @@ export default buildConfig({
     EventsIndoorPage,
     EventsOutdoorPage,
     ReservationFAQPage,
+    ReservationFormPage,
   ],
   plugins: [
     ...plugins,

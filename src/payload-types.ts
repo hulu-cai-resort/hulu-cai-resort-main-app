@@ -135,6 +135,7 @@ export interface Config {
     'events-indoor-page': EventsIndoorPage;
     'events-outdoor-page': EventsOutdoorPage;
     'reservation-faq-page': ReservationFaqPage;
+    'reservation-form-page': ReservationFormPage;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
@@ -153,6 +154,7 @@ export interface Config {
     'events-indoor-page': EventsIndoorPageSelect<false> | EventsIndoorPageSelect<true>;
     'events-outdoor-page': EventsOutdoorPageSelect<false> | EventsOutdoorPageSelect<true>;
     'reservation-faq-page': ReservationFaqPageSelect<false> | ReservationFaqPageSelect<true>;
+    'reservation-form-page': ReservationFormPageSelect<false> | ReservationFormPageSelect<true>;
   };
   locale: null;
   user: User & {
@@ -4054,6 +4056,49 @@ export interface ReservationFaqPage {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "reservation-form-page".
+ */
+export interface ReservationFormPage {
+  id: number;
+  /**
+   * Main title displayed in the hero section
+   */
+  heroTitle: string;
+  /**
+   * Description text displayed below the hero title
+   */
+  heroDescription: string;
+  meta?: {
+    /**
+     * SEO title for the reservation form page (appears in browser tab and search results)
+     */
+    title?: string | null;
+    /**
+     * SEO meta description for search results (150-160 characters recommended)
+     */
+    description?: string | null;
+    /**
+     * SEO keywords separated by commas (e.g., "dining, team building, outbound, nature adventures")
+     */
+    keywords?: string | null;
+    /**
+     * Open Graph image for social media sharing
+     */
+    image?: (number | null) | Media;
+  };
+  /**
+   * Canonical URL for this page (leave blank to use default)
+   */
+  canonicalUrl?: string | null;
+  /**
+   * Check to prevent search engines from indexing this page
+   */
+  noindex?: boolean | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
@@ -4775,6 +4820,27 @@ export interface ReservationFaqPageSelect<T extends boolean = true> {
         noIndex?: T;
         noFollow?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "reservation-form-page_select".
+ */
+export interface ReservationFormPageSelect<T extends boolean = true> {
+  heroTitle?: T;
+  heroDescription?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        keywords?: T;
+        image?: T;
+      };
+  canonicalUrl?: T;
+  noindex?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
