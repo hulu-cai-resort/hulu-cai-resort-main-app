@@ -2597,27 +2597,17 @@ export interface MainPage {
         id?: string | null;
       }[]
     | null;
-  aboutCTA: {
-    link: {
-      type?: ('reference' | 'custom') | null;
-      newTab?: boolean | null;
-      reference?:
-        | ({
-            relationTo: 'pages';
-            value: number | Page;
-          } | null)
-        | ({
-            relationTo: 'posts';
-            value: number | Post;
-          } | null);
-      url?: string | null;
-      label: string;
-      /**
-       * Choose how the link should be rendered.
-       */
-      appearance?: 'default' | null;
-    };
-  };
+  /**
+   * Testimonials from customers
+   */
+  testimonials?:
+    | {
+        name?: string | null;
+        message?: string | null;
+        image?: (number | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
   packagesSectionTitle?: string | null;
   packagesTitle?: string | null;
   packagesDescription?: string | null;
@@ -2644,10 +2634,7 @@ export interface MainPage {
     | {
         title: string;
         icon: 'heart-handshake' | 'projector' | 'tent-tree' | 'volleyball' | 'tent';
-        /**
-         * Highlight this activity
-         */
-        featured?: boolean | null;
+        image: number | Media;
         id?: string | null;
       }[]
     | null;
@@ -2667,6 +2654,15 @@ export interface MainPage {
   reviewsTitle?: string | null;
   reviewsDescription?: string | null;
   /**
+   * Images for the reviews section
+   */
+  reviewsImage?:
+    | {
+        image?: (number | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
+  /**
    * Customer testimonials and reviews
    */
   reviews?:
@@ -2681,27 +2677,6 @@ export interface MainPage {
         id?: string | null;
       }[]
     | null;
-  reviewsCTA: {
-    link: {
-      type?: ('reference' | 'custom') | null;
-      newTab?: boolean | null;
-      reference?:
-        | ({
-            relationTo: 'pages';
-            value: number | Page;
-          } | null)
-        | ({
-            relationTo: 'posts';
-            value: number | Post;
-          } | null);
-      url?: string | null;
-      label: string;
-      /**
-       * Choose how the link should be rendered.
-       */
-      appearance?: 'default' | null;
-    };
-  };
   socialSectionTitle?: string | null;
   socialTitle?: string | null;
   socialDescription?: string | null;
@@ -4197,19 +4172,13 @@ export interface MainPageSelect<T extends boolean = true> {
         description?: T;
         id?: T;
       };
-  aboutCTA?:
+  testimonials?:
     | T
     | {
-        link?:
-          | T
-          | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-              label?: T;
-              appearance?: T;
-            };
+        name?: T;
+        message?: T;
+        image?: T;
+        id?: T;
       };
   packagesSectionTitle?: T;
   packagesTitle?: T;
@@ -4229,7 +4198,7 @@ export interface MainPageSelect<T extends boolean = true> {
     | {
         title?: T;
         icon?: T;
-        featured?: T;
+        image?: T;
         id?: T;
       };
   locationSectionTitle?: T;
@@ -4246,6 +4215,12 @@ export interface MainPageSelect<T extends boolean = true> {
   reviewsSectionTitle?: T;
   reviewsTitle?: T;
   reviewsDescription?: T;
+  reviewsImage?:
+    | T
+    | {
+        image?: T;
+        id?: T;
+      };
   reviews?:
     | T
     | {
@@ -4254,20 +4229,6 @@ export interface MainPageSelect<T extends boolean = true> {
         review?: T;
         featured?: T;
         id?: T;
-      };
-  reviewsCTA?:
-    | T
-    | {
-        link?:
-          | T
-          | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-              label?: T;
-              appearance?: T;
-            };
       };
   socialSectionTitle?: T;
   socialTitle?: T;

@@ -3,7 +3,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
-import type { MainPage } from '@/payload-types'
+import type { MainPage, Media } from '@/payload-types'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination } from 'swiper/modules'
 import { motion } from 'framer-motion'
@@ -16,43 +16,14 @@ import {
 } from '@/utilities/variants'
 import 'swiper/css'
 import 'swiper/css/pagination'
+import { useRouter } from 'next/navigation'
 
 interface PackagesSectionProps {
   mainPage: MainPage
 }
 
-// TODO: Replace with actual data from CMS when database is populated
-const dummyPackages = [
-  {
-    id: '1',
-    title: 'Gathering Package',
-    image: '/media/placeholder-gathering.jpg',
-    description: 'Perfect for team building and group gatherings',
-  },
-  {
-    id: '2',
-    title: 'Meeting Package',
-    image: '/media/placeholder-meeting.jpg',
-    description: 'Professional meeting spaces with modern facilities',
-  },
-  {
-    id: '3',
-    title: 'Camping Package',
-    image: '/media/placeholder-camping.jpg',
-    description: 'Outdoor adventure and camping experiences',
-  },
-  {
-    id: '4',
-    title: 'Kids Program',
-    image: '/media/placeholder-kids.jpg',
-    description: 'Fun and educational activities for children',
-  },
-]
-
 export function PackagesSection({ mainPage }: PackagesSectionProps) {
-  // TODO: Use mainPage.packages when database is populated
-  const packages = dummyPackages
-
+  const router = useRouter()
   return (
     <motion.section
       className="bg-white py-10 lg:py-[64px]"
@@ -72,21 +43,19 @@ export function PackagesSection({ mainPage }: PackagesSectionProps) {
               className="font-raleway text-lg font-semibold leading-[1.33] text-[#D16E2B] md:text-[20px] md:font-bold md:leading-[1.2] lg:text-[20px] lg:font-semibold lg:leading-[1.2]"
               variants={headerTextVariants}
             >
-              Package Vacation
+              {mainPage.packagesSectionTitle}
             </motion.p>
             <motion.h2
               className="font-raleway text-[28px] font-semibold leading-[1.07] text-[#1D1D1D] md:text-[36px] md:font-semibold md:leading-[1.28] lg:mx-auto lg:w-[596px] lg:text-[36px] lg:font-semibold lg:leading-[1.28]"
               variants={headerTextVariants}
             >
-              Find the Perfect Package for You
+              {mainPage.packagesTitle}
             </motion.h2>
             <motion.p
               className="font-raleway text-sm leading-[1.43] text-[#1D1D1D] md:text-[16px] md:leading-[1.75] lg:mx-auto lg:w-[947px] lg:text-[16px] lg:leading-[1.75]"
               variants={headerTextVariants}
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,Lorem ipsum dolor
-              sit amet, consectetur adipiscing elit, sed do eiusmod
+              {mainPage.packagesDescription}
             </motion.p>
           </motion.div>
 
@@ -105,13 +74,11 @@ export function PackagesSection({ mainPage }: PackagesSectionProps) {
               centeredSlides={true}
               pagination={{
                 clickable: true,
-                bulletClass:
-                  'swiper-pagination-bullet !bg-[#A8B4AE] !w-[18px] !h-[8px] !rounded-[20px]',
-                bulletActiveClass: 'swiper-pagination-bullet-active !bg-[#06763F] !w-[55px]',
+                el: '.packages-swiper-pagination',
               }}
               className="!pb-12"
             >
-              {packages.map((pkg, index) => (
+              {mainPage.packages?.map((pkg) => (
                 <SwiperSlide key={pkg.id}>
                   <motion.div
                     className="relative h-[323px] w-full overflow-hidden rounded-[19px] bg-gray-200"
@@ -120,8 +87,17 @@ export function PackagesSection({ mainPage }: PackagesSectionProps) {
                     whileHover="hover"
                     whileTap="tap"
                   >
-                    <div className="absolute inset-0">
-                      <div className="h-full w-full rounded-[19px] bg-gray-300" />
+                    <div
+                      className="absolute inset-0 cursor-pointer"
+                      onClick={() => router.push(pkg.link ?? '')}
+                    >
+                      <Image
+                        src={getMediaUrl((pkg.image as Media)?.url ?? '')}
+                        alt=""
+                        width={500}
+                        height={500}
+                        className="h-full w-full object-cover"
+                      />
                     </div>
                     <div className="absolute bottom-0 left-0 right-0 h-[115px] rounded-b-[19px] bg-gradient-to-t from-black to-transparent px-8 py-3">
                       <div className="flex h-full items-center">
@@ -134,7 +110,36 @@ export function PackagesSection({ mainPage }: PackagesSectionProps) {
                 </SwiperSlide>
               ))}
             </Swiper>
+            <div className="packages-swiper-pagination mt-1 flex justify-center gap-2 sm:mt-6" />
           </motion.div>
+
+          <style jsx global>{`
+            .packages-swiper .swiper-slide {
+              height: auto;
+              display: flex;
+              align-items: stretch;
+            }
+
+            .packages-swiper .swiper-wrapper {
+              align-items: stretch;
+              margin: auto;
+            }
+
+            .packages-swiper .swiper-pagination-bullet {
+              background: #a8b4ae;
+              opacity: 0.6;
+              width: 12px;
+              height: 12px;
+              margin: 0 4px;
+            }
+
+            .activities-swiper .swiper-pagination-bullet-active {
+              background: #06763f;
+              opacity: 1;
+              width: 24px;
+              border-radius: 6px;
+            }
+          `}</style>
 
           {/* Tablet Layout - 2x2 Grid */}
           <div className="hidden sm:block xl:hidden">
@@ -146,7 +151,7 @@ export function PackagesSection({ mainPage }: PackagesSectionProps) {
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.3 }}
               >
-                {packages.map((pkg, index) => (
+                {mainPage.packages?.map((pkg) => (
                   <motion.div
                     key={pkg.id}
                     className="relative h-[327px] w-full overflow-hidden rounded-[20px] bg-gray-200"
@@ -163,8 +168,17 @@ export function PackagesSection({ mainPage }: PackagesSectionProps) {
                     }}
                     style={{ cursor: 'pointer' }}
                   >
-                    <div className="absolute inset-0">
-                      <div className="h-full w-full rounded-[20px] bg-gray-300" />
+                    <div
+                      className="absolute inset-0 cursor-pointer"
+                      onClick={() => router.push(pkg.link ?? '')}
+                    >
+                      <Image
+                        src={getMediaUrl((pkg.image as Media)?.url ?? '')}
+                        alt=""
+                        width={500}
+                        height={500}
+                        className="h-full w-full object-cover"
+                      />
                     </div>
                     <div className="absolute bottom-0 left-0 right-0 h-[87px] rounded-b-[20px] bg-gradient-to-t from-black via-black/50 to-transparent px-5">
                       <div className="flex h-full items-center">
@@ -188,7 +202,7 @@ export function PackagesSection({ mainPage }: PackagesSectionProps) {
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
             >
-              {packages.map((pkg, index) => (
+              {mainPage.packages?.map((pkg) => (
                 <motion.div
                   key={pkg.id}
                   className="relative h-[327px] w-[280px] overflow-hidden rounded-[20px] bg-gray-200"
@@ -205,8 +219,17 @@ export function PackagesSection({ mainPage }: PackagesSectionProps) {
                   }}
                   style={{ cursor: 'pointer' }}
                 >
-                  <div className="absolute inset-0">
-                    <div className="h-full w-full rounded-[20px] bg-gray-300" />
+                  <div
+                    className="absolute inset-0 cursor-pointer"
+                    onClick={() => router.push(pkg.link ?? '')}
+                  >
+                    <Image
+                      src={getMediaUrl((pkg.image as Media)?.url ?? '')}
+                      alt=""
+                      width={500}
+                      height={500}
+                      className="h-full w-full object-cover"
+                    />
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 h-[87px] rounded-b-[20px] bg-gradient-to-t from-black via-black/50 to-transparent px-5">
                     <div className="flex h-full items-center">

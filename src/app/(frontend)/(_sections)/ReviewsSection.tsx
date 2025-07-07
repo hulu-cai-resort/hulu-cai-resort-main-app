@@ -3,7 +3,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
-import type { MainPage } from '@/payload-types'
+import type { MainPage, Media } from '@/payload-types'
 import {
   sectionContainerVariants,
   headerTextVariants,
@@ -12,38 +12,12 @@ import {
   buttonVariants,
   slideUpVariants,
 } from '@/utilities/variants'
+import Image from 'next/image'
+import { getMediaUrl } from '@/utilities/getMediaUrl'
 
 interface ReviewsSectionProps {
   mainPage: MainPage
 }
-
-// TODO: Replace with actual data from CMS when database is populated
-const dummyReviews = [
-  {
-    id: '1',
-    customerName: 'Marina Rosya',
-    review:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing ipsum dolor sit amet, consectetur adipiscing elit',
-    customerImage: '/media/customer-1.jpg',
-    featured: false,
-  },
-  {
-    id: '2',
-    customerName: 'Budi Santoso',
-    review:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing ipsum dolor sit amet, consectetur adipiscing elit',
-    customerImage: '/media/customer-2.jpg',
-    featured: true,
-  },
-  {
-    id: '3',
-    customerName: 'Sari Dewi',
-    review:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing ipsum dolor sit amet, consectetur adipiscing elit',
-    customerImage: '/media/customer-3.jpg',
-    featured: false,
-  },
-]
 
 // Custom variants for photo grid animations
 const photoGridVariants = {
@@ -74,8 +48,7 @@ const photoVariants = {
 }
 
 export function ReviewsSection({ mainPage }: ReviewsSectionProps) {
-  // TODO: Use mainPage.reviews when database is populated
-  const reviews = dummyReviews
+  const reviews = mainPage.reviews ?? []
 
   return (
     <motion.section
@@ -96,21 +69,19 @@ export function ReviewsSection({ mainPage }: ReviewsSectionProps) {
               className="font-raleway text-lg font-semibold leading-[1.33] text-[#D16E2B] md:text-[20px] md:font-semibold md:leading-[1.2] lg:text-[20px] lg:font-semibold lg:leading-[1.2]"
               variants={slideUpVariants}
             >
-              Review Customer
+              {mainPage.reviewsSectionTitle}
             </motion.p>
             <motion.h2
               className="font-raleway text-[28px] font-semibold leading-[1.07] text-[#1D1D1D] md:text-[36px] md:font-semibold md:leading-[1.28] lg:text-[36px] lg:leading-[1.28]"
               variants={slideUpVariants}
             >
-              What Our Customer Says
+              {mainPage.reviewsTitle}
             </motion.h2>
             <motion.p
               className="font-raleway text-sm leading-[1.43] text-[#1D1D1D] md:text-[16px] md:leading-[1.75] lg:mx-auto lg:w-[947px] lg:text-[16px] lg:leading-[1.75]"
               variants={slideUpVariants}
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,Lorem ipsum dolor
-              sit amet, consectetur adipiscing elit, sed do eiusmod
+              {mainPage.reviewsDescription}
             </motion.p>
           </motion.div>
 
@@ -123,27 +94,59 @@ export function ReviewsSection({ mainPage }: ReviewsSectionProps) {
                 <motion.div
                   className="absolute left-0 top-0 h-[93px] w-[140px] overflow-hidden rounded-br-[20px] rounded-tl-[20px] bg-gray-200"
                   variants={photoVariants}
-                />
+                >
+                  <Image
+                    src={getMediaUrl((mainPage.reviewsImage?.[0]?.image as Media)?.url ?? '')}
+                    alt="Review Image"
+                    width={140}
+                    height={93}
+                    className="h-full w-full object-cover"
+                  />
+                </motion.div>
                 {/* Top right image */}
                 <motion.div
                   className="absolute right-0 top-[14px] h-[128px] w-[160px] overflow-hidden rounded-bl-[30px] rounded-tr-[30px] bg-gray-200"
                   variants={photoVariants}
-                />
+                >
+                  <Image
+                    src={getMediaUrl((mainPage.reviewsImage?.[1]?.image as Media)?.url ?? '')}
+                    alt="Review Image"
+                    width={160}
+                    height={128}
+                    className="h-full w-full object-cover"
+                  />
+                </motion.div>
                 {/* Bottom left image */}
                 <motion.div
                   className="absolute bottom-0 left-0 h-[171px] w-[140px] overflow-hidden rounded-br-[30px] rounded-tl-[30px] bg-gray-200"
                   variants={photoVariants}
-                />
+                >
+                  <Image
+                    src={getMediaUrl((mainPage.reviewsImage?.[2]?.image as Media)?.url ?? '')}
+                    alt="Review Image"
+                    width={140}
+                    height={171}
+                    className="h-full w-full object-cover"
+                  />
+                </motion.div>
                 {/* Bottom right image */}
                 <motion.div
                   className="absolute bottom-[5px] right-[0px] h-[114px] w-[160px] overflow-hidden rounded-br-[20px] rounded-tl-[20px] bg-gray-200"
                   variants={photoVariants}
-                />
+                >
+                  <Image
+                    src={getMediaUrl((mainPage.reviewsImage?.[3]?.image as Media)?.url ?? '')}
+                    alt="Review Image"
+                    width={160}
+                    height={114}
+                    className="h-full w-full object-cover"
+                  />
+                </motion.div>
               </motion.div>
 
               {/* Review Cards */}
               <motion.div className="w-full space-y-3" variants={gridContainerVariants}>
-                {reviews.map((review, index) => (
+                {reviews.map((review) => (
                   <motion.div
                     key={review.id}
                     className={`rounded-lg p-2.5 ${
@@ -154,7 +157,15 @@ export function ReviewsSection({ mainPage }: ReviewsSectionProps) {
                     variants={gridCardVariants}
                   >
                     <div className="flex items-start gap-3">
-                      <div className="h-[69px] w-[69px] flex-shrink-0 overflow-hidden rounded-full bg-gray-200" />
+                      <div className="h-[69px] w-[69px] flex-shrink-0 overflow-hidden rounded-full bg-gray-200">
+                        <Image
+                          src={getMediaUrl((review.customerImage as Media)?.url ?? '')}
+                          alt="Review Image"
+                          width={69}
+                          height={69}
+                          className="h-full w-full object-cover"
+                        />
+                      </div>
                       <div className="flex-1">
                         <h4 className="font-raleway mb-0 text-base font-bold leading-[1.88] text-[#1D1D1D]">
                           {review.customerName}
@@ -175,7 +186,14 @@ export function ReviewsSection({ mainPage }: ReviewsSectionProps) {
 
               {/* Button */}
               <motion.div className="w-full" variants={buttonVariants}>
-                <Button className="font-raleway h-[40px] w-full rounded-[8px] bg-[#06763F] text-xs font-semibold leading-[1.33] text-white">
+                <Button
+                  onClick={() => {
+                    window.open(
+                      'https://www.google.com/travel/search?q=camp%20hulu%20cai%20review%20google%20maps&g2lb=4965990%2C4969803%2C72277293%2C72302247%2C72317059%2C72414906%2C72471280%2C72472051%2C72485658%2C72560029%2C72573224%2C72616120%2C72647020%2C72648289%2C72686036%2C72760082%2C72803964%2C72832976%2C72882230%2C72958594%2C72958624%2C72959982%2C72963671%2C72972048%2C73010541&hl=en-ID&gl=id&cs=1&ssta=1&ts=CAESCgoCCAMKAggDEAAaHBIaEhQKBwjpDxAHGA4SBwjpDxAHGA8YATICEAAqBwoFOgNJRFI&qs=CAEyE0Nnb0lnNnJld3NXSnM0b2RFQUU4CEIJEaRr80Qy___DQgkRiIbWCLGLUZo&ap=aAG6AQhvdmVydmlldw&ictx=111&ved=0CAAQ5JsGahcKEwiAmvXj06qOAxUAAAAAHQAAAAAQEQ',
+                    )
+                  }}
+                  className="font-raleway h-[40px] w-full rounded-[8px] bg-[#06763F] text-xs font-semibold leading-[1.33] text-white"
+                >
                   Lihat Selengkapnya
                 </Button>
               </motion.div>
@@ -194,22 +212,54 @@ export function ReviewsSection({ mainPage }: ReviewsSectionProps) {
                 <motion.div
                   className="absolute left-0 top-0 h-[151px] w-[227px] overflow-hidden rounded-br-[20px] rounded-tl-[20px] bg-gray-200"
                   variants={photoVariants}
-                />
+                >
+                  <Image
+                    src={getMediaUrl((mainPage.reviewsImage?.[0]?.image as Media)?.url ?? '')}
+                    alt="Review Image"
+                    width={227}
+                    height={151}
+                    className="h-full w-full object-cover"
+                  />
+                </motion.div>
                 {/* Top right image */}
                 <motion.div
                   className="absolute right-0 top-[24px] h-[209px] w-[313px] overflow-hidden rounded-bl-[30px] rounded-tr-[30px] bg-gray-200"
                   variants={photoVariants}
-                />
+                >
+                  <Image
+                    src={getMediaUrl((mainPage.reviewsImage?.[1]?.image as Media)?.url ?? '')}
+                    alt="Review Image"
+                    width={313}
+                    height={209}
+                    className="h-full w-full object-cover"
+                  />
+                </motion.div>
                 {/* Bottom left image */}
                 <motion.div
                   className="absolute bottom-0 left-0 h-[278px] w-[227px] overflow-hidden rounded-br-[30px] rounded-tl-[30px] bg-gray-200"
                   variants={photoVariants}
-                />
+                >
+                  <Image
+                    src={getMediaUrl((mainPage.reviewsImage?.[2]?.image as Media)?.url ?? '')}
+                    alt="Review Image"
+                    width={227}
+                    height={278}
+                    className="h-full w-full object-cover"
+                  />
+                </motion.div>
                 {/* Bottom right image */}
                 <motion.div
                   className="absolute bottom-[13px] right-[0px] h-[185px] w-[315px] overflow-hidden rounded-br-[20px] rounded-tl-[20px] bg-gray-200"
                   variants={photoVariants}
-                />
+                >
+                  <Image
+                    src={getMediaUrl((mainPage.reviewsImage?.[3]?.image as Media)?.url ?? '')}
+                    alt="Review Image"
+                    width={315}
+                    height={185}
+                    className="h-full w-full object-cover"
+                  />
+                </motion.div>
               </motion.div>
 
               {/* Review Cards */}
@@ -228,7 +278,15 @@ export function ReviewsSection({ mainPage }: ReviewsSectionProps) {
                     variants={gridCardVariants}
                   >
                     <div className="flex items-start gap-[13px]">
-                      <div className="h-[69px] w-[69px] flex-shrink-0 overflow-hidden rounded-full bg-gray-200" />
+                      <div className="h-[69px] w-[69px] flex-shrink-0 overflow-hidden rounded-full bg-gray-200">
+                        <Image
+                          src={getMediaUrl((review.customerImage as Media)?.url ?? '')}
+                          alt="Review Image"
+                          width={69}
+                          height={69}
+                          className="h-full w-full object-cover"
+                        />
+                      </div>
                       <div className="w-[332px] flex-1">
                         <h4 className="font-raleway mb-0 text-base font-bold leading-[1.88] text-[#1D1D1D]">
                           {review.customerName}
@@ -252,7 +310,14 @@ export function ReviewsSection({ mainPage }: ReviewsSectionProps) {
 
                 {/* Button */}
                 <motion.div className="pt-6" variants={buttonVariants}>
-                  <Button className="font-raleway h-[48px] w-full rounded-[8px] bg-[#06763F] text-base font-semibold leading-[1.75] text-white">
+                  <Button
+                    onClick={() => {
+                      window.open(
+                        'https://www.google.com/travel/search?q=camp%20hulu%20cai%20review%20google%20maps&g2lb=4965990%2C4969803%2C72277293%2C72302247%2C72317059%2C72414906%2C72471280%2C72472051%2C72485658%2C72560029%2C72573224%2C72616120%2C72647020%2C72648289%2C72686036%2C72760082%2C72803964%2C72832976%2C72882230%2C72958594%2C72958624%2C72959982%2C72963671%2C72972048%2C73010541&hl=en-ID&gl=id&cs=1&ssta=1&ts=CAESCgoCCAMKAggDEAAaHBIaEhQKBwjpDxAHGA4SBwjpDxAHGA8YATICEAAqBwoFOgNJRFI&qs=CAEyE0Nnb0lnNnJld3NXSnM0b2RFQUU4CEIJEaRr80Qy___DQgkRiIbWCLGLUZo&ap=aAG6AQhvdmVydmlldw&ictx=111&ved=0CAAQ5JsGahcKEwiAmvXj06qOAxUAAAAAHQAAAAAQEQ',
+                      )
+                    }}
+                    className="font-raleway h-[48px] w-full rounded-[8px] bg-[#06763F] text-base font-semibold leading-[1.75] text-white"
+                  >
                     Lihat Selengkapnya
                   </Button>
                 </motion.div>
@@ -272,22 +337,54 @@ export function ReviewsSection({ mainPage }: ReviewsSectionProps) {
                 <motion.div
                   className="absolute left-0 top-0 h-[151px] w-[227px] overflow-hidden rounded-br-[20px] rounded-tl-[20px] bg-gray-200"
                   variants={photoVariants}
-                />
+                >
+                  <Image
+                    src={getMediaUrl((mainPage.reviewsImage?.[0]?.image as Media)?.url ?? '')}
+                    alt="Review Image"
+                    width={227}
+                    height={151}
+                    className="h-full w-full object-cover"
+                  />
+                </motion.div>
                 {/* Top right image */}
                 <motion.div
                   className="absolute right-0 top-[24px] h-[209px] w-[313px] overflow-hidden rounded-bl-[30px] rounded-tr-[30px] bg-gray-200"
                   variants={photoVariants}
-                />
+                >
+                  <Image
+                    src={getMediaUrl((mainPage.reviewsImage?.[1]?.image as Media)?.url ?? '')}
+                    alt="Review Image"
+                    width={313}
+                    height={209}
+                    className="h-full w-full object-cover"
+                  />
+                </motion.div>
                 {/* Bottom left image */}
                 <motion.div
                   className="absolute bottom-0 left-0 h-[278px] w-[227px] overflow-hidden rounded-br-[30px] rounded-tl-[30px] bg-gray-200"
                   variants={photoVariants}
-                />
+                >
+                  <Image
+                    src={getMediaUrl((mainPage.reviewsImage?.[2]?.image as Media)?.url ?? '')}
+                    alt="Review Image"
+                    width={227}
+                    height={278}
+                    className="h-full w-full object-cover"
+                  />
+                </motion.div>
                 {/* Bottom right image */}
                 <motion.div
                   className="absolute bottom-[13px] right-[0px] h-[185px] w-[315px] overflow-hidden rounded-br-[20px] rounded-tl-[20px] bg-gray-200"
                   variants={photoVariants}
-                />
+                >
+                  <Image
+                    src={getMediaUrl((mainPage.reviewsImage?.[3]?.image as Media)?.url ?? '')}
+                    alt="Review Image"
+                    width={315}
+                    height={185}
+                    className="h-full w-full object-cover"
+                  />
+                </motion.div>
               </motion.div>
 
               {/* Review Cards */}
@@ -304,7 +401,15 @@ export function ReviewsSection({ mainPage }: ReviewsSectionProps) {
                       variants={gridCardVariants}
                     >
                       <div className="flex items-start gap-[13px]">
-                        <div className="h-[69px] w-[69px] flex-shrink-0 overflow-hidden rounded-full bg-gray-200" />
+                        <div className="h-[69px] w-[69px] flex-shrink-0 overflow-hidden rounded-full bg-gray-200">
+                          <Image
+                            src={getMediaUrl((review.customerImage as Media)?.url ?? '')}
+                            alt="Review Image"
+                            width={69}
+                            height={69}
+                            className="h-full w-full object-cover"
+                          />
+                        </div>
                         <div className="w-[332px] flex-1">
                           <h4 className="font-raleway mb-0 text-base font-bold leading-[1.88] text-[#1D1D1D]">
                             {review.customerName}
@@ -329,7 +434,14 @@ export function ReviewsSection({ mainPage }: ReviewsSectionProps) {
 
                 {/* Button */}
                 <motion.div className="w-full max-w-[527px] pt-6" variants={buttonVariants}>
-                  <Button className="font-raleway h-[48px] w-full rounded-[8px] bg-[#06763F] text-base font-semibold leading-[1.75] text-white">
+                  <Button
+                    onClick={() => {
+                      window.open(
+                        'https://www.google.com/travel/search?q=camp%20hulu%20cai%20review%20google%20maps&g2lb=4965990%2C4969803%2C72277293%2C72302247%2C72317059%2C72414906%2C72471280%2C72472051%2C72485658%2C72560029%2C72573224%2C72616120%2C72647020%2C72648289%2C72686036%2C72760082%2C72803964%2C72832976%2C72882230%2C72958594%2C72958624%2C72959982%2C72963671%2C72972048%2C73010541&hl=en-ID&gl=id&cs=1&ssta=1&ts=CAESCgoCCAMKAggDEAAaHBIaEhQKBwjpDxAHGA4SBwjpDxAHGA8YATICEAAqBwoFOgNJRFI&qs=CAEyE0Nnb0lnNnJld3NXSnM0b2RFQUU4CEIJEaRr80Qy___DQgkRiIbWCLGLUZo&ap=aAG6AQhvdmVydmlldw&ictx=111&ved=0CAAQ5JsGahcKEwiAmvXj06qOAxUAAAAAHQAAAAAQEQ',
+                      )
+                    }}
+                    className="font-raleway h-[48px] w-full rounded-[8px] bg-[#06763F] text-base font-semibold leading-[1.75] text-white"
+                  >
                     Lihat Selengkapnya
                   </Button>
                 </motion.div>

@@ -119,7 +119,7 @@ export default function AccommodationsDetail({ accommodations }: AccommodationsD
   }
 
   return (
-    <div className="mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 xl:px-0">
+    <div className="mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 xl:px-0" id="accommodations">
       {/* Inject custom Swiper styles */}
       <style dangerouslySetInnerHTML={{ __html: swiperStyles }} />
 

@@ -20,26 +20,6 @@ interface SocialMediaSectionProps {
   mainPage: MainPage
 }
 
-// TODO: Replace with actual data from CMS when database is populated
-const dummySocialData = {
-  socialLinks: [
-    {
-      id: '1',
-      platform: 'Instagram',
-      username: '@camphulucai.chc',
-      url: 'https://instagram.com/camphulucai.chc',
-      icon: '📷',
-    },
-    {
-      id: '2',
-      platform: 'YouTube',
-      username: 'Hulucai.camp',
-      url: 'https://youtube.com/hulucai.camp',
-      icon: '📺',
-    },
-  ],
-}
-
 // Custom variants for social media section
 const socialImageVariants = {
   hidden: {
@@ -80,8 +60,7 @@ const socialButtonHoverVariants = {
 }
 
 export function SocialMediaSection({ mainPage }: SocialMediaSectionProps) {
-  // TODO: Use mainPage.socialLinks when database is populated
-  const socialLinks = dummySocialData.socialLinks
+  const socialLinks = mainPage.socialLinks ?? []
 
   return (
     <motion.section
@@ -121,22 +100,20 @@ export function SocialMediaSection({ mainPage }: SocialMediaSectionProps) {
                     className="font-raleway text-lg font-semibold leading-[1.33] text-[#D16E2B]"
                     variants={slideUpVariants}
                   >
-                    Social Media
+                    {mainPage.socialSectionTitle}
                   </motion.p>
                   <div className="space-y-2.5">
                     <motion.h2
                       className="font-raleway text-[28px] font-semibold leading-[1.07] text-[#1D1D1D]"
                       variants={slideUpVariants}
                     >
-                      Let&apos;s Check this out our Social Media
+                      {mainPage.socialTitle}
                     </motion.h2>
                     <motion.p
                       className="font-raleway text-sm leading-[1.43] text-[#1D1D1D]"
                       variants={slideUpVariants}
                     >
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, Lorem
-                      ipsum dolor
+                      {mainPage.socialDescription}
                     </motion.p>
                   </div>
                 </motion.div>
@@ -157,7 +134,7 @@ export function SocialMediaSection({ mainPage }: SocialMediaSectionProps) {
                       custom={socialButtonHoverVariants}
                     >
                       <div className="flex h-[18px] w-[18px] items-center justify-center">
-                        {social.platform === 'Instagram' ? (
+                        {social.platform === 'instagram' ? (
                           <InstagramIcon className="size-10" />
                         ) : (
                           <YoutubeIcon className="size-10" />
@@ -201,22 +178,20 @@ export function SocialMediaSection({ mainPage }: SocialMediaSectionProps) {
                     className="font-raleway text-xl font-bold leading-[1.2] text-[#D16E2B]"
                     variants={slideUpVariants}
                   >
-                    Social Media
+                    {mainPage.socialSectionTitle}
                   </motion.p>
                   <div className="space-y-2.5">
                     <motion.h2
                       className="font-raleway w-[502px] text-[36px] font-semibold leading-[1.28] text-[#1D1D1D]"
                       variants={slideUpVariants}
                     >
-                      Let&apos;s Check this out our Social Media
+                      {mainPage.socialTitle}
                     </motion.h2>
                     <motion.p
                       className="font-raleway text-base leading-[1.75] text-[#1D1D1D]"
                       variants={slideUpVariants}
                     >
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,Lorem
-                      ipsum dolor
+                      {mainPage.socialDescription}
                     </motion.p>
                   </div>
                 </motion.div>
@@ -234,7 +209,7 @@ export function SocialMediaSection({ mainPage }: SocialMediaSectionProps) {
                       whileTap="tap"
                     >
                       <div className="flex h-[18px] w-[18px] items-center justify-center">
-                        {social.platform === 'Instagram' ? (
+                        {social.platform === 'instagram' ? (
                           <InstagramIcon className="size-10" />
                         ) : (
                           <YoutubeIcon className="size-10" />
@@ -278,29 +253,27 @@ export function SocialMediaSection({ mainPage }: SocialMediaSectionProps) {
                     className="font-raleway text-xl font-bold leading-[1.2] text-[#D16E2B]"
                     variants={slideUpVariants}
                   >
-                    Social Media
+                    {mainPage.socialSectionTitle}
                   </motion.p>
                   <div className="space-y-2.5">
                     <motion.h2
                       className="font-raleway w-full text-[36px] font-semibold leading-[1.28] text-[#1D1D1D]"
                       variants={slideUpVariants}
                     >
-                      Let&apos;s Check this out our Social Media
+                      {mainPage.socialTitle}
                     </motion.h2>
                     <motion.p
                       className="font-raleway text-base leading-[1.75] text-[#1D1D1D]"
                       variants={slideUpVariants}
                     >
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,Lorem
-                      ipsum dolor
+                      {mainPage.socialDescription}
                     </motion.p>
                   </div>
                 </motion.div>
 
                 {/* Social Media Buttons */}
                 <motion.div className="flex items-center gap-11" variants={buttonContainerVariants}>
-                  {socialLinks.map((social) => (
+                  {mainPage.socialLinks?.map((social) => (
                     <motion.a
                       key={social.id}
                       href={social.url}
@@ -311,7 +284,7 @@ export function SocialMediaSection({ mainPage }: SocialMediaSectionProps) {
                       whileTap="tap"
                     >
                       <div className="flex h-[18px] w-[18px] items-center justify-center">
-                        {social.platform === 'Instagram' ? (
+                        {social.platform === 'instagram' ? (
                           <InstagramIcon className="size-10" />
                         ) : (
                           <YoutubeIcon className="size-10" />

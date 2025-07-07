@@ -1,73 +1,36 @@
 'use client'
 
 import React, { useState } from 'react'
-import type { MainPage } from '@/payload-types'
+import type { MainPage, Media } from '@/payload-types'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   headerTextVariants,
   activityImageVariants,
   activityButtonsContainerVariants,
   activityButtonVariants,
-  activityButtonInteractive,
   sidebarContainerVariants,
 } from '@/utilities/variants'
+import Image from 'next/image'
+import { getMediaUrl } from '@/utilities/getMediaUrl'
 
 interface ActivitiesHubSectionProps {
   mainPage: MainPage
 }
 
-// TODO: Replace with actual data from CMS when database is populated
-const dummyActivities = [
-  {
-    id: '1',
-    title: 'Gathering Family',
-    icon: '🤝',
-    image: '/media/gathering-family.jpg',
-    featured: true,
-  },
-  {
-    id: '2',
-    title: 'Meeting Package',
-    icon: '🤝',
-    image: '/media/meeting-package.jpg',
-    featured: false,
-  },
-  {
-    id: '3',
-    title: 'Explore world',
-    icon: '📽️',
-    image: '/media/explore-world.jpg',
-    featured: false,
-  },
-  {
-    id: '4',
-    title: 'Outbound',
-    icon: '🏕️',
-    image: '/media/outbound.jpg',
-    featured: false,
-  },
-  {
-    id: '5',
-    title: 'Kids Program',
-    icon: '🏐',
-    image: '/media/kids-program.jpg',
-    featured: false,
-  },
-  {
-    id: '6',
-    title: 'Camping',
-    icon: '⛺',
-    image: '/media/camping.jpg',
-    featured: false,
-  },
-]
+const iconMapping: Record<string, string> = {
+  'heart-handshake': '🤝',
+  projector: '📽️',
+  'tent-tree': '🏕️',
+  volleyball: '🏐',
+  tent: '⛺',
+}
 
 export function ActivitiesHubSection({ mainPage }: ActivitiesHubSectionProps) {
-  // TODO: Use mainPage.activities when database is populated
-  const activities = dummyActivities
-  const [activeActivity, setActiveActivity] = useState(activities[0] || dummyActivities[0])
+  const activities = mainPage.activities
+  const [activeActivity, setActiveActivity] = useState(activities?.[0])
 
-  const handleActivityClick = (activity: (typeof activities)[0]) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleActivityClick = (activity: any) => {
     setActiveActivity(activity)
   }
 
@@ -100,15 +63,13 @@ export function ActivitiesHubSection({ mainPage }: ActivitiesHubSectionProps) {
               className="font-raleway text-[28px] font-semibold leading-[1.07] text-[#1D1D1D] md:text-[36px] md:font-semibold md:leading-[1.28] lg:mx-auto lg:w-[745px] lg:text-[36px] lg:leading-[1.28]"
               variants={headerTextVariants}
             >
-              Escape the noise. Find your peace together
+              {mainPage.activitiesTitle}
             </motion.h2>
             <motion.p
               className="font-raleway text-sm leading-[1.43] text-[#1D1D1D] md:text-[16px] md:leading-[1.75] lg:mx-auto lg:w-[947px] lg:text-[16px] lg:leading-[1.75]"
               variants={headerTextVariants}
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,Lorem ipsum dolor
-              sit amet, consectetur adipiscing elit, sed do eiusmod
+              {mainPage.activitiesDescription}
             </motion.p>
           </motion.div>
 
@@ -125,13 +86,21 @@ export function ActivitiesHubSection({ mainPage }: ActivitiesHubSectionProps) {
               >
                 <AnimatePresence mode="wait">
                   <motion.div
-                    key={activeActivity.id}
-                    className="mb-5 h-[537px] w-full overflow-hidden rounded-[10px] bg-gray-200 p-6"
+                    key={activeActivity?.id}
+                    className="mb-5 h-[537px] w-full overflow-hidden rounded-[10px] bg-gray-200"
                     variants={activityImageVariants}
                     initial="hidden"
                     animate="visible"
                     exit="exit"
-                  ></motion.div>
+                  >
+                    <Image
+                      src={getMediaUrl((activeActivity.image as Media)?.url ?? '')}
+                      alt=""
+                      width={700}
+                      height={700}
+                      className="h-full w-full object-cover"
+                    />
+                  </motion.div>
                 </AnimatePresence>
               </motion.div>
 
@@ -143,7 +112,7 @@ export function ActivitiesHubSection({ mainPage }: ActivitiesHubSectionProps) {
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.3 }}
               >
-                {activities.map((activity, index) => (
+                {activities?.map((activity) => (
                   <motion.button
                     key={activity.id}
                     onClick={() => handleActivityClick(activity)}
@@ -181,7 +150,7 @@ export function ActivitiesHubSection({ mainPage }: ActivitiesHubSectionProps) {
                         activeActivity.id === activity.id ? 'bg-white/20' : 'bg-gray-200'
                       }`}
                     >
-                      <span className="text-lg">{activity.icon}</span>
+                      <span className="text-lg">{iconMapping[activity.icon]}</span>
                     </div>
                     <span className="font-raleway text-lg font-semibold leading-[1.33]">
                       {activity.title}
@@ -206,12 +175,20 @@ export function ActivitiesHubSection({ mainPage }: ActivitiesHubSectionProps) {
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={activeActivity.id}
-                    className="mb-5 h-[401px] w-[483px] overflow-hidden rounded-[10px] bg-gray-200 p-6"
+                    className="mb-5 h-[401px] w-[483px] overflow-hidden rounded-[10px] bg-gray-200"
                     variants={activityImageVariants}
                     initial="hidden"
                     animate="visible"
                     exit="exit"
-                  ></motion.div>
+                  >
+                    <Image
+                      src={getMediaUrl((activeActivity.image as Media)?.url ?? '')}
+                      alt=""
+                      width={700}
+                      height={700}
+                      className="h-full w-full object-cover"
+                    />
+                  </motion.div>
                 </AnimatePresence>
               </motion.div>
 
@@ -223,7 +200,7 @@ export function ActivitiesHubSection({ mainPage }: ActivitiesHubSectionProps) {
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.3 }}
               >
-                {activities.map((activity, index) => (
+                {activities?.map((activity) => (
                   <motion.button
                     key={activity.id}
                     onClick={() => handleActivityClick(activity)}
@@ -261,7 +238,7 @@ export function ActivitiesHubSection({ mainPage }: ActivitiesHubSectionProps) {
                         activeActivity.id === activity.id ? 'bg-white/20' : 'bg-gray-200'
                       }`}
                     >
-                      <span className="text-lg">{activity.icon}</span>
+                      <span className="text-lg">{iconMapping[activity.icon]}</span>
                     </div>
                     <span className="font-raleway text-xl font-semibold leading-[1.2]">
                       {activity.title}
@@ -287,7 +264,7 @@ export function ActivitiesHubSection({ mainPage }: ActivitiesHubSectionProps) {
                   className="w-[324px] space-y-[30px] p-3"
                   variants={activityButtonsContainerVariants}
                 >
-                  {activities.map((activity, index) => (
+                  {activities?.map((activity) => (
                     <motion.button
                       key={activity.id}
                       onClick={() => handleActivityClick(activity)}
@@ -325,7 +302,7 @@ export function ActivitiesHubSection({ mainPage }: ActivitiesHubSectionProps) {
                           activeActivity.id === activity.id ? 'bg-white/20' : 'bg-gray-200'
                         }`}
                       >
-                        <span className="text-lg">{activity.icon}</span>
+                        <span className="text-lg">{iconMapping[activity.icon]}</span>
                       </div>
                       <span className="font-raleway text-xl font-semibold leading-[1.2]">
                         {activity.title}
@@ -346,12 +323,20 @@ export function ActivitiesHubSection({ mainPage }: ActivitiesHubSectionProps) {
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={activeActivity.id}
-                    className="mb-5 h-[537px] w-full overflow-hidden rounded-[10px] bg-gray-200 p-6"
+                    className="mb-5 h-[537px] w-full overflow-hidden rounded-[10px] bg-gray-200"
                     variants={activityImageVariants}
                     initial="hidden"
                     animate="visible"
                     exit="exit"
-                  ></motion.div>
+                  >
+                    <Image
+                      src={getMediaUrl((activeActivity.image as Media)?.url ?? '')}
+                      alt=""
+                      width={700}
+                      height={700}
+                      className="h-full w-full object-cover"
+                    />
+                  </motion.div>
                 </AnimatePresence>
               </motion.div>
             </div>

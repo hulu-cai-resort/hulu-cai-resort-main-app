@@ -107,7 +107,7 @@ export default async function Cabin() {
   return (
     <>
       <AccommodationHeroSection accommodationPage={cabinPage} />
-      <ScrollIndicator />
+      <ScrollIndicator href="#accommodations" />
       <AccommodationsDetail accommodations={accommodationsData} />
     </>
   )

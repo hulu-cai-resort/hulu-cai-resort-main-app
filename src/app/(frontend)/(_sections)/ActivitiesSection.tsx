@@ -3,7 +3,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
-import type { MainPage } from '@/payload-types'
+import type { MainPage, Media } from '@/payload-types'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination } from 'swiper/modules'
 import { motion } from 'framer-motion'
@@ -17,54 +17,15 @@ import {
 } from '@/utilities/variants'
 import 'swiper/css'
 import 'swiper/css/pagination'
+import { useRouter } from 'next/navigation'
 
 interface ActivitiesSectionProps {
   mainPage: MainPage
 }
 
-// TODO: Replace with actual data from CMS when database is populated
-const dummyActivities = [
-  {
-    id: '1',
-    title: 'Activities',
-    subtitle: 'Camping',
-    image: '/media/placeholder-camping.jpg',
-    featured: true,
-  },
-  {
-    id: '2',
-    title: 'Facilities',
-    subtitle: 'Resort Amenities',
-    image: '/media/placeholder-facilities.jpg',
-    featured: false,
-  },
-  {
-    id: '3',
-    title: 'Accommodation',
-    subtitle: 'Comfortable Stay',
-    image: '/media/placeholder-accommodation.jpg',
-    featured: false,
-  },
-  {
-    id: '4',
-    title: 'Events',
-    subtitle: 'Special Occasions',
-    image: '/media/placeholder-events.jpg',
-    featured: false,
-  },
-  {
-    id: '5',
-    title: 'Food Facility',
-    subtitle: 'Dining Experience',
-    image: '/media/placeholder-dining.jpg',
-    featured: false,
-  },
-]
-
 export function ActivitiesSection({ mainPage }: ActivitiesSectionProps) {
-  // TODO: Use mainPage.services when database is populated
-  const activities = dummyActivities
-  const featuredActivity = activities[0]
+  const router = useRouter()
+  const featuredActivity = mainPage.services?.[0]
 
   if (!featuredActivity) {
     return null
@@ -96,17 +57,24 @@ export function ActivitiesSection({ mainPage }: ActivitiesSectionProps) {
               centeredSlides={true}
               pagination={{
                 clickable: true,
-                bulletClass:
-                  'swiper-pagination-bullet !bg-[#A8B4AE] !w-[18px] !h-[8px] !rounded-full',
-                bulletActiveClass: 'swiper-pagination-bullet-active !bg-[#06763F] !w-[55px]',
+                el: '.swiper-pagination-activities',
               }}
-              className="!px-0 !pb-12"
+              className="activities-swiper !px-0 !pb-12"
             >
-              {activities.map((activity, index) => (
+              {mainPage.services?.map((activity) => (
                 <SwiperSlide key={activity.id}>
                   <div className="relative h-[250px] w-full overflow-hidden rounded-[19px] bg-gray-200">
-                    <div className="absolute inset-0">
-                      <div className="h-full w-full rounded-[19px] bg-gray-300" />
+                    <div
+                      onClick={() => router.push(activity.link ?? '')}
+                      className="absolute inset-0 cursor-pointer"
+                    >
+                      <Image
+                        src={getMediaUrl((activity.image as Media)?.url ?? '')}
+                        alt=""
+                        width={500}
+                        height={500}
+                        className="h-full w-full object-cover"
+                      />
                     </div>
                     <motion.div
                       className="absolute bottom-0 left-0 right-0 h-[115px] rounded-b-[19px] bg-gradient-to-t from-black to-transparent px-3 py-3"
@@ -149,7 +117,36 @@ export function ActivitiesSection({ mainPage }: ActivitiesSectionProps) {
                 </SwiperSlide>
               ))}
             </Swiper>
+            <div className="swiper-pagination-activities mt-1 flex justify-center gap-2 sm:mt-6"></div>
           </motion.div>
+
+          <style jsx global>{`
+            .activities-swiper .swiper-slide {
+              height: auto;
+              display: flex;
+              align-items: stretch;
+            }
+
+            .activities-swiper .swiper-wrapper {
+              align-items: stretch;
+              margin: auto;
+            }
+
+            .activities-swiper .swiper-pagination-bullet {
+              background: #a8b4ae;
+              opacity: 0.6;
+              width: 12px;
+              height: 12px;
+              margin: 0 4px;
+            }
+
+            .activities-swiper .swiper-pagination-bullet-active {
+              background: #06763f;
+              opacity: 1;
+              width: 24px;
+              border-radius: 6px;
+            }
+          `}</style>
 
           {/* Tablet Layout - Featured card on top, 2x2 grid below */}
           <div className="hidden md:block xl:hidden">
@@ -167,8 +164,17 @@ export function ActivitiesSection({ mainPage }: ActivitiesSectionProps) {
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 30 }}
               >
-                <div className="absolute inset-0">
-                  <div className="h-full w-full rounded-[20px] bg-gray-300" />
+                <div
+                  onClick={() => router.push(featuredActivity.link ?? '')}
+                  className="absolute inset-0 cursor-pointer"
+                >
+                  <Image
+                    src={getMediaUrl((featuredActivity.image as Media)?.url ?? '')}
+                    alt=""
+                    width={500}
+                    height={500}
+                    className="h-full w-full object-cover"
+                  />
                 </div>
                 <motion.div
                   className="absolute bottom-0 left-0 right-0 h-[120px] rounded-b-[20px] bg-gradient-to-t from-black to-transparent px-5 py-5"
@@ -211,7 +217,7 @@ export function ActivitiesSection({ mainPage }: ActivitiesSectionProps) {
                 className="grid w-full grid-cols-2 gap-10"
                 variants={gridContainerVariants}
               >
-                {activities.slice(1, 5).map((activity, index) => (
+                {mainPage.services?.slice(1, 5).map((activity) => (
                   <motion.div
                     key={activity.id}
                     className="relative h-[387px] w-full overflow-hidden rounded-[20px] bg-gray-200"
@@ -219,8 +225,17 @@ export function ActivitiesSection({ mainPage }: ActivitiesSectionProps) {
                     whileHover={{ scale: 1.03, y: -5 }}
                     transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                   >
-                    <div className="absolute inset-0">
-                      <div className="h-full w-full rounded-[20px] bg-gray-300" />
+                    <div
+                      onClick={() => router.push(activity.link ?? '')}
+                      className="absolute inset-0 cursor-pointer"
+                    >
+                      <Image
+                        src={getMediaUrl((activity.image as Media)?.url ?? '')}
+                        alt=""
+                        width={500}
+                        height={500}
+                        className="h-full w-full object-cover"
+                      />
                     </div>
                     <motion.div
                       className="via-black/76 absolute bottom-0 left-0 right-0 h-[120px] rounded-b-[20px] bg-gradient-to-t from-black to-black/10 px-5 py-5"
@@ -278,8 +293,17 @@ export function ActivitiesSection({ mainPage }: ActivitiesSectionProps) {
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 30 }}
               >
-                <div className="absolute inset-0">
-                  <div className="h-full w-full rounded-[20px] bg-gray-300" />
+                <div
+                  onClick={() => router.push(featuredActivity.link ?? '')}
+                  className="absolute inset-0 cursor-pointer"
+                >
+                  <Image
+                    src={getMediaUrl((featuredActivity.image as Media)?.url ?? '')}
+                    alt=""
+                    width={500}
+                    height={500}
+                    className="h-full w-full object-cover"
+                  />
                 </div>
                 <motion.div
                   className="absolute bottom-0 left-0 right-0 h-[120px] rounded-b-[20px] bg-gradient-to-t from-black to-transparent px-5 py-5"
@@ -322,7 +346,7 @@ export function ActivitiesSection({ mainPage }: ActivitiesSectionProps) {
                 className="grid w-full grid-cols-2 gap-10"
                 variants={gridContainerVariants}
               >
-                {activities.slice(1, 5).map((activity, index) => (
+                {mainPage.services?.slice(1, 5).map((activity) => (
                   <motion.div
                     key={activity.id}
                     className="relative h-[291px] w-[315px] overflow-hidden rounded-[20px] bg-gray-200"
@@ -330,8 +354,17 @@ export function ActivitiesSection({ mainPage }: ActivitiesSectionProps) {
                     whileHover={{ scale: 1.03, y: -5 }}
                     transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                   >
-                    <div className="absolute inset-0">
-                      <div className="h-full w-full rounded-[20px] bg-gray-300" />
+                    <div
+                      onClick={() => router.push(activity.link ?? '')}
+                      className="absolute inset-0 cursor-pointer"
+                    >
+                      <Image
+                        src={getMediaUrl((activity.image as Media)?.url ?? '')}
+                        alt=""
+                        width={500}
+                        height={500}
+                        className="h-full w-full object-cover"
+                      />
                     </div>
                     <motion.div
                       className="via-black/76 absolute bottom-0 left-0 right-0 h-[120px] rounded-b-[20px] bg-gradient-to-t from-black to-black/10 px-5 py-5"

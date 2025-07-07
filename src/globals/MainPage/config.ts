@@ -161,13 +161,26 @@ export const MainPage: GlobalConfig = {
               },
             },
             {
-              name: 'aboutCTA',
-              type: 'group',
+              name: 'testimonials',
+              type: 'array',
               fields: [
-                link({
-                  appearances: ['default'],
-                }),
+                {
+                  name: 'name',
+                  type: 'text',
+                },
+                {
+                  name: 'message',
+                  type: 'text',
+                },
+                {
+                  name: 'image',
+                  type: 'upload',
+                  relationTo: 'media',
+                },
               ],
+              admin: {
+                description: 'Testimonials from customers',
+              },
             },
           ],
         },
@@ -255,12 +268,10 @@ export const MainPage: GlobalConfig = {
                   required: true,
                 },
                 {
-                  name: 'featured',
-                  type: 'checkbox',
-                  defaultValue: false,
-                  admin: {
-                    description: 'Highlight this activity',
-                  },
+                  name: 'image',
+                  type: 'upload',
+                  relationTo: 'media',
+                  required: true,
                 },
               ],
               admin: {
@@ -340,6 +351,20 @@ export const MainPage: GlobalConfig = {
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
             },
             {
+              name: 'reviewsImage',
+              type: 'array',
+              fields: [
+                {
+                  name: 'image',
+                  type: 'upload',
+                  relationTo: 'media',
+                },
+              ],
+              admin: {
+                description: 'Images for the reviews section',
+              },
+            },
+            {
               name: 'reviews',
               type: 'array',
               fields: [
@@ -370,15 +395,6 @@ export const MainPage: GlobalConfig = {
               admin: {
                 description: 'Customer testimonials and reviews',
               },
-            },
-            {
-              name: 'reviewsCTA',
-              type: 'group',
-              fields: [
-                link({
-                  appearances: ['default'],
-                }),
-              ],
             },
           ],
         },

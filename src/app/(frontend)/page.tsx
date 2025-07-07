@@ -19,7 +19,9 @@ export function generateMetadata(): Metadata {
 }
 
 export default async function Page() {
-  const mainPage = (await getCachedGlobal('main-page', 1)()) as MainPage
+  const mainPage = (await getCachedGlobal('main-page', 4)()) as MainPage
+
+  console.log(mainPage.services)
 
   return (
     <div className="min-h-screen">

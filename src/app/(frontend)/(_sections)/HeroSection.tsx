@@ -14,12 +14,14 @@ import {
   buttonContainerVariants,
   buttonVariants,
 } from '@/utilities/variants'
+import { useRouter } from 'next/navigation'
 
 interface HeroSectionProps {
   mainPage: MainPage
 }
 
 export function HeroSection({ mainPage }: HeroSectionProps) {
+  const router = useRouter()
   return (
     <>
       {/* Hero Section */}
@@ -89,6 +91,7 @@ export function HeroSection({ mainPage }: HeroSectionProps) {
                     variant="fluid"
                     size="default"
                     className="px-5 py-3 lg:h-[48px] lg:w-[164px] lg:px-[20px] lg:py-[12px] lg:text-[16px]"
+                    onClick={() => router.push('#activities')}
                   >
                     Get Started
                     <ChevronRight className="ml-3 h-4 w-4 lg:h-[16px] lg:w-[16px]" />
@@ -103,6 +106,7 @@ export function HeroSection({ mainPage }: HeroSectionProps) {
                   <Button
                     size="default"
                     className="font-raleway border border-white bg-white/10 px-5 py-3 text-base font-semibold text-white backdrop-blur-[20px] hover:bg-white/20 lg:h-[48px] lg:w-[164px] lg:px-[20px] lg:py-[12px] lg:text-[16px]"
+                    onClick={() => router.push('/maps')}
                   >
                     Explore
                   </Button>

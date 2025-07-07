@@ -1,7 +1,7 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { MainPage } from '@/payload-types'
+import { MainPage, Media } from '@/payload-types'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 import { motion } from 'framer-motion'
 import {
@@ -15,66 +15,10 @@ import {
   buttonVariants,
 } from '@/utilities/variants'
 import Image from 'next/image'
-
-// TODO: Replace with actual data from CMS when database is populated
-const dummyData = {
-  sectionTitle: 'Place To Go',
-  title: 'Why Nature Feels Better Here',
-  description:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
-  image: '/media/placeholder-nature.jpg',
-  testimonials: [
-    {
-      id: '1',
-      name: 'Melanie',
-      message: 'Best Experience Ever !',
-      avatar: '/media/avatar-melanie.jpg',
-    },
-    {
-      id: '2',
-      name: 'Carren J',
-      message: "That's a Wonderfull view",
-      avatar: '/media/avatar-carren.jpg',
-    },
-    {
-      id: '3',
-      name: 'Janice M',
-      message: "That's a Wonderfull view",
-      avatar: '/media/avatar-janice.jpg',
-    },
-  ],
-  features: [
-    {
-      id: '1',
-      number: '01',
-      title: 'Lingkungan Alam & Suasana Asri',
-      description:
-        'Terletak di kaki Gunung Pangrango dengan udara sejuk dan panorama hijau, menciptakan suasana alami dan menyegarkan',
-      highlighted: false,
-    },
-    {
-      id: '2',
-      number: '02',
-      title: 'Ragam Aktivitas Outbound & Petualangan',
-      description:
-        'Terletak di kaki Gunung Pangrango dengan udara sejuk dan panorama hijau, menciptakan suasana alami dan menyegarkan',
-      highlighted: true,
-    },
-    {
-      id: '3',
-      number: '03',
-      title: 'Fasilitas Menginap & Event Lengkap',
-      description:
-        'Terletak di kaki Gunung Pangrango dengan udara sejuk dan panorama hijau, menciptakan suasana alami dan menyegarkan',
-      highlighted: false,
-    },
-  ],
-}
+import { useRouter } from 'next/navigation'
 
 export default function PlaceToGoSection({ mainPage }: { mainPage: MainPage }) {
-  // TODO: Use mainPage data when database is populated
-  const data = dummyData
-
+  const router = useRouter()
   return (
     <motion.section
       className="bg-white px-8 py-10 lg:py-[64px]"
@@ -94,19 +38,19 @@ export default function PlaceToGoSection({ mainPage }: { mainPage: MainPage }) {
               className="font-raleway text-lg font-semibold leading-[1.33] text-[#D16E2B] md:text-[20px] md:leading-[1.2] lg:text-[20px] lg:leading-[1.2]"
               variants={headerTextVariants}
             >
-              {data.sectionTitle}
+              {mainPage.aboutSectionTitle}
             </motion.p>
             <motion.h2
               className="font-raleway text-[28px] font-bold leading-[1.07] text-[#1D1D1D] md:mx-auto md:w-[666px] md:text-[36px] md:font-bold md:leading-[1.28] lg:mx-auto lg:w-[510px] lg:text-[36px] lg:leading-[1.28]"
               variants={headerTextVariants}
             >
-              {data.title}
+              {mainPage.aboutTitle}
             </motion.h2>
             <motion.p
               className="font-raleway w-full text-sm leading-[1.43] text-[#1D1D1D] md:mx-auto md:text-[16px] md:leading-[1.75] lg:mx-auto lg:text-[16px] lg:leading-[1.75]"
               variants={headerTextVariants}
             >
-              {data.description}
+              {mainPage.aboutDescription}
             </motion.p>
           </motion.div>
 
@@ -124,7 +68,13 @@ export default function PlaceToGoSection({ mainPage }: { mainPage: MainPage }) {
                   className="ml-[31px] h-[386px] w-[258px] overflow-hidden rounded-[20px] bg-gray-200"
                   variants={mainImageVariants}
                 >
-                  <div className="h-full w-full rounded-[20px] bg-gray-300" />
+                  <Image
+                    src={getMediaUrl((mainPage.aboutImage as Media)?.url ?? '')}
+                    alt=""
+                    width={500}
+                    height={500}
+                    className="h-full w-full object-cover"
+                  />
                 </motion.div>
 
                 {/* Floating testimonial cards */}
@@ -140,13 +90,21 @@ export default function PlaceToGoSection({ mainPage }: { mainPage: MainPage }) {
                     animate={floatingAnimation}
                   >
                     <div className="flex items-center gap-2">
-                      <div className="h-[42px] w-[42px] rounded-full bg-gray-200" />
+                      <div className="h-[42px] w-[42px] overflow-hidden rounded-full bg-gray-200">
+                        <Image
+                          src={getMediaUrl((mainPage.testimonials?.[0]?.image as Media)?.url ?? '')}
+                          alt=""
+                          width={200}
+                          height={200}
+                          className="h-full w-full object-cover"
+                        />
+                      </div>
                       <div className="w-[124px]">
                         <p className="font-raleway text-xs font-semibold leading-[1.33] text-[#1D1D1D]">
-                          {data.testimonials[0]?.name || 'Melanie'}
+                          {mainPage.testimonials?.[0]?.name || 'Melanie'}
                         </p>
                         <p className="font-raleway text-xs leading-[1.33] text-[#1D1D1D]">
-                          {data.testimonials[0]?.message || 'Best Experience Ever !'}
+                          {mainPage.testimonials?.[0]?.message || 'Best Experience Ever !'}
                         </p>
                       </div>
                     </div>
@@ -164,13 +122,21 @@ export default function PlaceToGoSection({ mainPage }: { mainPage: MainPage }) {
                     }}
                   >
                     <div className="flex items-center gap-2">
-                      <div className="h-[42px] w-[42px] rounded-full bg-gray-200" />
+                      <div className="h-[42px] w-[42px] overflow-hidden rounded-full bg-gray-200">
+                        <Image
+                          src={getMediaUrl((mainPage.testimonials?.[1]?.image as Media)?.url ?? '')}
+                          alt=""
+                          width={200}
+                          height={200}
+                          className="h-full w-full object-cover"
+                        />
+                      </div>
                       <div className="w-[135px]">
                         <p className="font-raleway text-xs font-semibold leading-[1.33] text-[#1D1D1D]">
-                          {data.testimonials[1]?.name || 'Carren J'}
+                          {mainPage.testimonials?.[1]?.name || 'Carren J'}
                         </p>
-                        <p className="font-raleway text-center text-xs leading-[1.33] text-[#1D1D1D]">
-                          {data.testimonials[1]?.message || "That's a Wonderfull view"}
+                        <p className="font-raleway text-xs leading-[1.33] text-[#1D1D1D]">
+                          {mainPage.testimonials?.[1]?.message || "That's a Wonderfull view"}
                         </p>
                       </div>
                     </div>
@@ -188,13 +154,21 @@ export default function PlaceToGoSection({ mainPage }: { mainPage: MainPage }) {
                     }}
                   >
                     <div className="flex items-center gap-2">
-                      <div className="h-[42px] w-[42px] rounded-full bg-gray-200" />
+                      <div className="h-[42px] w-[42px] overflow-hidden rounded-full bg-gray-200">
+                        <Image
+                          src={getMediaUrl((mainPage.testimonials?.[2]?.image as Media)?.url ?? '')}
+                          alt=""
+                          width={200}
+                          height={200}
+                          className="h-full w-full object-cover"
+                        />
+                      </div>
                       <div className="w-[135px]">
                         <p className="font-raleway text-xs font-semibold leading-[1.33] text-[#1D1D1D]">
-                          {data.testimonials[2]?.name || 'Janice M'}
+                          {mainPage.testimonials?.[2]?.name || 'Janice M'}
                         </p>
-                        <p className="font-raleway text-center text-xs leading-[1.33] text-[#1D1D1D]">
-                          {data.testimonials[2]?.message || "That's a Wonderfull view"}
+                        <p className="font-raleway text-xs leading-[1.33] text-[#1D1D1D]">
+                          {mainPage.testimonials?.[2]?.message || "That's a Wonderfull view"}
                         </p>
                       </div>
                     </div>
@@ -210,11 +184,11 @@ export default function PlaceToGoSection({ mainPage }: { mainPage: MainPage }) {
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.3 }}
               >
-                {data.features.map((feature, index) => (
+                {mainPage.features?.map((feature, index) => (
                   <motion.div key={feature.id} className="space-y-3" variants={featureVariants}>
                     <div
                       className={`flex h-6 w-10 items-center justify-center rounded-[10px] ${
-                        feature.highlighted ? 'bg-[#D16E2B]' : 'bg-[#092B1A]'
+                        index === 1 ? 'bg-[#D16E2B]' : 'bg-[#092B1A]'
                       }`}
                     >
                       <span className="font-raleway text-base font-normal leading-[1.5] text-white">
@@ -234,7 +208,10 @@ export default function PlaceToGoSection({ mainPage }: { mainPage: MainPage }) {
 
                 <motion.div className="pt-2" variants={buttonVariants}>
                   <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                    <Button className="font-rethink h-[46px] w-full rounded-[8px] bg-[#06763F] text-xs font-semibold leading-[1.33] text-white">
+                    <Button
+                      onClick={() => router.push('/activities')}
+                      className="font-rethink h-[46px] w-full rounded-[8px] bg-[#06763F] text-xs font-semibold leading-[1.33] text-white"
+                    >
                       Mulai Jelajahi
                     </Button>
                   </motion.div>
@@ -257,7 +234,13 @@ export default function PlaceToGoSection({ mainPage }: { mainPage: MainPage }) {
                   className="ml-[84px] h-[577px] w-[385px] overflow-hidden rounded-[20px] bg-gray-200"
                   variants={mainImageVariants}
                 >
-                  <div className="h-full w-full rounded-[20px] bg-gray-300" />
+                  <Image
+                    src={getMediaUrl((mainPage.aboutImage as Media)?.url ?? '')}
+                    alt=""
+                    width={500}
+                    height={500}
+                    className="h-full w-full object-cover"
+                  />
                 </motion.div>
 
                 {/* Floating testimonial cards */}
@@ -273,13 +256,21 @@ export default function PlaceToGoSection({ mainPage }: { mainPage: MainPage }) {
                     animate={floatingAnimation}
                   >
                     <div className="flex items-center gap-2">
-                      <div className="h-[42px] w-[42px] rounded-full bg-gray-200" />
+                      <div className="h-[42px] w-[42px] overflow-hidden rounded-full bg-gray-200">
+                        <Image
+                          src={getMediaUrl((mainPage.testimonials?.[0]?.image as Media)?.url ?? '')}
+                          alt=""
+                          width={200}
+                          height={200}
+                          className="h-full w-full object-cover"
+                        />
+                      </div>
                       <div className="w-[135px]">
                         <p className="font-raleway text-xs font-semibold leading-[1.33] text-[#1D1D1D]">
-                          {data.testimonials[2]?.name || 'Janice M'}
+                          {mainPage.testimonials?.[2]?.name || 'Janice M'}
                         </p>
-                        <p className="font-raleway text-center text-xs leading-[1.33] text-[#1D1D1D]">
-                          {data.testimonials[2]?.message || "That's a Wonderfull view"}
+                        <p className="font-raleway text-xs leading-[1.33] text-[#1D1D1D]">
+                          {mainPage.testimonials?.[2]?.message || "That's a Wonderfull view"}
                         </p>
                       </div>
                     </div>
@@ -297,13 +288,21 @@ export default function PlaceToGoSection({ mainPage }: { mainPage: MainPage }) {
                     }}
                   >
                     <div className="flex items-center gap-2">
-                      <div className="h-[42px] w-[42px] rounded-full bg-gray-200" />
+                      <div className="h-[42px] w-[42px] overflow-hidden rounded-full bg-gray-200">
+                        <Image
+                          src={getMediaUrl((mainPage.testimonials?.[1]?.image as Media)?.url ?? '')}
+                          alt=""
+                          width={200}
+                          height={200}
+                          className="h-full w-full object-cover"
+                        />
+                      </div>
                       <div className="w-[135px]">
                         <p className="font-raleway text-xs font-semibold leading-[1.33] text-[#1D1D1D]">
-                          {data.testimonials[1]?.name || 'Carren J'}
+                          {mainPage.testimonials?.[1]?.name || 'Carren J'}
                         </p>
-                        <p className="font-raleway text-center text-xs leading-[1.33] text-[#1D1D1D]">
-                          {data.testimonials[1]?.message || "That's a Wonderfull view"}
+                        <p className="font-raleway text-xs leading-[1.33] text-[#1D1D1D]">
+                          {mainPage.testimonials?.[1]?.message || "That's a Wonderfull view"}
                         </p>
                       </div>
                     </div>
@@ -321,13 +320,21 @@ export default function PlaceToGoSection({ mainPage }: { mainPage: MainPage }) {
                     }}
                   >
                     <div className="flex items-center gap-2">
-                      <div className="h-[42px] w-[42px] rounded-full bg-gray-200" />
+                      <div className="h-[42px] w-[42px] overflow-hidden rounded-full bg-gray-200">
+                        <Image
+                          src={getMediaUrl((mainPage.testimonials?.[2]?.image as Media)?.url ?? '')}
+                          alt=""
+                          width={200}
+                          height={200}
+                          className="h-full w-full object-cover"
+                        />
+                      </div>
                       <div className="w-[124px]">
                         <p className="font-raleway text-xs font-semibold leading-[1.33] text-[#1D1D1D]">
-                          {data.testimonials[0]?.name || 'Melanie'}
+                          {mainPage.testimonials?.[0]?.name || 'Melanie'}
                         </p>
                         <p className="font-raleway text-xs leading-[1.33] text-[#1D1D1D]">
-                          {data.testimonials[0]?.message || 'Best Experience Ever !'}
+                          {mainPage.testimonials?.[0]?.message || 'Best Experience Ever !'}
                         </p>
                       </div>
                     </div>
@@ -343,11 +350,11 @@ export default function PlaceToGoSection({ mainPage }: { mainPage: MainPage }) {
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.3 }}
               >
-                {data.features.map((feature, index) => (
+                {mainPage.features?.map((feature, index) => (
                   <motion.div key={feature.id} className="space-y-3" variants={featureVariants}>
                     <div
                       className={`flex h-6 w-10 items-center justify-center rounded-[10px] ${
-                        feature.highlighted ? 'bg-[#D16E2B]' : 'bg-[#092B1A]'
+                        index === 1 ? 'bg-[#D16E2B]' : 'bg-[#092B1A]'
                       }`}
                     >
                       <span className="font-raleway text-base font-bold leading-[1.88] text-white">
@@ -367,7 +374,10 @@ export default function PlaceToGoSection({ mainPage }: { mainPage: MainPage }) {
 
                 <motion.div className="pt-2" variants={buttonVariants}>
                   <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                    <Button className="font-rethink h-[46px] w-[156px] rounded-[10px] bg-[#06763F] text-sm font-semibold leading-[1.43] text-white">
+                    <Button
+                      onClick={() => router.push('/activities')}
+                      className="font-rethink h-[46px] w-[156px] rounded-[10px] bg-[#06763F] text-sm font-semibold leading-[1.43] text-white"
+                    >
                       Mulai Jelajahi
                     </Button>
                   </motion.div>
@@ -387,11 +397,11 @@ export default function PlaceToGoSection({ mainPage }: { mainPage: MainPage }) {
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.3 }}
               >
-                {data.features.map((feature, index) => (
+                {mainPage.features?.map((feature, index) => (
                   <motion.div key={feature.id} className="flex gap-4" variants={featureVariants}>
                     <div
                       className={`flex h-6 w-10 items-center justify-center rounded-[10px] ${
-                        feature.highlighted ? 'bg-[#D16E2B]' : 'bg-[#092B1A]'
+                        index === 1 ? 'bg-[#D16E2B]' : 'bg-[#092B1A]'
                       }`}
                     >
                       <span className="font-raleway text-base font-bold leading-[1.88] text-white">
@@ -411,7 +421,10 @@ export default function PlaceToGoSection({ mainPage }: { mainPage: MainPage }) {
 
                 <motion.div className="pt-2" variants={buttonVariants}>
                   <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                    <Button className="font-raleway h-[48px] w-[138px] rounded-[8px] bg-[#06763F] text-base font-semibold leading-[1.75] text-white">
+                    <Button
+                      onClick={() => router.push('/activities')}
+                      className="font-raleway h-[48px] w-[138px] rounded-[8px] bg-[#06763F] text-base font-semibold leading-[1.75] text-white"
+                    >
                       Mulai Jelajahi
                     </Button>
                   </motion.div>
@@ -429,7 +442,13 @@ export default function PlaceToGoSection({ mainPage }: { mainPage: MainPage }) {
                   className="ml-[84px] h-[577px] w-[385px] overflow-hidden rounded-[20px] bg-gray-200"
                   variants={mainImageVariants}
                 >
-                  <div className="h-full w-full rounded-[20px] bg-gray-300" />
+                  <Image
+                    src={getMediaUrl((mainPage.aboutImage as Media)?.url ?? '')}
+                    alt=""
+                    width={500}
+                    height={500}
+                    className="h-full w-full object-cover"
+                  />
                 </motion.div>
 
                 {/* Floating testimonial cards */}
@@ -445,13 +464,21 @@ export default function PlaceToGoSection({ mainPage }: { mainPage: MainPage }) {
                     animate={floatingAnimation}
                   >
                     <div className="flex items-center gap-2">
-                      <div className="h-[42px] w-[42px] rounded-full bg-gray-200" />
+                      <div className="h-[42px] w-[42px] overflow-hidden rounded-full bg-gray-200">
+                        <Image
+                          src={getMediaUrl((mainPage.testimonials?.[0]?.image as Media)?.url ?? '')}
+                          alt=""
+                          width={200}
+                          height={200}
+                          className="h-full w-full object-cover"
+                        />
+                      </div>
                       <div className="w-[135px]">
                         <p className="font-raleway text-xs font-semibold leading-[1.33] text-[#1D1D1D]">
-                          {data.testimonials[2]?.name || 'Janice M'}
+                          {mainPage.testimonials?.[2]?.name || 'Janice M'}
                         </p>
-                        <p className="font-raleway text-center text-xs leading-[1.33] text-[#1D1D1D]">
-                          {data.testimonials[2]?.message || "That's a Wonderfull view"}
+                        <p className="font-raleway text-xs leading-[1.33] text-[#1D1D1D]">
+                          {mainPage.testimonials?.[2]?.message || "That's a Wonderfull view"}
                         </p>
                       </div>
                     </div>
@@ -469,13 +496,21 @@ export default function PlaceToGoSection({ mainPage }: { mainPage: MainPage }) {
                     }}
                   >
                     <div className="flex items-center gap-2">
-                      <div className="h-[42px] w-[42px] rounded-full bg-gray-200" />
+                      <div className="h-[42px] w-[42px] overflow-hidden rounded-full bg-gray-200">
+                        <Image
+                          src={getMediaUrl((mainPage.testimonials?.[1]?.image as Media)?.url ?? '')}
+                          alt=""
+                          width={200}
+                          height={200}
+                          className="h-full w-full object-cover"
+                        />
+                      </div>
                       <div className="w-[135px]">
                         <p className="font-raleway text-xs font-semibold leading-[1.33] text-[#1D1D1D]">
-                          {data.testimonials[1]?.name || 'Carren J'}
+                          {mainPage.testimonials?.[1]?.name || 'Carren J'}
                         </p>
-                        <p className="font-raleway text-center text-xs leading-[1.33] text-[#1D1D1D]">
-                          {data.testimonials[1]?.message || "That's a Wonderfull view"}
+                        <p className="font-raleway text-xs leading-[1.33] text-[#1D1D1D]">
+                          {mainPage.testimonials?.[1]?.message || "That's a Wonderfull view"}
                         </p>
                       </div>
                     </div>
@@ -493,13 +528,21 @@ export default function PlaceToGoSection({ mainPage }: { mainPage: MainPage }) {
                     }}
                   >
                     <div className="flex items-center gap-2">
-                      <div className="h-[42px] w-[42px] rounded-full bg-gray-200" />
+                      <div className="h-[42px] w-[42px] overflow-hidden rounded-full bg-gray-200">
+                        <Image
+                          src={getMediaUrl((mainPage.testimonials?.[2]?.image as Media)?.url ?? '')}
+                          alt=""
+                          width={200}
+                          height={200}
+                          className="h-full w-full object-cover"
+                        />
+                      </div>
                       <div className="w-[124px]">
                         <p className="font-raleway text-xs font-semibold leading-[1.33] text-[#1D1D1D]">
-                          {data.testimonials[0]?.name || 'Melanie'}
+                          {mainPage.testimonials?.[0]?.name || 'Melanie'}
                         </p>
                         <p className="font-raleway text-xs leading-[1.33] text-[#1D1D1D]">
-                          {data.testimonials[0]?.message || 'Best Experience Ever !'}
+                          {mainPage.testimonials?.[0]?.message || 'Best Experience Ever !'}
                         </p>
                       </div>
                     </div>

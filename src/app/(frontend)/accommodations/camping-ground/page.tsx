@@ -103,7 +103,7 @@ export default async function CampingGround() {
   return (
     <>
       <AccommodationHeroSection accommodationPage={campingGroundPage} />
-      <ScrollIndicator />
+      <ScrollIndicator href="#accommodations" />
       <AccommodationsDetail accommodations={accommodationsData} />
     </>
   )

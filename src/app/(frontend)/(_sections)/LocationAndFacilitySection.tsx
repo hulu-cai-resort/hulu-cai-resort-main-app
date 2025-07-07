@@ -8,7 +8,6 @@ import {
   sectionContainerVariants,
   headerTextVariants,
   mainImageVariants,
-  cardContentVariants,
 } from '@/utilities/variants'
 
 export default function LocationAndFacilitySection({ mainPage }: { mainPage: MainPage }) {
@@ -31,21 +30,19 @@ export default function LocationAndFacilitySection({ mainPage }: { mainPage: Mai
               className="font-raleway text-lg font-semibold leading-[1.33] text-[#D16E2B] md:text-[20px] md:font-bold md:leading-[1.2] lg:text-[20px] lg:font-semibold lg:leading-[1.2]"
               variants={headerTextVariants}
             >
-              Our Location and Facility
+              {mainPage.locationSectionTitle}
             </motion.p>
             <motion.h2
               className="font-raleway text-[28px] font-semibold leading-[1.07] text-[#1D1D1D] md:text-[36px] md:font-semibold md:leading-[1.28] lg:mx-auto lg:w-[745px] lg:text-[36px] lg:leading-[1.28]"
               variants={headerTextVariants}
             >
-              Escape the noise. Find your peace together
+              {mainPage.locationTitle}
             </motion.h2>
             <motion.p
               className="font-raleway text-sm leading-[1.43] text-[#1D1D1D] md:text-[16px] md:leading-[1.75] lg:mx-auto lg:w-full lg:text-[16px] lg:leading-[1.75]"
               variants={headerTextVariants}
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,Lorem ipsum dolor
-              sit amet, consectetur adipiscing elit, sed do eiusmod
+              {mainPage.locationDescription}
             </motion.p>
           </motion.div>
 
@@ -59,30 +56,13 @@ export default function LocationAndFacilitySection({ mainPage }: { mainPage: Mai
               >
                 {mainPage.locationImage && typeof mainPage.locationImage === 'object' && (
                   <Image
-                    src={getMediaUrl(mainPage.locationImage.url)}
+                    src={getMediaUrl(mainPage.locationImage.url ?? '')}
                     alt="Camp Location"
                     width={348}
                     height={225}
                     className="h-full w-full object-cover"
                   />
                 )}
-              </motion.div>
-
-              {/* Location Info Card */}
-              <motion.div
-                className="w-[348px] rounded-[12px] bg-white p-6 pb-4"
-                variants={cardContentVariants}
-              >
-                {/* Small Image with Pagination */}
-                <div className="mb-3 h-[186px] w-full overflow-hidden rounded-[12px] bg-gray-200 p-6">
-                  <div className="flex h-full items-end justify-end">
-                    <div className="flex gap-2">
-                      <div className="h-2 w-[18px] rounded-full bg-[#A8B4AE]" />
-                      <div className="h-2 w-[55px] rounded-full bg-[#06763F]" />
-                      <div className="h-2 w-[18px] rounded-full bg-[#A8B4AE]" />
-                    </div>
-                  </div>
-                </div>
               </motion.div>
             </div>
           </div>
@@ -97,7 +77,7 @@ export default function LocationAndFacilitySection({ mainPage }: { mainPage: Mai
               >
                 {mainPage.locationImage && typeof mainPage.locationImage === 'object' && (
                   <Image
-                    src={getMediaUrl(mainPage.locationImage.url)}
+                    src={getMediaUrl(mainPage.locationImage.url ?? '')}
                     alt="Camp Location"
                     width={862}
                     height={305}
@@ -118,7 +98,7 @@ export default function LocationAndFacilitySection({ mainPage }: { mainPage: Mai
               >
                 {mainPage.locationImage && typeof mainPage.locationImage === 'object' && (
                   <Image
-                    src={getMediaUrl(mainPage.locationImage.url)}
+                    src={getMediaUrl(mainPage.locationImage.url ?? '')}
                     alt="Camp Location"
                     width={1279}
                     height={452}
