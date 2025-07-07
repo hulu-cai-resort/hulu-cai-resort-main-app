@@ -18,66 +18,14 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import { useRouter } from 'next/navigation'
+import { Accommodation } from '@/payload-types'
+import { PaginatedDocs } from 'payload'
 
-// Updated dummy villa data to match Figma design
-const dummyVillas = [
-  {
-    id: '1',
-    title: 'Villa Ngenaheun',
-    duration: 'Duration 2 hours',
-    transport: 'Transport Facility',
-    familyPlan: 'Family Plan',
-    image: '/media/villa-1.jpg',
-    pricePerNight: 800000,
-  },
-  {
-    id: '2',
-    title: 'Villa Mountain Escape',
-    duration: 'Duration 3 hours',
-    transport: 'Transport Facility',
-    familyPlan: 'Family Plan',
-    image: '/media/villa-2.jpg',
-    pricePerNight: 950000,
-  },
-  {
-    id: '3',
-    title: 'Villa Ocean Breeze',
-    duration: 'Duration 2 hours',
-    transport: 'Transport Facility',
-    familyPlan: 'Family Plan',
-    image: '/media/villa-3.jpg',
-    pricePerNight: 1200000,
-  },
-  {
-    id: '4',
-    title: 'Villa Forest Sanctuary',
-    duration: 'Duration 4 hours',
-    transport: 'Transport Facility',
-    familyPlan: 'Family Plan',
-    image: '/media/villa-4.jpg',
-    pricePerNight: 750000,
-  },
-  {
-    id: '5',
-    title: 'Villa Sunset Paradise',
-    duration: 'Duration 2 hours',
-    transport: 'Transport Facility',
-    familyPlan: 'Family Plan',
-    image: '/media/villa-5.jpg',
-    pricePerNight: 1100000,
-  },
-  {
-    id: '6',
-    title: 'Villa Heritage Classic',
-    duration: 'Duration 3 hours',
-    transport: 'Transport Facility',
-    familyPlan: 'Family Plan',
-    image: '/media/villa-6.jpg',
-    pricePerNight: 850000,
-  },
-]
-
-export default function VillasSection() {
+export default function VillasSection({
+  accommodations,
+}: {
+  accommodations: PaginatedDocs<Accommodation>
+}) {
   const router = useRouter()
 
   return (
@@ -154,10 +102,10 @@ export default function VillasSection() {
               }}
               className="villas-swiper w-full !pb-12"
             >
-              {dummyVillas.map((villa) => (
-                <SwiperSlide key={villa.id} className="!h-auto">
+              {accommodations.docs.map((accommodation) => (
+                <SwiperSlide key={accommodation.id} className="!h-auto">
                   <div className="mx-auto w-full md:px-1 lg:px-0">
-                    <AccommodationCard accommodation={villa} />
+                    <AccommodationCard accommodation={accommodation} />
                   </div>
                 </SwiperSlide>
               ))}

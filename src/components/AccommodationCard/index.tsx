@@ -5,17 +5,11 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { Clock, Car, Users } from 'lucide-react'
 import { gridCardVariants } from '@/utilities/variants'
+import { Accommodation } from '@/payload-types'
+import { Media } from '@/payload-types'
 
 interface AccommodationCardProps {
-  accommodation: {
-    id: string
-    title: string
-    duration: string
-    transport: string
-    familyPlan: string
-    image: string
-    pricePerNight: number
-  }
+  accommodation: Accommodation
   className?: string
 }
 
@@ -28,7 +22,7 @@ export function AccommodationCard({ accommodation, className = '' }: Accommodati
       {/* Accommodation Image */}
       <div className="aspect-[277.78/201.85] w-full overflow-hidden rounded-[12px] bg-[#E2E6EE] lg:h-[201.85px] xl:w-[277.78px]">
         <Image
-          src={accommodation.image}
+          src={(accommodation.images[0]?.image as Media)?.url ?? ''}
           alt={accommodation.title}
           width={278}
           height={202}
@@ -53,7 +47,7 @@ export function AccommodationCard({ accommodation, className = '' }: Accommodati
                 <Clock className="h-5 w-5 text-[#495560]" />
               </div>
               <span className="font-raleway text-base font-normal leading-[1.75] text-[#495560]">
-                {accommodation.duration}
+                {accommodation.bedrooms} Kamar
               </span>
             </div>
 
@@ -63,7 +57,7 @@ export function AccommodationCard({ accommodation, className = '' }: Accommodati
                 <Car className="h-4 w-5 text-[#495560]" />
               </div>
               <span className="font-raleway text-base font-normal leading-[1.75] text-[#495560]">
-                {accommodation.transport}
+                {accommodation.bathrooms} Kamar Mandi
               </span>
             </div>
 
@@ -73,7 +67,7 @@ export function AccommodationCard({ accommodation, className = '' }: Accommodati
                 <Users className="h-4 w-5 text-[#495560]" />
               </div>
               <span className="font-raleway text-base font-normal leading-[1.75] text-[#495560] lg:w-[85.21px]">
-                {accommodation.familyPlan}
+                {accommodation.floors} Lantai
               </span>
             </div>
           </div>
@@ -89,7 +83,7 @@ export function AccommodationCard({ accommodation, className = '' }: Accommodati
           </span>
           <div className="flex flex-col items-end">
             <span className="font-raleway text-right text-2xl font-bold leading-[1.417] text-[#06763F] drop-shadow-[0px_5.61px_14.58px_rgba(255,255,255,0.4)] lg:w-[157px]">
-              IDR{accommodation.pricePerNight.toLocaleString('id-ID')}
+              IDR{accommodation.priceStartingFrom?.toLocaleString('id-ID')}
             </span>
             <span className="font-raleway text-left text-xs leading-[2] text-[#778088] xl:w-[61.43px]">
               Per malam

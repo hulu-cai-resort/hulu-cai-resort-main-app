@@ -18,6 +18,8 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import { useRouter } from 'next/navigation'
+import { Accommodation } from '@/payload-types'
+import { PaginatedDocs } from 'payload'
 
 // Dummy cabin data
 const dummyCabins = [
@@ -77,7 +79,11 @@ const dummyCabins = [
   },
 ]
 
-export default function CabinsSection() {
+export default function CabinsSection({
+  accommodations,
+}: {
+  accommodations: PaginatedDocs<Accommodation>
+}) {
   const router = useRouter()
 
   return (
@@ -154,10 +160,10 @@ export default function CabinsSection() {
               }}
               className="cabins-swiper w-full !pb-12"
             >
-              {dummyCabins.map((cabin) => (
-                <SwiperSlide key={cabin.id} className="!h-auto">
+              {accommodations.docs.map((accommodation) => (
+                <SwiperSlide key={accommodation.id} className="!h-auto">
                   <div className="mx-auto w-full md:px-1 lg:px-0">
-                    <AccommodationCard accommodation={cabin} />
+                    <AccommodationCard accommodation={accommodation} />
                   </div>
                 </SwiperSlide>
               ))}

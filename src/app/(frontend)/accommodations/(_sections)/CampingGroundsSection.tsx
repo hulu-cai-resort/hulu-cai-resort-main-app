@@ -13,71 +13,19 @@ import {
   gridContainerVariants,
 } from '@/utilities/variants'
 import { useRouter } from 'next/navigation'
+import { Accommodation } from '@/payload-types'
+import { PaginatedDocs } from 'payload'
 
 // Import Swiper styles
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
-// Dummy camping ground data
-const dummyCampingGrounds = [
-  {
-    id: '1',
-    title: 'Camping Site Alpha',
-    duration: 'Duration 1 hour',
-    transport: 'Transport Facility',
-    familyPlan: 'Family Plan',
-    image: '/media/camping-1.jpg',
-    pricePerNight: 150000,
-  },
-  {
-    id: '2',
-    title: 'Camping Site Bravo',
-    duration: 'Duration 2 hours',
-    transport: 'Transport Facility',
-    familyPlan: 'Family Plan',
-    image: '/media/camping-2.jpg',
-    pricePerNight: 180000,
-  },
-  {
-    id: '3',
-    title: 'Camping Site Charlie',
-    duration: 'Duration 1 hour',
-    transport: 'Transport Facility',
-    familyPlan: 'Family Plan',
-    image: '/media/camping-3.jpg',
-    pricePerNight: 200000,
-  },
-  {
-    id: '4',
-    title: 'Camping Site Delta',
-    duration: 'Duration 3 hours',
-    transport: 'Transport Facility',
-    familyPlan: 'Family Plan',
-    image: '/media/camping-4.jpg',
-    pricePerNight: 120000,
-  },
-  {
-    id: '5',
-    title: 'Camping Site Echo',
-    duration: 'Duration 2 hours',
-    transport: 'Transport Facility',
-    familyPlan: 'Family Plan',
-    image: '/media/camping-5.jpg',
-    pricePerNight: 160000,
-  },
-  {
-    id: '6',
-    title: 'Camping Site Foxtrot',
-    duration: 'Duration 2 hours',
-    transport: 'Transport Facility',
-    familyPlan: 'Family Plan',
-    image: '/media/camping-6.jpg',
-    pricePerNight: 140000,
-  },
-]
-
-export default function CampingGroundsSection() {
+export default function CampingGroundsSection({
+  accommodations,
+}: {
+  accommodations: PaginatedDocs<Accommodation>
+}) {
   const router = useRouter()
 
   return (
@@ -154,10 +102,10 @@ export default function CampingGroundsSection() {
               }}
               className="camping-swiper w-full !pb-12"
             >
-              {dummyCampingGrounds.map((campingGround) => (
-                <SwiperSlide key={campingGround.id} className="!h-auto">
+              {accommodations.docs.map((accommodation) => (
+                <SwiperSlide key={accommodation.id} className="!h-auto">
                   <div className="mx-auto w-full md:px-1 lg:px-0">
-                    <AccommodationCard accommodation={campingGround} />
+                    <AccommodationCard accommodation={accommodation} />
                   </div>
                 </SwiperSlide>
               ))}
