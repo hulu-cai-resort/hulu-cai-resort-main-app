@@ -3,7 +3,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { Clock, Car, Users } from 'lucide-react'
+import { Users, BedDouble, Bath, BarChart, BedSingle, Tent } from 'lucide-react'
 import { gridCardVariants } from '@/utilities/variants'
 import { Accommodation } from '@/payload-types'
 import { Media } from '@/payload-types'
@@ -40,34 +40,60 @@ export function AccommodationCard({ accommodation, className = '' }: Accommodati
           </h3>
 
           {/* Amenities */}
-          <div className="flex w-full flex-col gap-1.5 xl:w-[162px]">
+          <div className="flex w-full flex-col gap-1.5 xl:w-[200px]">
             {/* Duration */}
             <div className="flex w-full items-center gap-3">
               <div className="flex h-6 w-6 items-center justify-center">
-                <Clock className="h-5 w-5 text-[#495560]" />
+                {accommodation.type === 'villa' ||
+                accommodation.type === 'cottage' ||
+                accommodation.type === 'cabin' ? (
+                  <BedDouble className="h-4 w-5 text-[#495560]" />
+                ) : (
+                  <Tent className="h-4 w-5 text-[#495560]" />
+                )}
               </div>
               <span className="font-raleway text-base font-normal leading-[1.75] text-[#495560]">
-                {accommodation.bedrooms} Kamar
+                {accommodation.type === 'villa'
+                  ? `${accommodation.bedrooms} Kamar`
+                  : accommodation.type === 'cottage'
+                    ? `${accommodation.extraBeds} Ekstra Kasur`
+                    : accommodation.type === 'cabin'
+                      ? `${accommodation.beds} Kasur`
+                      : `${accommodation.groundCapacity} Tenda`}
               </span>
             </div>
 
             {/* Transport */}
             <div className="flex w-full items-center gap-3">
               <div className="flex h-6 w-6 items-center justify-center">
-                <Car className="h-4 w-5 text-[#495560]" />
+                <Bath className="h-4 w-5 text-[#495560]" />
               </div>
               <span className="font-raleway text-base font-normal leading-[1.75] text-[#495560]">
-                {accommodation.bathrooms} Kamar Mandi
+                {accommodation.type === 'camping_ground'
+                  ? `${accommodation.bathrooms}`
+                  : `${accommodation.bathrooms} Kamar Mandi`}
               </span>
             </div>
 
             {/* Family Plan */}
             <div className="flex items-center gap-3">
               <div className="flex h-6 w-6 items-center justify-center">
-                <Users className="h-4 w-5 text-[#495560]" />
+                {accommodation.type === 'villa' || accommodation.type === 'cottage' ? (
+                  <BarChart className="h-4 w-5 text-[#495560]" />
+                ) : accommodation.type === 'cabin' ? (
+                  <BedSingle className="h-4 w-5 text-[#495560]" />
+                ) : (
+                  <Users className="h-4 w-5 text-[#495560]" />
+                )}
               </div>
-              <span className="font-raleway text-base font-normal leading-[1.75] text-[#495560] lg:w-[85.21px]">
-                {accommodation.floors} Lantai
+              <span className="font-raleway w-full text-base font-normal leading-[1.75] text-[#495560] lg:w-[85.21px]">
+                {accommodation.type === 'villa'
+                  ? `${accommodation.floors} Lantai`
+                  : accommodation.type === 'cottage'
+                    ? `Lantai ${accommodation.floorLocation} `
+                    : accommodation.type === 'cabin'
+                      ? `${accommodation.extraBeds} Ekstra`
+                      : `${accommodation.maxCapacity} Orang`}
               </span>
             </div>
           </div>

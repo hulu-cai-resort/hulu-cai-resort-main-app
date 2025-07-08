@@ -1,4 +1,4 @@
-import { Accommodation, AccommodationsPage } from '@/payload-types'
+import { AccommodationsPage } from '@/payload-types'
 import { getCachedGlobal } from '@/utilities/getGlobals'
 import { HeroSection } from './(_sections)/HeroSection'
 import ScrollIndicator from '@/components/ScrollIndicator'
@@ -8,6 +8,19 @@ import CottagesSection from './(_sections)/CottagesSection'
 import CampingGroundsSection from './(_sections)/CampingGroundsSection'
 import { getPayload } from 'payload'
 import configPromise from '@payload-config'
+
+export async function generateMetadata() {
+  const accommodationsPage = (await getCachedGlobal(
+    'accommodations-page',
+    1,
+  )()) as AccommodationsPage
+
+  return {
+    title: accommodationsPage.seo?.title,
+    description: accommodationsPage.seo?.description,
+    keywords: accommodationsPage.seo?.keywords,
+  }
+}
 
 export default async function Accommodations() {
   const accommodationsPage = (await getCachedGlobal(
@@ -71,13 +84,14 @@ export default async function Accommodations() {
       >
         <div className="flex w-full flex-col items-stretch gap-3">
           <h1 className="font-raleway text-4xl font-bold leading-[1.278] text-[#1D1D1D]">
-            Our Accomodation
+            {accommodationsPage.accommodationsTitle}
           </h1>
           <div className="h-[1.12px] w-full bg-[#CEDADF]" />
         </div>
         <VillasSection accommodations={villas} />
-        <CabinsSection accommodations={cabins} />
         <CottagesSection accommodations={cottages} />
+        <CabinsSection accommodations={cabins} />
+
         <CampingGroundsSection accommodations={campingGrounds} />
       </div>
     </>

@@ -236,10 +236,6 @@ export interface Accommodation {
    */
   floors?: number | null;
   /**
-   * Floor number (e.g., 1, 2, 3)
-   */
-  floorNumber?: number | null;
-  /**
    * Floor location (e.g., Lantai 1, Lantai 2)
    */
   floorLocation?: number | null;
@@ -1623,7 +1619,6 @@ export interface AccommodationsSelect<T extends boolean = true> {
   cabinType?: T;
   size?: T;
   floors?: T;
-  floorNumber?: T;
   floorLocation?: T;
   bedrooms?: T;
   groundCapacity?: T;

@@ -1,6 +1,6 @@
 import React from 'react'
 import { getCachedGlobal } from '@/utilities/getGlobals'
-import type { MainPage, Media } from '@/payload-types'
+import type { MainPage } from '@/payload-types'
 import { ActivitiesSection } from './(_sections)/ActivitiesSection'
 import PlaceToGoSection from './(_sections)/PlaceToGoSection'
 import { PackagesSection } from './(_sections)/PackagesSection'
@@ -19,11 +19,6 @@ export async function generateMetadata(): Promise<Metadata> {
     title: mainPage.seo?.title || 'Home',
     description: mainPage.seo?.description || 'Home',
     keywords: mainPage.seo?.keywords || 'Home',
-    openGraph: {
-      title: mainPage.seo?.title || 'Home',
-      description: mainPage.seo?.description || 'Home',
-      images: (mainPage.seo?.ogImage as Media).url || '/images/og-image.png',
-    },
   }
 }
 

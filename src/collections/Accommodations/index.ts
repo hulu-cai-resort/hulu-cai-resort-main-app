@@ -203,14 +203,6 @@ export const Accommodations: CollectionConfig<'accommodations'> = {
               },
             },
             {
-              name: 'floorNumber',
-              type: 'number',
-              admin: {
-                description: 'Floor number (e.g., 1, 2, 3)',
-                condition: (data) => ['cottage'].includes(data.type),
-              },
-            },
-            {
               name: 'floorLocation',
               type: 'number',
               admin: {
@@ -292,7 +284,7 @@ export const Accommodations: CollectionConfig<'accommodations'> = {
               type: 'number',
               admin: {
                 description: 'Number of bathrooms outside bedrooms',
-                condition: (data) => ['villa', 'cottage', 'c`abin'].includes(data.type),
+                condition: (data) => ['villa', 'cottage', 'cabin'].includes(data.type),
               },
             },
           ],

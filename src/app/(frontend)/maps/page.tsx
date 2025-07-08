@@ -2,9 +2,8 @@ import type { Metadata } from 'next'
 import { getPayload } from 'payload'
 import configPromise from '@payload-config'
 import PageClient from './page.client'
-
-export const dynamic = 'force-static'
-export const revalidate = 600
+import { MapPage } from '@/payload-types'
+import { getCachedGlobal } from '@/utilities/getGlobals'
 
 export default async function MapsPage() {
   const payload = await getPayload({ config: configPromise })
@@ -17,12 +16,12 @@ export default async function MapsPage() {
   return <PageClient mapPage={mapPage} />
 }
 
-export function generateMetadata(): Metadata {
+export async function generateMetadata(): Promise<Metadata> {
+  const mapPage = (await getCachedGlobal('map-page', 1)()) as MapPage
+
   return {
-    title: 'Map & Location - Camp Hulu Cai',
-    description:
-      'Find your way to Camp Hulu Cai with our interactive map. Located at the foot of Mount Pangrango, discover our facilities, accommodations, and activities layout.',
-    keywords:
-      'camp hulu cai map, location, gunung pangrango, camping site map, facilities map, accommodation location, camp layout',
+    title: mapPage.seo?.title,
+    description: mapPage.seo?.description,
+    keywords: mapPage.seo?.keywords,
   }
 }
