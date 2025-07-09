@@ -3345,13 +3345,13 @@ export interface AttractionAmenitiesPage {
    */
   heroImage?: (number | null) | Media;
   /**
-   * Title for the dining section
+   * Title for the attractions section
    */
-  diningTitle: string;
+  attractionsTitle: string;
   /**
-   * Description text for the dining section
+   * Description text for the attractions section
    */
-  diningDescription: string;
+  attractionsDescription: string;
   /**
    * Title for the amenities section
    */
@@ -4505,8 +4505,8 @@ export interface AttractionAmenitiesPageSelect<T extends boolean = true> {
   heroTitle?: T;
   heroDescription?: T;
   heroImage?: T;
-  diningTitle?: T;
-  diningDescription?: T;
+  attractionsTitle?: T;
+  attractionsDescription?: T;
   amenitiesTitle?: T;
   amenitiesDescription?: T;
   seo?:

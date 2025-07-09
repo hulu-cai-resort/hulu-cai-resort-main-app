@@ -47,25 +47,25 @@ export const AttractionAmenitiesPage: GlobalConfig = {
           ],
         },
         {
-          label: 'Dining Section',
+          label: 'Attractions Section',
           fields: [
             {
-              name: 'diningTitle',
+              name: 'attractionsTitle',
               type: 'text',
               required: true,
               defaultValue: 'Attraction',
               admin: {
-                description: 'Title for the dining section',
+                description: 'Title for the attractions section',
               },
             },
             {
-              name: 'diningDescription',
+              name: 'attractionsDescription',
               type: 'textarea',
               required: true,
               defaultValue:
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
               admin: {
-                description: 'Description text for the dining section',
+                description: 'Description text for the attractions section',
               },
             },
           ],

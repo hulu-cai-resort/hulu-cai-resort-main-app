@@ -9,61 +9,17 @@ import {
   gridCardVariants,
   cardContentVariants,
 } from '@/utilities/variants'
+import { DiningArea, DiningPage, Media } from '@/payload-types'
+import { PaginatedDocs } from 'payload'
+import { FeatureItem } from '@/components/FeatureItem'
 
-// Dummy data with 5 dining venues as requested
-const diningData = [
-  {
-    id: 1,
-    title: 'Saung Sawo',
-    location: 'Hills Babakan',
-    standardCapacity: '40',
-    maxCapacity: '60',
-    image: '/media/dining-1.jpg',
-  },
-  {
-    id: 2,
-    title: 'Teras Bale Sawo',
-    location: 'Hills Babakan',
-    standardCapacity: '40',
-    maxCapacity: '60',
-    image: '/media/dining-2.jpg',
-  },
-  {
-    id: 3,
-    title: 'Tenda atau Saung Pakis',
-    location: 'Hills Babakan',
-    standardCapacity: '40',
-    maxCapacity: '60',
-    image: '/media/dining-3.jpg',
-  },
-  {
-    id: 4,
-    title: 'Teras Bale Negla',
-    location: 'Hills Babakan',
-    standardCapacity: '40',
-    maxCapacity: '60',
-    image: '/media/dining-4.jpg',
-  },
-  {
-    id: 5,
-    title: 'Saung Kuliner',
-    location: 'Valley Cibedug',
-    standardCapacity: '40',
-    maxCapacity: '60',
-    image: '/media/dining-5.jpg',
-  },
-]
-
-interface DiningCard {
-  id: number
-  title: string
-  location: string
-  standardCapacity: string
-  maxCapacity: string
-  image: string
-}
-
-export default function DiningSection() {
+export default function DiningSection({
+  dinings,
+  diningPage,
+}: {
+  dinings: PaginatedDocs<DiningArea>
+  diningPage: DiningPage
+}) {
   return (
     <motion.section
       className="bg-[#F5F7FA] py-10 lg:py-[64px]"
@@ -81,19 +37,18 @@ export default function DiningSection() {
             variants={headerTextVariants}
           >
             <h2 className="mb-3 text-[28px] font-semibold leading-[1.07] text-[#1D1D1D] lg:text-[36px] lg:leading-[1.28]">
-              Dining Area
+              {diningPage.heroTitle}
             </h2>
             <p className="text-[14px] leading-[1.43] text-[#4F4F53] lg:text-[16px] lg:leading-[1.75]">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua.
+              {diningPage.heroDescription}
             </p>
           </motion.div>
           {/* Mobile Layout - Vertical Stack */}
           <motion.div className="flex flex-col gap-8 md:hidden" variants={gridContainerVariants}>
-            {diningData.map((dining, index) => (
+            {dinings.docs.map((dining, index) => (
               <motion.div key={dining.id} className="w-full" variants={gridCardVariants}>
                 <MobileDiningCard dining={dining} />
-                {index < diningData.length - 1 && (
+                {index < dinings.docs.length - 1 && (
                   <div className="mx-auto mt-8 h-0.5 w-full bg-[#CACCCF]" />
                 )}
               </motion.div>
@@ -105,7 +60,7 @@ export default function DiningSection() {
             className="hidden md:flex md:flex-col md:items-center md:justify-center md:gap-5 xl:hidden"
             variants={gridContainerVariants}
           >
-            {diningData.map((dining) => (
+            {dinings.docs.map((dining) => (
               <motion.div key={dining.id} className="w-full" variants={gridCardVariants}>
                 <TabletDiningCard dining={dining} />
               </motion.div>
@@ -117,7 +72,7 @@ export default function DiningSection() {
             className="hidden xl:flex xl:flex-col xl:gap-8"
             variants={gridContainerVariants}
           >
-            {diningData.map((dining) => (
+            {dinings.docs.map((dining) => (
               <motion.div key={dining.id} className="w-full" variants={gridCardVariants}>
                 <DesktopDiningCard dining={dining} />
               </motion.div>
@@ -130,13 +85,13 @@ export default function DiningSection() {
 }
 
 // Mobile Card Component
-function MobileDiningCard({ dining }: { dining: DiningCard }) {
+function MobileDiningCard({ dining }: { dining: DiningArea }) {
   return (
     <div className="flex flex-col gap-3">
       {/* Image */}
       <div className="h-[218px] w-full overflow-hidden rounded-[20px] bg-gray-200">
         <Image
-          src={dining.image}
+          src={(dining.image as Media)?.url ?? ''}
           alt={dining.title}
           width={346}
           height={218}
@@ -146,32 +101,24 @@ function MobileDiningCard({ dining }: { dining: DiningCard }) {
 
       {/* Content */}
       <motion.div className="flex w-full flex-col gap-3" variants={cardContentVariants}>
-        <h3 className="text-[18px] font-semibold leading-[1.33] text-[#1D1D1D]">{dining.title}</h3>
+        <h3 className="px-2 text-[18px] font-semibold leading-[1.33] text-[#1D1D1D]">
+          {dining.title}
+        </h3>
 
         {/* Features */}
-        <div className="flex w-full flex-col gap-1">
-          <div className="flex items-center gap-4 py-2">
-            <div className="h-2 w-2 rounded-full bg-[#416340]" />
-            <span className="text-[16px] leading-[1.5] text-[#1D1D1D]">
-              Letak Area: {dining.location}
-            </span>
-          </div>
-          <div className="flex items-center gap-4 py-2">
-            <div className="h-2 w-2 rounded-full bg-[#416340]" />
-            <span className="text-[16px] leading-[1.5] text-[#1D1D1D]">
-              Kapasitas Standar: {dining.standardCapacity}
-            </span>
-          </div>
-          <div className="flex items-center gap-4 py-2">
-            <div className="h-2 w-2 rounded-full bg-[#416340]" />
-            <span className="text-[16px] leading-[1.5] text-[#1D1D1D]">
-              Kapasitas Maksimal: {dining.maxCapacity}
-            </span>
-          </div>
+        <div className="flex w-full flex-col gap-1 px-2">
+          {dining.points?.map((point) => (
+            <FeatureItem key={point.id} icon="location" text={point.point ?? ''} />
+          ))}
         </div>
 
         {/* Button */}
-        <button className="mt-2 rounded-lg bg-[#06763F] px-3 py-2 text-[12px] font-semibold leading-[1.33] text-white">
+        <button
+          onClick={() => {
+            window.open(dining.menuLink ?? '', '_blank')
+          }}
+          className="mt-2 rounded-lg bg-[#06763F] px-3 py-2 text-[12px] font-semibold leading-[1.33] text-white"
+        >
           Link Menu
         </button>
       </motion.div>
@@ -180,13 +127,13 @@ function MobileDiningCard({ dining }: { dining: DiningCard }) {
 }
 
 // Tablet Card Component
-function TabletDiningCard({ dining }: { dining: DiningCard }) {
+function TabletDiningCard({ dining }: { dining: DiningArea }) {
   return (
     <div className="flex h-[348px] items-center justify-center gap-6 rounded-[20px] border-[0.5px] border-[#B5B5B5] bg-white p-0 pr-12 shadow-[4px_4px_20px_0px_rgba(245,247,253,1)]">
       {/* Image */}
       <div className="h-[348px] w-1/2 flex-shrink-0 overflow-hidden rounded-l-[20px] bg-gray-200">
         <Image
-          src={dining.image}
+          src={(dining.image as Media)?.url ?? ''}
           alt={dining.title}
           width={446}
           height={348}
@@ -202,29 +149,19 @@ function TabletDiningCard({ dining }: { dining: DiningCard }) {
         <h3 className="text-[36px] font-bold leading-[1.28] text-[#1D1D1D]">{dining.title}</h3>
 
         {/* Features */}
-        <div className="flex flex-col">
-          <div className="flex items-center gap-3 py-1.5">
-            <div className="h-2 w-2 rounded-full bg-[#416340]" />
-            <span className="text-[16px] leading-[1.75] text-[#1D1D1D]">
-              Letak Area: {dining.location}
-            </span>
-          </div>
-          <div className="flex items-center gap-3 py-1.5">
-            <div className="h-2 w-2 rounded-full bg-[#416340]" />
-            <span className="text-[16px] leading-[1.75] text-[#1D1D1D]">
-              Kapasitas Standar: {dining.standardCapacity}
-            </span>
-          </div>
-          <div className="flex items-center gap-3 py-1.5">
-            <div className="h-2 w-2 rounded-full bg-[#416340]" />
-            <span className="text-[16px] leading-[1.75] text-[#1D1D1D]">
-              Kapasitas Maksimal: {dining.maxCapacity}
-            </span>
-          </div>
+        <div className="flex flex-col gap-2">
+          {dining.points?.map((point) => (
+            <FeatureItem key={point.id} icon="location" text={point.point ?? ''} />
+          ))}
         </div>
 
         {/* Button */}
-        <button className="mt-2 rounded-lg bg-[#06763F] px-4 py-2.5 text-[12px] leading-[1.33] text-white">
+        <button
+          onClick={() => {
+            window.open(dining.menuLink ?? '', '_blank')
+          }}
+          className="mt-2 rounded-lg bg-[#06763F] px-4 py-2.5 text-[12px] leading-[1.33] text-white"
+        >
           Link Menu
         </button>
       </motion.div>
@@ -233,13 +170,13 @@ function TabletDiningCard({ dining }: { dining: DiningCard }) {
 }
 
 // Desktop Card Component
-function DesktopDiningCard({ dining }: { dining: DiningCard }) {
+function DesktopDiningCard({ dining }: { dining: DiningArea }) {
   return (
     <div className="flex h-[332px] items-center gap-16 rounded-[20px] border-[0.5px] border-[#B5B5B5] bg-white p-0 pr-16 shadow-[4px_4px_20px_0px_rgba(245,247,253,1)]">
       {/* Image */}
       <div className="h-[332px] w-[564px] flex-shrink-0 overflow-hidden rounded-l-[20px] bg-gray-200">
         <Image
-          src={dining.image}
+          src={(dining.image as Media)?.url ?? ''}
           alt={dining.title}
           width={564}
           height={332}
@@ -253,28 +190,18 @@ function DesktopDiningCard({ dining }: { dining: DiningCard }) {
 
         {/* Features */}
         <div className="flex flex-col gap-2">
-          <div className="flex items-center gap-4 py-2">
-            <div className="h-4 w-4 rounded-full bg-[#416340]" />
-            <span className="text-[18px] leading-[1.67] text-[#1D1D1D]">
-              Letak: {dining.location}
-            </span>
-          </div>
-          <div className="flex items-center gap-4 py-2">
-            <div className="h-4 w-4 rounded-full bg-[#416340]" />
-            <span className="text-[16px] leading-[1.5] text-[#1D1D1D]">
-              Kapasitas Standar: {dining.standardCapacity}
-            </span>
-          </div>
-          <div className="flex items-center gap-4 py-2">
-            <div className="h-4 w-4 rounded-full bg-[#416340]" />
-            <span className="text-[16px] leading-[1.5] text-[#1D1D1D]">
-              Kapasitas Maksimal: {dining.maxCapacity}
-            </span>
-          </div>
+          {dining.points?.map((point) => (
+            <FeatureItem key={point.id} icon="location" text={point.point ?? ''} />
+          ))}
         </div>
 
         {/* Button */}
-        <button className="mt-2 rounded-lg bg-[#06763F] px-5 py-3 text-[16px] font-semibold leading-[1.75] text-white">
+        <button
+          onClick={() => {
+            window.open(dining.menuLink ?? '', '_blank')
+          }}
+          className="mt-2 rounded-lg bg-[#06763F] px-5 py-3 text-[16px] font-semibold leading-[1.75] text-white"
+        >
           Link Menu
         </button>
       </motion.div>
