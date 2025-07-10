@@ -30,6 +30,14 @@ export const MeetingPackage: CollectionConfig = {
       },
     },
     {
+      name: 'subtitle',
+      type: 'text',
+      required: true,
+      admin: {
+        description: 'e.g., "Package Subtitle"',
+      },
+    },
+    {
       type: 'tabs',
       tabs: [
         {
@@ -65,32 +73,37 @@ export const MeetingPackage: CollectionConfig = {
               required: true,
               fields: [
                 {
-                  name: 'featureTitle',
-                  type: 'text',
+                  name: 'specialFeatures',
+                  type: 'array',
+                  fields: [
+                    {
+                      name: 'specialFeature',
+                      type: 'text',
+                      admin: {
+                        description: 'e.g., "Queen/King Bed, Breakfast, etc."',
+                      },
+                    },
+                  ],
+                },
+                {
+                  name: 'price',
+                  type: 'number',
                   required: true,
                   admin: {
-                    description: 'Feature title (e.g., "2D1N Stay, Welcome Drink, etc.")',
+                    description: 'Package price in IDR (e.g., 10000000 for IDR 10.000.000)',
+                  },
+                },
+                {
+                  name: 'pricePeriod',
+                  type: 'text',
+                  defaultValue: 'Per pax',
+                  admin: {
+                    description: 'Pricing period (e.g., "Per pax", "Per group")',
                   },
                 },
               ],
               admin: {
                 description: 'List of features included in this package',
-              },
-            },
-            {
-              name: 'price',
-              type: 'number',
-              required: true,
-              admin: {
-                description: 'Package price in IDR (e.g., 10000000 for IDR 10.000.000)',
-              },
-            },
-            {
-              name: 'pricePeriod',
-              type: 'text',
-              defaultValue: 'Per pax',
-              admin: {
-                description: 'Pricing period (e.g., "Per pax", "Per group")',
               },
             },
           ],

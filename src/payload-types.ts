@@ -706,6 +706,10 @@ export interface MeetingPackage {
    */
   title: string;
   /**
+   * e.g., "Package Subtitle"
+   */
+  subtitle: string;
+  /**
    * List of features included in this package
    */
   features: {
@@ -719,20 +723,25 @@ export interface MeetingPackage {
    * List of features included in this package
    */
   packageFeatures: {
+    specialFeatures?:
+      | {
+          /**
+           * e.g., "Queen/King Bed, Breakfast, etc."
+           */
+          specialFeature?: string | null;
+          id?: string | null;
+        }[]
+      | null;
     /**
-     * Feature title (e.g., "2D1N Stay, Welcome Drink, etc.")
+     * Package price in IDR (e.g., 10000000 for IDR 10.000.000)
      */
-    featureTitle: string;
+    price: number;
+    /**
+     * Pricing period (e.g., "Per pax", "Per group")
+     */
+    pricePeriod?: string | null;
     id?: string | null;
   }[];
-  /**
-   * Package price in IDR (e.g., 10000000 for IDR 10.000.000)
-   */
-  price: number;
-  /**
-   * Pricing period (e.g., "Per pax", "Per group")
-   */
-  pricePeriod?: string | null;
   publishedAt?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -1822,6 +1831,7 @@ export interface MeetingEventAreaSelect<T extends boolean = true> {
  */
 export interface MeetingPackageSelect<T extends boolean = true> {
   title?: T;
+  subtitle?: T;
   features?:
     | T
     | {
@@ -1831,11 +1841,16 @@ export interface MeetingPackageSelect<T extends boolean = true> {
   packageFeatures?:
     | T
     | {
-        featureTitle?: T;
+        specialFeatures?:
+          | T
+          | {
+              specialFeature?: T;
+              id?: T;
+            };
+        price?: T;
+        pricePeriod?: T;
         id?: T;
       };
-  price?: T;
-  pricePeriod?: T;
   publishedAt?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -3620,6 +3635,30 @@ export interface EventsPage {
    */
   meetingAndEventAreaDescription: string;
   /**
+   * Title for the outdoor section
+   */
+  meetingAndEventAreaOutdoorTitle: string;
+  /**
+   * Description text for the outdoor section
+   */
+  meetingAndEventAreaOutdoorDescription: string;
+  /**
+   * Image for the outdoor section
+   */
+  meetingAndEventAreaOutdoorImage?: (number | null) | Media;
+  /**
+   * Title for the indoor section
+   */
+  meetingAndEventAreaIndoorTitle: string;
+  /**
+   * Description text for the indoor section
+   */
+  meetingAndEventAreaIndoorDescription: string;
+  /**
+   * Image for the indoor section
+   */
+  meetingAndEventAreaIndoorImage?: (number | null) | Media;
+  /**
    * Title for the meeting package section
    */
   meetingPackageTitle: string;
@@ -4617,6 +4656,12 @@ export interface EventsPageSelect<T extends boolean = true> {
   heroImage?: T;
   meetingAndEventAreaTitle?: T;
   meetingAndEventAreaDescription?: T;
+  meetingAndEventAreaOutdoorTitle?: T;
+  meetingAndEventAreaOutdoorDescription?: T;
+  meetingAndEventAreaOutdoorImage?: T;
+  meetingAndEventAreaIndoorTitle?: T;
+  meetingAndEventAreaIndoorDescription?: T;
+  meetingAndEventAreaIndoorImage?: T;
   meetingPackageTitle?: T;
   meetingPackageDescription?: T;
   meta?:

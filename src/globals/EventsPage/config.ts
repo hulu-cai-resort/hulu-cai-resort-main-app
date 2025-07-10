@@ -68,6 +68,60 @@ export const EventsPage: GlobalConfig = {
                 description: 'Description text for the meeting and event area section',
               },
             },
+            {
+              name: 'meetingAndEventAreaOutdoorTitle',
+              type: 'text',
+              required: true,
+              defaultValue: 'Outdoor',
+              admin: {
+                description: 'Title for the outdoor section',
+              },
+            },
+            {
+              name: 'meetingAndEventAreaOutdoorDescription',
+              type: 'textarea',
+              required: true,
+              defaultValue:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+              admin: {
+                description: 'Description text for the outdoor section',
+              },
+            },
+            {
+              name: 'meetingAndEventAreaOutdoorImage',
+              type: 'upload',
+              relationTo: 'media',
+              admin: {
+                description: 'Image for the outdoor section',
+              },
+            },
+            {
+              name: 'meetingAndEventAreaIndoorTitle',
+              type: 'text',
+              required: true,
+              defaultValue: 'Indoor',
+              admin: {
+                description: 'Title for the indoor section',
+              },
+            },
+            {
+              name: 'meetingAndEventAreaIndoorDescription',
+              type: 'textarea',
+              required: true,
+              defaultValue:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+              admin: {
+                description: 'Description text for the indoor section',
+              },
+            },
+            {
+              name: 'meetingAndEventAreaIndoorImage',
+              type: 'upload',
+              relationTo: 'media',
+              admin: {
+                description: 'Image for the indoor section',
+              },
+            },
           ],
         },
         {

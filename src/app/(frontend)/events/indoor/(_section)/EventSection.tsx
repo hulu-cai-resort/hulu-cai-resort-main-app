@@ -13,151 +13,82 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/pagination'
+import { EventsIndoorPage, MeetingEventArea, Media, Accommodation } from '@/payload-types'
+import { PaginatedDocs } from 'payload'
+import { getMediaUrl } from '@/utilities/getMediaUrl'
+import ImageGalleryModal from '@/components/ImageGalleryModal'
+import { Eye } from 'lucide-react'
+import { useState, useEffect } from 'react'
 
-// Dummy data for indoor event areas based on Figma
-const indoorEventData = [
-  {
-    id: 1,
-    title: 'Bale Sawo',
-    location: 'Hills Babakan',
-    description:
-      'The luxurious 130-square-meter Two Bedroom Ocean View Suites offer an upgraded experience with breathtaking views of the Indian Ocean. These spacious suites feature a private balcony, walk-in closet, and king-size canopy bed. The living area includes a cozy L-shaped sofa and plasma TV, complemented by two elegant marble bathrooms for a',
-    type: 'Bale',
-    area: '196 m2',
-    dimensions: '10m x 20m',
-    capacity: '150',
-    minCapacity: '54',
-    maxCapacity: '150',
-    price: 'Rp 5.000.000',
-    duration: '/8 jam',
-    mainImage: '/media/event-indoor-bale-sawo-main.jpg',
-    galleryImages: [
-      '/media/event-indoor-bale-sawo-1.jpg',
-      '/media/event-indoor-bale-sawo-2.jpg',
-      '/media/event-indoor-bale-sawo-3.jpg',
-      '/media/event-indoor-bale-sawo-4.jpg',
-    ],
-    facilities: ['Wifi', 'Smart TV', 'AC', 'Free parking'],
-    totalImages: 13,
-  },
-  {
-    id: 2,
-    title: 'Bale Pakis',
-    location: 'Hills Babakan',
-    description:
-      'The luxurious 130-square-meter Two Bedroom Ocean View Suites offer an upgraded experience with breathtaking views of the Indian Ocean. These spacious suites feature a private balcony, walk-in closet, and king-size canopy bed. The living area includes a cozy L-shaped sofa and plasma TV, complemented by two elegant marble bathrooms for a',
-    type: 'Bale',
-    area: '75 m2',
-    dimensions: '10m x 8m',
-    capacity: '70',
-    minCapacity: '25',
-    maxCapacity: '70',
-    price: 'Rp 3.000.000',
-    duration: '/8 jam',
-    mainImage: '/media/event-indoor-bale-pakis-main.jpg',
-    galleryImages: [
-      '/media/event-indoor-bale-pakis-1.jpg',
-      '/media/event-indoor-bale-pakis-2.jpg',
-      '/media/event-indoor-bale-pakis-3.jpg',
-      '/media/event-indoor-bale-pakis-4.jpg',
-    ],
-    facilities: ['Wifi', 'Smart TV', 'AC', 'Free parking'],
-    totalImages: 13,
-  },
-  {
-    id: 3,
-    title: 'Bale Negla',
-    location: 'Hills Babakan',
-    description:
-      'The luxurious 130-square-meter Two Bedroom Ocean View Suites offer an upgraded experience with breathtaking views of the Indian Ocean. These spacious suites feature a private balcony, walk-in closet, and king-size canopy bed. The living area includes a cozy L-shaped sofa and plasma TV, complemented by two elegant marble bathrooms for a',
-    type: 'Bale',
-    area: '196 m2',
-    dimensions: '20m x 10m',
-    capacity: '150',
-    minCapacity: '54',
-    maxCapacity: '150',
-    price: 'Rp 5.000.000',
-    duration: '/8 jam',
-    mainImage: '/media/event-indoor-bale-negla-main.jpg',
-    galleryImages: [
-      '/media/event-indoor-bale-negla-1.jpg',
-      '/media/event-indoor-bale-negla-2.jpg',
-      '/media/event-indoor-bale-negla-3.jpg',
-      '/media/event-indoor-bale-negla-4.jpg',
-    ],
-    facilities: ['Wifi', 'Smart TV', 'AC', 'Free parking'],
-    totalImages: 13,
-  },
-  {
-    id: 4,
-    title: 'Mahabbah 1,2,3',
-    location: 'Hills Babakan',
-    description:
-      'The luxurious 130-square-meter Two Bedroom Ocean View Suites offer an upgraded experience with breathtaking views of the Indian Ocean. These spacious suites feature a private balcony, walk-in closet, and king-size canopy bed. The living area includes a cozy L-shaped sofa and plasma TV, complemented by two elegant marble bathrooms for a',
-    type: 'Ballroom',
-    area: '600 m2',
-    dimensions: '30m x 20m',
-    capacity: '700',
-    minCapacity: '200',
-    maxCapacity: '700',
-    price: 'Rp 30.000.000',
-    duration: '/8 jam',
-    mainImage: '/media/event-indoor-mahabbah-main.jpg',
-    galleryImages: [
-      '/media/event-indoor-mahabbah-1.jpg',
-      '/media/event-indoor-mahabbah-2.jpg',
-      '/media/event-indoor-mahabbah-3.jpg',
-      '/media/event-indoor-mahabbah-4.jpg',
-    ],
-    facilities: ['Wifi', 'Smart TV', 'AC', 'Free parking'],
-    totalImages: 13,
-  },
-  {
-    id: 5,
-    title: 'Bale Jati',
-    location: 'Hills Babakan',
-    description:
-      'The luxurious 130-square-meter Two Bedroom Ocean View Suites offer an upgraded experience with breathtaking views of the Indian Ocean. These spacious suites feature a private balcony, walk-in closet, and king-size canopy bed. The living area includes a cozy L-shaped sofa and plasma TV, complemented by two elegant marble bathrooms for a',
-    type: 'Ballroom',
-    area: '34 m2',
-    dimensions: '6m x 6m',
-    capacity: '40',
-    minCapacity: '15',
-    maxCapacity: '40',
-    price: 'Rp 2.000.000',
-    duration: '/8 jam',
-    mainImage: '/media/event-indoor-bale-jati-main.jpg',
-    galleryImages: [
-      '/media/event-indoor-bale-jati-1.jpg',
-      '/media/event-indoor-bale-jati-2.jpg',
-      '/media/event-indoor-bale-jati-3.jpg',
-      '/media/event-indoor-bale-jati-4.jpg',
-    ],
-    facilities: ['Wifi', 'Smart TV', 'AC', 'Free parking'],
-    totalImages: 13,
-  },
-]
-
-interface EventVenue {
-  id: number
-  title: string
-  location: string
-  description: string
+// UI-friendly interface reused from outdoor
+interface VenueUI extends MeetingEventArea {
+  mainImage: string
+  galleryImages: string[]
   type: string
   area: string
   dimensions: string
-  capacity: string
-  minCapacity: string
-  maxCapacity: string
+  capacity?: number | null
+  minCapacity?: number | null
+  maxCapacity?: number | null
   price: string
   duration: string
-  mainImage: string
-  galleryImages: string[]
-  facilities: string[]
-  totalImages: number
 }
 
-export default function EventSection() {
+export default function EventSection({
+  indoorAreas,
+  eventsIndoorPage,
+}: {
+  indoorAreas: PaginatedDocs<MeetingEventArea>
+  eventsIndoorPage: EventsIndoorPage
+}) {
+  const [imageModalOpen, setImageModalOpen] = useState<{ [key: number]: boolean }>({})
+
+  const openImageModal = (id: number) => setImageModalOpen((prev) => ({ ...prev, [id]: true }))
+  const closeImageModal = (id: number) => setImageModalOpen((prev) => ({ ...prev, [id]: false }))
+
+  // Escape key listener
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        Object.keys(imageModalOpen).forEach((key) => {
+          if (imageModalOpen[parseInt(key)]) closeImageModal(parseInt(key))
+        })
+      }
+    }
+    document.addEventListener('keydown', handler)
+    return () => document.removeEventListener('keydown', handler)
+  }, [imageModalOpen])
+
+  // transform indoorAreas
+  const indoorEventData: VenueUI[] = indoorAreas.docs.map((area) => {
+    const main = getMediaUrl(((area.images?.[0]?.image ?? {}) as Media)?.url ?? '')
+    const gallery = area.images
+      .slice(1)
+      .map((img) => getMediaUrl(((img.image ?? {}) as Media)?.url ?? ''))
+    const width = area.dimensions?.width
+    const length = area.dimensions?.length
+    const dims =
+      width && length ? `${width}m x ${length}m` : width ? `${width}m` : length ? `${length}m` : ''
+    return {
+      ...area,
+      mainImage: main,
+      galleryImages: gallery,
+      type: area.buildingType ?? '',
+      area: area.size ? `${area.size} m²` : '',
+      dimensions: dims,
+      capacity: area.groupSize?.maximum ?? null,
+      minCapacity: area.groupSize?.minimum ?? null,
+      maxCapacity: area.groupSize?.maximum ?? null,
+      price: new Intl.NumberFormat('id-ID', {
+        style: 'currency',
+        currency: 'IDR',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0,
+      }).format(area.priceStartingFrom ?? 0),
+      duration: area.priceUnit ?? '',
+    }
+  })
+
   return (
     <motion.section
       className="bg-[#F5F7FA] py-10 lg:py-[64px]"
@@ -172,45 +103,55 @@ export default function EventSection() {
           {/* Section Title and Description for all devices */}
           <motion.div className="mb-6 w-full text-center lg:mb-8" variants={headerTextVariants}>
             <h2 className="mb-3 text-[28px] font-semibold leading-[1.28] text-[#1D1D1D] lg:text-[36px] lg:leading-[1.28]">
-              Indoor Area
+              {eventsIndoorPage.eventsTitle}
             </h2>
             <p className="text-[14px] leading-[1.75] text-[#1D1D1D] lg:text-[16px] lg:leading-[1.75]">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,Lorem ipsum dolor
-              sit amet, consectetur adipiscing elit, sed do eiusmod
+              {eventsIndoorPage.eventsDescription}
             </p>
           </motion.div>
 
           {/* Mobile: Same card structure but with Swiper on images */}
           <motion.div className="flex flex-col gap-8 md:hidden" variants={gridContainerVariants}>
-            {indoorEventData.slice(0, 3).map((venue) => (
+            {indoorEventData.map((venue) => (
               <MobileEventCard key={venue.id} venue={venue} />
             ))}
           </motion.div>
 
           {/* Tablet: Grid layout with image galleries */}
           <motion.div className="hidden gap-6 md:grid xl:hidden" variants={gridContainerVariants}>
-            {indoorEventData.slice(0, 8).map((venue) => (
-              <TabletEventCard key={venue.id} venue={venue} />
+            {indoorEventData.map((venue) => (
+              <TabletEventCard key={venue.id} venue={venue} openImageModal={openImageModal} />
             ))}
           </motion.div>
 
           {/* Desktop: Detailed layout with image galleries */}
           <motion.div className="hidden xl:block" variants={gridContainerVariants}>
-            {indoorEventData.slice(0, 2).map((venue, index) => (
+            {indoorEventData.map((venue, index) => (
               <div key={venue.id}>
-                <DesktopEventCard venue={venue} />
+                <DesktopEventCard venue={venue} openImageModal={openImageModal} />
                 {index < 1 && <hr className="my-16 border-[#CACCCF]" />}
               </div>
             ))}
           </motion.div>
         </div>
       </div>
+
+      {/* Image modals */}
+      {indoorEventData.map((venue) =>
+        imageModalOpen[venue.id] ? (
+          <ImageGalleryModal
+            key={`indoor-modal-${venue.id}`}
+            isOpen={!!imageModalOpen[venue.id]}
+            onClose={() => closeImageModal(venue.id)}
+            accommodation={venue as unknown as Accommodation}
+          />
+        ) : null,
+      )}
     </motion.section>
   )
 }
 
-function MobileEventCard({ venue }: { venue: EventVenue }) {
+function MobileEventCard({ venue }: { venue: VenueUI }) {
   return (
     <motion.div className="flex flex-col gap-5" variants={cardContentVariants}>
       {/* Title and Location */}
@@ -255,7 +196,7 @@ function MobileEventCard({ venue }: { venue: EventVenue }) {
           </SwiperSlide>
 
           {/* Gallery Images */}
-          {venue.galleryImages.map((image, index) => (
+          {venue.galleryImages.map((image: string, index: number) => (
             <SwiperSlide key={index}>
               <div className="h-[250px] w-full bg-gray-200">
                 <Image
@@ -325,7 +266,13 @@ function MobileEventCard({ venue }: { venue: EventVenue }) {
   )
 }
 
-function TabletEventCard({ venue }: { venue: EventVenue }) {
+function TabletEventCard({
+  venue,
+  openImageModal,
+}: {
+  venue: VenueUI
+  openImageModal: (id: number) => void
+}) {
   return (
     <motion.div className="flex flex-col gap-5" variants={cardContentVariants}>
       {/* Title and Location */}
@@ -365,7 +312,7 @@ function TabletEventCard({ venue }: { venue: EventVenue }) {
         {/* Gallery Images */}
         <div className="flex w-1/2 flex-col gap-3">
           <div className="flex gap-3">
-            {venue.galleryImages.slice(0, 2).map((image, index) => (
+            {venue.galleryImages.slice(0, 2).map((image: string, index: number) => (
               <div
                 key={index}
                 className="h-[143px] w-full overflow-hidden rounded-[14px] bg-gray-200"
@@ -381,20 +328,35 @@ function TabletEventCard({ venue }: { venue: EventVenue }) {
             ))}
           </div>
           <div className="flex gap-3">
-            {venue.galleryImages.slice(2, 4).map((image, index) => (
-              <div
-                key={index + 2}
-                className="h-[143px] w-full overflow-hidden rounded-[14px] bg-gray-200"
-              >
-                <Image
-                  src={image}
-                  alt={`${venue.title} gallery ${index + 3}`}
-                  width={107}
-                  height={143}
-                  className="h-full w-full object-cover"
-                />
-              </div>
-            ))}
+            {venue.galleryImages.slice(2, 4).map((image: string, index: number) => {
+              const globalIndex = index + 2
+              const isLast = globalIndex === 3
+              return (
+                <div
+                  key={globalIndex}
+                  className="relative h-[143px] w-full overflow-hidden rounded-[14px] bg-gray-200"
+                >
+                  <Image
+                    src={image}
+                    alt={`${venue.title} gallery ${globalIndex + 1}`}
+                    width={107}
+                    height={143}
+                    className="h-full w-full object-cover"
+                  />
+                  {isLast && (
+                    <button
+                      onClick={() => openImageModal(venue.id)}
+                      className="absolute inset-0 flex items-center justify-center rounded-[14px] bg-black/50 text-white transition-opacity hover:bg-black/60"
+                    >
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm font-medium">Full Image</span>
+                        <Eye size={20} />
+                      </div>
+                    </button>
+                  )}
+                </div>
+              )
+            })}
           </div>
         </div>
       </div>
@@ -453,7 +415,13 @@ function TabletEventCard({ venue }: { venue: EventVenue }) {
   )
 }
 
-function DesktopEventCard({ venue }: { venue: EventVenue }) {
+function DesktopEventCard({
+  venue,
+  openImageModal,
+}: {
+  venue: VenueUI
+  openImageModal: (id: number) => void
+}) {
   return (
     <motion.div className="flex flex-col gap-5" variants={cardContentVariants}>
       {/* Title and Location */}
@@ -493,7 +461,7 @@ function DesktopEventCard({ venue }: { venue: EventVenue }) {
         {/* Gallery Images */}
         <div className="flex w-[631px] flex-col gap-4">
           <div className="flex gap-4">
-            {venue.galleryImages.slice(0, 2).map((image, index) => (
+            {venue.galleryImages.slice(0, 2).map((image: string, index: number) => (
               <div
                 key={index}
                 className="h-[192px] w-[307px] overflow-hidden rounded-[19px] bg-gray-200"
@@ -509,20 +477,35 @@ function DesktopEventCard({ venue }: { venue: EventVenue }) {
             ))}
           </div>
           <div className="flex gap-4">
-            {venue.galleryImages.slice(2, 4).map((image, index) => (
-              <div
-                key={index + 2}
-                className="h-[192px] w-[307px] overflow-hidden rounded-[19px] bg-gray-200"
-              >
-                <Image
-                  src={image}
-                  alt={`${venue.title} gallery ${index + 3}`}
-                  width={307}
-                  height={192}
-                  className="h-full w-full object-cover"
-                />
-              </div>
-            ))}
+            {venue.galleryImages.slice(2, 4).map((image: string, index: number) => {
+              const globalIndex = index + 2
+              const isLast = globalIndex === 3
+              return (
+                <div
+                  key={globalIndex}
+                  className="relative h-[192px] w-[307px] overflow-hidden rounded-[19px] bg-gray-200"
+                >
+                  <Image
+                    src={image}
+                    alt={`${venue.title} gallery ${globalIndex + 1}`}
+                    width={307}
+                    height={192}
+                    className="h-full w-full object-cover"
+                  />
+                  {isLast && (
+                    <button
+                      onClick={() => openImageModal(venue.id)}
+                      className="absolute inset-0 flex items-center justify-center rounded-[19px] bg-black/50 text-white transition-opacity hover:bg-black/60"
+                    >
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm font-medium">Full Image</span>
+                        <Eye size={24} />
+                      </div>
+                    </button>
+                  )}
+                </div>
+              )
+            })}
           </div>
         </div>
       </div>

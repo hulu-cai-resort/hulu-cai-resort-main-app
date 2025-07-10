@@ -19,110 +19,68 @@ import {
   DialogClose,
 } from '@/components/ui/dialog'
 import React from 'react'
-
-// Meeting package data
-const meetingPackages = [
-  {
-    id: 1,
-    title: 'Full Board',
-    subtitle: 'Ideal for individuals and small businesses',
-    price: 'Rp 1.100.000',
-    priceUnit: 'Per pax',
-    features: ['2D1N Stay', 'Ground/Function Room', 'Welcome Drink', 'Sound System'],
-    extendedFeatures: ['Screen', 'Projector', 'Flipchart', '2x Microphone'],
-    buttonText: 'Lihat Detail',
-    link: '/events/packages/full-board',
-  },
-  {
-    id: 2,
-    title: 'Full Board Kids Program',
-    subtitle: 'Ideal for individuals and small businesses',
-    price: 'Rp 500.000',
-    priceUnit: 'Per pax',
-    features: ['2D1N Stay', 'Ground/Function Room', 'Welcome Drink', 'Sound System'],
-    extendedFeatures: ['Screen', 'Projector', 'Flipchart', '2x Microphone'],
-    buttonText: 'Lihat Detail',
-    link: '/events/packages/full-board-kids',
-  },
-  {
-    id: 3,
-    title: 'Full Day',
-    subtitle: 'Ideal for individuals and small businesses',
-    price: 'Rp 500.000',
-    priceUnit: 'Per pax',
-    features: ['2D1N Stay', 'Ground/Function Room', 'Welcome Drink', 'Sound System'],
-    extendedFeatures: ['Screen', 'Projector', 'Flipchart', '2x Microphone'],
-    buttonText: 'Lihat Detail',
-    link: '/events/packages/full-day',
-  },
-  {
-    id: 4,
-    title: 'Full Day Kids Program',
-    subtitle: 'Ideal for individuals and small businesses',
-    price: 'Rp 250.000',
-    priceUnit: 'Per pax',
-    features: ['2D1N Stay', 'Ground/Function Room', 'Welcome Drink', 'Sound System'],
-    extendedFeatures: ['Screen', 'Projector', 'Flipchart', '2x Microphone'],
-    buttonText: 'Lihat Detail',
-    link: '/events/packages/full-day-kids',
-  },
-]
-
-interface MeetingPackage {
-  id: number
-  title: string
-  subtitle: string
-  price: string
-  priceUnit: string
-  features: string[]
-  extendedFeatures: string[]
-  buttonText: string
-  link: string
-}
-
-// Add dummy special features for each package
-const specialFeatures = [
-  ['Private Barista', 'VIP Lounge Access', 'Personalized Stationery'],
-  ['Kids Entertainer', 'Custom Goodie Bags'],
-  ['Live Streaming Support', 'Dedicated Event Manager'],
-  ['Kids Menu', 'Balloon Decoration'],
-]
+import { EventsPage, MeetingPackage } from '@/payload-types'
+import { PaginatedDocs } from 'payload'
+import { ChevronRight } from 'lucide-react'
 
 // Dialog content component
-function PackageDialogContent({
-  packageData,
-  specialFeatures,
-}: {
-  packageData: MeetingPackage
-  specialFeatures: string[]
-}) {
+function PackageDialogContent({ packageData }: { packageData: MeetingPackage }) {
   return (
-    <div className="space-y-6">
+    <div className="h-[500px] space-y-6 overflow-y-auto">
       <DialogHeader>
         <DialogTitle>{packageData.title}</DialogTitle>
         <DialogDescription>{packageData.subtitle}</DialogDescription>
       </DialogHeader>
       <div>
         <div className="mb-2 text-lg font-semibold text-[#06763F]">All Features</div>
-        <ul className="space-y-2">
-          {[...packageData.features, ...packageData.extendedFeatures].map((feature, i) => (
+        <ul className="grid gap-2.5 sm:grid-cols-2">
+          {packageData.features.map((feature, i) => (
             <li key={i} className="flex items-center gap-3">
               <span className="inline-block h-2 w-2 rounded-full bg-[#416340]" />
-              <span className="text-base text-[#1D1D1D]">{feature}</span>
+              <span className="text-base text-[#1D1D1D]">{feature.feature}</span>
             </li>
           ))}
         </ul>
       </div>
       <div>
-        <div className="mb-2 text-lg font-semibold text-[#06763F]">Special Features</div>
-        <ul className="space-y-2">
-          {specialFeatures.map((feature, i) => (
-            <li key={i} className="flex items-center gap-3">
-              <span className="inline-block h-2 w-2 rounded-full bg-[#416340]" />
-              <span className="text-base text-[#1D1D1D]">{feature}</span>
-            </li>
+        <div className="grid gap-4 xl:grid-cols-2">
+          {packageData.packageFeatures.map((feature, i) => (
+            <div
+              key={i}
+              className="flex flex-col gap-3 rounded-lg border border-[#B5B5B5] bg-white p-4 shadow-sm"
+            >
+              {/* Price */}
+              <div>
+                <p className="text-xs text-[#4F4F53]">Mulai</p>
+                <p className="text-lg font-semibold text-[#0A0A0A]">
+                  {new Intl.NumberFormat('id-ID', {
+                    style: 'currency',
+                    currency: 'IDR',
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 0,
+                  }).format(feature.price)}
+                </p>
+                {feature.pricePeriod && (
+                  <p className="text-xs text-[#4F4F53]">{feature.pricePeriod}</p>
+                )}
+              </div>
+
+              {/* Special Features */}
+              {feature.specialFeatures && feature.specialFeatures.length > 0 && (
+                <ul className="space-y-1">
+                  {feature.specialFeatures.map((specialFeature, j) => (
+                    <li key={j} className="flex items-center gap-2">
+                      <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#416340]" />
+                      <span className="text-sm text-[#1D1D1D]">
+                        {specialFeature.specialFeature}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
     </div>
   )
@@ -133,12 +91,17 @@ function MobilePackageCard({
   packageData,
   dialogIndex,
   setDialogIndex,
+  idx,
 }: {
   packageData: MeetingPackage
   dialogIndex: number | null
   setDialogIndex: (i: number | null) => void
+  idx: number
 }) {
-  const idx = meetingPackages.findIndex((p) => p.id === packageData.id)
+  const point = Math.min(packageData.features.length, 4)
+  const lowestPrice = packageData.packageFeatures.reduce((min, feature) => {
+    return Math.min(min, feature.price)
+  }, Infinity)
   return (
     <Dialog open={dialogIndex === idx} onOpenChange={(open) => setDialogIndex(open ? idx : null)}>
       <motion.div
@@ -155,42 +118,40 @@ function MobilePackageCard({
           </div>
           {/* Price */}
           <div className="w-full max-w-[299px]">
+            <p className="text-[12px] leading-[1.67] text-[#404040]">mulai dari</p>
             <p className="text-[28px] font-semibold leading-[1.07] text-[#0A0A0A]">
-              {packageData.price}
+              {new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }).format(lowestPrice || 0)}
             </p>
-            <p className="text-[16px] leading-[1.5] text-[#404040]">{packageData.priceUnit}</p>
+            <p className="text-[16px] leading-[1.5] text-[#404040]">
+              {packageData.packageFeatures[0]?.pricePeriod}
+            </p>
           </div>
           {/* Features */}
           <div className="w-full max-w-[299px]">
-            {packageData.features.map((feature, index) => (
+            {packageData.features.slice(0, point).map((feature, index) => (
               <div key={index} className="flex items-center gap-4 py-2">
                 <div className="h-2 w-2 rounded-full bg-[#416340]" />
-                <span className="text-[16px] leading-[1.5] text-[#1D1D1D]">{feature}</span>
+                <span className="text-[16px] leading-[1.5] text-[#1D1D1D]">{feature.feature}</span>
               </div>
             ))}
           </div>
           {/* Button */}
           <DialogTrigger asChild>
             <button className="flex w-full max-w-[299px] items-center justify-center gap-2 rounded-lg bg-[#06763F] px-3 py-2 text-[12px] font-semibold leading-[1.33] text-white">
-              {packageData.buttonText}
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path
-                  d="M6 12l4-4-4-4"
-                  stroke="currentColor"
-                  strokeWidth="1.1"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+              Lihat Detail
+              <ChevronRight className="h-4 w-4" />
             </button>
           </DialogTrigger>
         </motion.div>
       </motion.div>
       <DialogContent>
-        <PackageDialogContent
-          packageData={packageData}
-          specialFeatures={specialFeatures[idx] ?? []}
-        />
+        <DialogTitle className="hidden">Meeting Package</DialogTitle>
+        <PackageDialogContent packageData={packageData} />
       </DialogContent>
     </Dialog>
   )
@@ -201,12 +162,17 @@ function TabletPackageCard({
   packageData,
   dialogIndex,
   setDialogIndex,
+  idx,
 }: {
   packageData: MeetingPackage
   dialogIndex: number | null
   setDialogIndex: (i: number | null) => void
+  idx: number
 }) {
-  const idx = meetingPackages.findIndex((p) => p.id === packageData.id)
+  const point = Math.min(packageData.features.length, 4)
+  const lowestPrice = packageData.packageFeatures.reduce((min, feature) => {
+    return Math.min(min, feature.price)
+  }, Infinity)
   return (
     <Dialog open={dialogIndex === idx} onOpenChange={(open) => setDialogIndex(open ? idx : null)}>
       <motion.div
@@ -223,42 +189,40 @@ function TabletPackageCard({
           </div>
           {/* Price */}
           <div className="w-full max-w-[299px]">
+            <p className="text-[12px] leading-[1.67] text-[#404040]">mulai dari</p>
             <p className="text-[36px] font-semibold leading-[1.28] text-[#0A0A0A]">
-              {packageData.price}
+              {new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }).format(lowestPrice || 0)}
             </p>
-            <p className="text-[18px] leading-[1.67] text-[#404040]">{packageData.priceUnit}</p>
+            <p className="text-[18px] leading-[1.67] text-[#404040]">
+              {packageData.packageFeatures[0]?.pricePeriod}
+            </p>
           </div>
           {/* Features */}
           <div className="w-full max-w-[299px]">
-            {packageData.features.map((feature, index) => (
+            {packageData.features.slice(0, point).map((feature, index) => (
               <div key={index} className="flex items-center gap-4 py-2">
                 <div className="h-[10px] w-[10px] rounded-full bg-[#416340]" />
-                <span className="text-[18px] leading-[1.67] text-[#1D1D1D]">{feature}</span>
+                <span className="text-[18px] leading-[1.67] text-[#1D1D1D]">{feature.feature}</span>
               </div>
             ))}
           </div>
           {/* Button */}
           <DialogTrigger asChild>
             <button className="flex w-full max-w-[299px] items-center justify-center gap-2 rounded-lg bg-[#06763F] px-3 py-2 text-[12px] font-semibold leading-[1.33] text-white">
-              {packageData.buttonText}
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path
-                  d="M6 12l4-4-4-4"
-                  stroke="currentColor"
-                  strokeWidth="1.1"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+              Lihat Detail
+              <ChevronRight className="h-4 w-4" />
             </button>
           </DialogTrigger>
         </motion.div>
       </motion.div>
       <DialogContent>
-        <PackageDialogContent
-          packageData={packageData}
-          specialFeatures={specialFeatures[idx] ?? []}
-        />
+        <DialogTitle className="hidden">Meeting Package</DialogTitle>
+        <PackageDialogContent packageData={packageData} />
       </DialogContent>
     </Dialog>
   )
@@ -269,12 +233,17 @@ function DesktopPackageCard({
   packageData,
   dialogIndex,
   setDialogIndex,
+  idx,
 }: {
   packageData: MeetingPackage
   dialogIndex: number | null
   setDialogIndex: (i: number | null) => void
+  idx: number
 }) {
-  const idx = meetingPackages.findIndex((p) => p.id === packageData.id)
+  const point = Math.min(packageData.features.length, 8)
+  const lowestPrice = packageData.packageFeatures.reduce((min, feature) => {
+    return Math.min(min, feature.price)
+  }, Infinity)
   return (
     <Dialog open={dialogIndex === idx} onOpenChange={(open) => setDialogIndex(open ? idx : null)}>
       <motion.div
@@ -293,31 +262,31 @@ function DesktopPackageCard({
             </div>
             {/* Price */}
             <div className="w-[226px]">
+              <p className="text-[12px] leading-[1.67] text-[#404040]">mulai dari</p>
               <p className="text-[36px] font-semibold leading-[1.28] text-[#0A0A0A]">
-                {packageData.price}
+                {new Intl.NumberFormat('id-ID', {
+                  style: 'currency',
+                  currency: 'IDR',
+                  minimumFractionDigits: 0,
+                  maximumFractionDigits: 0,
+                }).format(lowestPrice || 0)}
               </p>
-              <p className="text-[18px] leading-[1.67] text-[#404040]">{packageData.priceUnit}</p>
+              <p className="text-[18px] leading-[1.67] text-[#404040]">
+                {packageData.packageFeatures[0]?.pricePeriod}
+              </p>
             </div>
           </div>
 
           {/* Features */}
           <div className="flex gap-16">
             {/* Basic Features */}
-            <div className="flex flex-col">
-              {packageData.features.map((feature, index) => (
+            <div className="grid w-full grid-flow-col grid-cols-2 grid-rows-4">
+              {packageData.features.slice(0, point).map((feature, index) => (
                 <div key={index} className="flex items-center gap-4 py-2">
                   <div className="h-[10px] w-[10px] rounded-full bg-[#416340]" />
-                  <span className="text-[18px] leading-[1.67] text-[#1D1D1D]">{feature}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* Extended Features */}
-            <div className="flex w-[226px] flex-col">
-              {packageData.extendedFeatures.map((feature, index) => (
-                <div key={index} className="flex items-center gap-4 py-2">
-                  <div className="h-[10px] w-[10px] rounded-full bg-[#416340]" />
-                  <span className="text-[18px] leading-[1.67] text-[#1D1D1D]">{feature}</span>
+                  <span className="text-[18px] leading-[1.67] text-[#1D1D1D]">
+                    {feature.feature}
+                  </span>
                 </div>
               ))}
             </div>
@@ -326,31 +295,27 @@ function DesktopPackageCard({
           {/* Button */}
           <DialogTrigger asChild>
             <button className="flex items-center justify-center gap-3 rounded-lg bg-[#06763F] px-5 py-3 text-[16px] font-semibold leading-[1.75] text-white">
-              {packageData.buttonText}
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path
-                  d="M6 12l4-4-4-4"
-                  stroke="currentColor"
-                  strokeWidth="1.1"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+              Lihat Detail
+              <ChevronRight className="h-4 w-4" />
             </button>
           </DialogTrigger>
         </motion.div>
       </motion.div>
       <DialogContent>
-        <PackageDialogContent
-          packageData={packageData}
-          specialFeatures={specialFeatures[idx] ?? []}
-        />
+        <DialogTitle className="hidden">Meeting Package</DialogTitle>
+        <PackageDialogContent packageData={packageData} />
       </DialogContent>
     </Dialog>
   )
 }
 
-export default function MeetingPackageSection() {
+export default function MeetingPackageSection({
+  meetingPackages,
+  eventsPage,
+}: {
+  meetingPackages: PaginatedDocs<MeetingPackage>
+  eventsPage: EventsPage
+}) {
   const [dialogIndex, setDialogIndex] = React.useState<number | null>(null)
   return (
     <motion.section
@@ -376,12 +341,13 @@ export default function MeetingPackageSection() {
           variants={gridContainerVariants}
           className="flex flex-col items-center gap-6 md:hidden"
         >
-          {meetingPackages.map((packageData, idx) => (
+          {meetingPackages.docs.map((packageData, idx) => (
             <MobilePackageCard
               key={packageData.id}
               packageData={packageData}
               dialogIndex={dialogIndex}
               setDialogIndex={setDialogIndex}
+              idx={idx}
             />
           ))}
         </motion.div>
@@ -390,23 +356,25 @@ export default function MeetingPackageSection() {
           variants={gridContainerVariants}
           className="mx-auto hidden w-full grid-cols-2 place-items-center gap-12 md:grid xl:hidden"
         >
-          {meetingPackages.map((packageData, idx) => (
+          {meetingPackages.docs.map((packageData, idx) => (
             <TabletPackageCard
               key={packageData.id}
               packageData={packageData}
               dialogIndex={dialogIndex}
               setDialogIndex={setDialogIndex}
+              idx={idx}
             />
           ))}
         </motion.div>
         {/* Desktop Layout */}
         <motion.div variants={gridContainerVariants} className="hidden grid-cols-2 gap-12 xl:grid">
-          {meetingPackages.map((packageData, idx) => (
+          {meetingPackages.docs.map((packageData, idx) => (
             <DesktopPackageCard
               key={packageData.id}
               packageData={packageData}
               dialogIndex={dialogIndex}
               setDialogIndex={setDialogIndex}
+              idx={idx}
             />
           ))}
         </motion.div>
