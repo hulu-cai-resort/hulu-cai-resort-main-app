@@ -2484,38 +2484,13 @@ export interface Header {
 export interface Footer {
   id: number;
   /**
-   * Background image for footer CTA
+   * Footer Image
    */
-  footerCtaImage?: (number | null) | Media;
-  footerCtaSubtitle?: string | null;
-  footerCtaTitle?: string | null;
-  footerCtaButton: {
-    link: {
-      type?: ('reference' | 'custom') | null;
-      newTab?: boolean | null;
-      reference?:
-        | ({
-            relationTo: 'pages';
-            value: number | Page;
-          } | null)
-        | ({
-            relationTo: 'posts';
-            value: number | Post;
-          } | null);
-      url?: string | null;
-      label: string;
-      /**
-       * Choose how the link should be rendered.
-       */
-      appearance?: 'default' | null;
-    };
-  };
-  companyName: string;
+  footerImage?: (number | null) | Media;
   address?: string | null;
   phone?: string | null;
   email?: string | null;
   instagramHandle?: string | null;
-  copyright?: string | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -4134,29 +4109,11 @@ export interface HeaderSelect<T extends boolean = true> {
  * via the `definition` "footer_select".
  */
 export interface FooterSelect<T extends boolean = true> {
-  footerCtaImage?: T;
-  footerCtaSubtitle?: T;
-  footerCtaTitle?: T;
-  footerCtaButton?:
-    | T
-    | {
-        link?:
-          | T
-          | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-              label?: T;
-              appearance?: T;
-            };
-      };
-  companyName?: T;
+  footerImage?: T;
   address?: T;
   phone?: T;
   email?: T;
   instagramHandle?: T;
-  copyright?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
