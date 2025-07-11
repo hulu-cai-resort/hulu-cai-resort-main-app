@@ -6,16 +6,36 @@ import path from 'path'
 import { buildConfig, PayloadRequest } from 'payload'
 import { fileURLToPath } from 'url'
 
-import { Categories } from './collections/Categories'
+import { Accommodations } from './collections/Accommodations'
+import { Activities } from './collections/Activities'
+import { Attractions } from './collections/Attractions'
+import { Amenities } from './collections/Amenities'
 import { Media } from './collections/Media'
-import { Pages } from './collections/Pages'
-import { Posts } from './collections/Posts'
 import { Users } from './collections/Users'
-import { Footer } from './Footer/config'
-import { Header } from './Header/config'
-import { plugins } from './plugins'
-import { defaultLexical } from '@/fields/defaultLexical'
+import { Customers } from './collections/Customers'
+import { Footer } from './globals/Footer/config'
+import { MainPage } from './globals/MainPage/config'
+import { AccommodationsPage } from './globals/AccommodationsPage/config'
+import { VillaPage } from './globals/VillaPage/config'
 import { getServerSideURL } from './utilities/getURL'
+import { MapPage } from './globals/MapPage/config'
+import { CottagePage } from './globals/CottagePage/config'
+import { CabinPage } from './globals/CabinPage/config'
+import { CampingGroundPage } from './globals/CampingGroundPage/config'
+import { AttractionAmenitiesPage } from './globals/AttractionAmenitiesPage/config'
+import { ActivitiesPage } from './globals/ActivitiesPage/config'
+import { DiningPage } from './globals/DiningPage/config'
+import { EventsPage } from './globals/EventsPage/config'
+import { ReservationFAQPage } from './globals/ReservationFAQPage/config'
+import { DiningArea } from './collections/DiningArea'
+import { MeetingEventArea } from './collections/MeetingEventArea'
+import { MeetingPackage } from './collections/MeetingPackage'
+import { GamesGround } from './collections/GamesGround'
+import { AdditionalRent } from './collections/AdditionalRent'
+import { EventsIndoorPage } from './globals/EventsIndoorPage/config'
+import { EventsOutdoorPage } from './globals/EventsOutdoorPage/config'
+import { ReservationFormPage } from './globals/ReservationFormPage/config'
+import { ContactForm } from './globals/ContactForm'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -57,19 +77,45 @@ export default buildConfig({
       ],
     },
   },
-  // This config helps us configure global or default features that the other editors can inherit
-  editor: defaultLexical,
+  // This config helps us configure global or default features that the other editors can inherity
   db: postgresAdapter({
     pool: {
       connectionString: process.env.DATABASE_URI || '',
     },
   }),
-  collections: [Pages, Posts, Media, Categories, Users],
+  collections: [
+    Accommodations,
+    Activities,
+    Attractions,
+    Amenities,
+    DiningArea,
+    MeetingEventArea,
+    MeetingPackage,
+    GamesGround,
+    AdditionalRent,
+    Media,
+    Users,
+    Customers,
+  ],
   cors: [getServerSideURL()].filter(Boolean),
-  globals: [Header, Footer],
-  plugins: [
-    ...plugins,
-    // storage-adapter-placeholder
+  globals: [
+    Footer,
+    MainPage,
+    MapPage,
+    AccommodationsPage,
+    VillaPage,
+    CottagePage,
+    CabinPage,
+    CampingGroundPage,
+    AttractionAmenitiesPage,
+    ActivitiesPage,
+    DiningPage,
+    EventsPage,
+    EventsIndoorPage,
+    EventsOutdoorPage,
+    ReservationFAQPage,
+    ReservationFormPage,
+    ContactForm,
   ],
   secret: process.env.PAYLOAD_SECRET,
   sharp,

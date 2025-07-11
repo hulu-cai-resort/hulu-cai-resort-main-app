@@ -1,0 +1,1 @@
+export { VillaPage } from './config'

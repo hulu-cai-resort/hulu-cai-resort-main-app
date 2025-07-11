@@ -1,0 +1,1 @@
+export { CottagePage } from './config'
