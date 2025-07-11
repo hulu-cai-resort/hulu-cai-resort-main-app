@@ -123,64 +123,15 @@ export const ReservationFAQPage: GlobalConfig = {
                     },
                     {
                       name: 'answer',
-                      type: 'richText',
+                      type: 'textarea',
                       required: true,
                       admin: {
                         description: 'FAQ answer with rich text formatting',
                       },
                     },
-                    {
-                      name: 'isExpanded',
-                      type: 'checkbox',
-                      defaultValue: false,
-                      admin: {
-                        description: 'Whether this FAQ should be expanded by default',
-                      },
-                    },
                   ],
                   admin: {
                     description: 'List of frequently asked questions',
-                  },
-                },
-                {
-                  name: 'questionForm',
-                  type: 'group',
-                  fields: [
-                    {
-                      name: 'title',
-                      type: 'text',
-                      defaultValue: 'Ada Pertanyaan?',
-                      admin: {
-                        description: 'Question form title',
-                      },
-                    },
-                    {
-                      name: 'description',
-                      type: 'text',
-                      defaultValue: 'Kamu bisa menambahkan pertanyaanmu pada kolom berikut :',
-                      admin: {
-                        description: 'Question form description',
-                      },
-                    },
-                    {
-                      name: 'placeholder',
-                      type: 'text',
-                      defaultValue: 'Tulis disini',
-                      admin: {
-                        description: 'Input placeholder text',
-                      },
-                    },
-                    {
-                      name: 'submitButtonText',
-                      type: 'text',
-                      defaultValue: 'Submit',
-                      admin: {
-                        description: 'Submit button text',
-                      },
-                    },
-                  ],
-                  admin: {
-                    description: 'Question submission form configuration',
                   },
                 },
               ],
@@ -197,6 +148,20 @@ export const ReservationFAQPage: GlobalConfig = {
               name: 'contactSection',
               type: 'group',
               fields: [
+                {
+                  name: 'images',
+                  type: 'array',
+                  fields: [
+                    {
+                      name: 'image',
+                      type: 'upload',
+                      relationTo: 'media',
+                      admin: {
+                        description: 'Contact section image',
+                      },
+                    },
+                  ],
+                },
                 {
                   name: 'title',
                   type: 'text',

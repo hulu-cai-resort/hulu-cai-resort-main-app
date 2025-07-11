@@ -1,11 +1,12 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronDown, ArrowLeft, ArrowRight } from 'lucide-react'
+import { ChevronDown, ArrowLeft, ArrowRight, Loader2 } from 'lucide-react'
+import { createCustomerAction } from './actions'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
@@ -25,6 +26,8 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form'
+import { toast } from 'sonner'
+import { useMemo } from 'react'
 
 // Form validation schema
 const formSchema = z.object({
@@ -421,9 +424,9 @@ function Step3({ data }: { data: FormData }) {
   )
 }
 
-export default function ReservationFormSection() {
+export default function ReservationFormSection({ phoneNumber }: { phoneNumber: string }) {
   const [currentStep, setCurrentStep] = useState(1)
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isPending, startTransition] = useTransition()
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -467,18 +470,76 @@ export default function ReservationFormSection() {
     }
   }
 
-  const handleSubmit = async (data: FormData) => {
-    setIsSubmitting(true)
+  const mapLabel = (value: string, type: string) => {
+    const options = {
+      activity: {
+        'outdoor-adventure': 'Outdoor Adventure',
+        'water-sports': 'Water Sports',
+        hiking: 'Hiking & Trekking',
+        'cultural-tour': 'Cultural Tour',
+      },
+      meal: {
+        breakfast: 'Sarapan',
+        lunch: 'Makan Siang',
+        dinner: 'Makan Malam',
+        'full-board': 'Full Board',
+      },
+      project: {
+        'team-building': 'Team Building',
+        'corporate-event': 'Corporate Event',
+        wedding: 'Wedding',
+        'family-gathering': 'Family Gathering',
+      },
+      time: {
+        '2-hours': '2 Jam',
+        '4-hours': '4 Jam',
+        '6-hours': '6 Jam',
+        '1-day': '1 Hari',
+      },
+    } as const
 
-    try {
-      // TODO: Implement backend submission
-      console.log('Form data:', data)
-      alert('Reservasi berhasil dikirim!')
-    } catch (error) {
-      console.error('Error submitting form:', error)
-      alert('Terjadi kesalahan saat mengirim reservasi')
-    } finally {
-      setIsSubmitting(false)
+    // @ts-ignore
+    return options[type]?.[value] || value
+  }
+
+  const handleSubmit = async (data: FormData) => {
+    startTransition(async () => {
+      const result = await createCustomerAction(data)
+      if (result.success) {
+        toast.success('Reservasi berhasil dikirim!')
+
+        const messageLines = [
+          `Halo Admin, saya ${data.nama} ingin melakukan reservasi.`,
+          `Paket Activity: ${mapLabel(data.paketActivity, 'activity')}`,
+          `Paket Makan: ${mapLabel(data.paketMakan, 'meal')}`,
+          `Tipe Project: ${mapLabel(data.projectType, 'project')}`,
+          `Durasi: ${mapLabel(data.maxTime, 'time')}`,
+        ]
+
+        if (data.keterangan) messageLines.push(`Keterangan: ${data.keterangan}`)
+
+        messageLines.push('')
+        messageLines.push('Informasi Kontak:')
+        messageLines.push(`Email: ${data.email}`)
+        messageLines.push(`Telepon: ${data.nomorTelepon}`)
+        messageLines.push(`Alamat: ${data.alamat}`)
+
+        const waUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(messageLines.join('\n'))}`
+        window.open(waUrl, '_blank')
+
+        form.reset()
+        setCurrentStep(1)
+      } else {
+        toast.error('Terjadi kesalahan saat mengirim reservasi')
+      }
+    })
+  }
+
+  // Prevent form submission via Enter key before final step
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLFormElement>) => {
+    if (e.key === 'Enter' && currentStep < 3) {
+      e.preventDefault()
+      handleNext()
     }
   }
 
@@ -490,9 +551,7 @@ export default function ReservationFormSection() {
           <h2 className="text-lg font-semibold text-[#D16E2B] md:text-xl">Reservation</h2>
           <h1 className="mt-2 text-2xl font-semibold text-black md:text-4xl">Form Reservasi</h1>
           <p className="mt-3 text-sm text-gray-600 md:text-base">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip
+            Isi form dibawah ini untuk melakukan reservasi
           </p>
         </div>
 
@@ -503,7 +562,11 @@ export default function ReservationFormSection() {
 
         {/* Form */}
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(handleSubmit)} className="mx-auto max-w-4xl">
+          <form
+            onSubmit={form.handleSubmit(handleSubmit)}
+            onKeyDown={handleKeyDown}
+            className="mx-auto max-w-4xl"
+          >
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentStep}
@@ -536,7 +599,7 @@ export default function ReservationFormSection() {
                 Kembali
               </Button>
 
-              {currentStep < 3 ? (
+              {currentStep < 3 && (
                 <Button
                   type="button"
                   onClick={handleNext}
@@ -545,18 +608,18 @@ export default function ReservationFormSection() {
                   Selanjutnya
                   <ArrowRight className="h-4 w-4" />
                 </Button>
-              ) : (
+              )}
+
+              {currentStep === 3 && (
                 <Button
                   type="submit"
-                  disabled={isSubmitting}
+                  disabled={isPending}
                   className={`flex items-center gap-2 px-6 py-3 text-sm font-medium text-white ${
-                    isSubmitting
-                      ? 'cursor-not-allowed bg-gray-400'
-                      : 'bg-[#06763F] hover:bg-[#055a30]'
+                    isPending ? 'cursor-not-allowed bg-gray-400' : 'bg-[#06763F] hover:bg-[#055a30]'
                   }`}
                 >
-                  {isSubmitting ? 'Mengirim...' : 'Kirim Reservasi'}
-                  <ArrowRight className="h-4 w-4" />
+                  {isPending ? 'Mengirim...' : 'Kirim Reservasi'}
+                  {isPending && <Loader2 className="h-4 w-4 animate-spin" />}
                 </Button>
               )}
             </div>

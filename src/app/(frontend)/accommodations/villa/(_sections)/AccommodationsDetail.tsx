@@ -204,7 +204,7 @@ export default function AccommodationsDetail({
               </div>
 
               {/* Pricing */}
-              <div className="rounded-2xl bg-green-600 p-6 text-white">
+              <div className="rounded-2xl bg-[hsl(var(--camp-green-medium))] p-6 text-white">
                 <p className="mb-1 text-green-100">Mulai dari</p>
                 <p className="mb-1 text-2xl font-semibold">
                   {new Intl.NumberFormat('id-ID', {
@@ -490,7 +490,7 @@ export default function AccommodationsDetail({
                     </div>
 
                     {/* Pricing Section */}
-                    <div className="bg-green-600 p-6 text-white">
+                    <div className="bg-[hsl(var(--camp-green-medium))] p-6 text-white">
                       <p className="mb-1 text-green-100">Mulai dari</p>
                       <p className="mb-1 text-2xl font-semibold">
                         {new Intl.NumberFormat('id-ID', {
@@ -711,7 +711,7 @@ export default function AccommodationsDetail({
                 </div>
 
                 {/* Pricing */}
-                <div className="rounded-2xl bg-green-600 p-6 text-white">
+                <div className="rounded-2xl bg-[hsl(var(--camp-green-medium))] p-6 text-white">
                   <p className="mb-2 text-green-100">Mulai dari</p>
                   <p className="mb-2 text-3xl font-bold">
                     {new Intl.NumberFormat('id-ID', {

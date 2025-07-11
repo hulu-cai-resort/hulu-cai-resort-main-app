@@ -11,7 +11,7 @@ export const revalidateAccommodation: CollectionAfterChangeHook<Accommodation> =
 }) => {
   if (!context.disableRevalidate) {
     if (doc._status === 'published') {
-      const path = `/accommodations/${doc.slug}`
+      const path = `/accommodations/${doc.id}`
 
       payload.logger.info(`Revalidating accommodation at path: ${path}`)
 
@@ -22,7 +22,7 @@ export const revalidateAccommodation: CollectionAfterChangeHook<Accommodation> =
 
     // If the accommodation was previously published, we need to revalidate the old path
     if (previousDoc?._status === 'published' && doc._status !== 'published') {
-      const oldPath = `/accommodations/${previousDoc.slug}`
+      const oldPath = `/accommodations/${previousDoc.id}`
 
       payload.logger.info(`Revalidating old accommodation at path: ${oldPath}`)
 
@@ -39,7 +39,7 @@ export const revalidateDelete: CollectionAfterDeleteHook<Accommodation> = ({
   req: { context },
 }) => {
   if (!context.disableRevalidate) {
-    const path = `/accommodations/${doc?.slug}`
+    const path = `/accommodations/${doc?.id}`
     revalidatePath(path)
     revalidatePath('/accommodations')
     revalidateTag('accommodations-sitemap')

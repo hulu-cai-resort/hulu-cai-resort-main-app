@@ -2,7 +2,6 @@ import type { CollectionConfig } from 'payload'
 
 import { authenticated } from '../../access/authenticated'
 import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
-import { slugField } from '@/fields/slug'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
 import { revalidateAccommodation, revalidateDelete } from './hooks/revalidateAccommodation'
 
@@ -20,7 +19,6 @@ export const Accommodations: CollectionConfig<'accommodations'> = {
   },
   defaultPopulate: {
     title: true,
-    slug: true,
     type: true,
     location: true,
     priceStartingFrom: true,
@@ -682,7 +680,6 @@ export const Accommodations: CollectionConfig<'accommodations'> = {
         position: 'sidebar',
       },
     },
-    ...slugField(),
   ],
   hooks: {
     afterChange: [revalidateAccommodation],

@@ -1,6 +1,5 @@
 import type { GlobalConfig } from 'payload'
 
-import { link } from '@/fields/link'
 import { revalidateMainPage } from './hooks/revalidateMainPage'
 
 export const MainPage: GlobalConfig = {
@@ -41,19 +40,6 @@ export const MainPage: GlobalConfig = {
               required: true,
               admin: {
                 description: 'Background image for the hero section',
-              },
-            },
-            {
-              name: 'heroButtons',
-              type: 'array',
-              fields: [
-                link({
-                  appearances: ['default', 'outline'],
-                }),
-              ],
-              maxRows: 2,
-              admin: {
-                description: 'Call-to-action buttons in the hero section',
               },
             },
           ],

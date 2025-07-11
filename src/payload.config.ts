@@ -10,18 +10,13 @@ import { Accommodations } from './collections/Accommodations'
 import { Activities } from './collections/Activities'
 import { Attractions } from './collections/Attractions'
 import { Amenities } from './collections/Amenities'
-import { Categories } from './collections/Categories'
 import { Media } from './collections/Media'
-import { Pages } from './collections/Pages'
-import { Posts } from './collections/Posts'
 import { Users } from './collections/Users'
+import { Customers } from './collections/Customers'
 import { Footer } from './globals/Footer/config'
-import { Header } from './globals/Header/config'
 import { MainPage } from './globals/MainPage/config'
 import { AccommodationsPage } from './globals/AccommodationsPage/config'
 import { VillaPage } from './globals/VillaPage/config'
-import { plugins } from './plugins'
-import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
 import { MapPage } from './globals/MapPage/config'
 import { CottagePage } from './globals/CottagePage/config'
@@ -40,6 +35,7 @@ import { AdditionalRent } from './collections/AdditionalRent'
 import { EventsIndoorPage } from './globals/EventsIndoorPage/config'
 import { EventsOutdoorPage } from './globals/EventsOutdoorPage/config'
 import { ReservationFormPage } from './globals/ReservationFormPage/config'
+import { ContactForm } from './globals/ContactForm'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -81,8 +77,7 @@ export default buildConfig({
       ],
     },
   },
-  // This config helps us configure global or default features that the other editors can inherit
-  editor: defaultLexical,
+  // This config helps us configure global or default features that the other editors can inherity
   db: postgresAdapter({
     pool: {
       connectionString: process.env.DATABASE_URI || '',
@@ -98,15 +93,12 @@ export default buildConfig({
     MeetingPackage,
     GamesGround,
     AdditionalRent,
-    Pages,
-    Posts,
     Media,
-    Categories,
     Users,
+    Customers,
   ],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [
-    Header,
     Footer,
     MainPage,
     MapPage,
@@ -123,10 +115,7 @@ export default buildConfig({
     EventsOutdoorPage,
     ReservationFAQPage,
     ReservationFormPage,
-  ],
-  plugins: [
-    ...plugins,
-    // storage-adapter-placeholder
+    ContactForm,
   ],
   secret: process.env.PAYLOAD_SECRET,
   sharp,

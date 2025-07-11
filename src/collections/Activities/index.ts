@@ -1,5 +1,4 @@
 import type { CollectionConfig } from 'payload'
-import { slugField } from '@/fields/slug'
 import { populatePublishedAt } from '@/hooks/populatePublishedAt'
 import { revalidateActivity } from './hooks/revalidateActivity'
 

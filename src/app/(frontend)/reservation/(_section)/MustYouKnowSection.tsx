@@ -3,6 +3,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Users, Clock, Bath, Utensils } from 'lucide-react'
+import { ReservationFaqPage } from '@/payload-types'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -23,69 +24,59 @@ const itemVariants = {
   },
 }
 
-const infoCards = [
-  {
-    icon: Users,
-    title: 'Jumlah Pengunjung',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor iis nisi ut aliquip ex e',
-  },
-  {
-    icon: Clock,
-    title: 'Aktivitas Pengunjung',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor iis nisi ut aliquip ex e',
-  },
-  {
-    icon: Bath,
-    title: 'Pengaturan Kamar',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor iis nisi ut aliquip ex e',
-  },
-  {
-    icon: Utensils,
-    title: 'Pengaturan Makanan',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor iis nisi ut aliquip ex e',
-  },
-]
+// Add a mapping from icon identifiers coming from CMS to Lucide icon components
+const iconMap: Record<string, React.ComponentType<{ className?: string; strokeWidth?: number }>> = {
+  users: Users,
+  clock: Clock,
+  bath: Bath,
+  salad: Utensils,
+}
 
-export default function MustYouKnowSection() {
+export default function MustYouKnowSection({
+  mustKnowSection,
+}: {
+  mustKnowSection: ReservationFaqPage['mustKnowSection']
+}) {
   return (
     <section className="grid min-h-screen place-items-center bg-white px-4 pt-24 sm:px-8 md:py-0 xl:px-0">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.8 }}
           className="mb-16 text-center"
         >
-          <h2 className="mb-4 text-lg font-bold text-[#D16E2B] md:text-xl">Must You Know</h2>
+          <h2 className="mb-4 text-lg font-bold text-[#D16E2B] md:text-xl">
+            {mustKnowSection?.title}
+          </h2>
           <h3 className="mb-6 text-2xl font-semibold text-gray-800 md:text-3xl lg:text-4xl">
-            Informasi apa saja yang perlu disiapkan?
+            {mustKnowSection?.subtitle}
           </h3>
           <p className="mx-auto max-w-4xl text-base text-gray-600 md:text-lg">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip
+            {mustKnowSection?.description}
           </p>
         </motion.div>
 
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
           className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12"
         >
-          {infoCards.map((card, index) => (
+          {mustKnowSection?.infoCards?.map((card, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
               className="flex gap-6 rounded-lg border-l-4 border-[#D16E2B] bg-white p-6 shadow-md"
             >
-              <div className="flex-shrink-0">
+              <div className="flex flex-shrink-0 items-center justify-center">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white">
-                  <card.icon className="h-6 w-6 text-black" strokeWidth={2} />
+                  {(() => {
+                    const IconComponent = iconMap[card.icon] || Users
+                    return <IconComponent className="h-8 w-8 text-black" strokeWidth={2} />
+                  })()}
                 </div>
               </div>
               <div className="flex-1">
