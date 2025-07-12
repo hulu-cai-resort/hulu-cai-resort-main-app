@@ -7,14 +7,17 @@ const SITE_URL =
 module.exports = {
   siteUrl: SITE_URL,
   generateRobotsTxt: true,
-  exclude: ['/posts-sitemap.xml', '/pages-sitemap.xml', '/*', '/posts/*'],
+  generateIndexSitemap: false, // We handle sitemap with app/sitemap.ts
   robotsTxtOptions: {
     policies: [
       {
         userAgent: '*',
         disallow: '/admin/*',
       },
+      {
+        userAgent: '*',
+        disallow: '/api/*',
+      },
     ],
-    additionalSitemaps: [`${SITE_URL}/pages-sitemap.xml`, `${SITE_URL}/posts-sitemap.xml`],
   },
 }
