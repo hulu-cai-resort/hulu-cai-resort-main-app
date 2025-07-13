@@ -439,6 +439,15 @@ function StaticMarkersRenderer({
         })
       }
     }
+
+    return () => {
+      newMarkers.forEach((marker) => {
+        marker.setMap(null)
+      })
+      newInfoWindows.forEach((infoWindow) => {
+        infoWindow.close()
+      })
+    }
   }, [map, activeFilter])
 
   return null
@@ -480,7 +489,7 @@ function MapContent({
 }
 
 export default function MapsPageClient({ mapPage }: { mapPage: MapPage }) {
-  const [activeFilter, setActiveFilter] = useState<MapFilter>('no-filter')
+  const [activeFilter, setActiveFilter] = useState<MapFilter>('all')
 
   const handleFilterChange = useCallback((filter: MapFilter) => {
     setActiveFilter(filter)
@@ -514,8 +523,8 @@ export default function MapsPageClient({ mapPage }: { mapPage: MapPage }) {
               gestureHandling="cooperative"
               minZoom={17}
               maxZoom={20}
-              mapTypeId="satellite"
               disableDefaultUI={true}
+              mapTypeControl={true}
             >
               <MapContent activeFilter={activeFilter} onFilterChange={handleFilterChange} />
             </Map>

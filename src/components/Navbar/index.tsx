@@ -61,11 +61,11 @@ export function Navbar() {
         transition={{
           duration: 0.5,
         }}
-        className="fixed left-0 right-0 top-0 z-40 pt-10"
+        className="pointer-events-none fixed left-0 right-0 top-0 z-40 pt-10"
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 md:px-16 lg:px-40 xl:justify-center xl:px-0">
+        <div className="pointer-events-auto mx-auto flex max-w-7xl items-center justify-between px-6 md:px-16 lg:px-40 xl:justify-center xl:px-0">
           {/* Logo Section */}
-          <div className="mr-4 md:mr-9">
+          <div className="pointer-events-auto mr-4 md:mr-9">
             <div
               className={cn(
                 'flex h-[56px] w-[56px] items-center justify-center rounded-lg border border-white/50 saturate-[1.2] backdrop-blur-[2px] xl:h-[72px] xl:w-[72px]',
@@ -115,7 +115,7 @@ export function Navbar() {
           {/* Mobile Menu Button */}
           <button
             className={cn(
-              'flex h-[56px] w-[56px] items-center justify-center rounded-lg border border-white/50 text-white saturate-[1.2] backdrop-blur-[2px] xl:hidden',
+              'pointer-events-auto flex h-[56px] w-[56px] items-center justify-center rounded-lg border border-white/50 text-white saturate-[1.2] backdrop-blur-[2px] xl:hidden',
               isAtTop ? 'bg-white/5' : 'bg-primary/80',
               (pathname.includes('/reservation') || pathname.includes('/form')) && 'bg-primary/80',
             )}
@@ -189,7 +189,7 @@ export function Navbar() {
               (pathname.includes('/reservation') || pathname.includes('/form')) && 'bg-primary/80',
             )}
           >
-            <nav className="flex flex-col gap-2">
+            <nav className="pointer-events-auto flex flex-col gap-2">
               {navItems.map((item) => {
                 const isActive = pathname === item.href
                 return (
