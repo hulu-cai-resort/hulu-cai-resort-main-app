@@ -453,6 +453,77 @@ function StaticMarkersRenderer({
   return null
 }
 
+const CustomOverlay = () => {
+  const map = useMap()
+
+  useEffect(() => {
+    if (!map) return
+
+    class MyOverlay extends google.maps.OverlayView {
+      private bounds: google.maps.LatLngBounds
+      private image: string
+      private div?: HTMLElement
+
+      constructor(bounds: google.maps.LatLngBounds, image: string) {
+        super()
+        this.bounds = bounds
+        this.image = image
+      }
+
+      override onAdd() {
+        this.div = document.createElement('div')
+        this.div.style.borderStyle = 'none'
+        this.div.style.borderWidth = '0px'
+        this.div.style.position = 'absolute'
+
+        const img = document.createElement('img')
+        img.src = this.image
+        img.style.width = '100%'
+        img.style.height = '100%'
+        img.style.position = 'absolute'
+        this.div.appendChild(img)
+
+        const panes = this.getPanes()
+        panes?.overlayLayer.appendChild(this.div)
+      }
+
+      override draw() {
+        const overlayProjection = this.getProjection()
+        const sw = overlayProjection.fromLatLngToDivPixel(this.bounds.getSouthWest())!
+        const ne = overlayProjection.fromLatLngToDivPixel(this.bounds.getNorthEast())!
+
+        if (this.div) {
+          this.div.style.left = sw.x + 'px'
+          this.div.style.top = ne.y + 'px'
+          this.div.style.width = ne.x - sw.x + 'px'
+          this.div.style.height = sw.y - ne.y + 'px'
+        }
+      }
+
+      override onRemove() {
+        if (this.div) {
+          ;(this.div.parentNode as HTMLElement).removeChild(this.div)
+          delete this.div
+        }
+      }
+    }
+
+    const bounds = new google.maps.LatLngBounds(
+      new google.maps.LatLng(-6.7035, 106.886),
+      new google.maps.LatLng(-6.7, 106.889),
+    )
+
+    const overlay = new MyOverlay(bounds, '/maps/dummy-1.jpeg')
+    overlay.setMap(map)
+
+    return () => {
+      overlay.setMap(null)
+    }
+  }, [map])
+
+  return null
+}
+
 function MapContent({
   activeFilter,
   onFilterChange,
@@ -480,7 +551,7 @@ function MapContent({
   return (
     <>
       {map && <StaticMarkersRenderer map={map} activeFilter={activeFilter} />}
-
+      <CustomOverlay />
       <div className="absolute -right-48 top-1/2 -translate-y-1/2 overflow-x-hidden">
         <MapControls onZoomIn={handleZoomIn} onZoomOut={handleZoomOut} zoom={zoom} />
       </div>
@@ -490,12 +561,13 @@ function MapContent({
 
 export default function MapsPageClient({ mapPage }: { mapPage: MapPage }) {
   const [activeFilter, setActiveFilter] = useState<MapFilter>('all')
+  const googleMapsApiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
 
   const handleFilterChange = useCallback((filter: MapFilter) => {
     setActiveFilter(filter)
   }, [])
 
-  if (!process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY) {
+  if (!googleMapsApiKey) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-gray-100">
         <div className="rounded-lg bg-white p-8 shadow-lg">
@@ -512,11 +584,11 @@ export default function MapsPageClient({ mapPage }: { mapPage: MapPage }) {
   return (
     <div className="w-full space-y-6 overflow-x-hidden">
       <div className="h-screen w-full">
-        <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}>
+        <APIProvider apiKey={googleMapsApiKey}>
           <div className="h-full w-full">
             <Map
               id="camp-hulu-cai-map"
-              mapId="camp-hulu-cai"
+              mapId="camp-h-cai"
               defaultCenter={CAMP_HULU_CAI_CENTER}
               defaultZoom={DEFAULT_ZOOM}
               styles={MAP_STYLES}
