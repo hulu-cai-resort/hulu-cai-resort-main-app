@@ -44,40 +44,42 @@ export default function DiningSection({
             </p>
           </motion.div>
           {/* Mobile Layout - Vertical Stack */}
-          <motion.div className="flex flex-col gap-8 md:hidden" variants={gridContainerVariants}>
-            {dinings.docs.map((dining, index) => (
-              <motion.div key={dining.id} className="w-full" variants={gridCardVariants}>
-                <MobileDiningCard dining={dining} />
-                {index < dinings.docs.length - 1 && (
-                  <div className="mx-auto mt-8 h-0.5 w-full bg-[#CACCCF]" />
-                )}
+          {dinings.docs.map((dining, index) => (
+            <div key={dining.id} className="w-full scroll-mt-24" id={`dining-${dining.id}`}>
+              {/* Mobile Layout */}
+              <motion.div
+                className="flex flex-col gap-8 md:hidden"
+                variants={gridContainerVariants}
+              >
+                <motion.div className="w-full" variants={gridCardVariants}>
+                  <MobileDiningCard dining={dining} />
+                  {index < dinings.docs.length - 1 && (
+                    <div className="mx-auto mt-8 h-0.5 w-full bg-[#CACCCF]" />
+                  )}
+                </motion.div>
               </motion.div>
-            ))}
-          </motion.div>
 
-          {/* Tablet Layout - 2x2 Grid */}
-          <motion.div
-            className="hidden md:flex md:flex-col md:items-center md:justify-center md:gap-5 xl:hidden"
-            variants={gridContainerVariants}
-          >
-            {dinings.docs.map((dining) => (
-              <motion.div key={dining.id} className="w-full" variants={gridCardVariants}>
-                <TabletDiningCard dining={dining} />
+              {/* Tablet Layout */}
+              <motion.div
+                className="hidden md:flex md:flex-col md:items-center md:justify-center md:gap-5 xl:hidden"
+                variants={gridContainerVariants}
+              >
+                <motion.div className="w-full" variants={gridCardVariants}>
+                  <TabletDiningCard dining={dining} />
+                </motion.div>
               </motion.div>
-            ))}
-          </motion.div>
 
-          {/* Desktop Layout - Single Column */}
-          <motion.div
-            className="hidden xl:flex xl:flex-col xl:gap-8"
-            variants={gridContainerVariants}
-          >
-            {dinings.docs.map((dining) => (
-              <motion.div key={dining.id} className="w-full" variants={gridCardVariants}>
-                <DesktopDiningCard dining={dining} />
+              {/* Desktop Layout */}
+              <motion.div
+                className="hidden xl:flex xl:flex-col xl:gap-8"
+                variants={gridContainerVariants}
+              >
+                <motion.div className="w-full" variants={gridCardVariants}>
+                  <DesktopDiningCard dining={dining} />
+                </motion.div>
               </motion.div>
-            ))}
-          </motion.div>
+            </div>
+          ))}
         </div>
       </div>
     </motion.section>
@@ -87,7 +89,7 @@ export default function DiningSection({
 // Mobile Card Component
 function MobileDiningCard({ dining }: { dining: DiningArea }) {
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-3" id={`dining-${dining.id}`}>
       {/* Image */}
       <div className="h-[218px] w-full overflow-hidden rounded-[20px] bg-gray-200">
         <Image
@@ -129,7 +131,10 @@ function MobileDiningCard({ dining }: { dining: DiningArea }) {
 // Tablet Card Component
 function TabletDiningCard({ dining }: { dining: DiningArea }) {
   return (
-    <div className="flex h-[348px] items-center justify-center gap-6 rounded-[20px] border-[0.5px] border-[#B5B5B5] bg-white p-0 pr-12 shadow-[4px_4px_20px_0px_rgba(245,247,253,1)]">
+    <div
+      className="flex h-[348px] items-center justify-center gap-6 rounded-[20px] border-[0.5px] border-[#B5B5B5] bg-white p-0 pr-12 shadow-[4px_4px_20px_0px_rgba(245,247,253,1)]"
+      id={`dining-${dining.id}`}
+    >
       {/* Image */}
       <div className="h-[348px] w-1/2 flex-shrink-0 overflow-hidden rounded-l-[20px] bg-gray-200">
         <Image
@@ -172,7 +177,10 @@ function TabletDiningCard({ dining }: { dining: DiningArea }) {
 // Desktop Card Component
 function DesktopDiningCard({ dining }: { dining: DiningArea }) {
   return (
-    <div className="flex h-[332px] items-center gap-16 rounded-[20px] border-[0.5px] border-[#B5B5B5] bg-white p-0 pr-16 shadow-[4px_4px_20px_0px_rgba(245,247,253,1)]">
+    <div
+      className="flex h-[332px] items-center gap-16 rounded-[20px] border-[0.5px] border-[#B5B5B5] bg-white p-0 pr-16 shadow-[4px_4px_20px_0px_rgba(245,247,253,1)]"
+      id={`dining-${dining.id}`}
+    >
       {/* Image */}
       <div className="h-[332px] w-[564px] flex-shrink-0 overflow-hidden rounded-l-[20px] bg-gray-200">
         <Image

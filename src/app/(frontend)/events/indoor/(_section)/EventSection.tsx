@@ -110,29 +110,38 @@ export default function EventSection({
             </p>
           </motion.div>
 
-          {/* Mobile: Same card structure but with Swiper on images */}
-          <motion.div className="flex flex-col gap-8 md:hidden" variants={gridContainerVariants}>
-            {indoorEventData.map((venue) => (
-              <MobileEventCard key={venue.id} venue={venue} />
-            ))}
-          </motion.div>
+          {indoorEventData.map((venue, index) => (
+            <div key={venue.id} className="w-full scroll-mt-24" id={`indoor-${venue.id}`}>
+              {/* 2) Mobile: Same card structure but with Swiper on images */}
+              <motion.div
+                className="flex flex-col gap-8 md:hidden"
+                variants={gridContainerVariants}
+              >
+                <motion.div variants={gridCardVariants}>
+                  <MobileEventCard venue={venue} />
+                </motion.div>
+              </motion.div>
 
-          {/* Tablet: Grid layout with image galleries */}
-          <motion.div className="hidden gap-6 md:grid xl:hidden" variants={gridContainerVariants}>
-            {indoorEventData.map((venue) => (
-              <TabletEventCard key={venue.id} venue={venue} openImageModal={openImageModal} />
-            ))}
-          </motion.div>
+              {/* 3) Tablet: Grid layout with image galleries */}
+              <motion.div
+                className="hidden gap-6 md:grid xl:hidden"
+                variants={gridContainerVariants}
+              >
+                <motion.div variants={gridCardVariants}>
+                  <TabletEventCard venue={venue} openImageModal={openImageModal} />
+                </motion.div>
+              </motion.div>
 
-          {/* Desktop: Detailed layout with image galleries */}
-          <motion.div className="hidden xl:block" variants={gridContainerVariants}>
-            {indoorEventData.map((venue, index) => (
-              <div key={venue.id}>
-                <DesktopEventCard venue={venue} openImageModal={openImageModal} />
+              {/* 4) Desktop: Detailed layout with image galleries */}
+              <motion.div className="hidden xl:block" variants={gridContainerVariants}>
+                <motion.div variants={gridCardVariants}>
+                  <DesktopEventCard venue={venue} openImageModal={openImageModal} />
+                </motion.div>
+                {/* preserve your hr logic */}
                 {index < 1 && <hr className="my-16 border-[#CACCCF]" />}
-              </div>
-            ))}
-          </motion.div>
+              </motion.div>
+            </div>
+          ))}
         </div>
       </div>
 

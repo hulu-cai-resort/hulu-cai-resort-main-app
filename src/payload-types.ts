@@ -76,6 +76,7 @@ export interface Config {
     'meeting-package': MeetingPackage;
     'games-ground': GamesGround;
     'additional-rent': AdditionalRent;
+    'map-markers': MapMarker;
     media: Media;
     users: User;
     customers: Customer;
@@ -94,6 +95,7 @@ export interface Config {
     'meeting-package': MeetingPackageSelect<false> | MeetingPackageSelect<true>;
     'games-ground': GamesGroundSelect<false> | GamesGroundSelect<true>;
     'additional-rent': AdditionalRentSelect<false> | AdditionalRentSelect<true>;
+    'map-markers': MapMarkersSelect<false> | MapMarkersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     customers: CustomersSelect<false> | CustomersSelect<true>;
@@ -803,6 +805,65 @@ export interface AdditionalRent {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "map-markers".
+ */
+export interface MapMarker {
+  id: number;
+  /**
+   * Internal identifier for this marker group (e.g., villa, cottage, dining-area)
+   */
+  title: string;
+  /**
+   * Display label for this marker group (e.g., Villa, Cottage, Dining Area)
+   */
+  label: string;
+  /**
+   * Individual marker points for this category
+   */
+  points: {
+    /**
+     * Display text for this marker point
+     */
+    text: string;
+    /**
+     * Latitude coordinate
+     */
+    lat: number;
+    /**
+     * Longitude coordinate
+     */
+    lng: number;
+    /**
+     * Map code to match with collection items (e.g., 01, 02, 03)
+     */
+    mapCode?: string | null;
+    /**
+     * Link to related accommodation (for villa, cottage, cabin, camping-ground markers)
+     */
+    relatedAccommodation?: (number | null) | Accommodation;
+    /**
+     * Link to related meeting/event area (for meeting-room markers)
+     */
+    relatedMeetingEventArea?: (number | null) | MeetingEventArea;
+    /**
+     * Link to related dining area (for dining-area markers)
+     */
+    relatedDiningArea?: (number | null) | DiningArea;
+    /**
+     * Link to related attraction (for attractions-facilities markers)
+     */
+    relatedAttraction?: (number | null) | Attraction;
+    /**
+     * Link to related amenity (for public facilities, masjid, parking markers)
+     */
+    relatedAmenity?: (number | null) | Amenity;
+    id?: string | null;
+  }[];
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
 export interface User {
@@ -879,6 +940,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'additional-rent';
         value: number | AdditionalRent;
+      } | null)
+    | ({
+        relationTo: 'map-markers';
+        value: number | MapMarker;
       } | null)
     | ({
         relationTo: 'media';
@@ -1219,6 +1284,30 @@ export interface AdditionalRentSelect<T extends boolean = true> {
         id?: T;
       };
   publishedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "map-markers_select".
+ */
+export interface MapMarkersSelect<T extends boolean = true> {
+  title?: T;
+  label?: T;
+  points?:
+    | T
+    | {
+        text?: T;
+        lat?: T;
+        lng?: T;
+        mapCode?: T;
+        relatedAccommodation?: T;
+        relatedMeetingEventArea?: T;
+        relatedDiningArea?: T;
+        relatedAttraction?: T;
+        relatedAmenity?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }

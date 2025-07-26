@@ -13,7 +13,12 @@ export default async function MapsPage() {
     depth: 1,
   })
 
-  return <PageClient mapPage={mapPage} />
+  const mapMarkers = await payload.find({
+    collection: 'map-markers',
+    depth: 1,
+  })
+
+  return <PageClient mapPage={mapPage} mapMarkers={mapMarkers} />
 }
 
 export async function generateMetadata(): Promise<Metadata> {

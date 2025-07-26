@@ -36,6 +36,7 @@ import { EventsIndoorPage } from './globals/EventsIndoorPage/config'
 import { EventsOutdoorPage } from './globals/EventsOutdoorPage/config'
 import { ReservationFormPage } from './globals/ReservationFormPage/config'
 import { ContactForm } from './globals/ContactForm'
+import { MapMarkers } from './collections/MapMarkers'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -93,6 +94,7 @@ export default buildConfig({
     MeetingPackage,
     GamesGround,
     AdditionalRent,
+    MapMarkers,
     Media,
     Users,
     Customers,
