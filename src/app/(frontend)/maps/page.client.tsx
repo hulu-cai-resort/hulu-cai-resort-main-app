@@ -4,9 +4,9 @@ import React, { useState, useCallback, useEffect } from 'react'
 import { Map, APIProvider, useMap } from '@vis.gl/react-google-maps'
 import { MapControls } from './components/MapControls'
 import { MapLegend } from './components/MapLegend'
-import { markers } from './components/data'
-import { MapPage } from '@/payload-types'
+import { MapMarker, MapPage } from '@/payload-types'
 import Wrapper from '@/components/Wrapper'
+import { PaginatedDocs } from 'payload'
 
 const CAMP_HULU_CAI_CENTER = {
   lat: -6.701885, // Approximate coordinates for Mount Pangrango area
@@ -271,7 +271,7 @@ type MapFilter =
   | 'no-filter'
   | 'all'
   | 'villa'
-  | 'room'
+  | 'cottage'
   | 'cabin'
   | 'meeting-room'
   | 'camping-ground'
@@ -284,7 +284,7 @@ type MapFilter =
 function getCategoryColor(category: MapFilter): string {
   const colors = {
     villa: '#10b981', // emerald-500
-    room: '#3b82f6', // blue-500
+    cottage: '#3b82f6', // blue-500
     cabin: '#d97706', // amber-600
     'meeting-room': '#8b5cf6', // purple-500
     'camping-ground': '#16a34a', // green-600
@@ -302,7 +302,7 @@ function getCategoryColor(category: MapFilter): string {
 function getCategoryIcon(category: MapFilter): string {
   const icons = {
     villa: '🏡',
-    room: '🛏️',
+    cottage: '🛏️',
     cabin: '🏘️',
     'meeting-room': '🏢',
     'camping-ground': '⛺',
@@ -333,22 +333,24 @@ function createMarkerIcon(category: MapFilter): string {
   return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg)
 }
 
-// Component to render static markers from data.ts
+// Component to render markers from collection
 function StaticMarkersRenderer({
   map,
   activeFilter,
+  mapMarkers,
 }: {
   map: google.maps.Map
   activeFilter: MapFilter
+  mapMarkers: PaginatedDocs<MapMarker>
 }) {
-  const [mapMarkers, setMapMarkers] = useState<google.maps.Marker[]>([])
+  const [googleMarkers, setGoogleMarkers] = useState<google.maps.Marker[]>([])
   const [infoWindows, setInfoWindows] = useState<google.maps.InfoWindow[]>([])
 
   useEffect(() => {
     // Clear existing markers and info windows first
-    mapMarkers.forEach((marker) => marker.setMap(null))
+    googleMarkers.forEach((marker) => marker.setMap(null))
     infoWindows.forEach((infoWindow) => infoWindow.close())
-    setMapMarkers([])
+    setGoogleMarkers([])
     setInfoWindows([])
 
     if (!map) return
@@ -359,13 +361,13 @@ function StaticMarkersRenderer({
     // Filter markers based on active filter - only show selected category
     const filteredMarkers =
       activeFilter === 'all'
-        ? markers
-        : markers.filter((markerGroup) => markerGroup.title === activeFilter)
+        ? mapMarkers.docs
+        : mapMarkers.docs.filter((markerGroup) => markerGroup.title === activeFilter)
 
     // Debug: Show filtering results in development
     if (process.env.NODE_ENV === 'development') {
       console.log(
-        `🔄 Filter: "${activeFilter}" | Showing ${filteredMarkers.length}/${markers.length} groups`,
+        `🔄 Filter: "${activeFilter}" | Showing ${filteredMarkers.length}/${mapMarkers.docs.length} groups`,
       )
     }
 
@@ -386,20 +388,113 @@ function StaticMarkersRenderer({
           },
         })
 
+        // Determine redirect URL based on relations
+        const getRedirectInfo = () => {
+          if (point.relatedAccommodation) {
+            const accommodation = point.relatedAccommodation
+            if (typeof accommodation === 'object' && accommodation.type) {
+              switch (accommodation.type) {
+                case 'villa':
+                  return {
+                    url: `/accommodations/villa#accommodation-${accommodation.id}`,
+                    label: 'View Villa Details',
+                  }
+                case 'cottage':
+                  return {
+                    url: `/accommodations/cottage#accommodation-${accommodation.id}`,
+                    label: 'View Cottage Details',
+                  }
+                case 'cabin':
+                  return {
+                    url: `/accommodations/cabin#accommodation-${accommodation.id}`,
+                    label: 'View Cabin Details',
+                  }
+                case 'camping_ground':
+                  return {
+                    url: `/accommodations/camping-ground#accommodation-${accommodation.id}`,
+                    label: 'View Camping Details',
+                  }
+              }
+            }
+          }
+
+          if (point.relatedDiningArea) {
+            const diningArea = point.relatedDiningArea
+            if (typeof diningArea === 'object' && diningArea.id) {
+              return {
+                url: `/dining#dining-${diningArea.id}`,
+                label: 'View Dining Area Details',
+              }
+            }
+          }
+          if (point.relatedMeetingEventArea) {
+            const meetingEventArea = point.relatedMeetingEventArea
+            if (typeof meetingEventArea === 'object' && meetingEventArea.areaType) {
+              switch (meetingEventArea.areaType) {
+                case 'indoor':
+                  return {
+                    url: `/events/indoor#indoor-${meetingEventArea.id}`,
+                    label: 'View Indoor Event Details',
+                  }
+                case 'outdoor':
+                  return {
+                    url: `/events/outdoor#outdoor-${meetingEventArea.id}`,
+                    label: 'View Outdoor Event Details',
+                  }
+              }
+            }
+          }
+          if (point.relatedAttraction || point.relatedAmenity) {
+            const attraction = point.relatedAttraction
+            const amenity = point.relatedAmenity
+            if (attraction && typeof attraction === 'object' && attraction.id) {
+              return {
+                url: `/attractions-amenities#attraction-${attraction.id}`,
+                label: 'View Attraction Details',
+              }
+            }
+            if (amenity && typeof amenity === 'object' && amenity.id) {
+              return {
+                url: `/attractions-amenities#amenity-${amenity.id}`,
+                label: 'View Amenity Details',
+              }
+            }
+          }
+          return null
+        }
+
+        const redirectInfo = getRedirectInfo()
+        const buttonHtml = redirectInfo
+          ? `
+            <div class="mt-3 pt-2 border-t border-gray-200">
+              <button 
+                onclick="window.open('${redirectInfo.url}', '_blank')" 
+                class="w-full bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded-md text-xs font-medium transition-colors duration-200 flex items-center justify-center gap-1"
+              >
+                <span>${redirectInfo.label}</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                </svg>
+              </button>
+            </div>
+          `
+          : ''
+
         const infoWindow = new google.maps.InfoWindow({
           content: `
-            <div class="p-3 max-w-xs">
-              <div class="flex items-center gap-2 mb-2">
-                <span class="text-lg">${getCategoryIcon(category)}</span>
-                <h3 class="font-bold text-gray-900 text-sm">${point.text}</h3>
+              <div class="p-3 max-w-xs">
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="text-lg">${getCategoryIcon(category)}</span>
+                  <h3 class="font-bold text-gray-900 text-sm">${point.text}</h3>
+                </div>
+                <div class="text-xs text-gray-600 mb-2">
+                  <span class="inline-block px-2 py-1 rounded-full text-xs font-medium text-white" style="background-color: ${getCategoryColor(category)}">
+                    ${markerGroup.label}
+                  </span>
+                </div>
+                ${buttonHtml}
               </div>
-              <div class="text-xs text-gray-600 mb-2">
-                <span class="inline-block px-2 py-1 rounded-full text-xs font-medium text-white" style="background-color: ${getCategoryColor(category)}">
-                  ${markerGroup.label}
-                </span>
-              </div>
-            </div>
-          `,
+            `,
         })
 
         marker.addListener('click', () => {
@@ -413,7 +508,7 @@ function StaticMarkersRenderer({
       })
     })
 
-    setMapMarkers(newMarkers)
+    setGoogleMarkers(newMarkers)
     setInfoWindows(newInfoWindows)
 
     // Auto-fit map to show all filtered markers
@@ -527,9 +622,11 @@ const CustomOverlay = () => {
 function MapContent({
   activeFilter,
   onFilterChange,
+  mapMarkers,
 }: {
   activeFilter: MapFilter
   onFilterChange: (filter: MapFilter) => void
+  mapMarkers: PaginatedDocs<MapMarker>
 }) {
   const map = useMap()
   const [zoom, setZoom] = useState(DEFAULT_ZOOM)
@@ -550,7 +647,9 @@ function MapContent({
 
   return (
     <>
-      {map && <StaticMarkersRenderer map={map} activeFilter={activeFilter} />}
+      {map && (
+        <StaticMarkersRenderer map={map} activeFilter={activeFilter} mapMarkers={mapMarkers} />
+      )}
       <CustomOverlay />
       <div className="absolute -right-48 top-1/2 -translate-y-1/2 overflow-x-hidden">
         <MapControls onZoomIn={handleZoomIn} onZoomOut={handleZoomOut} zoom={zoom} />
@@ -559,7 +658,13 @@ function MapContent({
   )
 }
 
-export default function MapsPageClient({ mapPage }: { mapPage: MapPage }) {
+export default function MapsPageClient({
+  mapPage,
+  mapMarkers,
+}: {
+  mapPage: MapPage
+  mapMarkers: PaginatedDocs<MapMarker>
+}) {
   const [activeFilter, setActiveFilter] = useState<MapFilter>('all')
   const googleMapsApiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
 
@@ -598,7 +703,11 @@ export default function MapsPageClient({ mapPage }: { mapPage: MapPage }) {
               disableDefaultUI={true}
               mapTypeControl={true}
             >
-              <MapContent activeFilter={activeFilter} onFilterChange={handleFilterChange} />
+              <MapContent
+                activeFilter={activeFilter}
+                onFilterChange={handleFilterChange}
+                mapMarkers={mapMarkers}
+              />
             </Map>
           </div>
         </APIProvider>

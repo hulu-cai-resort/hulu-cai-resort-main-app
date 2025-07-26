@@ -41,8 +41,8 @@ export const markers = [
     ],
   },
   {
-    title: 'room',
-    label: 'Room',
+    title: 'cottage',
+    label: 'Cottage',
     points: [
       {
         text: '10 Gandaria 1 - 4',
@@ -50,77 +50,77 @@ export const markers = [
         lng: 106.8860624358058,
       },
       {
-        text: '03 Room Pakis 1 - 3',
+        text: '03 Cottage Pakis 1 - 3',
         lat: -6.700527088643522,
         lng: 106.8865938484669,
       },
       {
-        text: '16 Room Rambutan',
+        text: '16 Cottage Rambutan',
         lat: -6.702082734213587,
         lng: 106.8865792813149,
       },
       {
-        text: '02 Room Palem 1 - 5',
+        text: '02 Cottage Palem 1 - 5',
         lat: -6.700260033759248,
         lng: 106.8866971135139,
       },
       {
-        text: '12 Room Pala',
+        text: '12 Cottage Pala',
         lat: -6.701783443387368,
         lng: 106.8864667788148,
       },
       {
-        text: '01 Room Sawo 1 - 6',
+        text: '01 Cottage Sawo 1 - 6',
         lat: -6.699953686330376,
         lng: 106.8870763108134,
       },
       {
-        text: '11 Room Cemara',
+        text: '11 Cottage Cemara',
         lat: -6.701883671919548,
         lng: 106.8862384557724,
       },
       {
-        text: '06 Room Lengkeng 1 - 21',
+        text: '06 Cottage Lengkeng 1 - 21',
         lat: -6.702022526695856,
         lng: 106.8885012343526,
       },
       {
-        text: '07 Room Jati 1 - 5',
+        text: '07 Cottage Jati 1 - 5',
         lat: -6.702617903561815,
         lng: 106.8883087858558,
       },
       {
-        text: '13 Room Kaliandra',
+        text: '13 Cottage Kaliandra',
         lat: -6.701746482029778,
         lng: 106.8865780904889,
       },
       {
-        text: '08 Room Cempaka 2, 4, 5',
+        text: '08 Cottage Cempaka 2, 4, 5',
         lat: -6.703056641931726,
         lng: 106.8895379908715,
       },
       {
-        text: '15 Room Papyrus',
+        text: '15 Cottage Papyrus',
         lat: -6.701823609457812,
         lng: 106.8866070052849,
       },
       {
-        text: '05 Room Mahoni',
+        text: '05 Cottage Mahoni',
         lat: -6.70144046852009,
         lng: 106.8879681453109,
       },
       {
-        text: '09 Room Duren 1-5',
+        text: '09 Cottage Duren 1-5',
         lat: -6.701718511270822,
         lng: 106.8860621005297,
       },
       {
-        text: '14 Room Jambu 1 - 4',
+        text: '14 Cottage Jambu 1 - 4',
         lat: -6.701666232586075,
         lng: 106.8866528570652,
       },
       {
-        text: '04 Room Randu 1 - 9',
+        text: '04 Cottage Randu 1 - 9',
         lat: -6.700649960480058,
         lng: 106.8866816908121,
       },

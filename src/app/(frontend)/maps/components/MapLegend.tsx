@@ -7,7 +7,7 @@ type MapFilter =
   | 'no-filter'
   | 'all'
   | 'villa'
-  | 'room'
+  | 'cottage'
   | 'cabin'
   | 'meeting-room'
   | 'camping-ground'
@@ -44,8 +44,8 @@ const filterOptions = [
     ),
   },
   {
-    id: 'room' as const,
-    label: 'Room',
+    id: 'cottage' as const,
+    label: 'Cottage',
     color: 'bg-blue-500',
     icon: (
       <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">

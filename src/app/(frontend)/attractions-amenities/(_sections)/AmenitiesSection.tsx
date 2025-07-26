@@ -52,44 +52,42 @@ export default function AmenitiesSection({
           </motion.p>
         </motion.div>
 
-        {/* Mobile Layout */}
-        <motion.div
-          className="flex flex-col items-center gap-6 md:hidden"
-          variants={gridContainerVariants}
-        >
-          {amenities.docs.map((amenity, index) => (
-            <motion.div key={amenity.id} className="w-full" variants={gridCardVariants}>
-              <MobileAmenityCard amenity={amenity} />
-              {index < amenities.docs.length - 1 && (
-                <div className="mx-auto mt-6 h-px w-full max-w-[348px] bg-[#CEDADF]" />
-              )}
+        {amenities.docs.map((amenity, index) => (
+          <div key={amenity.id} className="w-full scroll-mt-24" id={`amenity-${amenity.id}`}>
+            {/* Mobile Layout */}
+            <motion.div
+              className="flex flex-col items-center gap-6 md:hidden"
+              variants={gridContainerVariants}
+            >
+              <motion.div className="w-full" variants={gridCardVariants}>
+                <MobileAmenityCard amenity={amenity} />
+                {index < amenities.docs.length - 1 && (
+                  <div className="mx-auto mt-6 h-px w-full max-w-[348px] bg-[#CEDADF]" />
+                )}
+              </motion.div>
             </motion.div>
-          ))}
-        </motion.div>
 
-        {/* Tablet Layout */}
-        <motion.div
-          className="hidden md:flex md:flex-row md:flex-wrap md:justify-center md:gap-5 xl:hidden"
-          variants={gridContainerVariants}
-        >
-          {amenities.docs.map((amenity) => (
-            <motion.div key={amenity.id} className="w-full px-4" variants={gridCardVariants}>
-              <TabletAmenityCard amenity={amenity} />
+            {/* Tablet Layout */}
+            <motion.div
+              className="hidden md:flex md:flex-row md:flex-wrap md:justify-center md:gap-5 xl:hidden"
+              variants={gridContainerVariants}
+            >
+              <motion.div className="w-full px-4" variants={gridCardVariants}>
+                <TabletAmenityCard amenity={amenity} />
+              </motion.div>
             </motion.div>
-          ))}
-        </motion.div>
 
-        {/* Desktop Layout */}
-        <motion.div
-          className="hidden xl:flex xl:flex-col xl:gap-8"
-          variants={gridContainerVariants}
-        >
-          {amenities.docs.map((amenity) => (
-            <motion.div key={amenity.id} className="w-full" variants={gridCardVariants}>
-              <DesktopAmenityCard amenity={amenity} />
+            {/* Desktop Layout */}
+            <motion.div
+              className="hidden xl:flex xl:flex-col xl:gap-8"
+              variants={gridContainerVariants}
+            >
+              <motion.div className="w-full" variants={gridCardVariants}>
+                <DesktopAmenityCard amenity={amenity} />
+              </motion.div>
             </motion.div>
-          ))}
-        </motion.div>
+          </div>
+        ))}
       </div>
     </motion.section>
   )

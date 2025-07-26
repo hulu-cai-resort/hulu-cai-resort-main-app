@@ -104,7 +104,7 @@ export default function AccommodationsDetail({
       <style dangerouslySetInnerHTML={{ __html: swiperStyles }} />
 
       {accommodations.docs.map((accommodation, index) => (
-        <div key={accommodation.id} className="w-full">
+        <div key={accommodation.id} id={`accommodation-${accommodation.id}`} className="w-full">
           {/* Mobile Layout */}
           <div className="block md:hidden">
             <div className="space-y-6">
