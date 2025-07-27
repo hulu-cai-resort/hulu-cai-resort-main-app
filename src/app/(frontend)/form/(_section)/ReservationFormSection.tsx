@@ -428,8 +428,6 @@ export default function ReservationFormSection({ phoneNumber }: { phoneNumber: s
   const [currentStep, setCurrentStep] = useState(1)
   const [isPending, startTransition] = useTransition()
 
-  console.log(phoneNumber)
-
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
