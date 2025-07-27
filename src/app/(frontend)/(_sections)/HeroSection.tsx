@@ -73,7 +73,7 @@ export function HeroSection({ mainPage }: HeroSectionProps) {
                 className="border-l border-white pl-2.5 lg:pl-[10px]"
                 variants={itemVariants}
               >
-                <p className="font-raleway text-wrap text-base font-semibold leading-[1.2] text-white/90 sm:text-xl lg:text-[20px] lg:leading-[1.2]">
+                <p className="font-raleway text-wrap text-base leading-[1.2] text-white/90 sm:text-xl lg:text-[20px] lg:leading-[1.2]">
                   {mainPage.heroDescription}
                 </p>
               </motion.div>
