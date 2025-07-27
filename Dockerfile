@@ -75,4 +75,4 @@ ENV PORT 3000
 ENV PAYLOAD_CONFIG_PATH=src/payload.config.ts
 
 # server.js is created by next build from the standalone output
-CMD npx payload migrate && HOSTNAME="0.0.0.0" node server.js
+CMD npx payload migrate; HOSTNAME="0.0.0.0" node server.js
