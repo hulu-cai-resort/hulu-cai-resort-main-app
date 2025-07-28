@@ -523,13 +523,13 @@ function StaticMarkersRenderer({
         const position = newMarkers[0]?.getPosition()
         if (position) {
           map.setCenter(position)
-          map.setZoom(19)
+          map.setZoom(20)
         }
       } else {
         map.fitBounds(bounds)
         const listener = google.maps.event.addListener(map, 'bounds_changed', () => {
           const currentZoom = map.getZoom()
-          if (currentZoom !== undefined && currentZoom > 19) map.setZoom(19)
+          if (currentZoom !== undefined && currentZoom > 20) map.setZoom(20)
           google.maps.event.removeListener(listener)
         })
       }
@@ -603,12 +603,19 @@ const CustomOverlay = () => {
       }
     }
 
+    const centerLat = -6.7019722
+    const centerLng = 106.88765
+
+    // Start with these values and adjust as needed
+    const latSpan = 0.00561 // Increase for taller coverage
+    const lngSpan = 0.0079 // Increase for wider coverage
+
     const bounds = new google.maps.LatLngBounds(
-      new google.maps.LatLng(-6.7035, 106.886),
-      new google.maps.LatLng(-6.7, 106.889),
+      new google.maps.LatLng(centerLat - latSpan / 2, centerLng - lngSpan / 2),
+      new google.maps.LatLng(centerLat + latSpan / 2, centerLng + lngSpan / 2),
     )
 
-    const overlay = new MyOverlay(bounds, '/maps/dummy-1.jpeg')
+    const overlay = new MyOverlay(bounds, '/maps/maps.jpeg')
     overlay.setMap(map)
 
     return () => {
@@ -698,8 +705,8 @@ export default function MapsPageClient({
               defaultZoom={DEFAULT_ZOOM}
               styles={MAP_STYLES}
               gestureHandling="cooperative"
-              minZoom={17}
-              maxZoom={20}
+              minZoom={18.5}
+              maxZoom={21}
               disableDefaultUI={true}
               mapTypeControl={true}
             >

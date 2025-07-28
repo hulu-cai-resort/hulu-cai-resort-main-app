@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { cn } from '@/utilities/ui'
 import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
+import { Raleway } from 'next/font/google'
 import React from 'react'
 
 import { AdminBar } from '@/components/AdminBar'
@@ -17,12 +18,18 @@ import { getServerSideURL } from '@/utilities/getURL'
 import { Navbar } from '@/components/Navbar'
 import { Toaster } from 'sonner'
 
+const raleway = Raleway({
+  subsets: ['latin'],
+  variable: '--font-raleway', // define a CSS variable
+  display: 'swap',
+})
+
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { isEnabled } = await draftMode()
 
   return (
     <html
-      className={cn(GeistSans.variable, GeistMono.variable)}
+      className={cn(GeistSans.variable, GeistMono.variable, raleway.variable)}
       lang="en"
       suppressHydrationWarning
       style={{ scrollBehavior: 'smooth' }}
