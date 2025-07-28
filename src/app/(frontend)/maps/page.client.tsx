@@ -603,11 +603,11 @@ const CustomOverlay = () => {
       }
     }
 
-    const centerLat = -6.7019722
+    const centerLat = -6.701956
     const centerLng = 106.88765
 
     // Start with these values and adjust as needed
-    const latSpan = 0.00561 // Increase for taller coverage
+    const latSpan = 0.00562 // Increase for taller coverage
     const lngSpan = 0.0079 // Increase for wider coverage
 
     const bounds = new google.maps.LatLngBounds(
