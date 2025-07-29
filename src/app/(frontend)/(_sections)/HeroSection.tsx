@@ -63,7 +63,7 @@ export function HeroSection({ mainPage }: HeroSectionProps) {
           >
             <div className="max-w-[670px] space-y-4 lg:space-y-[13px]">
               <motion.h1
-                className="font-raleway max-w-md text-3xl font-bold leading-[1.18] text-white sm:text-5xl lg:text-[56px] lg:leading-[1.18]"
+                className="max-w-md font-raleway text-3xl font-bold leading-[1.18] text-white sm:text-5xl lg:text-[56px] lg:leading-[1.18]"
                 variants={itemVariants}
               >
                 {mainPage.heroTitle}
@@ -73,7 +73,7 @@ export function HeroSection({ mainPage }: HeroSectionProps) {
                 className="border-l border-white pl-2.5 lg:pl-[10px]"
                 variants={itemVariants}
               >
-                <p className="font-raleway text-wrap text-base leading-[1.2] text-white/90 sm:text-xl lg:text-[20px] lg:leading-[1.2]">
+                <p className="text-wrap font-raleway text-base leading-[1.2] text-white/90 sm:text-xl lg:text-[20px] lg:leading-[1.2]">
                   {mainPage.heroDescription}
                 </p>
               </motion.div>
@@ -89,12 +89,14 @@ export function HeroSection({ mainPage }: HeroSectionProps) {
                 >
                   <Button
                     variant="fluid"
-                    size="default"
-                    className="px-5 py-3 lg:h-[48px] lg:w-[164px] lg:px-[20px] lg:py-[12px] lg:text-[16px]"
-                    onClick={() => router.push('#activities')}
+                    size="lg"
+                    className="w-md w-fit px-5 py-3 lg:h-[48px] lg:w-[164px] lg:px-[20px] lg:py-[12px] lg:text-[16px]"
+                    onClick={() => router.push('/reservation')}
                   >
-                    Get Started
-                    <ChevronRight className="ml-3 h-4 w-4 lg:h-[16px] lg:w-[16px]" />
+                    <div className="flex items-center justify-center px-3 text-sm">
+                      Make Reservation
+                      <ChevronRight className="ml-2 h-4 w-4" />
+                    </div>
                   </Button>
                 </motion.div>
 
@@ -105,7 +107,7 @@ export function HeroSection({ mainPage }: HeroSectionProps) {
                 >
                   <Button
                     size="default"
-                    className="font-raleway border border-white bg-white/10 px-5 py-3 text-base font-semibold text-white backdrop-blur-[20px] hover:bg-white/20 lg:h-[48px] lg:w-[164px] lg:px-[20px] lg:py-[12px] lg:text-[16px]"
+                    className="border border-white bg-white/10 px-5 py-3 font-raleway text-base font-semibold text-white backdrop-blur-[20px] hover:bg-white/20 lg:h-[48px] lg:w-[164px] lg:px-[20px] lg:py-[12px] lg:text-[16px]"
                     onClick={() => router.push('/maps')}
                   >
                     Explore

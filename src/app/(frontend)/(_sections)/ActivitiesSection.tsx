@@ -18,6 +18,7 @@ import {
 import 'swiper/css'
 import 'swiper/css/pagination'
 import { useRouter } from 'next/navigation'
+import { ChevronRight } from 'lucide-react'
 
 interface ActivitiesSectionProps {
   mainPage: MainPage
@@ -88,28 +89,17 @@ export function ActivitiesSection({ mainPage }: ActivitiesSectionProps) {
                           <h3 className="font-raleway text-[28px] font-semibold leading-[1.07] text-white">
                             {activity.title}
                           </h3>
-                          <p className="font-raleway text-[18px] font-semibold leading-[1.33] text-white">
+                          <p className="font-raleway text-sm font-semibold text-white">
                             {activity.subtitle}
                           </p>
                         </div>
                         <motion.div
-                          className="flex h-[39px] w-[40px] items-center justify-center rounded-full border-2 border-white"
+                          className="flex h-[39px] w-[40px] cursor-pointer items-center justify-center rounded-full border-2 border-white"
                           whileHover={{ scale: 1.1, rotate: 5 }}
                           whileTap={{ scale: 0.95 }}
+                          onClick={() => router.push(activity.link ?? '')}
                         >
-                          <svg
-                            className="h-[18px] w-[18px] text-white"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={1.5}
-                              d="M5 15l7-7 7 7"
-                            />
-                          </svg>
+                          <ChevronRight className="h-4 w-4 text-white" />
                         </motion.div>
                       </div>
                     </motion.div>
@@ -185,28 +175,17 @@ export function ActivitiesSection({ mainPage }: ActivitiesSectionProps) {
                       <h3 className="font-raleway text-[36px] font-semibold leading-[1.28] text-white">
                         {featuredActivity.title}
                       </h3>
-                      <p className="font-raleway text-[24px] font-semibold leading-[1.42] text-white">
+                      <p className="font-raleway text-sm font-semibold text-white">
                         {featuredActivity.subtitle}
                       </p>
                     </div>
                     <motion.div
-                      className="flex h-[42px] w-[42px] items-center justify-center rounded-full border-2 border-white"
+                      className="flex h-[42px] w-[42px] cursor-pointer items-center justify-center rounded-full border-2 border-white"
                       whileHover={{ scale: 1.1, rotate: 5 }}
                       whileTap={{ scale: 0.95 }}
+                      onClick={() => router.push(featuredActivity.link ?? '')}
                     >
-                      <svg
-                        className="h-[18px] w-[18px] text-white"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={1.5}
-                          d="M5 15l7-7 7 7"
-                        />
-                      </svg>
+                      <ChevronRight className="h-4 w-4 text-white" />
                     </motion.div>
                   </div>
                 </motion.div>
@@ -246,28 +225,15 @@ export function ActivitiesSection({ mainPage }: ActivitiesSectionProps) {
                           <h3 className="font-raleway text-[24px] font-semibold leading-[1.42] text-white">
                             {activity.title}
                           </h3>
-                          <p className="font-raleway text-[16px] leading-[1.75] text-white">
-                            {activity.subtitle}
-                          </p>
+                          <p className="font-raleway text-sm text-white">{activity.subtitle}</p>
                         </div>
                         <motion.div
-                          className="flex h-[42px] w-[42px] items-center justify-center rounded-full border-2 border-white"
+                          className="flex h-[42px] w-[42px] cursor-pointer items-center justify-center rounded-full border-2 border-white"
                           whileHover={{ scale: 1.1, rotate: 5 }}
                           whileTap={{ scale: 0.95 }}
+                          onClick={() => router.push(activity.link ?? '')}
                         >
-                          <svg
-                            className="h-[18px] w-[18px] text-white"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={1.5}
-                              d="M5 15l7-7 7 7"
-                            />
-                          </svg>
+                          <ChevronRight className="h-4 w-4 text-white" />
                         </motion.div>
                       </div>
                     </motion.div>
@@ -314,28 +280,17 @@ export function ActivitiesSection({ mainPage }: ActivitiesSectionProps) {
                       <h3 className="font-raleway text-[36px] font-semibold leading-[1.28] text-white">
                         {featuredActivity.title}
                       </h3>
-                      <p className="font-raleway text-[24px] font-semibold leading-[1.42] text-white">
+                      <p className="font-raleway text-sm font-semibold text-white">
                         {featuredActivity.subtitle}
                       </p>
                     </div>
                     <motion.div
-                      className="flex h-[42px] w-[42px] items-center justify-center rounded-full border-2 border-white"
+                      className="flex h-[42px] w-[42px] cursor-pointer items-center justify-center rounded-full border-2 border-white"
                       whileHover={{ scale: 1.1, rotate: 5 }}
                       whileTap={{ scale: 0.95 }}
+                      onClick={() => router.push(featuredActivity.link ?? '')}
                     >
-                      <svg
-                        className="h-[18px] w-[18px] text-white"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={1.5}
-                          d="M5 15l7-7 7 7"
-                        />
-                      </svg>
+                      <ChevronRight className="h-4 w-4 text-white" />
                     </motion.div>
                   </div>
                 </motion.div>
@@ -375,28 +330,15 @@ export function ActivitiesSection({ mainPage }: ActivitiesSectionProps) {
                           <h3 className="font-raleway text-[24px] font-semibold leading-[1.42] text-white">
                             {activity.title}
                           </h3>
-                          <p className="font-raleway text-[16px] leading-[1.75] text-white">
-                            {activity.subtitle}
-                          </p>
+                          <p className="font-raleway text-sm text-white">{activity.subtitle}</p>
                         </div>
                         <motion.div
-                          className="flex h-[42px] w-[42px] items-center justify-center rounded-full border-2 border-white"
+                          className="flex h-[42px] w-[42px] cursor-pointer items-center justify-center rounded-full border-2 border-white"
                           whileHover={{ scale: 1.1, rotate: 5 }}
                           whileTap={{ scale: 0.95 }}
+                          onClick={() => router.push(featuredActivity.link ?? '')}
                         >
-                          <svg
-                            className="h-[18px] w-[18px] text-white"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={1.5}
-                              d="M5 15l7-7 7 7"
-                            />
-                          </svg>
+                          <ChevronRight className="h-4 w-4 text-white" />
                         </motion.div>
                       </div>
                     </motion.div>

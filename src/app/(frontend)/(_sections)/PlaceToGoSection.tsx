@@ -47,7 +47,7 @@ export default function PlaceToGoSection({ mainPage }: { mainPage: MainPage }) {
               {mainPage.aboutTitle}
             </motion.h2>
             <motion.p
-              className="font-raleway w-full text-sm leading-[1.43] text-[#1D1D1D] md:mx-auto md:text-[16px] md:leading-[1.75] lg:mx-auto lg:text-[16px] lg:leading-[1.75]"
+              className="w-full font-raleway text-sm leading-[1.43] text-[#1D1D1D] md:mx-auto md:text-[16px] md:leading-[1.75] lg:mx-auto lg:text-[16px] lg:leading-[1.75]"
               variants={headerTextVariants}
             >
               {mainPage.aboutDescription}
@@ -196,7 +196,7 @@ export default function PlaceToGoSection({ mainPage }: { mainPage: MainPage }) {
                       </span>
                     </div>
                     <div>
-                      <h3 className="font-raleway mb-2 text-lg font-semibold leading-[1.33] text-[#1D1D1D]">
+                      <h3 className="mb-2 font-raleway text-lg font-semibold leading-[1.33] text-[#1D1D1D]">
                         {feature.title}
                       </h3>
                       <p className="font-raleway text-sm leading-[1.43] text-[#1D1D1D]">
@@ -209,7 +209,7 @@ export default function PlaceToGoSection({ mainPage }: { mainPage: MainPage }) {
                 <motion.div className="pt-2" variants={buttonVariants}>
                   <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                     <Button
-                      onClick={() => router.push('/activities')}
+                      onClick={() => router.push('/maps')}
                       className="font-rethink h-[46px] w-full rounded-[8px] bg-[#06763F] text-xs font-semibold leading-[1.33] text-white"
                     >
                       Mulai Jelajahi
@@ -362,7 +362,7 @@ export default function PlaceToGoSection({ mainPage }: { mainPage: MainPage }) {
                       </span>
                     </div>
                     <div>
-                      <h3 className="font-raleway mb-3 text-xl font-semibold leading-[1.2] text-[#1D1D1D]">
+                      <h3 className="mb-3 font-raleway text-xl font-semibold leading-[1.2] text-[#1D1D1D]">
                         {feature.title}
                       </h3>
                       <p className="font-raleway text-base leading-[1.75] text-[#1D1D1D]">
@@ -375,7 +375,7 @@ export default function PlaceToGoSection({ mainPage }: { mainPage: MainPage }) {
                 <motion.div className="pt-2" variants={buttonVariants}>
                   <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                     <Button
-                      onClick={() => router.push('/activities')}
+                      onClick={() => router.push('/maps')}
                       className="font-rethink h-[46px] w-[156px] rounded-[10px] bg-[#06763F] text-sm font-semibold leading-[1.43] text-white"
                     >
                       Mulai Jelajahi
@@ -409,7 +409,7 @@ export default function PlaceToGoSection({ mainPage }: { mainPage: MainPage }) {
                       </span>
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-raleway mb-3 text-xl font-semibold leading-[1.2] text-[#1D1D1D]">
+                      <h3 className="mb-3 font-raleway text-xl font-semibold leading-[1.2] text-[#1D1D1D]">
                         {feature.title}
                       </h3>
                       <p className="font-raleway text-base leading-[1.75] text-[#1D1D1D]">
@@ -422,8 +422,8 @@ export default function PlaceToGoSection({ mainPage }: { mainPage: MainPage }) {
                 <motion.div className="pt-2" variants={buttonVariants}>
                   <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                     <Button
-                      onClick={() => router.push('/activities')}
-                      className="font-raleway h-[48px] w-[138px] rounded-[8px] bg-[#06763F] text-base font-semibold leading-[1.75] text-white"
+                      onClick={() => router.push('/maps')}
+                      className="h-[48px] w-[138px] rounded-[8px] bg-[#06763F] font-raleway text-base font-semibold leading-[1.75] text-white"
                     >
                       Mulai Jelajahi
                     </Button>
