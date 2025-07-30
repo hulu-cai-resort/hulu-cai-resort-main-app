@@ -703,12 +703,14 @@ function MapContent({
 export default function MapsPageClient({
   mapPage,
   mapMarkers,
+  apiKey,
 }: {
   mapPage: MapPage
   mapMarkers: PaginatedDocs<MapMarker>
+  apiKey?: string
 }) {
   const [activeFilter, setActiveFilter] = useState<MapFilter>('all')
-  const googleMapsApiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
+  const googleMapsApiKey = apiKey
 
   const handleFilterChange = useCallback((filter: MapFilter) => {
     setActiveFilter(filter)

@@ -18,7 +18,9 @@ export default async function MapsPage() {
     depth: 1,
   })
 
-  return <PageClient mapPage={mapPage} mapMarkers={mapMarkers} />
+  const apiKey = process.env.GOOGLE_MAPS_API_KEY
+
+  return <PageClient mapPage={mapPage} mapMarkers={mapMarkers} apiKey={apiKey} />
 }
 
 export async function generateMetadata(): Promise<Metadata> {
