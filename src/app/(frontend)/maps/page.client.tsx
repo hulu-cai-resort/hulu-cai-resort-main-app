@@ -743,7 +743,7 @@ export default function MapsPageClient({
               minZoom={18.5}
               maxZoom={21}
               disableDefaultUI={true}
-              mapTypeControl={true}
+              mapTypeId={'roadmap'}
             >
               <MapContent
                 activeFilter={activeFilter}
