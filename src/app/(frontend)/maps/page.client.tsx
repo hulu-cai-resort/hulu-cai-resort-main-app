@@ -558,11 +558,14 @@ const CustomOverlay = () => {
       private bounds: google.maps.LatLngBounds
       private image: string
       private div?: HTMLElement
+      private imageAspectRatio: number
 
       constructor(bounds: google.maps.LatLngBounds, image: string) {
         super()
         this.bounds = bounds
         this.image = image
+        // Your image dimensions: 8192x5788
+        this.imageAspectRatio = 8192 / 5788 // ≈ 1.415
       }
 
       override onAdd() {
@@ -570,12 +573,16 @@ const CustomOverlay = () => {
         this.div.style.borderStyle = 'none'
         this.div.style.borderWidth = '0px'
         this.div.style.position = 'absolute'
+        this.div.style.overflow = 'hidden' // Prevent image from overflowing
 
         const img = document.createElement('img')
         img.src = this.image
         img.style.width = '100%'
         img.style.height = '100%'
         img.style.position = 'absolute'
+        img.style.objectFit = 'contain' // Changed from 'cover' to 'contain'
+        img.style.objectPosition = 'center' // Center the image within bounds
+
         this.div.appendChild(img)
 
         const panes = this.getPanes()
@@ -588,10 +595,31 @@ const CustomOverlay = () => {
         const ne = overlayProjection.fromLatLngToDivPixel(this.bounds.getNorthEast())!
 
         if (this.div) {
-          this.div.style.left = sw.x + 'px'
-          this.div.style.top = ne.y + 'px'
-          this.div.style.width = ne.x - sw.x + 'px'
-          this.div.style.height = sw.y - ne.y + 'px'
+          // Calculate the bounds dimensions
+          const boundsWidth = ne.x - sw.x
+          const boundsHeight = sw.y - ne.y
+          const boundsAspectRatio = boundsWidth / boundsHeight
+
+          let finalWidth = boundsWidth
+          let finalHeight = boundsHeight
+          let offsetX = 0
+          let offsetY = 0
+
+          // Adjust dimensions to maintain image aspect ratio
+          if (boundsAspectRatio > this.imageAspectRatio) {
+            // Bounds are wider than image ratio - fit to height
+            finalWidth = boundsHeight * this.imageAspectRatio
+            offsetX = (boundsWidth - finalWidth) / 2
+          } else {
+            // Bounds are taller than image ratio - fit to width
+            finalHeight = boundsWidth / this.imageAspectRatio
+            offsetY = (boundsHeight - finalHeight) / 2
+          }
+
+          this.div.style.left = sw.x + offsetX + 'px'
+          this.div.style.top = ne.y + offsetY + 'px'
+          this.div.style.width = finalWidth + 'px'
+          this.div.style.height = finalHeight + 'px'
         }
       }
 
@@ -603,19 +631,26 @@ const CustomOverlay = () => {
       }
     }
 
-    const centerLat = -6.701956
-    const centerLng = 106.88765
+    // Configuration - easier to adjust
+    const centerLat = -6.70201
+    const centerLng = 106.887665
 
-    // Start with these values and adjust as needed
-    const latSpan = 0.00562 // Increase for taller coverage
-    const lngSpan = 0.0079 // Increase for wider coverage
+    // Method 1: Using center point and spans (your current approach)
+    const latSpan = 0.00562
+    const lngSpan = 0.0079
 
     const bounds = new google.maps.LatLngBounds(
       new google.maps.LatLng(centerLat - latSpan / 2, centerLng - lngSpan / 2),
       new google.maps.LatLng(centerLat + latSpan / 2, centerLng + lngSpan / 2),
     )
 
-    const overlay = new MyOverlay(bounds, '/maps/maps.jpeg')
+    //Method 2: Direct corner specification (alternative)
+    // const bounds = new google.maps.LatLngBounds(
+    //   new google.maps.LatLng(-6.704766, 106.8837), // SW corner
+    //   new google.maps.LatLng(-6.699146, 106.8916), // NE corner
+    // )
+
+    const overlay = new MyOverlay(bounds, '/maps/Map.png')
     overlay.setMap(map)
 
     return () => {
