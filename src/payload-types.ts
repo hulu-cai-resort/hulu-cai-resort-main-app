@@ -886,10 +886,11 @@ export interface User {
  */
 export interface Customer {
   id: number;
-  paketActivity: string;
+  paketAkomodasi: string;
+  jumlahTamu: number;
   paketMakan: string;
-  projectType: string;
-  maxTime: string;
+  paketAktivitas: string;
+  tanggal: string;
   keterangan?: string | null;
   nama: string;
   email: string;
@@ -1425,10 +1426,11 @@ export interface UsersSelect<T extends boolean = true> {
  * via the `definition` "customers_select".
  */
 export interface CustomersSelect<T extends boolean = true> {
-  paketActivity?: T;
+  paketAkomodasi?: T;
+  jumlahTamu?: T;
   paketMakan?: T;
-  projectType?: T;
-  maxTime?: T;
+  paketAktivitas?: T;
+  tanggal?: T;
   keterangan?: T;
   nama?: T;
   email?: T;

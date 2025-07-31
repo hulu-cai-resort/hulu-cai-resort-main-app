@@ -21,21 +21,23 @@ import {
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from '@/components/ui/form'
 import { toast } from 'sonner'
-import { useMemo } from 'react'
+import Link from 'next/link'
 
 // Form validation schema
 const formSchema = z.object({
   // Step 1: Reservation Details
-  paketActivity: z.string().min(1, 'Pilih paket activity'),
+  paketAkomodasi: z.string().min(1, 'Pilih paket akomodasi'),
+  jumlahTamu: z.coerce.number().min(1, 'Jumlah tamu minimal 1'),
   paketMakan: z.string().min(1, 'Pilih paket makan'),
-  projectType: z.string().min(1, 'Pilih tipe project/aktivitas'),
-  maxTime: z.string().min(1, 'Pilih maksimal waktu aktivitas'),
+  paketAktivitas: z.string().min(1, 'Pilih tipe project/aktivitas'),
+  tanggal: z.coerce.date().min(new Date(), { message: 'Tanggal tidak boleh sebelum hari ini' }),
   keterangan: z.string().optional(),
 
   // Step 2: Personal Information
@@ -69,59 +71,81 @@ function StepIndicator({ currentStep }: { currentStep: number }) {
 
 // Step 1: Reservation Details
 function Step1({ form }: { form: any }) {
-  const activityOptions = [
-    { value: 'outdoor-adventure', label: 'Outdoor Adventure' },
-    { value: 'water-sports', label: 'Water Sports' },
-    { value: 'hiking', label: 'Hiking & Trekking' },
-    { value: 'cultural-tour', label: 'Cultural Tour' },
-  ]
-
-  const mealOptions = [
-    { value: 'breakfast', label: 'Sarapan' },
-    { value: 'lunch', label: 'Makan Siang' },
-    { value: 'dinner', label: 'Makan Malam' },
-    { value: 'full-board', label: 'Full Board' },
-  ]
-
-  const projectOptions = [
-    { value: 'team-building', label: 'Team Building' },
-    { value: 'corporate-event', label: 'Corporate Event' },
-    { value: 'wedding', label: 'Wedding' },
-    { value: 'family-gathering', label: 'Family Gathering' },
-  ]
-
-  const timeOptions = [
-    { value: '2-hours', label: '2 Jam' },
-    { value: '4-hours', label: '4 Jam' },
-    { value: '6-hours', label: '6 Jam' },
-    { value: '1-day', label: '1 Hari' },
-  ]
-
   return (
     <div className="w-full space-y-6 md:space-y-8">
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-12">
         <FormField
           control={form.control}
-          name="paketActivity"
+          name="paketAkomodasi"
           render={({ field }) => (
             <FormItem>
               <FormLabel className="text-lg font-semibold text-black md:text-xl">
-                Paket Activity
+                Paket Akomodasi
               </FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                <FormControl>
-                  <SelectTrigger className="border-[#CACCCF] bg-[#F5F7FA] text-base">
-                    <SelectValue placeholder="Pilih paket activity" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  {activityOptions.map((option) => (
-                    <SelectItem key={option.value} value={option.value}>
-                      {option.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              <FormControl>
+                <Input
+                  type="text"
+                  className="w-full rounded-md border-[#CACCCF] bg-[#F5F7FA] px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-[#06763F]"
+                  placeholder="5 Villa, 2 Cottage"
+                  {...field}
+                />
+              </FormControl>
+              <FormDescription>
+                Akomodasi dapat dilihat di{' '}
+                <Link href="/accommodations" className="text-[#06763F]">
+                  sini
+                </Link>
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="jumlahTamu"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="text-lg font-semibold text-black md:text-xl">
+                Jumlah Tamu
+              </FormLabel>
+              <FormControl>
+                <Input
+                  type="number"
+                  className="w-full rounded-md border-[#CACCCF] bg-[#F5F7FA] px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-[#06763F]"
+                  placeholder="10"
+                  inputMode="numeric"
+                  {...field}
+                />
+              </FormControl>
+              <FormDescription>Jumlah seluruh tamu yang akan menginap.</FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="paketAktivitas"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="text-lg font-semibold text-black md:text-xl">
+                Paket Aktivitas
+              </FormLabel>
+              <FormControl>
+                <Input
+                  type="text"
+                  className="w-full rounded-md border-[#CACCCF] bg-[#F5F7FA] px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-[#06763F]"
+                  placeholder="Paintball, Team Building..."
+                  {...field}
+                />
+              </FormControl>
+              <FormDescription>
+                Paket aktivitas dapat dilihat di{' '}
+                <Link href="/activities" className="text-[#06763F]">
+                  sini
+                </Link>
+              </FormDescription>
               <FormMessage />
             </FormItem>
           )}
@@ -135,79 +159,46 @@ function Step1({ form }: { form: any }) {
               <FormLabel className="text-lg font-semibold text-black md:text-xl">
                 Paket Makan
               </FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                <FormControl>
-                  <SelectTrigger className="border-[#CACCCF] bg-[#F5F7FA] text-base">
-                    <SelectValue placeholder="Pilih paket makan" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  {mealOptions.map((option) => (
-                    <SelectItem key={option.value} value={option.value}>
-                      {option.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="projectType"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="text-lg font-semibold text-black md:text-xl">
-                Project / Activities Type
-              </FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                <FormControl>
-                  <SelectTrigger className="border-[#CACCCF] bg-[#F5F7FA] text-base">
-                    <SelectValue placeholder="Pilih tipe project" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  {projectOptions.map((option) => (
-                    <SelectItem key={option.value} value={option.value}>
-                      {option.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="maxTime"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="text-lg font-semibold text-black md:text-xl">
-                Maximum time for the activity
-              </FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                <FormControl>
-                  <SelectTrigger className="border-[#CACCCF] bg-[#F5F7FA] text-base">
-                    <SelectValue placeholder="Pilih maksimal waktu" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  {timeOptions.map((option) => (
-                    <SelectItem key={option.value} value={option.value}>
-                      {option.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              <FormControl>
+                <Input
+                  type="text"
+                  className="w-full rounded-md border-[#CACCCF] bg-[#F5F7FA] px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-[#06763F]"
+                  placeholder="Full Board, Half Board, Breakfast Only"
+                  {...field}
+                />
+              </FormControl>
+              <FormDescription>
+                Paket makan dapat dilihat di{' '}
+                <Link href="/events" className="text-[#06763F]">
+                  sini
+                </Link>
+              </FormDescription>
               <FormMessage />
             </FormItem>
           )}
         />
       </div>
+      <FormField
+        control={form.control}
+        name="tanggal"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel className="text-lg font-semibold text-black md:text-xl">
+              Tanggal Reservasi
+            </FormLabel>
+            <FormControl>
+              <Input
+                type="date"
+                min={new Date().toISOString().split('T')[0]}
+                className="w-full rounded-md border-[#CACCCF] bg-[#F5F7FA] px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-[#06763F]"
+                {...field}
+              />
+            </FormControl>
+            <FormDescription>Tanggal reservasi kegiatan anda.</FormDescription>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
 
       <FormField
         control={form.control}
@@ -324,40 +315,6 @@ function Step2({ form }: { form: any }) {
 
 // Step 3: Review
 function Step3({ data }: { data: FormData }) {
-  const getOptionLabel = (value: string, type: string) => {
-    const options = {
-      activity: {
-        'outdoor-adventure': 'Outdoor Adventure',
-        'water-sports': 'Water Sports',
-        hiking: 'Hiking & Trekking',
-        'cultural-tour': 'Cultural Tour',
-      },
-      meal: {
-        breakfast: 'Sarapan',
-        lunch: 'Makan Siang',
-        dinner: 'Makan Malam',
-        'full-board': 'Full Board',
-      },
-      project: {
-        'team-building': 'Team Building',
-        'corporate-event': 'Corporate Event',
-        wedding: 'Wedding',
-        'family-gathering': 'Family Gathering',
-      },
-      time: {
-        '2-hours': '2 Jam',
-        '4-hours': '4 Jam',
-        '6-hours': '6 Jam',
-        '1-day': '1 Hari',
-      },
-    }
-    return (
-      options[type as keyof typeof options]?.[
-        value as keyof (typeof options)[keyof typeof options]
-      ] || value
-    )
-  }
-
   return (
     <div className="w-full space-y-6">
       <div className="text-center">
@@ -373,20 +330,30 @@ function Step3({ data }: { data: FormData }) {
 
           <div className="space-y-3">
             <div className="flex justify-between">
-              <span className="text-gray-600">Paket Activity:</span>
-              <span className="font-medium">{getOptionLabel(data.paketActivity, 'activity')}</span>
+              <span className="text-gray-600">Paket Akomodasi:</span>
+              <span className="font-medium">{data.paketAkomodasi}</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-gray-600">Jumlah Tamu:</span>
+              <span className="font-medium">{data.jumlahTamu}</span>
             </div>
             <div className="flex justify-between">
               <span className="text-gray-600">Paket Makan:</span>
-              <span className="font-medium">{getOptionLabel(data.paketMakan, 'meal')}</span>
+              <span className="font-medium">{data.paketMakan}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-600">Tipe Project:</span>
-              <span className="font-medium">{getOptionLabel(data.projectType, 'project')}</span>
+              <span className="text-gray-600">Paket Aktivitas:</span>
+              <span className="font-medium">{data.paketAktivitas}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-600">Durasi:</span>
-              <span className="font-medium">{getOptionLabel(data.maxTime, 'time')}</span>
+              <span className="text-gray-600">Tanggal Reservasi:</span>
+              <span className="font-medium">
+                {new Date(data.tanggal).toLocaleDateString('id-ID', {
+                  day: '2-digit',
+                  month: 'long',
+                  year: 'numeric',
+                })}
+              </span>
             </div>
             {data.keterangan && (
               <div>
@@ -431,10 +398,11 @@ export default function ReservationFormSection({ phoneNumber }: { phoneNumber: s
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      paketActivity: '',
+      paketAkomodasi: '',
+      jumlahTamu: 1,
       paketMakan: '',
-      projectType: '',
-      maxTime: '',
+      paketAktivitas: '',
+      tanggal: new Date(),
       keterangan: '',
       nama: '',
       email: '',
@@ -445,7 +413,7 @@ export default function ReservationFormSection({ phoneNumber }: { phoneNumber: s
 
   const validateCurrentStep = async () => {
     if (currentStep === 1) {
-      const stepFields = ['paketActivity', 'paketMakan', 'projectType', 'maxTime']
+      const stepFields = ['paketAkomodasi', 'jumlahTamu', 'paketMakan', 'paketAktivitas', 'tanggal']
       const isValid = await form.trigger(stepFields as any)
       return isValid
     }
@@ -470,38 +438,6 @@ export default function ReservationFormSection({ phoneNumber }: { phoneNumber: s
     }
   }
 
-  const mapLabel = (value: string, type: string) => {
-    const options = {
-      activity: {
-        'outdoor-adventure': 'Outdoor Adventure',
-        'water-sports': 'Water Sports',
-        hiking: 'Hiking & Trekking',
-        'cultural-tour': 'Cultural Tour',
-      },
-      meal: {
-        breakfast: 'Sarapan',
-        lunch: 'Makan Siang',
-        dinner: 'Makan Malam',
-        'full-board': 'Full Board',
-      },
-      project: {
-        'team-building': 'Team Building',
-        'corporate-event': 'Corporate Event',
-        wedding: 'Wedding',
-        'family-gathering': 'Family Gathering',
-      },
-      time: {
-        '2-hours': '2 Jam',
-        '4-hours': '4 Jam',
-        '6-hours': '6 Jam',
-        '1-day': '1 Hari',
-      },
-    } as const
-
-    // @ts-ignore
-    return options[type]?.[value] || value
-  }
-
   const handleSubmit = async (data: FormData) => {
     startTransition(async () => {
       const result = await createCustomerAction(data)
@@ -509,11 +445,16 @@ export default function ReservationFormSection({ phoneNumber }: { phoneNumber: s
         toast.success('Reservasi berhasil dikirim!')
 
         const messageLines = [
-          `Halo Admin, saya ${data.nama} ingin melakukan reservasi.`,
-          `Paket Activity: ${mapLabel(data.paketActivity, 'activity')}`,
-          `Paket Makan: ${mapLabel(data.paketMakan, 'meal')}`,
-          `Tipe Project: ${mapLabel(data.projectType, 'project')}`,
-          `Durasi: ${mapLabel(data.maxTime, 'time')}`,
+          `Halo Admin CHC, saya ${data.nama} ingin melakukan reservasi.`,
+          `Tanggal Reservasi: ${new Date(data.tanggal).toLocaleDateString('id-ID', {
+            day: '2-digit',
+            month: 'long',
+            year: 'numeric',
+          })}`,
+          `Jumlah Tamu: ${data.jumlahTamu} Orang`,
+          `Paket Akomodasi: ${data.paketAkomodasi}`,
+          `Paket Makan: ${data.paketMakan}`,
+          `Aktivitas: ${data.paketAktivitas}`,
         ]
 
         if (data.keterangan) messageLines.push(`Keterangan: ${data.keterangan}`)
