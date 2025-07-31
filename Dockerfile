@@ -38,8 +38,6 @@ RUN \
   else echo "Lockfile not found." && exit 1; \
   fi
 
-RUN npx payload migrate:create
-
 # Production image, copy all the files and run next
 FROM base AS runner
 WORKDIR /app
@@ -77,4 +75,4 @@ ENV PORT 3000
 ENV PAYLOAD_CONFIG_PATH=src/payload.config.ts
 
 # server.js is created by next build from the standalone output
-CMD npx payload migrate; HOSTNAME="0.0.0.0" node server.js
+CMD npx payload migrate:create; npx payload migrate; HOSTNAME="0.0.0.0" node server.js
