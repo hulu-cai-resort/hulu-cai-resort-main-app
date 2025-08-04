@@ -43,7 +43,7 @@ export default function AttractionsSection({
         variants={sectionContainerVariants}
       >
         <div className="flex justify-center px-5 pb-8 lg:px-10 lg:pb-16">
-          <div className="w-full md:max-w-full lg:max-w-7xl">
+          <div className="w-full space-y-6 md:max-w-full lg:max-w-7xl">
             {/* Mobile Layout */}
             {attractions.docs.map((attraction, index) => (
               <div
@@ -113,7 +113,7 @@ function MobileAttractionCard({ attraction }: { attraction: Attraction }) {
         variants={cardContentVariants}
       >
         {/* Title */}
-        <h3 className="font-raleway w-full text-[18px] font-semibold leading-[1.33] text-[#1D1D1D]">
+        <h3 className="w-full font-raleway text-[18px] font-semibold leading-[1.33] text-[#1D1D1D]">
           {attraction.title}
         </h3>
 
@@ -134,7 +134,7 @@ function MobileAttractionCard({ attraction }: { attraction: Attraction }) {
               maximumFractionDigits: 0,
             }).format(attraction.price || 0)}
           </p>
-          <p className="font-raleway w-full text-right text-[12px] font-normal leading-[2] text-[#1D1D1D]">
+          <p className="w-full text-right font-raleway text-[12px] font-normal leading-[2] text-[#1D1D1D]">
             {attraction.priceUnit}
           </p>
         </div>
@@ -164,7 +164,7 @@ function TabletAttractionCard({ attraction }: { attraction: Attraction }) {
         variants={cardContentVariants}
       >
         {/* Title */}
-        <h3 className="font-raleway w-full text-[36px] font-bold leading-[1.28] text-[#1D1D1D]">
+        <h3 className="w-full font-raleway text-[36px] font-bold leading-[1.28] text-[#1D1D1D]">
           {attraction.title}
         </h3>
 
@@ -185,7 +185,7 @@ function TabletAttractionCard({ attraction }: { attraction: Attraction }) {
               maximumFractionDigits: 0,
             }).format(attraction.price || 0)}
           </p>
-          <p className="font-raleway text-right text-[13px] font-medium leading-[1.17] text-[#1D1D1D]">
+          <p className="text-right font-raleway text-[13px] font-medium leading-[1.17] text-[#1D1D1D]">
             {attraction.priceUnit}
           </p>
         </div>
@@ -215,7 +215,7 @@ function DesktopAttractionCard({ attraction }: { attraction: Attraction }) {
         variants={cardContentVariants}
       >
         {/* Title */}
-        <h3 className="font-raleway w-full text-[36px] font-bold leading-[1.28] text-[#000000]">
+        <h3 className="w-full font-raleway text-[36px] font-bold leading-[1.28] text-[#000000]">
           {attraction.title}
         </h3>
 
@@ -236,7 +236,7 @@ function DesktopAttractionCard({ attraction }: { attraction: Attraction }) {
               maximumFractionDigits: 0,
             }).format(attraction.price || 0)}
           </p>
-          <p className="font-raleway text-right text-[12px] font-normal leading-[2] text-[#000000]">
+          <p className="text-right font-raleway text-[12px] font-normal leading-[2] text-[#000000]">
             {attraction.priceUnit}
           </p>
         </div>

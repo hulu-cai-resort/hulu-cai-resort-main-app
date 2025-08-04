@@ -44,42 +44,46 @@ export default function DiningSection({
             </p>
           </motion.div>
           {/* Mobile Layout - Vertical Stack */}
-          {dinings.docs.map((dining, index) => (
-            <div key={dining.id} className="w-full scroll-mt-24" id={`dining-${dining.id}`}>
-              {/* Mobile Layout */}
-              <motion.div
-                className="flex flex-col gap-8 md:hidden"
-                variants={gridContainerVariants}
-              >
-                <motion.div className="w-full" variants={gridCardVariants}>
-                  <MobileDiningCard dining={dining} />
-                  {index < dinings.docs.length - 1 && (
-                    <div className="mx-auto mt-8 h-0.5 w-full bg-[#CACCCF]" />
-                  )}
-                </motion.div>
-              </motion.div>
+          <div className="flex justify-center px-5 pb-8 lg:px-10 lg:pb-16">
+            <div className="w-full space-y-6 md:max-w-full lg:max-w-7xl">
+              {dinings.docs.map((dining, index) => (
+                <div key={dining.id} className="w-full scroll-mt-24" id={`dining-${dining.id}`}>
+                  {/* Mobile Layout */}
+                  <motion.div
+                    className="flex flex-col gap-8 md:hidden"
+                    variants={gridContainerVariants}
+                  >
+                    <motion.div className="w-full" variants={gridCardVariants}>
+                      <MobileDiningCard dining={dining} />
+                      {index < dinings.docs.length - 1 && (
+                        <div className="mx-auto mt-8 h-0.5 w-full bg-[#CACCCF]" />
+                      )}
+                    </motion.div>
+                  </motion.div>
 
-              {/* Tablet Layout */}
-              <motion.div
-                className="hidden md:flex md:flex-col md:items-center md:justify-center md:gap-5 xl:hidden"
-                variants={gridContainerVariants}
-              >
-                <motion.div className="w-full" variants={gridCardVariants}>
-                  <TabletDiningCard dining={dining} />
-                </motion.div>
-              </motion.div>
+                  {/* Tablet Layout */}
+                  <motion.div
+                    className="hidden md:flex md:flex-col md:items-center md:justify-center md:gap-5 xl:hidden"
+                    variants={gridContainerVariants}
+                  >
+                    <motion.div className="w-full" variants={gridCardVariants}>
+                      <TabletDiningCard dining={dining} />
+                    </motion.div>
+                  </motion.div>
 
-              {/* Desktop Layout */}
-              <motion.div
-                className="hidden xl:flex xl:flex-col xl:gap-8"
-                variants={gridContainerVariants}
-              >
-                <motion.div className="w-full" variants={gridCardVariants}>
-                  <DesktopDiningCard dining={dining} />
-                </motion.div>
-              </motion.div>
+                  {/* Desktop Layout */}
+                  <motion.div
+                    className="hidden xl:flex xl:flex-col xl:gap-8"
+                    variants={gridContainerVariants}
+                  >
+                    <motion.div className="w-full" variants={gridCardVariants}>
+                      <DesktopDiningCard dining={dining} />
+                    </motion.div>
+                  </motion.div>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </motion.section>

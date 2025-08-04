@@ -35,59 +35,66 @@ export default function AmenitiesSection({
       viewport={{ once: true, amount: 0.1 }}
       variants={sectionContainerVariants}
     >
-      <div className="mx-auto flex w-full flex-col items-stretch gap-3 px-5 py-8 text-center md:max-w-2xl md:px-0 lg:max-w-7xl lg:py-10">
+      <div className="mx-auto w-full">
         {/* Header Section */}
-        <motion.div className="mb-6 text-center md:mb-8 lg:mb-16" variants={headerTextVariants}>
+        <motion.div
+          className="mx-auto mb-6 flex w-full flex-col items-stretch gap-3 px-5 py-8 text-center md:mb-8 md:max-w-2xl md:px-0 lg:mb-16 lg:max-w-7xl lg:py-16"
+          variants={headerTextVariants}
+        >
           <motion.h2
-            className="font-raleway mb-3 text-[28px] font-semibold leading-[1.07] text-[#000000] md:mb-[15px] md:text-[37px] md:font-medium md:leading-[1.2] lg:text-[37px]"
+            className="mb-3 font-raleway text-[28px] font-semibold leading-[1.07] text-[#000000] md:mb-[15px] md:text-[37px] md:font-medium md:leading-[1.2] lg:text-[37px]"
             variants={headerTextVariants}
           >
             {attractionAmenitiesPage.amenitiesTitle}
           </motion.h2>
           <motion.p
-            className="font-raleway mx-auto max-w-[352px] text-[14px] font-normal leading-[1.43] text-[#4F4F53] md:max-w-[675px] md:text-[15px] md:leading-[1.17] lg:max-w-full lg:text-[15px]"
+            className="mx-auto max-w-[352px] font-raleway text-[14px] font-normal leading-[1.43] text-[#4F4F53] md:max-w-[675px] md:text-[15px] md:leading-[1.17] lg:max-w-full lg:text-[15px]"
             variants={headerTextVariants}
           >
             {attractionAmenitiesPage.amenitiesDescription}
           </motion.p>
         </motion.div>
 
-        {amenities.docs.map((amenity, index) => (
-          <div key={amenity.id} className="w-full scroll-mt-24" id={`amenity-${amenity.id}`}>
-            {/* Mobile Layout */}
-            <motion.div
-              className="flex flex-col items-center gap-6 md:hidden"
-              variants={gridContainerVariants}
-            >
-              <motion.div className="w-full" variants={gridCardVariants}>
-                <MobileAmenityCard amenity={amenity} />
-                {index < amenities.docs.length - 1 && (
-                  <div className="mx-auto mt-6 h-px w-full max-w-[348px] bg-[#CEDADF]" />
-                )}
-              </motion.div>
-            </motion.div>
+        <div className="flex justify-center px-5 pb-8 lg:px-10 lg:pb-16">
+          <div className="w-full space-y-6 md:max-w-full lg:max-w-7xl">
+            {amenities.docs.map((amenity, index) => (
+              <div key={amenity.id} className="w-full scroll-mt-24" id={`amenity-${amenity.id}`}>
+                {/* Mobile Layout */}
+                <motion.div
+                  className="flex flex-col items-center gap-6 md:hidden"
+                  variants={gridContainerVariants}
+                >
+                  <motion.div className="w-full" variants={gridCardVariants}>
+                    <MobileAmenityCard amenity={amenity} />
+                    {index < amenities.docs.length - 1 && (
+                      <div className="mx-auto mt-6 h-px w-full max-w-[348px] bg-[#CEDADF]" />
+                    )}
+                  </motion.div>
+                </motion.div>
 
-            {/* Tablet Layout */}
-            <motion.div
-              className="hidden md:flex md:flex-row md:flex-wrap md:justify-center md:gap-5 xl:hidden"
-              variants={gridContainerVariants}
-            >
-              <motion.div className="w-full px-4" variants={gridCardVariants}>
-                <TabletAmenityCard amenity={amenity} />
-              </motion.div>
-            </motion.div>
+                {/* Tablet Layout */}
+                <motion.div
+                  className="hidden w-full md:flex md:flex-row md:flex-wrap md:justify-center md:gap-5 xl:hidden"
+                  variants={gridContainerVariants}
+                >
+                  <motion.div className="w-full px-4" variants={gridCardVariants}>
+                    <TabletAmenityCard amenity={amenity} />
+                  </motion.div>
+                </motion.div>
 
-            {/* Desktop Layout */}
-            <motion.div
-              className="hidden xl:flex xl:flex-col xl:gap-8"
-              variants={gridContainerVariants}
-            >
-              <motion.div className="w-full" variants={gridCardVariants}>
-                <DesktopAmenityCard amenity={amenity} />
-              </motion.div>
-            </motion.div>
+                {/* Desktop Layout */}
+                <motion.div
+                  className="hidden xl:flex xl:flex-col xl:gap-8"
+                  variants={gridContainerVariants}
+                >
+                  <motion.div className="w-full" variants={gridCardVariants}>
+                    <DesktopAmenityCard amenity={amenity} />
+                  </motion.div>
+                </motion.div>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
     </motion.section>
   )
@@ -114,7 +121,7 @@ function MobileAmenityCard({ amenity }: { amenity: Amenity }) {
         variants={cardContentVariants}
       >
         {/* Title */}
-        <h3 className="font-raleway w-full text-left text-[18px] font-semibold leading-[1.33] text-[#1D1D1D]">
+        <h3 className="w-full text-left font-raleway text-[18px] font-semibold leading-[1.33] text-[#1D1D1D]">
           {amenity.title}
         </h3>
 
@@ -150,7 +157,7 @@ function TabletAmenityCard({ amenity }: { amenity: Amenity }) {
         variants={cardContentVariants}
       >
         {/* Title */}
-        <h3 className="font-raleway w-full text-[36px] font-bold leading-[1.28] text-[#1D1D1D]">
+        <h3 className="w-full font-raleway text-[36px] font-bold leading-[1.28] text-[#1D1D1D]">
           {amenity.title}
         </h3>
 
@@ -183,7 +190,7 @@ function DesktopAmenityCard({ amenity }: { amenity: Amenity }) {
       {/* Content */}
       <motion.div className="flex w-[588px] flex-col gap-3" variants={cardContentVariants}>
         {/* Title */}
-        <h3 className="font-raleway w-full text-[36px] font-bold leading-[1.28] text-[#000000]">
+        <h3 className="w-full font-raleway text-[36px] font-bold leading-[1.28] text-[#000000]">
           {amenity.title}
         </h3>
 
