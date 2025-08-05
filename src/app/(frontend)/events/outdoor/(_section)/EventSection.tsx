@@ -140,37 +140,39 @@ export default function EventSection({
             </p>
           </motion.div>
 
-          {outdoorEventData.map((venue, index) => (
-            <div key={venue.id} className="w-full scroll-mt-24" id={`outdoor-${venue.id}`}>
-              {/* Mobile layout with Swiper images */}
-              <motion.div
-                className="flex flex-col gap-8 md:hidden"
-                variants={gridContainerVariants}
-              >
-                <motion.div variants={gridCardVariants}>
-                  <MobileEventCard venue={venue} />
+          <div className="w-full space-y-20">
+            {outdoorEventData.map((venue, index) => (
+              <div key={venue.id} className="w-full scroll-mt-24" id={`outdoor-${venue.id}`}>
+                {/* Mobile layout with Swiper images */}
+                <motion.div
+                  className="flex flex-col gap-8 md:hidden"
+                  variants={gridContainerVariants}
+                >
+                  <motion.div variants={gridCardVariants}>
+                    <MobileEventCard venue={venue} />
+                  </motion.div>
                 </motion.div>
-              </motion.div>
 
-              {/* Tablet layout with image galleries */}
-              <motion.div
-                className="hidden gap-6 md:grid xl:hidden"
-                variants={gridContainerVariants}
-              >
-                <motion.div variants={gridCardVariants}>
-                  <TabletEventCard venue={venue} openImageModal={openImageModal} />
+                {/* Tablet layout with image galleries */}
+                <motion.div
+                  className="hidden gap-6 md:grid xl:hidden"
+                  variants={gridContainerVariants}
+                >
+                  <motion.div variants={gridCardVariants}>
+                    <TabletEventCard venue={venue} openImageModal={openImageModal} />
+                  </motion.div>
                 </motion.div>
-              </motion.div>
 
-              {/* Desktop layout with detailed view */}
-              <motion.div className="hidden xl:block" variants={gridContainerVariants}>
-                <motion.div variants={gridCardVariants}>
-                  <DesktopEventCard venue={venue} openImageModal={openImageModal} />
+                {/* Desktop layout with detailed view */}
+                <motion.div className="hidden xl:block" variants={gridContainerVariants}>
+                  <motion.div variants={gridCardVariants}>
+                    <DesktopEventCard venue={venue} openImageModal={openImageModal} />
+                  </motion.div>
+                  {index < 1 && <hr className="my-16 border-[#CACCCF]" />}
                 </motion.div>
-                {index < 1 && <hr className="my-16 border-[#CACCCF]" />}
-              </motion.div>
-            </div>
-          ))}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       {/* Image Gallery Modal */}
@@ -281,8 +283,8 @@ function MobileEventCard({ venue }: { venue: VenueUI }) {
             </div>
             <div className="flex h-[96px] items-center justify-center rounded-[7px] border border-[#CACCCF] p-3">
               <div className="text-center">
-                <div className="text-[18px] leading-[1.67] text-[#000000]">{venue.capacity}</div>
-                <div className="text-[18px] leading-[1.67] text-[#000000]">Orang</div>
+                <div className="text-[18px] leading-[1.67] text-[#000000]">{venue.maxCapacity}</div>
+                <div className="text-[18px] leading-[1.67] text-[#000000]">Orang </div>
               </div>
             </div>
           </div>
@@ -430,7 +432,7 @@ function TabletEventCard({
             </div>
             <div className="flex h-[96px] min-w-[115px] items-center justify-center rounded-[7px] border border-[#CACCCF] p-3">
               <div className="text-center">
-                <div className="text-[18px] leading-[1.67] text-[#000000]">{venue.capacity}</div>
+                <div className="text-[18px] leading-[1.67] text-[#000000]">{venue.maxCapacity}</div>
                 <div className="text-[18px] leading-[1.67] text-[#000000]">Orang</div>
               </div>
             </div>

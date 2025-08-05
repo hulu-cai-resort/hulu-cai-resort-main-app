@@ -67,7 +67,7 @@ export default function CampingGroundsSection({
           {/* Camping Grounds Grid/Swiper */}
           <motion.div className="relative w-full" variants={gridContainerVariants}>
             <Swiper
-              modules={[Navigation, Pagination, Autoplay]}
+              modules={[Navigation, Pagination]}
               spaceBetween={12}
               slidesPerView={1}
               navigation={{
@@ -77,10 +77,6 @@ export default function CampingGroundsSection({
               pagination={{
                 clickable: true,
                 el: '.swiper-pagination-camping',
-              }}
-              autoplay={{
-                delay: 5000,
-                disableOnInteraction: false,
               }}
               centeredSlides={true}
               breakpoints={{

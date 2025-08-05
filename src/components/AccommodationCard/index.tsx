@@ -3,7 +3,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { Users, BedDouble, Bath, BarChart, BedSingle, Tent } from 'lucide-react'
+import { Users, BedDouble, Bath, BarChart, BedSingle, Tent, Users2, BedIcon } from 'lucide-react'
 import { gridCardVariants } from '@/utilities/variants'
 import { Accommodation } from '@/payload-types'
 import { Media } from '@/payload-types'
@@ -66,12 +66,18 @@ export function AccommodationCard({ accommodation, className = '' }: Accommodati
             {/* Transport */}
             <div className="flex w-full items-center gap-3">
               <div className="flex h-6 w-6 items-center justify-center">
-                <Bath className="h-4 w-5 text-[#495560]" />
+                {accommodation.type === 'cottage' ? (
+                  <BedIcon className="h-4 w-5 text-[#495560]" />
+                ) : (
+                  <Bath className="h-4 w-5 text-[#495560]" />
+                )}
               </div>
               <span className="font-raleway text-base font-normal leading-[1.75] text-[#495560]">
-                {accommodation.type === 'camping_ground'
-                  ? `${accommodation.bathrooms}`
-                  : `${accommodation.bathrooms} Kamar Mandi`}
+                {accommodation.type === 'cottage'
+                  ? formattedBedType(accommodation)
+                  : accommodation.type === 'camping_ground'
+                    ? `${accommodation.bathrooms}`
+                    : `${accommodation.bathrooms} Kamar Mandi`}
               </span>
             </div>
 
@@ -79,21 +85,21 @@ export function AccommodationCard({ accommodation, className = '' }: Accommodati
             <div className="flex items-center gap-3">
               <div className="flex h-6 w-6 items-center justify-center">
                 {accommodation.type === 'villa' || accommodation.type === 'cottage' ? (
-                  <BarChart className="h-4 w-5 text-[#495560]" />
+                  <Users2 className="h-4 w-5 text-[#495560]" />
                 ) : accommodation.type === 'cabin' ? (
                   <BedSingle className="h-4 w-5 text-[#495560]" />
                 ) : (
                   <Users className="h-4 w-5 text-[#495560]" />
                 )}
               </div>
-              <span className="font-raleway w-full text-base font-normal leading-[1.75] text-[#495560] lg:w-[85.21px]">
+              <span className="w-full font-raleway text-base font-normal leading-[1.75] text-[#495560] lg:w-full">
                 {accommodation.type === 'villa'
-                  ? `${accommodation.floors} Lantai`
+                  ? `${accommodation.maxCapacity} Orang (Maks)`
                   : accommodation.type === 'cottage'
-                    ? `Lantai ${accommodation.floorLocation} `
+                    ? `${accommodation.maxCapacity} Orang (Maks)`
                     : accommodation.type === 'cabin'
-                      ? `${accommodation.extraBeds} Ekstra`
-                      : `${accommodation.maxCapacity} Orang`}
+                      ? `${accommodation.extraBeds} Ekstra Kasur`
+                      : `${accommodation.maxCapacity} Orang (Maks)`}
               </span>
             </div>
           </div>
@@ -108,10 +114,10 @@ export function AccommodationCard({ accommodation, className = '' }: Accommodati
             Mulai dari
           </span>
           <div className="flex flex-col items-end">
-            <span className="font-raleway text-right text-2xl font-bold leading-[1.417] text-[#06763F] drop-shadow-[0px_5.61px_14.58px_rgba(255,255,255,0.4)] lg:w-[157px]">
+            <span className="text-right font-raleway text-2xl font-bold leading-[1.417] text-[#06763F] drop-shadow-[0px_5.61px_14.58px_rgba(255,255,255,0.4)] lg:w-[157px]">
               IDR{accommodation.priceStartingFrom?.toLocaleString('id-ID')}
             </span>
-            <span className="font-raleway text-left text-xs leading-[2] text-[#778088] xl:w-[61.43px]">
+            <span className="text-left font-raleway text-xs leading-[2] text-[#778088] xl:w-[61.43px]">
               Per malam
             </span>
           </div>
@@ -119,4 +125,17 @@ export function AccommodationCard({ accommodation, className = '' }: Accommodati
       </div>
     </motion.div>
   )
+}
+
+const formattedBedType = (accommodation: Accommodation) => {
+  const bedConfig = accommodation.bedConfiguration
+  if (!bedConfig || bedConfig.length === 0) return ''
+  const bedTypeRaw = bedConfig[0]?.bedType || ''
+  // Convert "word1-word2" to "Word1 Word2"
+  const formattedBedType = bedTypeRaw
+    .split('-')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ')
+  const othersCount = bedConfig.length > 1 ? ` dan ${bedConfig.length - 1} lainnya...` : ''
+  return `${formattedBedType} ${othersCount}`
 }

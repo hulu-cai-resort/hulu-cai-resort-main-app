@@ -31,7 +31,10 @@ export default async function Page() {
       <HeroSection mainPage={mainPage} />
 
       {/* Scroll Indicator */}
-      <ScrollIndicator href="#activities" />
+      <ScrollIndicator href="#location-and-facility" />
+
+      {/* Location & Facility Section */}
+      <LocationAndFacilitySection mainPage={mainPage} />
 
       {/* Activities Section */}
       <ActivitiesSection mainPage={mainPage} />
@@ -44,9 +47,6 @@ export default async function Page() {
 
       {/* Activities Hub Section */}
       <ActivitiesHubSection mainPage={mainPage} />
-
-      {/* Location & Facility Section */}
-      <LocationAndFacilitySection mainPage={mainPage} />
 
       {/* Customer Reviews Section */}
       <ReviewsSection mainPage={mainPage} />

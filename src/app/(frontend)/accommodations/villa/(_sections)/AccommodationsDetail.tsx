@@ -231,50 +231,90 @@ export default function AccommodationsDetail({
                     <p className="text-sm font-bold">{getUnitTypeLabel(accommodation.unitType)}</p>
                     <p className="text-xs text-gray-600">{accommodation.size} m²</p>
                   </div>
-                  <div className="rounded-lg border border-gray-300 p-4 text-center">
-                    <p className="font-medium">{accommodation.floors}</p>
-                    <p className="text-sm text-gray-600">Lantai</p>
-                  </div>
-                  <div className="rounded-lg border border-gray-300 p-4 text-center">
-                    <p className="font-medium">{accommodation.bedrooms}</p>
-                    <p className="text-sm text-gray-600">Kamar Tidur</p>
-                  </div>
-                  <div className="rounded-lg border border-gray-300 p-4 text-center">
-                    <p className="font-medium">{accommodation.bathrooms}</p>
-                    <p className="text-sm text-gray-600">Kamar Mandi</p>
-                  </div>
+                  {accommodation.type === 'camping_ground' ? (
+                    <></>
+                  ) : (
+                    <>
+                      <div className="rounded-lg border border-gray-300 p-4 text-center">
+                        {accommodation.type === 'cottage' || accommodation.type === 'cabin' ? (
+                          <>
+                            <p className="text-gray-600">Lantai</p>
+                            <p className="text-2xl">{accommodation.floorLocation ?? '-'}</p>
+                          </>
+                        ) : (
+                          <>
+                            <p className="text-2xl font-bold">{accommodation.floors ?? '-'}</p>
+                            <p className="text-gray-600">Lantai</p>
+                          </>
+                        )}
+                      </div>
+                    </>
+                  )}
+                  {accommodation.type === 'camping_ground' ? (
+                    <>
+                      <div className="rounded-lg border border-gray-300 p-4 text-center">
+                        <p className="font-medium">{accommodation.bathrooms}</p>
+                        <p className="text-sm text-gray-600">Kamar Mandi</p>
+                      </div>
+                    </>
+                  ) : accommodation.type === 'cottage' || accommodation.type === 'cabin' ? (
+                    <></>
+                  ) : (
+                    <>
+                      <div className="rounded-lg border border-gray-300 p-4 text-center">
+                        <p className="font-medium">{accommodation.bedrooms}</p>
+                        <p className="text-sm text-gray-600">Kamar Tidur</p>
+                      </div>
+                      <div className="rounded-lg border border-gray-300 p-4 text-center">
+                        <p className="font-medium">{accommodation.bathrooms}</p>
+                        <p className="text-sm text-gray-600">Kamar Mandi</p>
+                      </div>
+                    </>
+                  )}
                   <div className="rounded-lg border border-gray-300 p-4 text-center">
                     <p className="font-medium">{accommodation.maxCapacity}</p>
                     <p className="text-sm text-gray-600">Orang</p>
                   </div>
-                  <div className="rounded-lg border border-gray-300 p-4 text-center">
-                    <p className="font-medium">{accommodation.extraBeds}</p>
-                    <p className="text-sm text-gray-600">Kasur Ekstra</p>
-                  </div>
+                  {accommodation.type === 'camping_ground' ? (
+                    <></>
+                  ) : (
+                    <>
+                      <div className="rounded-lg border border-gray-300 p-4 text-center">
+                        <p className="font-medium">{accommodation.extraBeds}</p>
+                        <p className="text-sm text-gray-600">Kasur Ekstra</p>
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
 
               {/* Bed Arrangements */}
-              <div>
-                <div className="mb-6 flex items-center gap-8">
-                  <h3 className="text-lg font-bold">Pengaturan Kasur</h3>
-                  <div className="h-px flex-1 bg-gray-300"></div>
-                </div>
-                <div className="grid grid-cols-2 gap-4">
-                  {accommodation.bedConfiguration?.map((bed, idx) => (
-                    <div
-                      key={idx}
-                      className="flex items-center gap-3 rounded-lg border border-gray-300 p-4"
-                    >
-                      <div className="flex-shrink-0">{getBedIcon(bed.bedType, 48)}</div>
-                      <div>
-                        <p className="text-sm font-medium">{bed.bedCount}</p>
-                        <p className="text-sm text-gray-600">{bed.bedType}</p>
-                      </div>
+              {accommodation.type === 'camping_ground' ? (
+                <></>
+              ) : (
+                <>
+                  <div>
+                    <div className="mb-6 flex items-center gap-8">
+                      <h3 className="text-lg font-bold">Pengaturan Kasur</h3>
+                      <div className="h-px flex-1 bg-gray-300"></div>
                     </div>
-                  ))}
-                </div>
-              </div>
+                    <div className="grid grid-cols-2 gap-4">
+                      {accommodation.bedConfiguration?.map((bed, idx) => (
+                        <div
+                          key={idx}
+                          className="flex items-center gap-3 rounded-lg border border-gray-300 p-4"
+                        >
+                          <div className="flex-shrink-0">{getBedIcon(bed.bedType, 48)}</div>
+                          <div>
+                            <p className="text-sm font-medium">{bed.bedCount}</p>
+                            <p className="text-sm text-gray-600">{bed.bedType}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
           </div>
 
@@ -389,52 +429,88 @@ export default function AccommodationsDetail({
                         <p className="font-medium">{getUnitTypeLabel(accommodation.unitType)}</p>
                         <p className="text-xs text-gray-600">{accommodation.size} m²</p>
                       </div>
-                      <div className="flex h-full min-w-[130px] flex-col items-center justify-center rounded-lg border border-gray-300 p-4 text-center">
-                        <p className="font-medium">{accommodation.floors}</p>
-                        <p className="text-sm text-gray-600">Lantai</p>
-                      </div>
-                      <div className="flex h-full min-w-[130px] flex-col items-center justify-center rounded-lg border border-gray-300 p-4 text-center">
-                        <p className="font-medium">{accommodation.bedrooms}</p>
-                        <p className="text-sm text-gray-600">Kamar Tidur</p>
-                      </div>
-                      <div className="flex h-full min-w-[130px] flex-col items-center justify-center rounded-lg border border-gray-300 p-4 text-center">
-                        <p className="font-medium">{accommodation.bathrooms}</p>
-                        <p className="text-sm text-gray-600">Kamar Mandi</p>
-                      </div>
+                      {accommodation.type === 'camping_ground' ? (
+                        <></>
+                      ) : (
+                        <div className="flex h-full min-w-[130px] flex-col items-center justify-center rounded-lg border border-gray-300 p-4 text-center">
+                          {accommodation.type === 'cottage' || accommodation.type === 'cabin' ? (
+                            <>
+                              <p className="text-gray-600">Lantai</p>
+                              <p className="text-2xl">{accommodation.floorLocation ?? '-'}</p>
+                            </>
+                          ) : (
+                            <>
+                              <p className="text-2xl font-bold">{accommodation.floors ?? '-'}</p>
+                              <p className="text-gray-600">Lantai</p>
+                            </>
+                          )}
+                        </div>
+                      )}
+                      {accommodation.type === 'camping_ground' ? (
+                        <>
+                          <div className="flex h-full min-w-[130px] flex-col items-center justify-center rounded-lg border border-gray-300 p-4 text-center">
+                            <p className="font-medium">{accommodation.bathrooms}</p>
+                            <p className="text-sm text-gray-600">Kamar Mandi</p>
+                          </div>
+                        </>
+                      ) : accommodation.type === 'cottage' || accommodation.type === 'cabin' ? (
+                        <></>
+                      ) : (
+                        <>
+                          <div className="flex h-full min-w-[130px] flex-col items-center justify-center rounded-lg border border-gray-300 p-4 text-center">
+                            <p className="font-medium">{accommodation.bedrooms}</p>
+                            <p className="text-sm text-gray-600">Kamar Tidur</p>
+                          </div>
+                          <div className="flex h-full min-w-[130px] flex-col items-center justify-center rounded-lg border border-gray-300 p-4 text-center">
+                            <p className="font-medium">{accommodation.bathrooms}</p>
+                            <p className="text-sm text-gray-600">Kamar Mandi</p>
+                          </div>
+                        </>
+                      )}
                       <div className="flex h-full min-w-[130px] flex-col items-center justify-center rounded-lg border border-gray-300 p-4 text-center">
                         <p className="font-medium">{accommodation.maxCapacity}</p>
                         <p className="text-sm text-gray-600">Orang</p>
                       </div>
-                      <div className="flex h-full min-w-[130px] flex-col items-center justify-center rounded-lg border border-gray-300 p-4 text-center">
-                        <p className="font-medium">{accommodation.extraBeds}</p>
-                        <p className="text-sm text-gray-600">Kasur Ekstra</p>
-                      </div>
+                      {accommodation.type === 'camping_ground' ? (
+                        <></>
+                      ) : (
+                        <div className="flex h-full min-w-[130px] flex-col items-center justify-center rounded-lg border border-gray-300 p-4 text-center">
+                          <p className="font-medium">{accommodation.extraBeds}</p>
+                          <p className="text-sm text-gray-600">Kasur Ekstra</p>
+                        </div>
+                      )}
                     </div>
                   </div>
 
                   {/* Bed Arrangements */}
-                  <div>
-                    <div className="mb-6 flex items-center gap-8">
-                      <h3 className="text-lg font-bold">Pengaturan Kasur</h3>
-                      <div className="h-px flex-1 bg-gray-300"></div>
-                    </div>
-                    <div className="grid grid-cols-3 gap-4">
-                      {accommodation.bedConfiguration?.map((bed, idx) => (
-                        <div
-                          key={idx}
-                          className="flex flex-col items-center gap-3 rounded-lg border border-gray-300 p-4"
-                        >
-                          {getBedIcon(bed.bedType, 56)}
-                          <div className="text-center">
-                            <p className="font-medium">{bed.roomName}</p>
-                            <p className="text-sm text-gray-600">
-                              {bed.bedCount} {getBedLabel(bed.bedType)}
-                            </p>
-                          </div>
+                  {accommodation.type === 'camping_ground' ? (
+                    <></>
+                  ) : (
+                    <>
+                      <div>
+                        <div className="mb-6 flex items-center gap-8">
+                          <h3 className="text-lg font-bold">Pengaturan Kasur</h3>
+                          <div className="h-px flex-1 bg-gray-300"></div>
                         </div>
-                      ))}
-                    </div>
-                  </div>
+                        <div className="grid grid-cols-3 gap-4">
+                          {accommodation.bedConfiguration?.map((bed, idx) => (
+                            <div
+                              key={idx}
+                              className="flex flex-col items-center gap-3 rounded-lg border border-gray-300 p-4"
+                            >
+                              {getBedIcon(bed.bedType, 56)}
+                              <div className="text-center">
+                                <p className="font-medium">{bed.roomName}</p>
+                                <p className="text-sm text-gray-600">
+                                  {bed.bedCount} {getBedLabel(bed.bedType)}
+                                </p>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </>
+                  )}
                 </div>
 
                 {/* Sidebar Card */}
@@ -601,70 +677,87 @@ export default function AccommodationsDetail({
                       </p>
                       <p className="text-gray-600">{accommodation.size} m²</p>
                     </div>
-                    <div className="flex flex-col items-center justify-center rounded-xl border border-gray-300 p-4 text-center">
-                      {accommodation.type === 'cottage' ? (
-                        <>
-                          <p className="text-gray-600">Lantai</p>
-                          <p className="text-2xl">{accommodation.floorLocation}</p>
-                        </>
-                      ) : (
-                        <>
-                          <p className="text-2xl font-bold">{accommodation.floors ?? '-'}</p>
-                          <p className="text-gray-600">Lantai</p>
-                        </>
-                      )}
-                    </div>
-                    <div className="flex flex-col items-center justify-center rounded-xl border border-gray-300 p-4 text-center">
-                      <p className="text-2xl font-bold">{accommodation.bedrooms ?? '-'}</p>
-                      <p className="text-gray-600">Kamar Tidur</p>
-                    </div>
-                    <div className="flex flex-col items-center justify-center rounded-xl border border-gray-300 p-4 text-center">
-                      <p className="text-2xl font-bold">{accommodation.bathrooms ?? '-'}</p>
-                      <p className="text-gray-600">Kamar Mandi</p>
-                    </div>
+                    {accommodation.type === 'camping_ground' ? (
+                      <></>
+                    ) : (
+                      <div className="flex flex-col items-center justify-center rounded-xl border border-gray-300 p-4 text-center">
+                        {accommodation.type === 'cottage' || accommodation.type === 'cabin' ? (
+                          <>
+                            <p className="text-gray-600">Lantai</p>
+                            <p className="text-2xl">{accommodation.floorLocation ?? '-'}</p>
+                          </>
+                        ) : (
+                          <>
+                            <p className="text-2xl font-bold">{accommodation.floors ?? '-'}</p>
+                            <p className="text-gray-600">Lantai</p>
+                          </>
+                        )}
+                      </div>
+                    )}
+                    {accommodation.type === 'camping_ground' ? (
+                      <>
+                        <div className="flex flex-col items-center justify-center rounded-xl border border-gray-300 p-4 text-center">
+                          <p className="text-2xl font-bold">{accommodation.bathrooms ?? '-'}</p>
+                          <p className="text-gray-600">Kamar Mandi</p>
+                        </div>
+                      </>
+                    ) : accommodation.type === 'cottage' || accommodation.type === 'cabin' ? (
+                      <></>
+                    ) : (
+                      <>
+                        <div className="flex flex-col items-center justify-center rounded-xl border border-gray-300 p-4 text-center">
+                          <p className="text-2xl font-bold">{accommodation.bedrooms ?? '-'}</p>
+                          <p className="text-gray-600">Kamar Tidur</p>
+                        </div>
+                        <div className="flex flex-col items-center justify-center rounded-xl border border-gray-300 p-4 text-center">
+                          <p className="text-2xl font-bold">{accommodation.bathrooms ?? '-'}</p>
+                          <p className="text-gray-600">Kamar Mandi</p>
+                        </div>
+                      </>
+                    )}
                     <div className="flex flex-col items-center justify-center rounded-xl border border-gray-300 p-4 text-center">
                       <p className="text-2xl font-bold">{accommodation.maxCapacity ?? '-'}</p>
                       <p className="text-gray-600">Orang</p>
                     </div>
-                    <div className="flex flex-col items-center justify-center rounded-xl border border-gray-300 p-4 text-center">
-                      <p className="text-2xl font-bold">{accommodation.extraBeds ?? '-'}</p>
-                      <p className="text-gray-600">Kasur Ekstra</p>
-                    </div>
+                    {accommodation.type === 'camping_ground' ? (
+                      <></>
+                    ) : (
+                      <div className="flex flex-col items-center justify-center rounded-xl border border-gray-300 p-4 text-center">
+                        <p className="text-2xl font-bold">{accommodation.extraBeds ?? '-'}</p>
+                        <p className="text-gray-600">Kasur Ekstra</p>
+                      </div>
+                    )}
                   </div>
                 </div>
 
                 {/* Bed Arrangements */}
-                <div>
-                  <div className="mb-6 flex items-center gap-8">
-                    <h3 className="text-xl font-bold">Pengaturan Kasur</h3>
-                    <div className="h-px flex-1 bg-gray-300"></div>
-                  </div>
-                  <div className="grid grid-cols-6 gap-4">
-                    {accommodation.bedConfiguration?.map((bed, idx) => (
-                      <div
-                        key={idx}
-                        className="flex flex-col gap-2 rounded-xl border border-gray-300 p-4"
-                      >
-                        <div className="flex-shrink-0">{getBedIcon(bed.bedType, 64)}</div>
-
-                        <p className="text-lg font-medium">{bed.roomName}</p>
-                        <p className="text-gray-600">
-                          {bed.bedCount} {getBedLabel(bed.bedType)}
-                        </p>
+                {accommodation.type === 'camping_ground' ? (
+                  <></>
+                ) : (
+                  <>
+                    <div>
+                      <div className="mb-6 flex items-center gap-8">
+                        <h3 className="text-xl font-bold">Pengaturan Kasur</h3>
+                        <div className="h-px flex-1 bg-gray-300"></div>
                       </div>
-                    ))}
-                    {accommodation.type === 'camping_ground' &&
-                      accommodation.tentConfiguration?.map((tent, idx) => (
-                        <div
-                          key={idx}
-                          className="flex flex-col gap-2 rounded-xl border border-gray-300 p-4"
-                        >
-                          <p className="text-lg font-medium">{tent.tentType}</p>
-                          <p className="text-gray-600">{tent.numberOfTents} Tenda</p>
-                        </div>
-                      ))}
-                  </div>
-                </div>
+                      <div className="grid grid-cols-6 gap-4">
+                        {accommodation.bedConfiguration?.map((bed, idx) => (
+                          <div
+                            key={idx}
+                            className="flex flex-col gap-2 rounded-xl border border-gray-300 p-4"
+                          >
+                            <div className="flex-shrink-0">{getBedIcon(bed.bedType, 64)}</div>
+
+                            <p className="text-lg font-medium">{bed.roomName}</p>
+                            <p className="text-gray-600">
+                              {bed.bedCount} {getBedLabel(bed.bedType)}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </>
+                )}
               </div>
 
               {/* Sidebar */}

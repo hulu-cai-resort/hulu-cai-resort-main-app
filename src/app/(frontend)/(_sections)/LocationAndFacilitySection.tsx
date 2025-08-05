@@ -14,6 +14,7 @@ export default function LocationAndFacilitySection({ mainPage }: { mainPage: Mai
   return (
     <motion.section
       className="bg-[#F5F7FA] py-10 lg:py-[64px]"
+      id="location-and-facility"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.1 }}

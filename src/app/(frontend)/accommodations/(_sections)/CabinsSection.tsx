@@ -125,7 +125,7 @@ export default function CabinsSection({
           {/* Cabins Grid/Swiper */}
           <motion.div className="relative w-full" variants={gridContainerVariants}>
             <Swiper
-              modules={[Navigation, Pagination, Autoplay]}
+              modules={[Navigation, Pagination]}
               spaceBetween={12}
               slidesPerView={1}
               navigation={{
@@ -135,10 +135,6 @@ export default function CabinsSection({
               pagination={{
                 clickable: true,
                 el: '.swiper-pagination-cabins',
-              }}
-              autoplay={{
-                delay: 5000,
-                disableOnInteraction: false,
               }}
               centeredSlides={true}
               breakpoints={{

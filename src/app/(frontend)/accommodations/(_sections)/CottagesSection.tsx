@@ -107,7 +107,7 @@ export default function CottagesSection({
           >
             <div className="flex items-center justify-center">
               <span className="font-raleway text-base font-semibold leading-[1.75] text-white">
-                Cottage
+                Room
               </span>
             </div>
             <motion.button
@@ -117,7 +117,7 @@ export default function CottagesSection({
               onClick={() => router.push('/accommodations/cottage')}
             >
               <span className="font-raleway text-base font-semibold leading-[1.75] text-white">
-                More Cottage
+                More Room
               </span>
             </motion.button>
           </motion.div>
@@ -125,7 +125,7 @@ export default function CottagesSection({
           {/* Cottages Grid/Swiper */}
           <motion.div className="relative w-full" variants={gridContainerVariants}>
             <Swiper
-              modules={[Navigation, Pagination, Autoplay]}
+              modules={[Navigation, Pagination]}
               spaceBetween={12}
               slidesPerView={1}
               navigation={{
@@ -135,10 +135,6 @@ export default function CottagesSection({
               pagination={{
                 clickable: true,
                 el: '.swiper-pagination-cottages',
-              }}
-              autoplay={{
-                delay: 5000,
-                disableOnInteraction: false,
               }}
               centeredSlides={true}
               breakpoints={{

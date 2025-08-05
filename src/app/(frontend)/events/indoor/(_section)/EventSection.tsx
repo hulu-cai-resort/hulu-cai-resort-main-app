@@ -253,7 +253,9 @@ function MobileEventCard({ venue }: { venue: VenueUI }) {
             </div>
             <div className="flex h-[96px] items-center justify-center rounded-[7px] border border-[#CACCCF] p-3">
               <div className="text-center">
-                <div className="text-[18px] leading-[1.67] text-[#000000]">{venue.capacity}</div>
+                <div className="text-[18px] leading-[1.67] text-[#000000]">
+                  {venue.minCapacity} - {venue.maxCapacity}
+                </div>
                 <div className="text-[18px] leading-[1.67] text-[#000000]">Orang</div>
               </div>
             </div>
@@ -402,7 +404,9 @@ function TabletEventCard({
             </div>
             <div className="flex h-[96px] min-w-[115px] items-center justify-center rounded-[7px] border border-[#CACCCF] p-3">
               <div className="text-center">
-                <div className="text-[18px] leading-[1.67] text-[#000000]">{venue.capacity}</div>
+                <div className="text-[18px] leading-[1.67] text-[#000000]">
+                  {venue.minCapacity} - {venue.maxCapacity}
+                </div>
                 <div className="text-[18px] leading-[1.67] text-[#000000]">Orang</div>
               </div>
             </div>
