@@ -35,6 +35,18 @@ import {
   GlassWater,
   AirVent,
 } from 'lucide-react'
+import {
+  MdOutlineRoofing,
+  MdOutlineBalcony,
+  MdKitchen,
+  MdBrunchDining,
+  MdCoffeeMaker,
+} from 'react-icons/md'
+import { PiMapPinSimpleArea, PiOven } from 'react-icons/pi'
+import { FaSwimmingPool, FaHotTub, FaSoap } from 'react-icons/fa'
+import { FaGlassWaterDroplet } from 'react-icons/fa6'
+import { GiWaterGallon, GiLiquidSoap } from 'react-icons/gi'
+import { RiSafe3Fill } from 'react-icons/ri'
 
 interface FacilityIconMap {
   [key: string]: React.ComponentType<{ size?: number; className?: string }>
@@ -42,15 +54,15 @@ interface FacilityIconMap {
 
 const facilityIconMap: FacilityIconMap = {
   // Outdoor & Views
-  rooftop: Building,
-  balcony: Home,
-  terrace: LandPlot,
-  privatePool: Waves,
-  jacuzzi: Heater,
+  rooftop: MdOutlineRoofing,
+  balcony: MdOutlineBalcony,
+  terrace: PiMapPinSimpleArea,
+  privatePool: FaSwimmingPool,
+  jacuzzi: FaHotTub,
 
   // Spaces
   commonSpace: PersonStanding,
-  kitchen: CookingPot,
+  kitchen: MdKitchen,
   dedicatedWorkspace: Briefcase,
 
   // Climate Control
@@ -65,22 +77,22 @@ const facilityIconMap: FacilityIconMap = {
   // Bathroom
   bathtub: Bath,
   shower: ShowerHead,
-  hotWater: Droplet,
-  bodySoap: SoapDispenserDroplet,
+  hotWater: FaGlassWaterDroplet,
+  bodySoap: FaSoap,
   shampoo: SoapDispenserDroplet,
-  conditioner: SoapDispenserDroplet,
+  conditioner: GiLiquidSoap,
   towels: Book,
 
   // Safety & Storage
-  safe: ShieldCheck,
+  safe: RiSafe3Fill,
   clothingStorage: Shirt,
 
   // Dining & Living
-  diningTable: HandPlatter,
+  diningTable: MdBrunchDining,
   sofaLounger: Sofa,
 
   // Kitchen Appliances
-  stove: FlameKindling,
+  stove: PiOven,
   minibar: Wine,
   refrigerator: Refrigerator,
   microwave: Microwave,
@@ -89,8 +101,8 @@ const facilityIconMap: FacilityIconMap = {
   cookingUtensils: Utensils,
   dishesSilverware: UtensilsCrossed,
   hotWaterKettle: GlassWater,
-  coffeeMaker: Coffee,
-  waterDispenser: Droplets,
+  coffeeMaker: MdCoffeeMaker,
+  waterDispenser: GiWaterGallon,
   coffeeTeaSugar: Coffee,
 }
 

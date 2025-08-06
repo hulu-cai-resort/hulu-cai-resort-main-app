@@ -1602,6 +1602,21 @@ export interface MainPage {
     areaName?: string | null;
     address?: string | null;
   };
+  promoSectionTitle?: string | null;
+  promoTitle?: string | null;
+  promoDescription?: string | null;
+  /**
+   * Promo images
+   */
+  promoImage?:
+    | {
+        /**
+         * Promo image
+         */
+        image?: (number | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
   reviewsSectionTitle?: string | null;
   reviewsTitle?: string | null;
   reviewsDescription?: string | null;
@@ -3114,6 +3129,15 @@ export interface MainPageSelect<T extends boolean = true> {
         placeName?: T;
         areaName?: T;
         address?: T;
+      };
+  promoSectionTitle?: T;
+  promoTitle?: T;
+  promoDescription?: T;
+  promoImage?:
+    | T
+    | {
+        image?: T;
+        id?: T;
       };
   reviewsSectionTitle?: T;
   reviewsTitle?: T;

@@ -318,6 +318,44 @@ export const MainPage: GlobalConfig = {
           ],
         },
         {
+          label: 'Promo',
+          fields: [
+            {
+              name: 'promoSectionTitle',
+              type: 'text',
+              defaultValue: 'Promo',
+            },
+            {
+              name: 'promoTitle',
+              type: 'text',
+              defaultValue: 'Promo',
+            },
+            {
+              name: 'promoDescription',
+              type: 'textarea',
+              defaultValue:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
+            },
+            {
+              name: 'promoImage',
+              type: 'array',
+              fields: [
+                {
+                  name: 'image',
+                  type: 'upload',
+                  relationTo: 'media',
+                  admin: {
+                    description: 'Promo image',
+                  },
+                },
+              ],
+              admin: {
+                description: 'Promo images',
+              },
+            },
+          ],
+        },
+        {
           label: 'Customer Reviews',
           fields: [
             {
