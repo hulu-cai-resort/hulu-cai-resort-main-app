@@ -86,7 +86,7 @@ export default async function Page() {
         <PlaceToGoSection mainPage={mainPage} />
 
         {/* Package Vacation Section */}
-        <PackagesSection mainPage={mainPage} />
+        {/* <PackagesSection mainPage={mainPage} /> */}
 
         {/* Activities Hub Section */}
         <ActivitiesHubSection mainPage={mainPage} />

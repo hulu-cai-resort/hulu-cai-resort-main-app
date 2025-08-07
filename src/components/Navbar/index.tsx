@@ -13,13 +13,13 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { label: 'Maps', href: '/maps' },
-  { label: 'Accommodation', href: '/accommodations' },
-  { label: 'Attraction & Amenities', href: '/attractions-amenities' },
-  { label: 'Activities', href: '/activities' },
-  { label: 'Dining', href: '/dining' },
-  { label: 'Events', href: '/events' },
-  { label: 'Reservation', href: '/reservation' },
+  { label: 'Peta', href: '/maps' },
+  { label: 'Tempat Menginap', href: '/accommodations' },
+  { label: 'Atraksi & Amenitas', href: '/attractions-amenities' },
+  { label: 'Group Activities', href: '/activities' },
+  { label: 'Restoran', href: '/dining' },
+  { label: 'Meeting & Events', href: '/events' },
+  { label: 'Reservasi', href: '/reservation' },
 ]
 
 export function Navbar() {
@@ -100,7 +100,7 @@ export function Navbar() {
                 <Link
                   key={item.label}
                   href={item.href}
-                  className={`font-raleway flex items-center justify-center whitespace-nowrap rounded-full px-6 py-3 text-base font-semibold leading-[1.75em] transition-all duration-200 ${
+                  className={`flex items-center justify-center whitespace-nowrap rounded-full px-6 py-3 font-raleway text-base font-semibold leading-[1.75em] transition-all duration-200 ${
                     isActive
                       ? 'border border-white/50 bg-white/20 font-semibold text-white'
                       : 'text-white/80 hover:bg-white/10 hover:text-white'
@@ -197,7 +197,7 @@ export function Navbar() {
                     key={item.label}
                     href={item.href}
                     onClick={() => setShowMobileMenu(false)}
-                    className={`font-raleway flex items-center justify-center whitespace-nowrap rounded-full px-6 py-4 text-base font-semibold leading-[1.75em] transition-all duration-200 ${
+                    className={`flex items-center justify-center whitespace-nowrap rounded-full px-6 py-4 font-raleway text-base font-semibold leading-[1.75em] transition-all duration-200 ${
                       isActive
                         ? 'border border-white/50 bg-white/20 font-semibold text-white'
                         : 'text-base text-white hover:bg-white/10 hover:text-white'
