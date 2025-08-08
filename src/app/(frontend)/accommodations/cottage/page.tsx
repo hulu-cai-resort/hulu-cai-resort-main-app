@@ -29,6 +29,7 @@ export default async function Cottage() {
         equals: 'cottage',
       },
     },
+    limit: 0,
   })
 
   return (

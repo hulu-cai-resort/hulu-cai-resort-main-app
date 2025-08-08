@@ -26,6 +26,7 @@ export default async function Activities() {
   const meetingPackages = await payload.find({
     collection: 'meeting-package',
     depth: 4,
+    limit: 0,
   })
 
   return (

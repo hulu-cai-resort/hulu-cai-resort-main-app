@@ -32,11 +32,13 @@ export default async function AttractionAmenities() {
   const attractions = await payload.find({
     collection: 'attractions',
     depth: 1,
+    limit: 0,
   })
 
   const amenities = await payload.find({
     collection: 'amenities',
     depth: 1,
+    limit: 0,
   })
 
   return (

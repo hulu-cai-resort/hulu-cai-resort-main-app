@@ -25,6 +25,7 @@ export default async function Activities() {
   const activities = await payload.find({
     collection: 'activities',
     depth: 1,
+    limit: 0,
   })
 
   return (

@@ -33,7 +33,7 @@ export default async function Accommodations() {
   const villas = await payload.find({
     collection: 'accommodations',
     depth: 3,
-    limit: 12,
+    limit: 0,
     where: {
       type: {
         equals: 'villa',
@@ -44,7 +44,7 @@ export default async function Accommodations() {
   const cabins = await payload.find({
     collection: 'accommodations',
     depth: 3,
-    limit: 12,
+    limit: 0,
     where: {
       type: {
         equals: 'cabin',
@@ -55,7 +55,7 @@ export default async function Accommodations() {
   const cottages = await payload.find({
     collection: 'accommodations',
     depth: 3,
-    limit: 12,
+    limit: 0,
     where: {
       type: {
         equals: 'cottage',
@@ -66,7 +66,7 @@ export default async function Accommodations() {
   const campingGrounds = await payload.find({
     collection: 'accommodations',
     depth: 3,
-    limit: 12,
+    limit: 0,
     where: {
       type: {
         equals: 'camping_ground',

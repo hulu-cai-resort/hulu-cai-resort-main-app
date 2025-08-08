@@ -29,6 +29,7 @@ export default async function Cabin() {
         equals: 'cabin',
       },
     },
+    limit: 0,
   })
 
   return (

@@ -29,6 +29,7 @@ export default async function Activities() {
         equals: 'outdoor',
       },
     },
+    limit: 0,
   })
   return (
     <>

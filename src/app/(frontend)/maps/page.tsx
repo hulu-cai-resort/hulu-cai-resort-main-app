@@ -16,6 +16,7 @@ export default async function MapsPage() {
   const mapMarkers = await payload.find({
     collection: 'map-markers',
     depth: 1,
+    limit: 0,
   })
 
   const apiKey = process.env.GOOGLE_MAPS_API_KEY

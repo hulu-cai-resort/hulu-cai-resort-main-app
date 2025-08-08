@@ -28,6 +28,7 @@ export default async function Villa() {
         equals: 'villa',
       },
     },
+    limit: 0,
   })
 
   return (

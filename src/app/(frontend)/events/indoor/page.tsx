@@ -30,6 +30,7 @@ export default async function Activities() {
         equals: 'indoor',
       },
     },
+    limit: 0,
   })
 
   return (

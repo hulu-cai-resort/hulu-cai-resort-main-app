@@ -24,6 +24,7 @@ export default async function Dining() {
   const dinings = await payload.find({
     collection: 'dining-area',
     depth: 1,
+    limit: 0,
   })
 
   return (
