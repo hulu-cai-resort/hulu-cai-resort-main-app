@@ -5,7 +5,7 @@ import type { GlobalAfterChangeHook } from 'payload'
 export const revalidateEventsPage: GlobalAfterChangeHook = ({ doc, req: { payload } }) => {
   payload.logger.info(`Revalidating events page`)
 
-  revalidateTag('globals_events-page')
+  revalidateTag('global_events-page')
 
   return doc
 }

@@ -8,7 +8,7 @@ export const revalidateAttractionAmenitiesPage: GlobalAfterChangeHook = ({
 }) => {
   payload.logger.info(`Revalidating attraction amenities page`)
 
-  revalidateTag('globals_attraction-amenities-page')
+  revalidateTag('global_attraction-amenities-page')
 
   return doc
 }

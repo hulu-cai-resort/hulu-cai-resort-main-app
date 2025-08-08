@@ -306,8 +306,10 @@ export default function AccommodationsDetail({
                         >
                           <div className="flex-shrink-0">{getBedIcon(bed.bedType, 48)}</div>
                           <div>
-                            <p className="text-sm font-medium">{bed.bedCount}</p>
-                            <p className="text-sm text-gray-600">{bed.bedType}</p>
+                            <p className="text-sm font-medium">{bed.roomName}</p>
+                            <p className="text-sm text-gray-600">
+                              {bed.bedCount} {getBedLabel(bed.bedType)}
+                            </p>
                           </div>
                         </div>
                       ))}
