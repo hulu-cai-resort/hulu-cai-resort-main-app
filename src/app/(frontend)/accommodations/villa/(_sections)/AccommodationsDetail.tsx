@@ -231,12 +231,12 @@ export default function AccommodationsDetail({
                     <p className="text-sm font-bold">{getUnitTypeLabel(accommodation.unitType)}</p>
                     <p className="text-xs text-gray-600">{accommodation.size} m²</p>
                   </div>
-                  {accommodation.type === 'camping_ground' ? (
+                  {accommodation.type === 'camping_ground' || accommodation.type === 'cabin' ? (
                     <></>
                   ) : (
                     <>
                       <div className="rounded-lg border border-gray-300 p-4 text-center">
-                        {accommodation.type === 'cottage' || accommodation.type === 'cabin' ? (
+                        {accommodation.type === 'cottage' ? (
                           <>
                             <p className="text-gray-600">Lantai</p>
                             <p className="text-2xl">{accommodation.floorLocation ?? '-'}</p>
@@ -250,14 +250,14 @@ export default function AccommodationsDetail({
                       </div>
                     </>
                   )}
-                  {accommodation.type === 'camping_ground' ? (
+                  {accommodation.type === 'camping_ground' || accommodation.type === 'cabin' ? (
                     <>
                       <div className="rounded-lg border border-gray-300 p-4 text-center">
                         <p className="font-medium">{accommodation.bathrooms}</p>
                         <p className="text-sm text-gray-600">Kamar Mandi</p>
                       </div>
                     </>
-                  ) : accommodation.type === 'cottage' || accommodation.type === 'cabin' ? (
+                  ) : accommodation.type === 'cottage' ? (
                     <></>
                   ) : (
                     <>
@@ -431,11 +431,11 @@ export default function AccommodationsDetail({
                         <p className="font-medium">{getUnitTypeLabel(accommodation.unitType)}</p>
                         <p className="text-xs text-gray-600">{accommodation.size} m²</p>
                       </div>
-                      {accommodation.type === 'camping_ground' ? (
+                      {accommodation.type === 'camping_ground' || accommodation.type === 'cabin' ? (
                         <></>
                       ) : (
                         <div className="flex h-full min-w-[130px] flex-col items-center justify-center rounded-lg border border-gray-300 p-4 text-center">
-                          {accommodation.type === 'cottage' || accommodation.type === 'cabin' ? (
+                          {accommodation.type === 'cottage' ? (
                             <>
                               <p className="text-gray-600">Lantai</p>
                               <p className="text-2xl">{accommodation.floorLocation ?? '-'}</p>
@@ -448,14 +448,14 @@ export default function AccommodationsDetail({
                           )}
                         </div>
                       )}
-                      {accommodation.type === 'camping_ground' ? (
+                      {accommodation.type === 'camping_ground' || accommodation.type === 'cabin' ? (
                         <>
                           <div className="flex h-full min-w-[130px] flex-col items-center justify-center rounded-lg border border-gray-300 p-4 text-center">
                             <p className="font-medium">{accommodation.bathrooms}</p>
                             <p className="text-sm text-gray-600">Kamar Mandi</p>
                           </div>
                         </>
-                      ) : accommodation.type === 'cottage' || accommodation.type === 'cabin' ? (
+                      ) : accommodation.type === 'cottage' ? (
                         <></>
                       ) : (
                         <>
@@ -679,11 +679,11 @@ export default function AccommodationsDetail({
                       </p>
                       <p className="text-gray-600">{accommodation.size} m²</p>
                     </div>
-                    {accommodation.type === 'camping_ground' ? (
+                    {accommodation.type === 'camping_ground' || accommodation.type === 'cabin' ? (
                       <></>
                     ) : (
                       <div className="flex flex-col items-center justify-center rounded-xl border border-gray-300 p-4 text-center">
-                        {accommodation.type === 'cottage' || accommodation.type === 'cabin' ? (
+                        {accommodation.type === 'cottage' ? (
                           <>
                             <p className="text-gray-600">Lantai</p>
                             <p className="text-2xl">{accommodation.floorLocation ?? '-'}</p>
@@ -696,14 +696,14 @@ export default function AccommodationsDetail({
                         )}
                       </div>
                     )}
-                    {accommodation.type === 'camping_ground' ? (
+                    {accommodation.type === 'camping_ground' || accommodation.type === 'cabin' ? (
                       <>
                         <div className="flex flex-col items-center justify-center rounded-xl border border-gray-300 p-4 text-center">
                           <p className="text-2xl font-bold">{accommodation.bathrooms ?? '-'}</p>
                           <p className="text-gray-600">Kamar Mandi</p>
                         </div>
                       </>
-                    ) : accommodation.type === 'cottage' || accommodation.type === 'cabin' ? (
+                    ) : accommodation.type === 'cottage' ? (
                       <></>
                     ) : (
                       <>
