@@ -1,13 +1,6 @@
 'use client'
 
 import Image from 'next/image'
-import { motion } from 'framer-motion'
-import {
-  sectionContainerVariants,
-  gridContainerVariants,
-  gridCardVariants,
-  cardContentVariants,
-} from '@/utilities/variants'
 import { PaginatedDocs } from 'payload'
 import { Attraction, AttractionAmenitiesPage, Media } from '@/payload-types'
 import { FeatureItem } from '@/components/FeatureItem'
@@ -35,13 +28,7 @@ export default function AttractionsSection({
         </div>
       </div>
 
-      <motion.section
-        className="bg-white"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.1 }}
-        variants={sectionContainerVariants}
-      >
+      <section className="bg-white">
         <div className="flex justify-center px-5 pb-8 lg:px-10 lg:pb-16">
           <div className="w-full space-y-6 md:max-w-full lg:max-w-7xl">
             {/* Mobile Layout */}
@@ -52,42 +39,33 @@ export default function AttractionsSection({
                 id={`attraction-${attraction.id}`}
               >
                 {/* Mobile Layout */}
-                <motion.div
-                  className="flex flex-col gap-6 md:hidden"
-                  variants={gridContainerVariants}
-                >
-                  <motion.div className="mx-auto w-full" variants={gridCardVariants}>
+                <div className="flex flex-col gap-6 md:hidden">
+                  <div className="mx-auto w-full">
                     <MobileAttractionCard attraction={attraction} />
                     {index < attractions.docs.length - 1 && (
                       <div className="mx-auto mt-6 h-px w-full max-w-[348px] bg-[#CEDADF]" />
                     )}
-                  </motion.div>
-                </motion.div>
+                  </div>
+                </div>
 
                 {/* Tablet Layout */}
-                <motion.div
-                  className="hidden md:flex md:flex-row md:flex-wrap md:justify-center md:gap-5 xl:hidden"
-                  variants={gridContainerVariants}
-                >
-                  <motion.div className="w-full px-4" variants={gridCardVariants}>
+                <div className="hidden md:flex md:flex-row md:flex-wrap md:justify-center md:gap-5 xl:hidden">
+                  <div className="w-full px-4">
                     <TabletAttractionCard attraction={attraction} />
-                  </motion.div>
-                </motion.div>
+                  </div>
+                </div>
 
                 {/* Desktop Layout */}
-                <motion.div
-                  className="hidden xl:flex xl:flex-col xl:gap-8"
-                  variants={gridContainerVariants}
-                >
-                  <motion.div className="w-full" variants={gridCardVariants}>
+                <div className="hidden xl:flex xl:flex-col xl:gap-8">
+                  <div className="w-full">
                     <DesktopAttractionCard attraction={attraction} />
-                  </motion.div>
-                </motion.div>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
         </div>
-      </motion.section>
+      </section>
     </>
   )
 }
@@ -108,10 +86,7 @@ function MobileAttractionCard({ attraction }: { attraction: Attraction }) {
       </div>
 
       {/* Content */}
-      <motion.div
-        className="flex w-full flex-col items-center gap-3"
-        variants={cardContentVariants}
-      >
+      <div className="flex w-full flex-col items-center gap-3">
         {/* Title */}
         <h3 className="w-full font-raleway text-[18px] font-semibold leading-[1.33] text-[#1D1D1D]">
           {attraction.title}
@@ -138,7 +113,7 @@ function MobileAttractionCard({ attraction }: { attraction: Attraction }) {
             {attraction.priceUnit}
           </p>
         </div>
-      </motion.div>
+      </div>
     </div>
   )
 }
@@ -159,10 +134,7 @@ function TabletAttractionCard({ attraction }: { attraction: Attraction }) {
       </div>
 
       {/* Content */}
-      <motion.div
-        className="flex w-1/2 flex-col justify-center gap-3"
-        variants={cardContentVariants}
-      >
+      <div className="flex w-1/2 flex-col justify-center gap-3">
         {/* Title */}
         <h3 className="w-full font-raleway text-[36px] font-bold leading-[1.28] text-[#1D1D1D]">
           {attraction.title}
@@ -189,7 +161,7 @@ function TabletAttractionCard({ attraction }: { attraction: Attraction }) {
             {attraction.priceUnit}
           </p>
         </div>
-      </motion.div>
+      </div>
     </div>
   )
 }
@@ -208,12 +180,8 @@ function DesktopAttractionCard({ attraction }: { attraction: Attraction }) {
           className="h-full w-full object-cover"
         />
       </div>
-
       {/* Content */}
-      <motion.div
-        className="flex w-[588px] flex-col items-end gap-3"
-        variants={cardContentVariants}
-      >
+      <div className="flex w-[588px] flex-col items-end gap-3">
         {/* Title */}
         <h3 className="w-full font-raleway text-[36px] font-bold leading-[1.28] text-[#000000]">
           {attraction.title}
@@ -240,7 +208,7 @@ function DesktopAttractionCard({ attraction }: { attraction: Attraction }) {
             {attraction.priceUnit}
           </p>
         </div>
-      </motion.div>
+      </div>
     </div>
   )
 }

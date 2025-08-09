@@ -670,15 +670,19 @@ export default function AccommodationsDetail({
                     <div className="h-px flex-1 bg-gray-300"></div>
                   </div>
                   <div className="grid grid-cols-6 gap-4">
-                    <div className="rounded-xl border border-gray-300 p-6 text-center">
-                      <div className="mb-2 flex justify-center">
-                        {getUnitTypeIcon(accommodation.unitType, 24)}
+                    {accommodation.type === 'camping_ground' ? (
+                      <></>
+                    ) : (
+                      <div className="rounded-xl border border-gray-300 p-6 text-center">
+                        <div className="mb-2 flex justify-center">
+                          {getUnitTypeIcon(accommodation.unitType, 24)}
+                        </div>
+                        <p className="text-lg font-bold">
+                          {getUnitTypeLabel(accommodation.unitType)}
+                        </p>
+                        <p className="text-gray-600">{accommodation.size} m²</p>
                       </div>
-                      <p className="text-lg font-bold">
-                        {getUnitTypeLabel(accommodation.unitType)}
-                      </p>
-                      <p className="text-gray-600">{accommodation.size} m²</p>
-                    </div>
+                    )}
                     {accommodation.type === 'camping_ground' || accommodation.type === 'cabin' ? (
                       <></>
                     ) : (
@@ -734,7 +738,25 @@ export default function AccommodationsDetail({
 
                 {/* Bed Arrangements */}
                 {accommodation.type === 'camping_ground' ? (
-                  <></>
+                  <>
+                    <div>
+                      <div className="mb-6 flex items-center gap-8">
+                        <h3 className="text-xl font-bold">Pengaturan Tenda</h3>
+                        <div className="h-px flex-1 bg-gray-300"></div>
+                      </div>
+                      <div className="grid grid-cols-6 gap-4">
+                        {accommodation.tentConfiguration?.map((bed, idx) => (
+                          <div
+                            key={idx}
+                            className="flex flex-col gap-2 rounded-xl border border-gray-300 p-4"
+                          >
+                            <p className="text-lg font-medium">{bed.tentType}</p>
+                            <p className="text-gray-600">{bed.tentCapacity} Tenda</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </>
                 ) : (
                   <>
                     <div>

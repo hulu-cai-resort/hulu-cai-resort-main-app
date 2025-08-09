@@ -21,28 +21,18 @@ export default function DiningSection({
   diningPage: DiningPage
 }) {
   return (
-    <motion.section
-      className="bg-[#F5F7FA] py-10 lg:py-[64px]"
-      initial="hidden"
-      id="dining"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.1 }}
-      variants={sectionContainerVariants}
-    >
+    <section className="bg-[#F5F7FA] py-10 lg:py-[64px]">
       <div className="mx-auto flex w-full justify-center">
         <div className="w-full px-5 pb-8 md:max-w-[1028px] md:px-8 lg:max-w-[1280px] lg:px-10 lg:pb-16 xl:px-0">
           {/* Header Section - Hidden on tablet, visible on mobile and desktop */}
-          <motion.div
-            className="mb-6 w-full text-center lg:mb-16 lg:block"
-            variants={headerTextVariants}
-          >
+          <div className="mb-6 w-full text-center lg:mb-16 lg:block">
             <h2 className="mb-3 text-[28px] font-semibold leading-[1.07] text-[#1D1D1D] lg:text-[36px] lg:leading-[1.28]">
               {diningPage.heroTitle}
             </h2>
             <p className="text-[14px] leading-[1.43] text-[#4F4F53] lg:text-[16px] lg:leading-[1.75]">
               {diningPage.heroDescription}
             </p>
-          </motion.div>
+          </div>
           {/* Mobile Layout - Vertical Stack */}
           <div className="flex justify-center px-5 pb-8 lg:px-10 lg:pb-16">
             <div className="w-full space-y-6 md:max-w-full lg:max-w-7xl">
@@ -51,27 +41,24 @@ export default function DiningSection({
                 {dinings.docs.map((dining, index) => (
                   <div key={dining.id} className="w-full scroll-mt-24" id={`dining-${dining.id}`}>
                     {/* Mobile Card */}
-                    <motion.div className="md:hidden" variants={gridContainerVariants}>
-                      <motion.div className="w-full" variants={gridCardVariants}>
+                    <div className="md:hidden">
+                      <div className="w-full">
                         <MobileDiningCard dining={dining} />
                         {index < dinings.docs.length - 1 && (
                           <div className="mx-auto mt-8 h-0.5 w-full bg-[#CACCCF]" />
                         )}
-                      </motion.div>
-                    </motion.div>
+                      </div>
+                    </div>
 
                     {/* Tablet Card */}
-                    <motion.div
-                      className="hidden h-full md:block xl:hidden"
-                      variants={gridCardVariants}
-                    >
+                    <div className="hidden h-full md:block xl:hidden">
                       <TabletDiningCard dining={dining} />
-                    </motion.div>
+                    </div>
 
                     {/* Desktop Card */}
-                    <motion.div className="hidden h-full xl:block" variants={gridCardVariants}>
+                    <div className="hidden h-full xl:block">
                       <DesktopDiningCard dining={dining} />
-                    </motion.div>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -79,7 +66,7 @@ export default function DiningSection({
           </div>
         </div>
       </div>
-    </motion.section>
+    </section>
   )
 }
 
@@ -99,7 +86,7 @@ function MobileDiningCard({ dining }: { dining: DiningArea }) {
       </div>
 
       {/* Content */}
-      <motion.div className="flex w-full flex-col gap-3" variants={cardContentVariants}>
+      <div className="flex w-full flex-col gap-3">
         <h3 className="px-2 text-[18px] font-semibold leading-[1.33] text-[#1D1D1D]">
           {dining.title}
         </h3>
@@ -120,7 +107,7 @@ function MobileDiningCard({ dining }: { dining: DiningArea }) {
         >
           Link Menu
         </button>
-      </motion.div>
+      </div>
     </div>
   )
 }
@@ -144,7 +131,7 @@ function TabletDiningCard({ dining }: { dining: DiningArea }) {
       </div>
 
       {/* Content */}
-      <motion.div className="flex flex-col gap-3 p-6" variants={cardContentVariants}>
+      <div className="flex flex-col gap-3 p-6">
         <h3 className="text-[24px] font-semibold leading-[1.33] text-[#1D1D1D]">{dining.title}</h3>
 
         {/* Features */}
@@ -163,7 +150,7 @@ function TabletDiningCard({ dining }: { dining: DiningArea }) {
         >
           Link Menu
         </button>
-      </motion.div>
+      </div>
     </div>
   )
 }
@@ -187,7 +174,7 @@ function DesktopDiningCard({ dining }: { dining: DiningArea }) {
       </div>
 
       {/* Content */}
-      <motion.div className="flex flex-col gap-4 p-6" variants={cardContentVariants}>
+      <div className="flex flex-col gap-4 p-6">
         <h3 className="text-[24px] font-semibold leading-[1.33] text-[#000000]">{dining.title}</h3>
 
         {/* Features */}
@@ -206,7 +193,7 @@ function DesktopDiningCard({ dining }: { dining: DiningArea }) {
         >
           Link Menu
         </button>
-      </motion.div>
+      </div>
     </div>
   )
 }
