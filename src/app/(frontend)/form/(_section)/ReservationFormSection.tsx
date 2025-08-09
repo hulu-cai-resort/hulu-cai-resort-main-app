@@ -485,7 +485,7 @@ export default function ReservationFormSection({ phoneNumber }: { phoneNumber: s
   }
 
   return (
-    <section className="bg-white py-16 md:py-24">
+    <section className="bg-white py-16 md:py-24 xl:py-40">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="mb-8 text-center">
