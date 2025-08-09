@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 import type { MainPage } from '@/payload-types'
-import { InstagramIcon, YoutubeIcon } from 'lucide-react'
+import { FacebookIcon, InstagramIcon, YoutubeIcon } from 'lucide-react'
 import {
   sectionContainerVariants,
   headerTextVariants,
@@ -15,6 +15,7 @@ import {
   buttonContainerVariants,
   buttonVariants,
 } from '@/utilities/variants'
+import { FaTiktok } from 'react-icons/fa'
 
 interface SocialMediaSectionProps {
   mainPage: MainPage
@@ -136,6 +137,10 @@ export function SocialMediaSection({ mainPage }: SocialMediaSectionProps) {
                       <div className="flex h-[18px] w-[18px] items-center justify-center">
                         {social.platform === 'instagram' ? (
                           <InstagramIcon className="size-10" />
+                        ) : social.platform === 'youtube' ? (
+                          <YoutubeIcon className="size-10" />
+                        ) : social.platform === 'facebook' ? (
+                          <FacebookIcon className="size-10" />
                         ) : (
                           <YoutubeIcon className="size-10" />
                         )}
@@ -182,7 +187,7 @@ export function SocialMediaSection({ mainPage }: SocialMediaSectionProps) {
                   </motion.p>
                   <div className="space-y-2.5">
                     <motion.h2
-                      className="font-raleway w-[502px] text-[36px] font-semibold leading-[1.28] text-[#1D1D1D]"
+                      className="w-[502px] font-raleway text-[36px] font-semibold leading-[1.28] text-[#1D1D1D]"
                       variants={slideUpVariants}
                     >
                       {mainPage.socialTitle}
@@ -211,8 +216,12 @@ export function SocialMediaSection({ mainPage }: SocialMediaSectionProps) {
                       <div className="flex h-[18px] w-[18px] items-center justify-center">
                         {social.platform === 'instagram' ? (
                           <InstagramIcon className="size-10" />
-                        ) : (
+                        ) : social.platform === 'youtube' ? (
                           <YoutubeIcon className="size-10" />
+                        ) : social.platform === 'facebook' ? (
+                          <FacebookIcon className="size-10" />
+                        ) : (
+                          <FaTiktok className="size-10" />
                         )}
                       </div>
                       <span className="font-raleway text-base font-semibold leading-[1.75]">
@@ -257,7 +266,7 @@ export function SocialMediaSection({ mainPage }: SocialMediaSectionProps) {
                   </motion.p>
                   <div className="space-y-2.5">
                     <motion.h2
-                      className="font-raleway w-full text-[36px] font-semibold leading-[1.28] text-[#1D1D1D]"
+                      className="w-full font-raleway text-[36px] font-semibold leading-[1.28] text-[#1D1D1D]"
                       variants={slideUpVariants}
                     >
                       {mainPage.socialTitle}
@@ -286,8 +295,12 @@ export function SocialMediaSection({ mainPage }: SocialMediaSectionProps) {
                       <div className="flex h-[18px] w-[18px] items-center justify-center">
                         {social.platform === 'instagram' ? (
                           <InstagramIcon className="size-10" />
-                        ) : (
+                        ) : social.platform === 'youtube' ? (
                           <YoutubeIcon className="size-10" />
+                        ) : social.platform === 'facebook' ? (
+                          <FacebookIcon className="size-10" />
+                        ) : (
+                          <FaTiktok className="size-10" />
                         )}
                       </div>
                       <span className="font-raleway text-base font-semibold leading-[1.75]">
