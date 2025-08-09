@@ -126,7 +126,7 @@ export default function EventSection({
       whileInView="visible"
       viewport={{ once: true, amount: 0.1 }}
       variants={sectionContainerVariants}
-      id="events-indoor"
+      id="events-outdoor"
     >
       <div className="mx-auto flex w-full justify-center">
         <div className="w-full px-5 pb-4 md:max-w-[1028px] md:px-8 lg:max-w-[1280px] lg:px-10 lg:pb-16 xl:px-0">
@@ -572,7 +572,7 @@ function DesktopEventCard({
             </div>
             <div className="flex h-[96px] min-w-[115px] items-center justify-center rounded-[7px] border border-[#CACCCF] p-3">
               <div className="text-center">
-                <div className="text-[18px] leading-[1.67] text-[#000000]">Indoor</div>
+                <div className="text-[18px] leading-[1.67] text-[#000000]">Outdoor</div>
                 <div className="text-[18px] leading-[1.67] text-[#000000]">Tipe Area</div>
               </div>
             </div>
