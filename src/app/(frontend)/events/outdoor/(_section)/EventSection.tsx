@@ -275,10 +275,10 @@ function MobileEventCard({ venue }: { venue: VenueUI }) {
             <div className="flex h-[96px] items-center justify-center rounded-[7px] border border-[#CACCCF] p-3">
               <div className="text-center">
                 <div className="text-[18px] leading-[1.67] text-[#000000]">
-                  {venue.dimensions.split(' x ')[0]} x{' '}
+                  {venue.dimensions.split(' x ')[0]?.replace('m', '')} x{' '}
                   {venue.dimensions.split(' x ')[1]?.replace('m', '')}
                 </div>
-                <div className="text-[18px] leading-[1.67] text-[#000000]">Dimensi</div>
+                <div className="text-[18px] leading-[1.67] text-[#000000]">Dimensi (m)</div>
               </div>
             </div>
             <div className="flex h-[96px] items-center justify-center rounded-[7px] border border-[#CACCCF] p-3">
@@ -424,10 +424,10 @@ function TabletEventCard({
             <div className="flex h-[96px] min-w-[115px] items-center justify-center rounded-[7px] border border-[#CACCCF] p-3">
               <div className="text-center">
                 <div className="text-[18px] leading-[1.67] text-[#000000]">
-                  {venue.dimensions.split(' x ')[0]} x{' '}
+                  {venue.dimensions.split(' x ')[0]?.replace('m', '')} x{' '}
                   {venue.dimensions.split(' x ')[1]?.replace('m', '')}
                 </div>
-                <div className="text-[18px] leading-[1.67] text-[#000000]">Dimensi</div>
+                <div className="text-[18px] leading-[1.67] text-[#000000]">Dimensi (m)</div>
               </div>
             </div>
             <div className="flex h-[96px] min-w-[115px] items-center justify-center rounded-[7px] border border-[#CACCCF] p-3">
