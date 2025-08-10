@@ -9,6 +9,8 @@ import {
   headerTextVariants,
   mainImageVariants,
 } from '@/utilities/variants'
+import { Button } from '@/components/ui/button'
+import Link from 'next/link'
 
 export default function LocationAndFacilitySection({ mainPage }: { mainPage: MainPage }) {
   return (
@@ -65,6 +67,9 @@ export default function LocationAndFacilitySection({ mainPage }: { mainPage: Mai
                   />
                 )}
               </motion.div>
+              <Button asChild className="w-full rounded-xl">
+                <Link href="/maps">Jelajahi Selengkapnya</Link>
+              </Button>
             </div>
           </div>
 
@@ -86,6 +91,9 @@ export default function LocationAndFacilitySection({ mainPage }: { mainPage: Mai
                   />
                 )}
               </motion.div>
+              <Button size="lg" asChild className="w-full rounded-xl">
+                <Link href="/maps">Jelajahi Selengkapnya</Link>
+              </Button>
             </div>
           </div>
 
@@ -107,6 +115,9 @@ export default function LocationAndFacilitySection({ mainPage }: { mainPage: Mai
                   />
                 )}
               </motion.div>
+              <Button size="lg" asChild className="w-full rounded-xl">
+                <Link href="/maps">Jelajahi Selengkapnya</Link>
+              </Button>
             </div>
           </div>
         </div>

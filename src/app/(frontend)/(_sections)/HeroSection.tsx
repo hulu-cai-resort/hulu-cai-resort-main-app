@@ -63,7 +63,7 @@ export function HeroSection({ mainPage }: HeroSectionProps) {
           >
             <div className="max-w-[670px] space-y-4 lg:space-y-[13px]">
               <motion.h1
-                className="max-w-md font-raleway text-3xl font-bold leading-[1.18] text-white sm:text-5xl lg:text-[56px] lg:leading-[1.18]"
+                className="max-w-lg font-raleway text-3xl font-bold leading-[1.18] text-white sm:text-5xl lg:text-[56px] lg:leading-[1.18]"
                 variants={itemVariants}
               >
                 {mainPage.heroTitle}
