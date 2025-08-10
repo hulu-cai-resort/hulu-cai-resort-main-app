@@ -27,10 +27,10 @@ export async function Footer() {
           <div className="relative z-10 max-w-2xl text-center">
             <div className="mb-5 space-y-5">
               <h2 className="text-2xl font-normal leading-tight md:text-3xl lg:text-4xl">
-                From Meeting to All Memories
+                Istirahat, Liburan, atau Kerja
               </h2>
               <h3 className="text-3xl font-bold leading-tight md:text-4xl lg:text-5xl">
-                All in One Place
+                di Tempat yang Sama
               </h3>
             </div>
 
@@ -41,7 +41,7 @@ export async function Footer() {
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
               </svg>
-              <span className="text-xl font-normal md:text-2xl">Reserve Here!</span>
+              <span className="text-xl font-normal md:text-2xl">Reservasi Sekarang</span>
             </Link>
           </div>
         </div>
