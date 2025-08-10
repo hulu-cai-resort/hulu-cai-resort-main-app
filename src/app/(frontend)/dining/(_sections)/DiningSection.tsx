@@ -27,10 +27,10 @@ export default function DiningSection({
           {/* Header Section - Hidden on tablet, visible on mobile and desktop */}
           <div className="mb-6 w-full text-center lg:mb-16 lg:block">
             <h2 className="mb-3 text-[28px] font-semibold leading-[1.07] text-[#1D1D1D] lg:text-[36px] lg:leading-[1.28]">
-              {diningPage.heroTitle}
+              {diningPage.diningTitle}
             </h2>
             <p className="text-[14px] leading-[1.43] text-[#4F4F53] lg:text-[16px] lg:leading-[1.75]">
-              {diningPage.heroDescription}
+              {diningPage.diningDescription}
             </p>
           </div>
           {/* Mobile Layout - Vertical Stack */}

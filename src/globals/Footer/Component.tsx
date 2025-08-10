@@ -62,31 +62,31 @@ export async function Footer() {
           <div className="grid grid-cols-1 gap-8 pb-16 md:grid-cols-2 lg:grid-cols-3 lg:gap-12">
             {/* About Hulu Cai Camp */}
             <div className="space-y-4">
-              <h4 className="mb-4 text-base font-bold">About Hulu Cai Camp</h4>
+              <h4 className="mb-4 text-base font-bold">Tentang Camp Hulu Cai</h4>
               <nav className="space-y-2">
                 <Link
                   href="/maps"
                   className="block text-base font-medium transition-colors hover:text-gray-300"
                 >
-                  Maps
+                  Peta
                 </Link>
                 <Link
                   href="/accommodations"
                   className="block text-base font-medium transition-colors hover:text-gray-300"
                 >
-                  Accommodation
+                  Akomodasi
                 </Link>
                 <Link
-                  href="/facilities"
+                  href="/attractions-amenities"
                   className="block text-base font-medium transition-colors hover:text-gray-300"
                 >
-                  Facilities
+                  Atraksi & Amenitas
                 </Link>
                 <Link
                   href="/activities"
                   className="block text-base font-medium transition-colors hover:text-gray-300"
                 >
-                  Activities
+                  Group Activities
                 </Link>
               </nav>
             </div>
@@ -97,19 +97,19 @@ export async function Footer() {
                 href="/dining"
                 className="block text-base font-medium transition-colors hover:text-gray-300"
               >
-                Food
+                Restoran
               </Link>
               <Link
                 href="/events"
                 className="block text-base font-medium transition-colors hover:text-gray-300"
               >
-                Events
+                Meeting & Event
               </Link>
               <Link
                 href="/reservation"
                 className="block text-base font-medium transition-colors hover:text-gray-300"
               >
-                Reservation
+                Reservasi
               </Link>
               <Link
                 href="/faq"
@@ -121,7 +121,7 @@ export async function Footer() {
 
             {/* Contact */}
             <div className="space-y-4">
-              <h4 className="mb-4 text-base font-bold">Contact</h4>
+              <h4 className="mb-4 text-base font-bold">Datang & Hubungi CHC</h4>
               <div className="space-y-2">
                 <div className="flex items-center gap-1">
                   <svg
