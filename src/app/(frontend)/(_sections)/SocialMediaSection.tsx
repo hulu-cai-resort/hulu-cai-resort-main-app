@@ -142,7 +142,7 @@ export function SocialMediaSection({ mainPage }: SocialMediaSectionProps) {
                         ) : social.platform === 'facebook' ? (
                           <FacebookIcon className="size-10" />
                         ) : (
-                          <YoutubeIcon className="size-10" />
+                          <FaTiktok className="size-10" />
                         )}
                       </div>
                       <span className="font-raleway text-base font-semibold leading-[1.75]">
