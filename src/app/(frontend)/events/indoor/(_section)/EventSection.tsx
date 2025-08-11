@@ -595,7 +595,7 @@ function DesktopEventCard({
               <span className="text-[36px] font-semibold leading-[1.28] text-white">
                 {venue.price}
               </span>
-              <span className="text-[12px] leading-[2] text-white">/per 8 jam</span>
+              <span className="text-[12px] leading-[2] text-white">{venue.duration}</span>
             </div>
           </div>
         </div>
