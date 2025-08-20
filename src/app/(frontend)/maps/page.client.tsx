@@ -693,7 +693,7 @@ function MapContent({
         <StaticMarkersRenderer map={map} activeFilter={activeFilter} mapMarkers={mapMarkers} />
       )}
       <CustomOverlay />
-      <div className="absolute -right-48 top-1/2 -translate-y-1/2 overflow-x-hidden">
+      <div className="absolute -right-32 top-1/2 z-50 -translate-y-1/2 overflow-x-hidden sm:-right-48">
         <MapControls onZoomIn={handleZoomIn} onZoomOut={handleZoomOut} zoom={zoom} />
       </div>
     </>
