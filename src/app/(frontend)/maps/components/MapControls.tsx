@@ -10,7 +10,7 @@ type Props = {
 
 export function MapControls({ onZoomIn, onZoomOut, zoom }: Props) {
   return (
-    <div className="relative hidden h-[391px] w-[391px] overflow-x-hidden rounded-full bg-[#416340] shadow-lg sm:block">
+    <div className="relative h-[391px] w-[391px] overflow-x-hidden rounded-full bg-[#416340] shadow-lg sm:block">
       {/* Controls Container */}
       <div className="absolute left-[100px] top-8 flex w-[94px] flex-col gap-6">
         {/* Zoom In */}

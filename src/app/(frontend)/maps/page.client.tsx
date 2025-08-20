@@ -650,7 +650,7 @@ const CustomOverlay = () => {
     //   new google.maps.LatLng(-6.699146, 106.8916), // NE corner
     // )
 
-    const overlay = new MyOverlay(bounds, '/maps/Map.png')
+    const overlay = new MyOverlay(bounds, '/maps/maps-1.png')
     overlay.setMap(map)
 
     return () => {
