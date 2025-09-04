@@ -22,7 +22,6 @@ export default function DiningSection({
   restaurants: PaginatedDocs<DiningArea>
   diningPage: DiningPage
 }) {
-  console.log(diningPage)
   return (
     <section className="bg-[#F5F7FA] py-10 lg:py-[64px]">
       <div className="mx-auto flex w-full justify-center">
@@ -141,14 +140,16 @@ function MobileDiningCard({ dining }: { dining: DiningArea }) {
         </div>
 
         {/* Button */}
-        <button
-          onClick={() => {
-            window.open(dining.menuLink ?? '', '_blank')
-          }}
-          className="mt-2 rounded-lg bg-[#06763F] px-3 py-2 text-[12px] font-semibold leading-[1.33] text-white"
-        >
-          Link Menu
-        </button>
+        {dining.menuLink && (
+          <button
+            onClick={() => {
+              window.open(dining.menuLink ?? '', '_blank')
+            }}
+            className="mt-2 rounded-lg bg-[#06763F] px-3 py-2 text-[12px] font-semibold leading-[1.33] text-white"
+          >
+            Link Menu
+          </button>
+        )}
       </div>
     </div>
   )
@@ -184,14 +185,16 @@ function TabletDiningCard({ dining }: { dining: DiningArea }) {
         </div>
 
         {/* Button */}
-        <button
-          onClick={() => {
-            window.open(dining.menuLink ?? '', '_blank')
-          }}
-          className="mt-3 rounded-lg bg-[#06763F] px-4 py-2.5 text-[14px] font-semibold leading-[1.33] text-white"
-        >
-          Link Menu
-        </button>
+        {dining.menuLink && (
+          <button
+            onClick={() => {
+              window.open(dining.menuLink ?? '', '_blank')
+            }}
+            className="mt-3 rounded-lg bg-[#06763F] px-4 py-2.5 text-[14px] font-semibold leading-[1.33] text-white"
+          >
+            Link Menu
+          </button>
+        )}
       </div>
     </div>
   )
@@ -227,14 +230,16 @@ function DesktopDiningCard({ dining }: { dining: DiningArea }) {
         </div>
 
         {/* Button */}
-        <button
-          onClick={() => {
-            window.open(dining.menuLink ?? '', '_blank')
-          }}
-          className="mt-3 rounded-lg bg-[#06763F] px-5 py-3 text-[16px] font-semibold leading-[1.75] text-white"
-        >
-          Link Menu
-        </button>
+        {dining.menuLink && (
+          <button
+            onClick={() => {
+              window.open(dining.menuLink ?? '', '_blank')
+            }}
+            className="mt-3 rounded-lg bg-[#06763F] px-5 py-3 text-[16px] font-semibold leading-[1.75] text-white"
+          >
+            Link Menu
+          </button>
+        )}
       </div>
     </div>
   )
