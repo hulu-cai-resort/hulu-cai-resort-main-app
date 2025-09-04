@@ -37,7 +37,6 @@ import { EventsOutdoorPage } from './globals/EventsOutdoorPage/config'
 import { ReservationFormPage } from './globals/ReservationFormPage/config'
 import { ContactForm } from './globals/ContactForm'
 import { MapMarkers } from './collections/MapMarkers'
-import { migrations } from './migrations'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -84,7 +83,6 @@ export default buildConfig({
     pool: {
       connectionString: process.env.DATABASE_URI || '',
     },
-    prodMigrations: migrations,
   }),
   collections: [
     Accommodations,
