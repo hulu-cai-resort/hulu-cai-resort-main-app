@@ -59,6 +59,23 @@ export const DiningArea: CollectionConfig = {
               enumName: 'accommodations_location',
             },
             {
+              name: 'type',
+              type: 'select',
+              required: true,
+              defaultValue: 'dining-area',
+              options: [
+                {
+                  label: 'Dining Area',
+                  value: 'dining-area',
+                },
+                {
+                  label: 'Restaurant',
+                  value: 'restaurant',
+                },
+              ],
+              enumName: 'dining_area_type',
+            },
+            {
               name: 'points',
               type: 'array',
               fields: [

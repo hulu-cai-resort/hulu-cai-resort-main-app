@@ -7,6 +7,7 @@ import { MapLegend } from './components/MapLegend'
 import { MapMarker, MapPage } from '@/payload-types'
 import Wrapper from '@/components/Wrapper'
 import { PaginatedDocs } from 'payload'
+import { getMediaUrl } from '@/utilities/getMediaUrl'
 
 const CAMP_HULU_CAI_CENTER = {
   lat: -6.701885, // Approximate coordinates for Mount Pangrango area
@@ -333,6 +334,17 @@ function createMarkerIcon(category: MapFilter): string {
   return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg)
 }
 
+function getPointIconUrl(point: MapMarker['points'][number], category: MapFilter): string {
+  const media = point.pointerImage
+  if (media && typeof media === 'object') {
+    const url = getMediaUrl(
+      media.sizes?.small?.url || media.sizes?.thumbnail?.url || media.url || undefined,
+    )
+    if (url) return url
+  }
+  return createMarkerIcon(category)
+}
+
 // Component to render markers from collection
 function StaticMarkersRenderer({
   map,
@@ -377,12 +389,14 @@ function StaticMarkersRenderer({
       console.log(markerGroup.points)
 
       markerGroup.points.forEach((point) => {
+        const iconUrl = getPointIconUrl(point, category)
+
         const marker = new google.maps.Marker({
           position: { lat: point.lat, lng: point.lng },
           map: map,
           title: point.text,
           icon: {
-            url: createMarkerIcon(category),
+            url: iconUrl,
             scaledSize: new google.maps.Size(40, 40),
             anchor: new google.maps.Point(20, 20),
           },
@@ -650,7 +664,7 @@ const CustomOverlay = () => {
     //   new google.maps.LatLng(-6.699146, 106.8916), // NE corner
     // )
 
-    const overlay = new MyOverlay(bounds, '/maps/maps-1.png')
+    const overlay = new MyOverlay(bounds, '/maps/maps-2.png')
     overlay.setMap(map)
 
     return () => {

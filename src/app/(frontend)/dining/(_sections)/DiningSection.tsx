@@ -14,16 +14,58 @@ import { PaginatedDocs } from 'payload'
 import { FeatureItem } from '@/components/FeatureItem'
 
 export default function DiningSection({
-  dinings,
+  diningAreas,
+  restaurants,
   diningPage,
 }: {
-  dinings: PaginatedDocs<DiningArea>
+  diningAreas: PaginatedDocs<DiningArea>
+  restaurants: PaginatedDocs<DiningArea>
   diningPage: DiningPage
 }) {
+  console.log(diningPage)
   return (
     <section className="bg-[#F5F7FA] py-10 lg:py-[64px]">
       <div className="mx-auto flex w-full justify-center">
         <div className="w-full px-5 pb-8 md:max-w-[1028px] md:px-8 lg:max-w-[1280px] lg:px-10 lg:pb-16 xl:px-0">
+          <div className="mb-6 w-full text-center lg:mb-16 lg:block">
+            <h2 className="mb-3 text-[28px] font-semibold leading-[1.07] text-[#1D1D1D] lg:text-[36px] lg:leading-[1.28]">
+              {diningPage.restaurantTitle}
+            </h2>
+            <p className="text-[14px] leading-[1.43] text-[#4F4F53] lg:text-[16px] lg:leading-[1.75]">
+              {diningPage.restaurantDescription}
+            </p>
+          </div>
+          {/* Mobile Layout - Vertical Stack */}
+          <div className="flex justify-center px-5 pb-8 lg:px-10 lg:pb-16">
+            <div className="w-full space-y-6 md:max-w-full lg:max-w-7xl">
+              {/* Mobile Layout */}
+              <div className="space-y-6 md:grid md:grid-cols-2 md:gap-6 md:space-y-0 xl:grid-cols-2 xl:gap-8">
+                {restaurants.docs.map((dining, index) => (
+                  <div key={dining.id} className="w-full scroll-mt-24" id={`dining-${dining.id}`}>
+                    {/* Mobile Card */}
+                    <div className="md:hidden">
+                      <div className="w-full">
+                        <MobileDiningCard dining={dining} />
+                        {index < restaurants.docs.length - 1 && (
+                          <div className="mx-auto mt-8 h-0.5 w-full bg-[#CACCCF]" />
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Tablet Card */}
+                    <div className="hidden h-full md:block xl:hidden">
+                      <TabletDiningCard dining={dining} />
+                    </div>
+
+                    {/* Desktop Card */}
+                    <div className="hidden h-full xl:block">
+                      <DesktopDiningCard dining={dining} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
           {/* Header Section - Hidden on tablet, visible on mobile and desktop */}
           <div className="mb-6 w-full text-center lg:mb-16 lg:block">
             <h2 className="mb-3 text-[28px] font-semibold leading-[1.07] text-[#1D1D1D] lg:text-[36px] lg:leading-[1.28]">
@@ -38,13 +80,13 @@ export default function DiningSection({
             <div className="w-full space-y-6 md:max-w-full lg:max-w-7xl">
               {/* Mobile Layout */}
               <div className="space-y-6 md:grid md:grid-cols-2 md:gap-6 md:space-y-0 xl:grid-cols-3 xl:gap-8">
-                {dinings.docs.map((dining, index) => (
+                {diningAreas.docs.map((dining, index) => (
                   <div key={dining.id} className="w-full scroll-mt-24" id={`dining-${dining.id}`}>
                     {/* Mobile Card */}
                     <div className="md:hidden">
                       <div className="w-full">
                         <MobileDiningCard dining={dining} />
-                        {index < dinings.docs.length - 1 && (
+                        {index < diningAreas.docs.length - 1 && (
                           <div className="mx-auto mt-8 h-0.5 w-full bg-[#CACCCF]" />
                         )}
                       </div>
@@ -163,7 +205,7 @@ function DesktopDiningCard({ dining }: { dining: DiningArea }) {
       id={`dining-${dining.id}`}
     >
       {/* Image */}
-      <div className="h-[220px] w-full overflow-hidden rounded-t-[20px] bg-gray-200">
+      <div className="h-[332px] w-full overflow-hidden rounded-t-[20px] bg-gray-200">
         <Image
           src={(dining.image as Media)?.url ?? ''}
           alt={dining.title}

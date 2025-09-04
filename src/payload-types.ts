@@ -568,6 +568,7 @@ export interface DiningArea {
    */
   mapCode?: string | null;
   location: 'valley-cibedug' | 'hills-babakan';
+  type: 'dining-area' | 'restaurant';
   /**
    * Points of the attraction
    */
@@ -837,6 +838,10 @@ export interface MapMarker {
      * Map code to match with collection items (e.g., 01, 02, 03)
      */
     mapCode?: string | null;
+    /**
+     * Pointer image for this marker point
+     */
+    pointerImage?: (number | null) | Media;
     /**
      * Link to related accommodation (for villa, cottage, cabin, camping-ground markers)
      */
@@ -1161,6 +1166,7 @@ export interface DiningAreaSelect<T extends boolean = true> {
   title?: T;
   mapCode?: T;
   location?: T;
+  type?: T;
   points?:
     | T
     | {
@@ -1302,6 +1308,7 @@ export interface MapMarkersSelect<T extends boolean = true> {
         lat?: T;
         lng?: T;
         mapCode?: T;
+        pointerImage?: T;
         relatedAccommodation?: T;
         relatedMeetingEventArea?: T;
         relatedDiningArea?: T;
@@ -2529,6 +2536,14 @@ export interface DiningPage {
    */
   heroImage?: (number | null) | Media;
   /**
+   * Title for the restaurant section
+   */
+  restaurantTitle: string;
+  /**
+   * Description text for the restaurant section
+   */
+  restaurantDescription: string;
+  /**
    * Title for the dining section
    */
   diningTitle: string;
@@ -3523,6 +3538,8 @@ export interface DiningPageSelect<T extends boolean = true> {
   heroTitle?: T;
   heroDescription?: T;
   heroImage?: T;
+  restaurantTitle?: T;
+  restaurantDescription?: T;
   diningTitle?: T;
   diningDescription?: T;
   meta?:

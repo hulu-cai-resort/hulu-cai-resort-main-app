@@ -15,7 +15,7 @@ export default async function MapsPage() {
 
   const mapMarkers = await payload.find({
     collection: 'map-markers',
-    depth: 1,
+    depth: 2,
     limit: 0,
   })
 

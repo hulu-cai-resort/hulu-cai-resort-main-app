@@ -74,6 +74,14 @@ export const MapMarkers: CollectionConfig = {
           },
         },
         {
+          name: 'pointerImage',
+          type: 'upload',
+          relationTo: 'media',
+          admin: {
+            description: 'Pointer image for this marker point',
+          },
+        },
+        {
           name: 'relatedAccommodation',
           type: 'relationship',
           relationTo: 'accommodations',

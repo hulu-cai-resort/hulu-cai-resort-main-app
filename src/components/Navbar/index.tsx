@@ -15,7 +15,7 @@ interface NavItem {
 const navItems: NavItem[] = [
   { label: 'Peta', href: '/maps' },
   { label: 'Tempat Menginap', href: '/accommodations' },
-  { label: 'Atraksi & Amenitas', href: '/attractions-amenities' },
+  { label: 'Wahana Bermain', href: '/attractions-amenities' },
   { label: 'Group Activities', href: '/activities' },
   { label: 'Restoran', href: '/dining' },
   { label: 'Meeting & Events', href: '/events' },

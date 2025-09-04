@@ -50,6 +50,25 @@ export const DiningPage: GlobalConfig = {
           label: 'Dining Section',
           fields: [
             {
+              name: 'restaurantTitle',
+              type: 'text',
+              required: true,
+              defaultValue: 'Restaurant',
+              admin: {
+                description: 'Title for the restaurant section',
+              },
+            },
+            {
+              name: 'restaurantDescription',
+              type: 'textarea',
+              required: true,
+              defaultValue:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+              admin: {
+                description: 'Description text for the restaurant section',
+              },
+            },
+            {
               name: 'diningTitle',
               type: 'text',
               required: true,

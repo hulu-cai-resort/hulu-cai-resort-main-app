@@ -21,8 +21,24 @@ export default async function Dining() {
 
   const payload = await getPayload({ config: configPromise })
 
-  const dinings = await payload.find({
+  const restaurants = await payload.find({
     collection: 'dining-area',
+    depth: 1,
+    limit: 0,
+    where: {
+      type: {
+        equals: 'restaurant',
+      },
+    },
+  })
+
+  const diningAreas = await payload.find({
+    collection: 'dining-area',
+    where: {
+      type: {
+        equals: 'dining-area',
+      },
+    },
     depth: 1,
     limit: 0,
   })
@@ -32,7 +48,7 @@ export default async function Dining() {
       <HeroSection diningPage={diningPage} />
       <ScrollIndicator href="#dining" />
 
-      <DiningSection dinings={dinings} diningPage={diningPage} />
+      <DiningSection restaurants={restaurants} diningAreas={diningAreas} diningPage={diningPage} />
     </>
   )
 }
