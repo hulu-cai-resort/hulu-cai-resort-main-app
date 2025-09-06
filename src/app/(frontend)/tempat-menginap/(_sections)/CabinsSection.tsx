@@ -12,74 +12,74 @@ import {
   slideUpVariants,
   gridContainerVariants,
 } from '@/utilities/variants'
-import { useRouter } from 'next/navigation'
 
 // Import Swiper styles
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
+import { useRouter } from 'next/navigation'
 import { Accommodation } from '@/payload-types'
 import { PaginatedDocs } from 'payload'
 
-// Dummy cottage data
-const dummyCottages = [
+// Dummy cabin data
+const dummyCabins = [
   {
     id: '1',
-    title: 'Cottage Garden View',
+    title: 'Cabin Mountain View',
     duration: 'Duration 2 hours',
     transport: 'Transport Facility',
     familyPlan: 'Family Plan',
-    image: '/media/cottage-1.jpg',
-    pricePerNight: 450000,
+    image: '/media/cabin-1.jpg',
+    pricePerNight: 600000,
   },
   {
     id: '2',
-    title: 'Cottage Hillside Charm',
+    title: 'Cabin Forest Retreat',
     duration: 'Duration 3 hours',
     transport: 'Transport Facility',
     familyPlan: 'Family Plan',
-    image: '/media/cottage-2.jpg',
-    pricePerNight: 500000,
+    image: '/media/cabin-2.jpg',
+    pricePerNight: 650000,
   },
   {
     id: '3',
-    title: 'Cottage Meadow Bliss',
+    title: 'Cabin Lakeside Escape',
     duration: 'Duration 2 hours',
     transport: 'Transport Facility',
     familyPlan: 'Family Plan',
-    image: '/media/cottage-3.jpg',
-    pricePerNight: 520000,
+    image: '/media/cabin-3.jpg',
+    pricePerNight: 700000,
   },
   {
     id: '4',
-    title: 'Cottage Countryside Peace',
+    title: 'Cabin Woodland Haven',
     duration: 'Duration 4 hours',
     transport: 'Transport Facility',
     familyPlan: 'Family Plan',
-    image: '/media/cottage-4.jpg',
-    pricePerNight: 420000,
+    image: '/media/cabin-4.jpg',
+    pricePerNight: 550000,
   },
   {
     id: '5',
-    title: 'Cottage Sunrise Serenity',
+    title: 'Cabin Riverside Comfort',
     duration: 'Duration 2 hours',
     transport: 'Transport Facility',
     familyPlan: 'Family Plan',
-    image: '/media/cottage-5.jpg',
-    pricePerNight: 480000,
+    image: '/media/cabin-5.jpg',
+    pricePerNight: 680000,
   },
   {
     id: '6',
-    title: 'Cottage Cozy Retreat',
+    title: 'Cabin Valley Vista',
     duration: 'Duration 3 hours',
     transport: 'Transport Facility',
     familyPlan: 'Family Plan',
-    image: '/media/cottage-6.jpg',
-    pricePerNight: 460000,
+    image: '/media/cabin-6.jpg',
+    pricePerNight: 620000,
   },
 ]
 
-export default function CottagesSection({
+export default function CabinsSection({
   accommodations,
 }: {
   accommodations: PaginatedDocs<Accommodation>
@@ -95,46 +95,46 @@ export default function CottagesSection({
       viewport={{ once: true, amount: 0.3 }}
     >
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-8">
-        {/* Cottage Section */}
+        {/* Cabin Section */}
         <motion.div
           className="flex w-full flex-col items-center gap-[22.43px]"
           variants={gridContainerVariants}
         >
-          {/* Cottage Section Header */}
+          {/* Cabin Section Header */}
           <motion.div
             className="flex w-full items-center justify-between gap-[11.21px] rounded-[20px] bg-[#416340] px-3 py-2"
             variants={slideUpVariants}
           >
             <div className="flex items-center justify-center">
               <span className="font-raleway text-base font-semibold leading-[1.75] text-white">
-                Room
+                Cabin
               </span>
             </div>
             <motion.button
               className="flex items-center justify-center gap-2.5 rounded-[33.64px] bg-[#092B1A] px-9 py-1.5 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              onClick={() => router.push('/accommodations/cottage')}
+              onClick={() => router.push('/tempat-menginap/cabin')}
             >
               <span className="font-raleway text-base font-semibold leading-[1.75] text-white">
-                More Room
+                More Cabin
               </span>
             </motion.button>
           </motion.div>
 
-          {/* Cottages Grid/Swiper */}
+          {/* Cabins Grid/Swiper */}
           <motion.div className="relative w-full" variants={gridContainerVariants}>
             <Swiper
               modules={[Navigation, Pagination]}
               spaceBetween={12}
               slidesPerView={1}
               navigation={{
-                nextEl: '.swiper-button-next-cottages',
-                prevEl: '.swiper-button-prev-cottages',
+                nextEl: '.swiper-button-next-cabins',
+                prevEl: '.swiper-button-prev-cabins',
               }}
               pagination={{
                 clickable: true,
-                el: '.swiper-pagination-cottages',
+                el: '.swiper-pagination-cabins',
               }}
               centeredSlides={true}
               breakpoints={{
@@ -154,7 +154,7 @@ export default function CottagesSection({
                   centeredSlides: false,
                 },
               }}
-              className="cottages-swiper w-full !pb-12"
+              className="cabins-swiper w-full !pb-12"
             >
               {accommodations.docs.map((accommodation) => (
                 <SwiperSlide key={accommodation.id} className="!h-auto">
@@ -167,34 +167,34 @@ export default function CottagesSection({
 
             {/* Custom Navigation Buttons */}
             <div className="hidden lg:block">
-              <button className="swiper-button-prev-cottages absolute left-4 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-lg transition-all hover:bg-gray-50 hover:shadow-xl">
+              <button className="swiper-button-prev-cabins absolute left-4 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-lg transition-all hover:bg-gray-50 hover:shadow-xl">
                 <ChevronLeft className="h-6 w-6 text-[#1D1D1D]" />
               </button>
-              <button className="swiper-button-next-cottages absolute right-4 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-lg transition-all hover:bg-gray-50 hover:shadow-xl">
+              <button className="swiper-button-next-cabins absolute right-4 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-lg transition-all hover:bg-gray-50 hover:shadow-xl">
                 <ChevronRight className="h-6 w-6 text-[#1D1D1D]" />
               </button>
             </div>
 
             {/* Custom Pagination for Mobile/Tablet */}
-            <div className="swiper-pagination-cottages mt-6 flex justify-center gap-2"></div>
+            <div className="swiper-pagination-cabins mt-6 flex justify-center gap-2"></div>
           </motion.div>
         </motion.div>
       </div>
 
       {/* Custom Swiper Styles */}
       <style jsx global>{`
-        .cottages-swiper .swiper-slide {
+        .cabins-swiper .swiper-slide {
           height: auto;
           display: flex;
           align-items: stretch;
         }
 
-        .cottages-swiper .swiper-wrapper {
+        .cabins-swiper .swiper-wrapper {
           align-items: stretch;
           margin: auto;
         }
 
-        .cottages-swiper .swiper-pagination-bullet {
+        .cabins-swiper .swiper-pagination-bullet {
           background: #a8b4ae;
           opacity: 0.6;
           width: 12px;
@@ -202,7 +202,7 @@ export default function CottagesSection({
           margin: 0 4px;
         }
 
-        .cottages-swiper .swiper-pagination-bullet-active {
+        .cabins-swiper .swiper-pagination-bullet-active {
           background: #06763f;
           opacity: 1;
         }

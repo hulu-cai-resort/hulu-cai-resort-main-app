@@ -97,7 +97,7 @@ function MobileEventCard({ event }: { event: EventsPage }) {
 
           {/* Button */}
           <button
-            onClick={() => router.push('/events/outdoor')}
+            onClick={() => router.push('/meeting-events/outdoor')}
             className="mt-2 rounded-lg bg-[#06763F] px-3 py-2 text-[12px] font-semibold leading-[1.33] text-white"
           >
             Lihat Semua Outdoor
@@ -131,7 +131,7 @@ function MobileEventCard({ event }: { event: EventsPage }) {
 
           {/* Button */}
           <button
-            onClick={() => router.push('/events/indoor')}
+            onClick={() => router.push('/meeting-events/indoor')}
             className="mt-2 rounded-lg bg-[#06763F] px-3 py-2 text-[12px] font-semibold leading-[1.33] text-white"
           >
             Lihat Semua Indoor
@@ -174,7 +174,7 @@ function TabletEventCard({ event }: { event: EventsPage }) {
 
           {/* Button */}
           <button
-            onClick={() => router.push('/events/outdoor')}
+            onClick={() => router.push('/meeting-events/outdoor')}
             className="mt-2 rounded-lg bg-[#06763F] px-4 py-2.5 text-[12px] leading-[1.33] text-white"
           >
             Lihat Semua Outdoor
@@ -209,7 +209,7 @@ function TabletEventCard({ event }: { event: EventsPage }) {
 
           {/* Button */}
           <button
-            onClick={() => router.push('/events/indoor')}
+            onClick={() => router.push('/meeting-events/indoor')}
             className="mt-2 rounded-lg bg-[#06763F] px-4 py-2.5 text-[12px] leading-[1.33] text-white"
           >
             Lihat Semua Indoor
@@ -249,7 +249,7 @@ function DesktopEventCard({ event }: { event: EventsPage }) {
 
           {/* Button */}
           <button
-            onClick={() => router.push('/events/outdoor')}
+            onClick={() => router.push('/meeting-events/outdoor')}
             className="mt-3 rounded-lg bg-[#06763F] px-5 py-3 text-[16px] font-semibold leading-[1.75] text-white"
           >
             Lihat Semua Outdoor
@@ -281,7 +281,7 @@ function DesktopEventCard({ event }: { event: EventsPage }) {
 
           {/* Button */}
           <button
-            onClick={() => router.push('/events/indoor')}
+            onClick={() => router.push('/meeting-events/indoor')}
             className="mt-3 rounded-lg bg-[#06763F] px-5 py-3 text-[16px] font-semibold leading-[1.75] text-white"
           >
             Lihat Semua Indoor

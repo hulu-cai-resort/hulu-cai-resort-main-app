@@ -13,13 +13,13 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { label: 'Peta', href: '/maps' },
-  { label: 'Tempat Menginap', href: '/accommodations' },
-  { label: 'Wahana Bermain', href: '/attractions-amenities' },
-  { label: 'Group Activities', href: '/activities' },
-  { label: 'Restoran', href: '/dining' },
-  { label: 'Meeting & Events', href: '/events' },
-  { label: 'Reservasi', href: '/reservation' },
+  { label: 'Peta', href: '/peta' },
+  { label: 'Tempat Menginap', href: '/tempat-menginap' },
+  { label: 'Wahana Bermain', href: '/wahana-bermain' },
+  { label: 'Group Activities', href: '/group-activities' },
+  { label: 'Restoran', href: '/restoran' },
+  { label: 'Meeting & Events', href: '/meeting-events' },
+  { label: 'Reservasi', href: '/reservasi' },
 ]
 
 export function Navbar() {
@@ -70,8 +70,7 @@ export function Navbar() {
               className={cn(
                 'flex h-[56px] w-[56px] items-center justify-center rounded-lg border border-white/50 saturate-[1.2] backdrop-blur-[2px] xl:h-[72px] xl:w-[72px]',
                 isAtTop ? 'bg-white/5' : 'bg-primary/80',
-                (pathname.includes('/reservation') || pathname.includes('/form')) &&
-                  'bg-primary/80',
+                (pathname.includes('/reservasi') || pathname.includes('/form')) && 'bg-primary/80',
               )}
             >
               <Link href="/" className="flex h-full w-full items-center justify-center">
@@ -91,7 +90,7 @@ export function Navbar() {
             className={cn(
               'hidden items-center gap-3 rounded-full border border-white/50 p-2 saturate-[1.2] backdrop-blur-[2px] xl:flex',
               isAtTop ? 'bg-white/5' : 'bg-primary/80',
-              (pathname.includes('/reservation') || pathname.includes('/form')) && 'bg-primary/80',
+              (pathname.includes('/reservasi') || pathname.includes('/form')) && 'bg-primary/80',
             )}
           >
             {navItems.map((item) => {
@@ -117,7 +116,7 @@ export function Navbar() {
             className={cn(
               'pointer-events-auto flex h-[56px] w-[56px] items-center justify-center rounded-lg border border-white/50 text-white saturate-[1.2] backdrop-blur-[2px] xl:hidden',
               isAtTop ? 'bg-white/5' : 'bg-primary/80',
-              (pathname.includes('/reservation') || pathname.includes('/form')) && 'bg-primary/80',
+              (pathname.includes('/reservasi') || pathname.includes('/form')) && 'bg-primary/80',
             )}
             onClick={() => setShowMobileMenu(!showMobileMenu)}
           >
@@ -186,7 +185,7 @@ export function Navbar() {
             className={cn(
               'rounded-2xl border border-white/50 bg-white/5 p-4 shadow-2xl saturate-[1.2]',
               isAtTop ? 'bg-white/5' : 'bg-primary/80',
-              (pathname.includes('/reservation') || pathname.includes('/form')) && 'bg-primary/80',
+              (pathname.includes('/reservasi') || pathname.includes('/form')) && 'bg-primary/80',
             )}
           >
             <nav className="pointer-events-auto flex flex-col gap-2">

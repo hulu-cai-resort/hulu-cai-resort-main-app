@@ -209,7 +209,7 @@ export default function PlaceToGoSection({ mainPage }: { mainPage: MainPage }) {
                 <motion.div className="pt-2" variants={buttonVariants}>
                   <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                     <Button
-                      onClick={() => router.push('/maps')}
+                      onClick={() => router.push('/peta')}
                       className="font-rethink h-[46px] w-full rounded-[8px] bg-[#06763F] text-xs font-semibold leading-[1.33] text-white"
                     >
                       Mulai Jelajahi
@@ -375,7 +375,7 @@ export default function PlaceToGoSection({ mainPage }: { mainPage: MainPage }) {
                 <motion.div className="pt-2" variants={buttonVariants}>
                   <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                     <Button
-                      onClick={() => router.push('/maps')}
+                      onClick={() => router.push('/peta')}
                       className="font-rethink h-[46px] w-[156px] rounded-[10px] bg-[#06763F] text-sm font-semibold leading-[1.43] text-white"
                     >
                       Mulai Jelajahi
@@ -422,7 +422,7 @@ export default function PlaceToGoSection({ mainPage }: { mainPage: MainPage }) {
                 <motion.div className="pt-2" variants={buttonVariants}>
                   <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                     <Button
-                      onClick={() => router.push('/maps')}
+                      onClick={() => router.push('/peta')}
                       className="h-[48px] w-[138px] rounded-[8px] bg-[#06763F] font-raleway text-base font-semibold leading-[1.75] text-white"
                     >
                       Mulai Jelajahi

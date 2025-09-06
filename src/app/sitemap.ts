@@ -52,31 +52,31 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
       // Accommodations Section
       {
-        url: `${baseUrl}/accommodations`,
+        url: `${baseUrl}/tempat-menginap`,
         lastModified: new Date(accommodationsPage?.updatedAt || new Date()),
         changeFrequency: 'monthly',
         priority: 0.8,
       },
       {
-        url: `${baseUrl}/accommodations/villa`,
+        url: `${baseUrl}/tempat-menginap/villa`,
         lastModified: new Date(villaPage?.updatedAt || new Date()),
         changeFrequency: 'monthly',
         priority: 0.7,
       },
       {
-        url: `${baseUrl}/accommodations/cabin`,
+        url: `${baseUrl}/tempat-menginap/cabin`,
         lastModified: new Date(cabinPage?.updatedAt || new Date()),
         changeFrequency: 'monthly',
         priority: 0.7,
       },
       {
-        url: `${baseUrl}/accommodations/cottage`,
+        url: `${baseUrl}/tempat-menginap/cottage`,
         lastModified: new Date(cottagePage?.updatedAt || new Date()),
         changeFrequency: 'monthly',
         priority: 0.7,
       },
       {
-        url: `${baseUrl}/accommodations/camping-ground`,
+        url: `${baseUrl}/tempat-menginap/camping-ground`,
         lastModified: new Date(campingGroundPage?.updatedAt || new Date()),
         changeFrequency: 'monthly',
         priority: 0.7,
@@ -84,7 +84,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
       // Activities
       {
-        url: `${baseUrl}/activities`,
+        url: `${baseUrl}/group-activities`,
         lastModified: new Date(activitiesPage?.updatedAt || new Date()),
         changeFrequency: 'monthly',
         priority: 0.8,
@@ -92,7 +92,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
       // Attractions & Amenities
       {
-        url: `${baseUrl}/attractions-amenities`,
+        url: `${baseUrl}/wahana-bermain`,
         lastModified: new Date(attractionAmenitiesPage?.updatedAt || new Date()),
         changeFrequency: 'monthly',
         priority: 0.8,
@@ -100,7 +100,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
       // Dining
       {
-        url: `${baseUrl}/dining`,
+        url: `${baseUrl}/restoran`,
         lastModified: new Date(diningPage?.updatedAt || new Date()),
         changeFrequency: 'monthly',
         priority: 0.8,
@@ -108,19 +108,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
       // Events
       {
-        url: `${baseUrl}/events`,
+        url: `${baseUrl}/meeting-events`,
         lastModified: new Date(eventsPage?.updatedAt || new Date()),
         changeFrequency: 'monthly',
         priority: 0.8,
       },
       {
-        url: `${baseUrl}/events/indoor`,
+        url: `${baseUrl}/meeting-events/indoor`,
         lastModified: new Date(eventsIndoorPage?.updatedAt || new Date()),
         changeFrequency: 'monthly',
         priority: 0.7,
       },
       {
-        url: `${baseUrl}/events/outdoor`,
+        url: `${baseUrl}/meeting-events/outdoor`,
         lastModified: new Date(eventsOutdoorPage?.updatedAt || new Date()),
         changeFrequency: 'monthly',
         priority: 0.7,
@@ -128,7 +128,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
       // Maps
       {
-        url: `${baseUrl}/maps`,
+        url: `${baseUrl}/peta`,
         lastModified: new Date(mapPage?.updatedAt || new Date()),
         changeFrequency: 'monthly',
         priority: 0.6,
@@ -136,7 +136,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
       // Reservation (High Priority - Conversion Pages)
       {
-        url: `${baseUrl}/reservation`,
+        url: `${baseUrl}/reservasi`,
         lastModified: new Date(reservationPage?.updatedAt || new Date()),
         changeFrequency: 'weekly',
         priority: 0.9,

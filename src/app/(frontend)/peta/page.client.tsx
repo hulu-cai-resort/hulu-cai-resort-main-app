@@ -410,22 +410,22 @@ function StaticMarkersRenderer({
               switch (accommodation.type) {
                 case 'villa':
                   return {
-                    url: `/accommodations/villa#accommodation-${accommodation.id}`,
+                    url: `/tempat-menginap/villa#accommodation-${accommodation.id}`,
                     label: 'View Villa Details',
                   }
                 case 'cottage':
                   return {
-                    url: `/accommodations/cottage#accommodation-${accommodation.id}`,
+                    url: `/tempat-menginap/cottage#accommodation-${accommodation.id}`,
                     label: 'View Cottage Details',
                   }
                 case 'cabin':
                   return {
-                    url: `/accommodations/cabin#accommodation-${accommodation.id}`,
+                    url: `/tempat-menginap/cabin#accommodation-${accommodation.id}`,
                     label: 'View Cabin Details',
                   }
                 case 'camping_ground':
                   return {
-                    url: `/accommodations/camping-ground#accommodation-${accommodation.id}`,
+                    url: `/tempat-menginap/camping-ground#accommodation-${accommodation.id}`,
                     label: 'View Camping Details',
                   }
               }
@@ -436,7 +436,7 @@ function StaticMarkersRenderer({
             const diningArea = point.relatedDiningArea
             if (typeof diningArea === 'object' && diningArea.id) {
               return {
-                url: `/dining#dining-${diningArea.id}`,
+                url: `/restoran#dining-${diningArea.id}`,
                 label: 'View Dining Area Details',
               }
             }
@@ -447,12 +447,12 @@ function StaticMarkersRenderer({
               switch (meetingEventArea.areaType) {
                 case 'indoor':
                   return {
-                    url: `/events/indoor#indoor-${meetingEventArea.id}`,
+                    url: `/meeting-events/indoor#indoor-${meetingEventArea.id}`,
                     label: 'View Indoor Event Details',
                   }
                 case 'outdoor':
                   return {
-                    url: `/events/outdoor#outdoor-${meetingEventArea.id}`,
+                    url: `/meeting-events/outdoor#outdoor-${meetingEventArea.id}`,
                     label: 'View Outdoor Event Details',
                   }
               }
@@ -463,13 +463,13 @@ function StaticMarkersRenderer({
             const amenity = point.relatedAmenity
             if (attraction && typeof attraction === 'object' && attraction.id) {
               return {
-                url: `/attractions-amenities#attraction-${attraction.id}`,
+                url: `/wahana-bermain#attraction-${attraction.id}`,
                 label: 'View Attraction Details',
               }
             }
             if (amenity && typeof amenity === 'object' && amenity.id) {
               return {
-                url: `/attractions-amenities#amenity-${amenity.id}`,
+                url: `/wahana-bermain#amenity-${amenity.id}`,
                 label: 'View Amenity Details',
               }
             }

@@ -91,7 +91,7 @@ export function HeroSection({ mainPage }: HeroSectionProps) {
                     variant="fluid"
                     size="lg"
                     className="w-md w-fit px-5 py-3 lg:h-[48px] lg:w-[164px] lg:px-[20px] lg:py-[12px] lg:text-[16px]"
-                    onClick={() => router.push('/reservation')}
+                    onClick={() => router.push('/reservasi')}
                   >
                     <div className="flex items-center justify-center px-3 text-sm">
                       Make Reservation
@@ -108,7 +108,7 @@ export function HeroSection({ mainPage }: HeroSectionProps) {
                   <Button
                     size="default"
                     className="border border-white bg-white/10 px-5 py-3 font-raleway text-base font-semibold text-white backdrop-blur-[20px] hover:bg-white/20 lg:h-[48px] lg:w-[164px] lg:px-[20px] lg:py-[12px] lg:text-[16px]"
-                    onClick={() => router.push('/maps')}
+                    onClick={() => router.push('/peta')}
                   >
                     Explore
                   </Button>

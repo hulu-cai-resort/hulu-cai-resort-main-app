@@ -113,7 +113,7 @@ export default function AccommodationsDetail({
                 <h1 className="font-raleway text-2xl font-bold text-gray-900 md:text-4xl">
                   {accommodation.title}
                 </h1>
-                <Link href={`/maps`} className="flex items-center justify-between">
+                <Link href={`/peta`} className="flex items-center justify-between">
                   <span className="text-sm text-green-600">Map Location</span>
                 </Link>
               </div>
@@ -633,7 +633,7 @@ export default function AccommodationsDetail({
                     {accommodation.title}
                   </h1>
                   <div className="flex items-center justify-end">
-                    <Link href={`/maps`} className="flex items-center justify-between">
+                    <Link href={`/peta`} className="flex items-center justify-between">
                       <span className="text-sm text-green-600">Map Location</span>
                     </Link>
                   </div>

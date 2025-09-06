@@ -65,25 +65,25 @@ export async function Footer() {
               <h4 className="mb-4 text-base font-bold">Tentang Camp Hulu Cai</h4>
               <nav className="space-y-2">
                 <Link
-                  href="/maps"
+                  href="/peta"
                   className="block text-base font-medium transition-colors hover:text-gray-300"
                 >
                   Peta
                 </Link>
                 <Link
-                  href="/accommodations"
+                  href="/tempat-menginap"
                   className="block text-base font-medium transition-colors hover:text-gray-300"
                 >
-                  Akomodasi
+                  Tempat Menginap
                 </Link>
                 <Link
-                  href="/attractions-amenities"
+                  href="/wahana-bermain"
                   className="block text-base font-medium transition-colors hover:text-gray-300"
                 >
-                  Atraksi & Amenitas
+                  Wahana Bermain
                 </Link>
                 <Link
-                  href="/activities"
+                  href="/group-activities"
                   className="block text-base font-medium transition-colors hover:text-gray-300"
                 >
                   Group Activities
@@ -94,25 +94,25 @@ export async function Footer() {
             {/* Additional Navigation */}
             <div className="space-y-2 lg:justify-self-start">
               <Link
-                href="/dining"
+                href="/restoran"
                 className="block text-base font-medium transition-colors hover:text-gray-300"
               >
                 Restoran
               </Link>
               <Link
-                href="/events"
+                href="/meeting-events"
                 className="block text-base font-medium transition-colors hover:text-gray-300"
               >
                 Meeting & Event
               </Link>
               <Link
-                href="/reservation"
+                href="/reservasi"
                 className="block text-base font-medium transition-colors hover:text-gray-300"
               >
                 Reservasi
               </Link>
               <Link
-                href="/faq"
+                href="/reservasi"
                 className="block text-base font-medium transition-colors hover:text-gray-300"
               >
                 FAQ

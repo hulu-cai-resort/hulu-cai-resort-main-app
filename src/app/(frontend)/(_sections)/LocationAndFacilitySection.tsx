@@ -68,7 +68,7 @@ export default function LocationAndFacilitySection({ mainPage }: { mainPage: Mai
                 )}
               </motion.div>
               <Button asChild className="w-full rounded-xl">
-                <Link href="/maps">Jelajahi Selengkapnya</Link>
+                <Link href="/peta">Jelajahi Selengkapnya</Link>
               </Button>
             </div>
           </div>
@@ -92,7 +92,7 @@ export default function LocationAndFacilitySection({ mainPage }: { mainPage: Mai
                 )}
               </motion.div>
               <Button size="lg" asChild className="w-full rounded-xl">
-                <Link href="/maps">Jelajahi Selengkapnya</Link>
+                <Link href="/peta">Jelajahi Selengkapnya</Link>
               </Button>
             </div>
           </div>
@@ -116,7 +116,7 @@ export default function LocationAndFacilitySection({ mainPage }: { mainPage: Mai
                 )}
               </motion.div>
               <Button size="lg" asChild className="w-full rounded-xl">
-                <Link href="/maps">Jelajahi Selengkapnya</Link>
+                <Link href="/peta">Jelajahi Selengkapnya</Link>
               </Button>
             </div>
           </div>

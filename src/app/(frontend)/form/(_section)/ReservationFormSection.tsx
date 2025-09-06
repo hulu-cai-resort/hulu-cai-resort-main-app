@@ -92,7 +92,7 @@ function Step1({ form }: { form: any }) {
               </FormControl>
               <FormDescription>
                 Akomodasi dapat dilihat di{' '}
-                <Link href="/accommodations" className="text-[#06763F]">
+                <Link href="/tempat-menginap" className="text-[#06763F]">
                   sini
                 </Link>
               </FormDescription>
@@ -142,7 +142,7 @@ function Step1({ form }: { form: any }) {
               </FormControl>
               <FormDescription>
                 Paket aktivitas dapat dilihat di{' '}
-                <Link href="/activities" className="text-[#06763F]">
+                <Link href="/group-activities" className="text-[#06763F]">
                   sini
                 </Link>
               </FormDescription>
@@ -169,7 +169,7 @@ function Step1({ form }: { form: any }) {
               </FormControl>
               <FormDescription>
                 Paket makan dapat dilihat di{' '}
-                <Link href="/events" className="text-[#06763F]">
+                <Link href="/meeting-events" className="text-[#06763F]">
                   sini
                 </Link>
               </FormDescription>
